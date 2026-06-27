@@ -34,6 +34,13 @@ export const AnalyticsOutput = {
     ATTEMPT_QUALITY: 'ATTEMPT_QUALITY',
     ATTEMPT_QUALITY_TREND: 'ATTEMPT_QUALITY_TREND',
     WEAK_AREAS: 'WEAK_AREAS',
+    // Weightage-Based Time Allocation outputs (Phase 2). Added here so each allocation
+    // handler can gate via the same shared seam, but deliberately LEFT OUT of
+    // PAID_ANALYTICS_OUTPUTS below so the feature defaults to Free for every tier
+    // (Req 12.1, 12.4) while remaining one edit away from a Paid designation (Req 12.2, 12.3).
+    ALLOCATION_SIGNAL: 'ALLOCATION_SIGNAL',
+    ALLOCATION_MOST_FREQUENT_CHAPTERS: 'ALLOCATION_MOST_FREQUENT_CHAPTERS',
+    ALLOCATION_SUGGESTED: 'ALLOCATION_SUGGESTED',
 } as const;
 
 export type AnalyticsOutput = (typeof AnalyticsOutput)[keyof typeof AnalyticsOutput];

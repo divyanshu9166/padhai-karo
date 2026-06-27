@@ -225,6 +225,74 @@ export const stringCatalog = {
         en: 'Select a target college cutoff to see your improvement gap.',
         hi: 'अपना सुधार अंतर देखने के लिए एक लक्ष्य कॉलेज कटऑफ चुनें।',
     },
+
+    // ── Weightage-Based Time Allocation (Phase 2, Req 11) ───────────────────────────────
+    // All new user-facing allocation labels/messages. Every key carries a non-empty `en`
+    // and a non-empty `hi` value (Req 11.4); the resolver still falls back to English for
+    // any gap and for unsupported languages (Req 11.2, 11.3).
+    'allocation.title': { en: 'Time allocation', hi: 'समय आवंटन' },
+    'allocation.referenceYear': {
+        en: 'Based on reference data year',
+        hi: 'संदर्भ डेटा वर्ष पर आधारित',
+    },
+
+    // Most-frequent chapters (Req 4)
+    'allocation.mostFrequent.title': { en: 'Most-frequent chapters', hi: 'सर्वाधिक बार आने वाले अध्याय' },
+    'allocation.mostFrequent.subtitle': {
+        en: 'Chapters that appear most often across your practice and past papers',
+        hi: 'आपके अभ्यास और पिछले प्रश्नपत्रों में सबसे अधिक आने वाले अध्याय',
+    },
+    'allocation.mostFrequent.empty': {
+        en: 'No chapters yet. Add chapters to see your most-frequent ones.',
+        hi: 'अभी तक कोई अध्याय नहीं। अपने सर्वाधिक बार आने वाले अध्याय देखने के लिए अध्याय जोड़ें।',
+    },
+
+    // Combined-signal component labels (Req 3, 4.2)
+    'allocation.signal.pyqFrequency': { en: 'Your PYQ practice', hi: 'आपका पीवाईक्यू अभ्यास' },
+    'allocation.signal.historicalFrequency': { en: 'Historical frequency', hi: 'ऐतिहासिक आवृत्ति' },
+    'allocation.signal.combined': { en: 'Priority signal', hi: 'प्राथमिकता संकेत' },
+    // Fallback / "no historical data" label (Req 2.3, 2.4)
+    'allocation.signal.noHistoricalData': {
+        en: 'No historical frequency data',
+        hi: 'कोई ऐतिहासिक आवृत्ति डेटा नहीं',
+    },
+
+    // Suggested time allocation (Req 5, 6)
+    'allocation.suggested.title': { en: 'Suggested time allocation', hi: 'सुझाया गया समय आवंटन' },
+    'allocation.suggested.subtitle': {
+        en: 'How to split your study time across pending chapters',
+        hi: 'अपने अध्ययन समय को लंबित अध्यायों में कैसे बाँटें',
+    },
+    'allocation.suggested.share': { en: 'Allocation share', hi: 'आवंटन हिस्सा' },
+    'allocation.suggested.empty': {
+        en: 'No pending chapters to allocate time to.',
+        hi: 'समय आवंटित करने के लिए कोई लंबित अध्याय नहीं।',
+    },
+    // Allocation-share source labels (Req 6.2)
+    'allocation.suggested.source.suggested': {
+        en: 'Based on priority signal',
+        hi: 'प्राथमिकता संकेत पर आधारित',
+    },
+    'allocation.suggested.source.weightageFallback': {
+        en: 'Based on default weightage',
+        hi: 'डिफ़ॉल्ट वेटेज पर आधारित',
+    },
+    // Default-weightage flag label (Req 6.3)
+    'allocation.suggested.defaultWeightage': { en: 'Default weightage', hi: 'डिफ़ॉल्ट वेटेज' },
+
+    // Effective allocation mode labels (Req 7)
+    'allocation.mode.title': { en: 'Allocation mode', hi: 'आवंटन मोड' },
+    'allocation.mode.suggested': { en: 'Use suggested allocation', hi: 'सुझाया गया आवंटन उपयोग करें' },
+    'allocation.mode.phase1Default': {
+        en: 'Use default weightage allocation',
+        hi: 'डिफ़ॉल्ट वेटेज आवंटन उपयोग करें',
+    },
+
+    // Reference-data-unavailable message (Req 2.4, 3.7, 9.5)
+    'allocation.referenceUnavailable': {
+        en: 'Reference data is not available for your exam yet, so allocation guidance cannot be computed.',
+        hi: 'आपकी परीक्षा के लिए अभी संदर्भ डेटा उपलब्ध नहीं है, इसलिए आवंटन मार्गदर्शन की गणना नहीं की जा सकती।',
+    },
 } as const satisfies StringCatalog;
 
 /** The union of every known string key in the shipped catalog. */

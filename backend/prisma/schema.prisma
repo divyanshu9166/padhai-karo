@@ -118,6 +118,13 @@ enum ReferenceDatasetType {
   TOPIC_FREQUENCY
 }
 
+// === Weightage-Based Time Allocation enums (additive) ========================
+
+enum EffectiveAllocationMode {
+  SUGGESTED
+  PHASE1_DEFAULT
+}
+
 // === Identity & Profile ======================================================
 
 model User {
@@ -149,6 +156,10 @@ model User {
   // Phase 2: Performance Analytics (additive back-relations)
   externalMockScores ExternalMockScore[]
   targetCutoffSelection TargetCollegeCutoffSelection?
+
+  // Weightage-Based Time Allocation (additive back-relations)
+  allocationPreference         AllocationPreference?
+  suggestedAllocationSnapshot  SuggestedAllocationSnapshot?
 }
 
 model Session {
@@ -642,4 +653,43 @@ model TopicFrequencyReferenceData {
 
   @@unique([examTrack, referenceDataYear, topicKey])
   @@index([examTrack, referenceDataYear])
+}
+
+// === Weightage-Based Time Allocation models (additive) =======================
+//
+// All models below are additive; no existing Phase 1 / Performance Analytics enum,
+// model, or column is altered (Req 9.3). Every model carries a uuid `id`, `createdAt`,
+// and `updatedAt` per the project convention, is scoped to a single `User`, and
+// cascade-deletes with the `User`.
+
+// Allocation_Preference (Req 7.1, 7.6): the per-user effective allocation mode used by
+// timetable generation. Unset is treated as PHASE1_DEFAULT by the service layer; the
+// stored default mirrors that so reads are stable.
+model AllocationPreference {
+  id        String                  @id @default(uuid())
+  userId    String                  @unique // a single preference per user
+  mode      EffectiveAllocationMode @default(PHASE1_DEFAULT)
+  createdAt DateTime                @default(now())
+  updatedAt DateTime                @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Suggested_Allocation_Snapshot (Req 7.1): the latest computed per-chapter suggested
+// shares for a user, captured with the active Reference_Data_Year used to compute them.
+// `shares` stores the ChapterAllocationShare[] payload as JSON; one snapshot per user.
+model SuggestedAllocationSnapshot {
+  id                String   @id @default(uuid())
+  userId            String   @unique // a single current snapshot per user
+  referenceDataYear Int
+  shares            Json // ChapterAllocationShare[] computed by suggestedTimeAllocation
+  computedAt        DateTime @default(now())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }

@@ -24,6 +24,10 @@
  * are rejected upstream (Req 1.7).
  */
 import type { AuthContext } from '@/lib/auth';
+import {
+    resolveTimetableBasis,
+    type EffectiveAllocationMode,
+} from '@/lib/allocation/timetableBasis';
 import { prisma } from '@/lib/db';
 import { ErrorCode, errorResponse } from '@/lib/errors';
 import {
@@ -151,7 +155,15 @@ export async function generateTimetableHandler(
     const weekDates = weekDatesFromStart(weekStart);
     const weekEnd = weekDates[weekDates.length - 1];
 
-    const [commitmentRows, chapterRows, eventRows, auditRows, subjectRows] = await Promise.all([
+    const [
+        commitmentRows,
+        chapterRows,
+        eventRows,
+        auditRows,
+        subjectRows,
+        allocationPreference,
+        suggestedSnapshot,
+    ] = await Promise.all([
         prisma.fixedCommitment.findMany({
             where: { userId },
             select: { dayOfWeek: true, startTime: true, endTime: true },
@@ -183,6 +195,11 @@ export async function generateTimetableHandler(
             where: { examTrack: track },
             select: { id: true, name: true },
         }),
+        // Phase 2 (additive, read-only): the user's Effective_Allocation_Mode and the most
+        // recently computed Suggested_Time_Allocation snapshot. Both are optional and default
+        // to the unchanged Phase 1 behavior when absent (Req 7.6, 7.7).
+        prisma.allocationPreference.findUnique({ where: { userId } }),
+        prisma.suggestedAllocationSnapshot.findUnique({ where: { userId } }),
     ]);
 
     // STEP 1 — free-time grid (Req 3.1).
@@ -213,7 +230,32 @@ export async function generateTimetableHandler(
         estimatedStudyHours: row.estimatedStudyHours,
         estHoursOverride: row.estHoursOverride,
     }));
-    const allocation = allocateStudyHours(allocatorChapters, budget.weeklyBudgetHours, {
+
+    // Phase 2 (additive): when the user's Effective_Allocation_Mode is SUGGESTED and a snapshot
+    // covering at least one pending Chapter exists, rewrite the in-memory allocator weightage to
+    // each Chapter's Suggested_Time_Allocation share; otherwise the Phase 1 weightage is left
+    // unchanged. This never mutates persisted Chapter.weightage (Req 7.1, 7.2, 7.5, 7.6, 7.7).
+    const snapshotShares = new Map<string, number>();
+    if (suggestedSnapshot && Array.isArray(suggestedSnapshot.shares)) {
+        for (const entry of suggestedSnapshot.shares as unknown[]) {
+            if (entry && typeof entry === 'object') {
+                const { chapterId, allocationShare } = entry as {
+                    chapterId?: unknown;
+                    allocationShare?: unknown;
+                };
+                if (typeof chapterId === 'string' && typeof allocationShare === 'number') {
+                    snapshotShares.set(chapterId, allocationShare);
+                }
+            }
+        }
+    }
+    const basisChapters = resolveTimetableBasis(
+        allocatorChapters,
+        (allocationPreference?.mode ?? null) as EffectiveAllocationMode | null,
+        snapshotShares,
+    );
+
+    const allocation = allocateStudyHours(basisChapters, budget.weeklyBudgetHours, {
         efficiencyScore,
     });
 
