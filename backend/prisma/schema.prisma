@@ -1,0 +1,503 @@
+// Prisma schema for the JEE/NEET Study Companion backend.
+//
+// Task 1.3 authors the full Phase 1 data model: every enum and model from the design
+// "Data Models" section, with relations, per-user isolation (`userId` on all user-owned
+// models), idempotent-sync uniqueness (`@@unique([userId, clientId])`), update-not-
+// duplicate uniqueness for the mistake journal, and NTA de-duplication.
+//
+// Conventions applied to every model: a uuid `id`, a `createdAt` (@default(now())) and an
+// `updatedAt` (@updatedAt) timestamp. These support the deferred analytics/briefing seam
+// described in the design (all signals are stored timestamped and user-scoped).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// === Enums ===================================================================
+
+enum ExamTrack {
+  JEE
+  NEET
+}
+
+enum ChapterStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  DONE
+  REVISED
+}
+
+enum SessionType {
+  NEW_CHAPTER
+  PRACTICE_PROBLEMS
+  REVISION
+  MOCK_ANALYSIS
+  FORMULA_DRILL
+}
+
+enum MistakeCategory {
+  SILLY_MISTAKE
+  CONCEPT_GAP
+  TIME_PRESSURE
+  NEVER_SEEN_THIS
+}
+
+enum SubscriptionTier {
+  FREE
+  PAID
+}
+
+enum CalendarEventType {
+  SCHOOL_EXAM
+  HOLIDAY
+  MOCK_TEST
+}
+
+enum LanguagePref {
+  EN
+  HI
+}
+
+enum PeakFocusWindow {
+  MORNING
+  AFTERNOON
+  NIGHT
+}
+
+enum TaskDifficulty {
+  HARD
+  LIGHT
+}
+
+enum BufferPolicy {
+  CATCH_UP
+  EXTRA_REVISION
+}
+
+enum QuestionOutcome {
+  CORRECT
+  INCORRECT
+  UNANSWERED
+}
+
+enum SyncRecordType {
+  FOCUS_SESSION
+  PYQ_ATTEMPT
+  TIMED_PAPER_ATTEMPT
+}
+
+enum PaymentStatus {
+  CREATED
+  CAPTURED
+  FAILED
+  REFUNDED
+}
+
+// === Identity & Profile ======================================================
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String // argon2id/bcrypt salted hash (Req 1.6)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations (per-user isolation)
+  profile          Profile?
+  subscription     Subscription?
+  sessions         Session[]
+  chapters         Chapter[]
+  fixedCommitments FixedCommitment[]
+  timetables       Timetable[]
+  focusSessions    FocusSession[]
+  dailyTimeAudits  DailyTimeAudit[]
+  calendarEvents   CalendarEvent[]
+  pyqAttempts      PYQAttempt[]
+  timedAttempts    TimedPaperAttempt[]
+  mistakeEntries   MistakeJournalEntry[]
+  noteSummaries    NoteSummary[]
+  aiUsageEvents    AiUsageEvent[]
+  payments         Payment[]
+  syncRecords      LocalSyncRecord[]
+  offlineDownloads OfflineDownload[]
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique // opaque, hashed at rest
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Profile {
+  id                 String            @id @default(uuid())
+  userId             String            @unique
+  examTrack          ExamTrack
+  targetYear         Int
+  currentClass       String
+  language           LanguagePref      @default(EN)
+  subscriptionTier   SubscriptionTier  @default(FREE)
+  aiQuota            Int               @default(0)
+  peakFocusWindows   PeakFocusWindow[] // empty => all slots low-energy (Req 2.9)
+  targetExamDate     DateTime? // seeded; updated by NTA (Req 20.6)
+  revisionBufferDays Int               @default(45) // Revision_Buffer
+  bufferPolicy       BufferPolicy      @default(CATCH_UP)
+  onboardingComplete Boolean           @default(false)
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// === Reference & Study Structure =============================================
+
+model Subject {
+  id        String    @id @default(uuid())
+  examTrack ExamTrack
+  name      String // Physics, Chemistry, Maths/Biology
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  chapters Chapter[]
+
+  @@index([examTrack])
+}
+
+model Chapter {
+  id                     String         @id @default(uuid())
+  userId                 String // per-user instance of reference chapter
+  subjectId              String
+  referenceKey           String // links to seeded Reference_Data row
+  name                   String
+  status                 ChapterStatus  @default(NOT_STARTED) // Req 2.7, 12
+  weightage              Float // Chapter_Weightage (effective)
+  weightageIsDefault     Boolean        @default(false) // Req 11.5 (mean fallback flag)
+  estimatedStudyHours    Float // Estimated_Study_Hours (Req 12.6)
+  taskDifficulty         TaskDifficulty // hard/light (Req 13)
+  weightageOverride      Float? // Req 11.3/11.4
+  estHoursOverride       Float?
+  timeAllocationOverride Float?
+  createdAt              DateTime       @default(now())
+  updatedAt              DateTime       @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subject Subject @relation(fields: [subjectId], references: [id])
+
+  @@index([userId])
+  @@index([subjectId])
+}
+
+model FixedCommitment {
+  id        String   @id @default(uuid())
+  userId    String
+  dayOfWeek Int // 0-6
+  startTime String // "HH:mm" local
+  endTime   String // must be > startTime (Req 2.3)
+  label     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// === Timetable ===============================================================
+
+model Timetable {
+  id        String   @id @default(uuid())
+  userId    String
+  weekStart DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  blocks StudyBlock[]
+
+  @@index([userId])
+}
+
+model StudyBlock {
+  id                   String   @id @default(uuid())
+  timetableId          String
+  userId               String
+  subjectId            String? // null when isBuffer = true (Buffer_Slot, Req 15)
+  chapterId            String?
+  startTime            DateTime
+  durationMin          Int
+  isBuffer             Boolean  @default(false) // Buffer_Slot flag (Req 15.1)
+  energyLevel          String // "HIGH" | "LOW" (Req 13.1)
+  scheduledOutsidePeak Boolean  @default(false) // Req 13.4 flag
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  timetable Timetable @relation(fields: [timetableId], references: [id], onDelete: Cascade)
+
+  @@index([timetableId])
+  @@index([userId])
+}
+
+// === Activity & Progress =====================================================
+
+model FocusSession {
+  id                 String      @id @default(uuid())
+  userId             String
+  subjectId          String // exactly one subject (Req 5.3)
+  startTime          DateTime
+  endTime            DateTime
+  focusedDurationMin Int // > 0 and <= wall-clock (Req 4.5)
+  sessionType        SessionType @default(NEW_CHAPTER) // Req 4.7/4.8
+  clientId           String? // offline idempotency (Req 21)
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, clientId])
+  @@index([userId])
+}
+
+model DailyTimeAudit {
+  id         String   @id @default(uuid())
+  userId     String
+  date       DateTime
+  plannedMin Int
+  actualMin  Int // from sessions if present, else user-entered
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, date])
+  @@index([userId])
+}
+
+model CalendarEvent {
+  id        String            @id @default(uuid())
+  userId    String
+  type      CalendarEventType
+  startDate DateTime
+  endDate   DateTime // >= startDate (Req 16.2)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// === PYQ, Papers & Practice ==================================================
+
+model PYQPaper {
+  id          String    @id @default(uuid())
+  examTrack   ExamTrack
+  year        Int
+  session     String? // shift/session where applicable
+  durationMin Int // standard duration (Req 19.1)
+  answerKeyId String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  questions PYQ[]
+  answerKey AnswerKey?
+
+  @@index([examTrack, year])
+}
+
+model AnswerKey {
+  id        String   @id @default(uuid())
+  paperId   String   @unique
+  entries   Json // { questionRef: correctOption } final official key (Req 7.2)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  paper PYQPaper @relation(fields: [paperId], references: [id], onDelete: Cascade)
+}
+
+model PYQ {
+  id               String    @id @default(uuid())
+  paperId          String?
+  examTrack        ExamTrack // Req 7.4
+  year             Int
+  subjectId        String
+  questionText     String
+  options          String[] // must be exactly 4 to be practice-eligible (Req 7.1/7.3)
+  correctOption    Int // reconciled to Answer_Key (Req 7.2)
+  flaggedForReview Boolean   @default(false) // Req 7.3 (excluded from practice)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  paper PYQPaper? @relation(fields: [paperId], references: [id])
+
+  @@index([examTrack, year, subjectId]) // filtering (Req 6.1)
+  @@index([paperId])
+}
+
+model PYQAttempt {
+  id            String   @id @default(uuid())
+  userId        String
+  paperOrSetRef String
+  answers       Json // [{ questionId, selectedOption|null }]
+  perQuestion   Json // [{ questionId, outcome }]
+  totalScore    Int // count matching key (Req 6.3)
+  clientId      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, clientId])
+  @@index([userId])
+}
+
+model TimedPaperAttempt {
+  id           String   @id @default(uuid())
+  userId       String
+  paperId      String
+  perQuestion  Json // [{ questionId, outcome: CORRECT|INCORRECT|UNANSWERED }]
+  totalScore   Int
+  timeTakenSec Int
+  clientId     String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, clientId])
+  @@index([userId])
+}
+
+model MistakeJournalEntry {
+  id              String          @id @default(uuid())
+  userId          String
+  questionId      String
+  subjectId       String
+  sourceType      String // "PYQ" | "TIMED"
+  submittedAnswer Int?
+  correctAnswer   Int
+  category        MistakeCategory // required (Req 18.2)
+  note            String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId]) // update-not-duplicate (Req 18.4)
+  @@index([userId])
+  @@index([subjectId])
+}
+
+// === AI, NTA, Subscriptions, Offline =========================================
+
+model NoteSummary {
+  id        String   @id @default(uuid())
+  userId    String
+  inputType String // "TEXT" | "PHOTO"
+  summary   Json // structured key points (Req 8.1/8.2)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  aiUsageEvent AiUsageEvent[]
+
+  @@index([userId])
+}
+
+model AiUsageEvent {
+  id        String   @id @default(uuid())
+  userId    String
+  outcome   String // "PRODUCED" | "VALIDATION_REJECTED" (both record usage: Req 8.4/8.5)
+  summaryId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  summary NoteSummary? @relation(fields: [summaryId], references: [id])
+
+  @@index([userId])
+}
+
+model NTAAnnouncement {
+  id              String    @id @default(uuid())
+  examScope       String // JEE_MAIN | JEE_ADVANCED | NEET
+  title           String
+  body            String // sanitized (Req 20.2)
+  publishedAt     DateTime
+  dedupeHash      String    @unique // de-duplication (Req 20.4)
+  affectsExamDate Boolean   @default(false)
+  newExamDate     DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([examScope, publishedAt])
+}
+
+model Subscription {
+  id        String           @id @default(uuid())
+  userId    String           @unique
+  tier      SubscriptionTier
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  payments Payment[]
+}
+
+model Payment {
+  id                String        @id @default(uuid())
+  userId            String
+  subscriptionId    String?
+  razorpayOrderId   String
+  razorpayPaymentId String?
+  amount            Int
+  status            PaymentStatus // CREATED/CAPTURED/FAILED/REFUNDED (Req 9.6)
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id])
+
+  @@index([userId])
+  @@index([subscriptionId])
+}
+
+model LocalSyncRecord {
+  // Server-side ledger of processed client records for idempotency (Req 21.5)
+  id        String         @id @default(uuid())
+  userId    String
+  clientId  String
+  type      SyncRecordType
+  serverId  String // id of the created FocusSession/PYQAttempt/TimedPaperAttempt
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, clientId])
+  @@index([userId])
+}
+
+model OfflineDownload {
+  // Optional server-side record of what a user downloaded; primary storage is on device
+  id        String   @id @default(uuid())
+  userId    String
+  paperId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, paperId])
+  @@index([userId])
+}
