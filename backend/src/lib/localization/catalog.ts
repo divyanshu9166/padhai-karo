@@ -110,6 +110,121 @@ export const stringCatalog = {
     'nta.title': { en: 'NTA updates', hi: 'एनटीए अपडेट' },
     'nta.empty': { en: 'No announcements yet.', hi: 'अभी तक कोई घोषणा नहीं।' },
     'nta.examDateChanged': { en: 'Exam date updated', hi: 'परीक्षा तिथि अपडेट हुई' },
+
+    // ── Performance Analytics (Phase 2, Req 15) ─────────────────────────────────────────
+    // All new user-facing analytics labels/messages. Every key carries `en`; `hi` is
+    // provided for all entries (the resolver still falls back to English for any gap).
+    'analytics.title': { en: 'Performance analytics', hi: 'प्रदर्शन विश्लेषण' },
+
+    // External mock source names (Req 1)
+    'analytics.mockSource.allen': { en: 'Allen', hi: 'एलन' },
+    'analytics.mockSource.aakash': { en: 'Aakash', hi: 'आकाश' },
+    'analytics.mockSource.other': { en: 'Other', hi: 'अन्य' },
+    'analytics.mockScore.title': { en: 'External mock scores', hi: 'बाहरी मॉक अंक' },
+    'analytics.mockScore.add': { en: 'Add mock score', hi: 'मॉक अंक जोड़ें' },
+    'analytics.mockScore.source': { en: 'Test series', hi: 'टेस्ट श्रृंखला' },
+    'analytics.mockScore.sourceName': { en: 'Series name', hi: 'श्रृंखला का नाम' },
+    'analytics.mockScore.testDate': { en: 'Test date', hi: 'परीक्षा तिथि' },
+    'analytics.mockScore.obtainedScore': { en: 'Score obtained', hi: 'प्राप्त अंक' },
+    'analytics.mockScore.maxScore': { en: 'Maximum score', hi: 'अधिकतम अंक' },
+
+    // Score trajectory / axis labels (Req 2)
+    'analytics.trajectory.title': { en: 'Score trajectory', hi: 'स्कोर प्रगति' },
+    'analytics.trajectory.axisDate': { en: 'Date', hi: 'तिथि' },
+    'analytics.trajectory.axisScore': { en: 'Score (%)', hi: 'अंक (%)' },
+    'analytics.trajectory.empty': {
+        en: 'No score data yet. Add a mock score or complete a practice attempt to see your trajectory.',
+        hi: 'अभी तक कोई स्कोर डेटा नहीं। अपनी प्रगति देखने के लिए मॉक अंक जोड़ें या एक अभ्यास प्रयास पूरा करें।',
+    },
+    'analytics.source.externalMock': { en: 'External mock', hi: 'बाहरी मॉक' },
+    'analytics.source.pyqAttempt': { en: 'PYQ attempt', hi: 'पीवाईक्यू प्रयास' },
+    'analytics.source.timedPaper': { en: 'Timed paper', hi: 'समयबद्ध पेपर' },
+
+    // Rank / percentile / score-range prediction (Req 3)
+    'analytics.rank.title': { en: 'Rank prediction', hi: 'रैंक अनुमान' },
+    'analytics.rank.jeePercentile': { en: 'Estimated JEE percentile', hi: 'अनुमानित जेईई पर्सेंटाइल' },
+    'analytics.rank.neetScoreRange': { en: 'Estimated NEET score range', hi: 'अनुमानित नीट अंक सीमा' },
+    'analytics.rank.estimateRange': { en: 'Estimated range', hi: 'अनुमानित सीमा' },
+    'analytics.rank.referenceYear': { en: 'Based on reference data year', hi: 'संदर्भ डेटा वर्ष पर आधारित' },
+    'analytics.rank.unit.percentile': { en: 'Percentile', hi: 'पर्सेंटाइल' },
+    'analytics.rank.unit.marks': { en: 'Marks', hi: 'अंक' },
+    'analytics.rank.unit.rank': { en: 'Rank', hi: 'रैंक' },
+
+    // Target cutoff selection & score-improvement gap (Req 4, 5)
+    'analytics.targetCutoff.title': { en: 'Target college cutoff', hi: 'लक्ष्य कॉलेज कटऑफ' },
+    'analytics.targetCutoff.select': { en: 'Select target cutoff', hi: 'लक्ष्य कटऑफ चुनें' },
+    'analytics.cutoff.college': { en: 'College', hi: 'कॉलेज' },
+    'analytics.cutoff.branch': { en: 'Branch', hi: 'शाखा' },
+    'analytics.cutoff.category': { en: 'Category', hi: 'श्रेणी' },
+    'analytics.cutoff.closingValue': { en: 'Closing value', hi: 'समापन मान' },
+    'analytics.scoreGap.title': { en: 'Improvement gap', hi: 'सुधार अंतर' },
+    'analytics.scoreGap.needed': { en: 'Improvement needed', hi: 'आवश्यक सुधार' },
+    'analytics.scoreGap.met': { en: 'Target met', hi: 'लक्ष्य पूरा हुआ' },
+    'analytics.scoreGap.margin': { en: 'Margin above target', hi: 'लक्ष्य से ऊपर अंतर' },
+
+    // Topic trend analysis (Req 7)
+    'analytics.topicTrend.title': { en: 'Topic trends', hi: 'विषय रुझान' },
+    'analytics.topicTrend.appearanceCount': { en: 'Appearances', hi: 'उपस्थिति संख्या' },
+    'analytics.topicTrend.avgPerYear': { en: 'Avg questions per year', hi: 'प्रति वर्ष औसत प्रश्न' },
+    'analytics.topicTrend.yearSpan': { en: 'Years covered', hi: 'सम्मिलित वर्ष' },
+    'analytics.topicTrend.noData': { en: 'No historical frequency data', hi: 'कोई ऐतिहासिक आवृत्ति डेटा नहीं' },
+
+    // Topic prioritization (Req 8)
+    'analytics.topicPriority.title': { en: 'Topic priority', hi: 'विषय प्राथमिकता' },
+    'analytics.topicPriority.score': { en: 'Priority', hi: 'प्राथमिकता' },
+    'analytics.topicPriority.highFrequency': { en: 'High frequency', hi: 'उच्च आवृत्ति' },
+    'analytics.topicPriority.weakArea': { en: 'Weak area', hi: 'कमज़ोर क्षेत्र' },
+    'analytics.topicPriority.highFreqAndWeak': {
+        en: 'High-frequency and weak',
+        hi: 'उच्च आवृत्ति और कमज़ोर',
+    },
+
+    // Attempt quality metrics (Req 9, 10)
+    'analytics.quality.title': { en: 'Attempt quality', hi: 'प्रयास गुणवत्ता' },
+    'analytics.quality.accuracy': { en: 'Accuracy (%)', hi: 'सटीकता (%)' },
+    'analytics.quality.avgTimePerQuestion': { en: 'Avg time per question', hi: 'प्रति प्रश्न औसत समय' },
+    'analytics.quality.avgTimeUnavailable': { en: 'Time not recorded', hi: 'समय दर्ज नहीं' },
+    'analytics.quality.unattempted': { en: 'Unattempted', hi: 'अनुत्तरित' },
+    'analytics.quality.attemptRate': { en: 'Attempt rate (%)', hi: 'प्रयास दर (%)' },
+    'analytics.quality.trendTitle': { en: 'Attempt quality trend', hi: 'प्रयास गुणवत्ता रुझान' },
+    'analytics.quality.direction.increased': { en: 'Increased', hi: 'बढ़ा' },
+    'analytics.quality.direction.decreased': { en: 'Decreased', hi: 'घटा' },
+    'analytics.quality.direction.unchanged': { en: 'Unchanged', hi: 'अपरिवर्तित' },
+
+    // Weak-area detection & ranking (Req 11, 12)
+    'analytics.weakArea.title': { en: 'Weak areas', hi: 'कमज़ोर क्षेत्र' },
+    'analytics.weakArea.score': { en: 'Weak-area score', hi: 'कमज़ोर क्षेत्र अंक' },
+    'analytics.weakArea.level.subject': { en: 'Subject', hi: 'विषय' },
+    'analytics.weakArea.level.chapter': { en: 'Chapter', hi: 'अध्याय' },
+    'analytics.weakArea.level.topic': { en: 'Topic', hi: 'प्रकरण' },
+    'analytics.weakArea.incorrectCount': { en: 'Incorrect answers', hi: 'गलत उत्तर' },
+    'analytics.weakArea.sessionTimeDistribution': {
+        en: 'Study time by session type',
+        hi: 'सत्र प्रकार अनुसार अध्ययन समय',
+    },
+
+    // Session-type labels surfaced by weak-area analytics not present in the Phase 1
+    // catalog (New Chapter / Practice Problems / Revision reuse `focus.sessionType.*`).
+    'analytics.sessionType.mockAnalysis': { en: 'Mock analysis', hi: 'मॉक विश्लेषण' },
+    'analytics.sessionType.formulaDrill': { en: 'Formula drill', hi: 'सूत्र अभ्यास' },
+
+    // Shared insufficient-data, reference-unavailable, and target-required messages
+    'analytics.insufficientData.rankPrediction': {
+        en: 'Not enough score data yet to estimate your standing.',
+        hi: 'आपकी स्थिति का अनुमान लगाने के लिए अभी पर्याप्त स्कोर डेटा नहीं है।',
+    },
+    'analytics.insufficientData.qualityTrend': {
+        en: 'At least two attempts are needed to show a change in attempt quality.',
+        hi: 'प्रयास गुणवत्ता में बदलाव दिखाने के लिए कम से कम दो प्रयास आवश्यक हैं।',
+    },
+    'analytics.referenceUnavailable': {
+        en: 'Reference data is not available for your exam yet.',
+        hi: 'आपकी परीक्षा के लिए अभी संदर्भ डेटा उपलब्ध नहीं है।',
+    },
+    'analytics.targetCutoffRequired': {
+        en: 'Select a target college cutoff to see your improvement gap.',
+        hi: 'अपना सुधार अंतर देखने के लिए एक लक्ष्य कॉलेज कटऑफ चुनें।',
+    },
 } as const satisfies StringCatalog;
 
 /** The union of every known string key in the shipped catalog. */

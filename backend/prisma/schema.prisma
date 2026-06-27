@@ -98,6 +98,26 @@ enum PaymentStatus {
   REFUNDED
 }
 
+// === Phase 2: Performance Analytics enums (additive) =========================
+
+enum MockSeriesSource {
+  ALLEN
+  AAKASH
+  OTHER
+}
+
+enum CutoffUnit {
+  RANK // JoSAA closing rank (JEE)
+  PERCENTILE // JEE Main percentile
+  MARKS // NEET marks / score
+}
+
+enum ReferenceDatasetType {
+  CUTOFF
+  SCORE_STANDING_MAP
+  TOPIC_FREQUENCY
+}
+
 // === Identity & Profile ======================================================
 
 model User {
@@ -125,6 +145,10 @@ model User {
   payments         Payment[]
   syncRecords      LocalSyncRecord[]
   offlineDownloads OfflineDownload[]
+
+  // Phase 2: Performance Analytics (additive back-relations)
+  externalMockScores ExternalMockScore[]
+  targetCutoffSelection TargetCollegeCutoffSelection?
 }
 
 model Session {
@@ -500,4 +524,122 @@ model OfflineDownload {
 
   @@unique([userId, paperId])
   @@index([userId])
+}
+
+// === Phase 2: Performance Analytics models (additive) ========================
+//
+// All models below are additive; no existing Phase 1 enum, model, or column is
+// altered (Req 13.3). Every model carries a uuid `id`, `createdAt`, and `updatedAt`
+// per the Phase 1 convention. User-owned models carry `userId` and cascade-delete
+// with the `User`.
+
+// External_Mock_Score (Req 1). Validation (obtained in [0,max], max>0, testDate<=now)
+// is enforced in the service layer before persistence.
+model ExternalMockScore {
+  id            String           @id @default(uuid())
+  userId        String
+  source        MockSeriesSource
+  sourceName    String? // required (non-blank) only when source = OTHER
+  testDate      DateTime // must be <= now at write time (Req 1.4)
+  obtainedScore Float // 0 <= obtainedScore <= maxScore (Req 1.2)
+  maxScore      Float // > 0 (Req 1.3)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, testDate])
+}
+
+// Target_College_Cutoff selection (Req 4.1). One active selection per user; the
+// referenced cutoff row must belong to the active dataset for the user's track.
+model TargetCollegeCutoffSelection {
+  id                String   @id @default(uuid())
+  userId            String   @unique // a single current selection per user
+  cutoffReferenceId String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user            User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cutoffReference CutoffReferenceData @relation(fields: [cutoffReferenceId], references: [id])
+
+  @@index([userId])
+}
+
+// Additive question -> topic (chapter referenceKey) mapping enabling Chapter/Topic-level
+// weak-area detection without altering the Phase 1 PYQ model (Req 13.3). Absent mapping =>
+// the question contributes only at Subject level.
+model QuestionTopicMap {
+  id         String    @id @default(uuid())
+  questionId String    @unique // PYQ.id
+  examTrack  ExamTrack
+  subjectId  String
+  topicKey   String // Phase 1 Chapter.referenceKey == Topic key
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([topicKey])
+  @@index([subjectId])
+}
+
+// Cutoff_Reference_Data (Req 5): JoSAA (JEE) / NEET counseling closing data, keyed by
+// Exam_Track and labeled with Reference_Data_Year. Additive years are inserted; prior
+// years retained (Req 5.3). Active version = max(referenceDataYear) for the track (Req 5.2).
+model CutoffReferenceData {
+  id                String     @id @default(uuid())
+  examTrack         ExamTrack
+  referenceDataYear Int
+  collegeName       String
+  branchName        String
+  category          String // e.g. General/OBC/SC/ST/EWS
+  closingValue      Float // interpreted per `unit`
+  unit              CutoffUnit
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+
+  selections TargetCollegeCutoffSelection[]
+
+  @@unique([examTrack, referenceDataYear, collegeName, branchName, category])
+  @@index([examTrack, referenceDataYear])
+}
+
+// Score-to-standing mapping used by Rank_Prediction, versioned alongside the cutoff
+// dataset (Req 3.1/3.2 "the percentile mapping defined in the active Cutoff_Reference_Data").
+// Each row is one band: a normalized-score% range mapped to an estimated standing band.
+model ScoreStandingMap {
+  id                String     @id @default(uuid())
+  examTrack         ExamTrack
+  referenceDataYear Int
+  minScorePercent   Float // inclusive lower bound of the normalized score % band
+  maxScorePercent   Float // inclusive upper bound
+  estimateLow       Float // low end of the estimated standing band
+  estimateHigh      Float // high end of the estimated standing band
+  unit              CutoffUnit // PERCENTILE (JEE) or MARKS (NEET)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+
+  @@unique([examTrack, referenceDataYear, minScorePercent, maxScorePercent])
+  @@index([examTrack, referenceDataYear])
+}
+
+// Topic_Frequency_Reference_Data (Req 6): per-Topic appearance count, covered year span,
+// and average questions/year, keyed by Exam_Track and Reference_Data_Year. `topicKey`
+// matches a Phase 1 Chapter.referenceKey so frequency joins to user weak areas by topic.
+model TopicFrequencyReferenceData {
+  id                  String    @id @default(uuid())
+  examTrack           ExamTrack
+  referenceDataYear   Int
+  topicKey            String // == Chapter.referenceKey (Req 6.1)
+  topicName           String
+  subjectKey          String
+  appearanceCount     Int // appearances across the covered span (Req 6.2)
+  yearSpanStart       Int // first covered exam year (Req 6.2)
+  yearSpanEnd         Int // last covered exam year (Req 6.2)
+  avgQuestionsPerYear Float // average questions per year (Req 6.2)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@unique([examTrack, referenceDataYear, topicKey])
+  @@index([examTrack, referenceDataYear])
 }
