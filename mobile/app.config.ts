@@ -18,7 +18,7 @@ import type { ExpoConfig, ConfigContext } from 'expo/config';
  * `API_BASE_URL` with your machine's LAN IP (e.g. http://192.168.1.20:3000/api) or
  * `http://10.0.2.2:3000/api` for the Android emulator.
  */
-const DEFAULT_API_BASE_URL = 'http://localhost:3000/api';
+const DEFAULT_API_BASE_URL = 'https://race-passport-footage.ngrok-free.dev/api';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
     ...config,
