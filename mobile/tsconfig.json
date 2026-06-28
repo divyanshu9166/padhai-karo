@@ -1,25 +1,23 @@
 {
-    "extends": "expo/tsconfig.base",
-    "compilerOptions": {
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "jsx": "react-jsx",
-        "baseUrl": ".",
-        "paths": {
-            "@/*": [
-                "src/*"
-            ]
-        }
-    },
-    "include": [
-        "**/*.ts",
-        "**/*.tsx",
-        ".expo/types/**/*.ts",
-        "expo-env.d.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "vitest.config.ts"
-    ]
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "vitest.config.ts"
+  ]
 }
