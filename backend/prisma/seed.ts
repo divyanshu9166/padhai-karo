@@ -34,7 +34,10 @@
  * Requires a reachable PostgreSQL instance (DATABASE_URL). The script is safe to run
  * repeatedly.
  */
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
+import { randomUUID } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 
 import {
     CUTOFF_EXAM_TRACKS,
@@ -45,6 +48,7 @@ import {
 } from '../src/lib/analytics/cutoffCatalog';
 import { getAllTopicFrequencyRows } from '../src/lib/analytics/topicFrequencyCatalog';
 import { SEEDED_QUESTION_TOPIC_ENTRIES } from '../src/lib/analytics/questionTopicMapCatalog';
+import { getAllProgramSubjects } from '../src/lib/exams';
 import { getAllSubjects } from '../src/lib/reference/catalog';
 
 const prisma = new PrismaClient();
@@ -61,7 +65,27 @@ async function seedSubjects(): Promise<number> {
         });
     }
 
-    return subjects.length;
+    const programSubjects = getAllProgramSubjects();
+    for (const subject of programSubjects) {
+        await prisma.subject.upsert({
+            where: { id: subject.key },
+            update: {
+                name: subject.name,
+                examTrack: subject.family,
+                examProgram: subject.program,
+                examStage: subject.stage,
+            },
+            create: {
+                id: subject.key,
+                name: subject.name,
+                examTrack: subject.family,
+                examProgram: subject.program,
+                examStage: subject.stage,
+            },
+        });
+    }
+
+    return subjects.length + programSubjects.length;
 }
 
 /**
@@ -252,24 +276,44 @@ async function seedQuestionTopicMap(): Promise<number> {
     return SEEDED_QUESTION_TOPIC_ENTRIES.length;
 }
 
+/** Materialize the small reviewed official starter batch so a fresh environment has a
+ * mock-eligible UPSC paper after `prisma db seed`. Larger papers remain operator-imported
+ * through the strict final-answer-key workflow. */
+async function seedReviewedOfficialStarter(): Promise<number> {
+    const file = resolve('data/official-pyq-reviewed/upsc-cse-prelims-2024-gs1-reviewed-starter.json');
+    let input: { program: 'UPSC_CSE'; stage: 'PRELIMS'; year: number; paperKey: string; durationMin?: number; sourceName: string; sourceUrl: string; answerKeyUrl: string; reviewedAt?: string; answerKey: Record<string, number>; questions: Array<{ questionRef?: string; questionText: string; options: string[]; subjectId: string }> };
+    try { input = JSON.parse(await readFile(file, 'utf8')) as typeof input; }
+    catch { return 0; }
+    const existing = await prisma.pYQPaper.findFirst({ where: { paperKey: input.paperKey, examProgram: input.program, year: input.year } });
+    const saved = await prisma.$transaction(async (tx) => {
+        const paper = existing
+            ? await tx.pYQPaper.update({ where: { id: existing.id }, data: { sourceName: input.sourceName, sourceUrl: input.sourceUrl, answerKeyUrl: input.answerKeyUrl, verificationMethod: 'OFFICIAL_FINAL_KEY_CROSS_CHECK', verifiedAt: input.reviewedAt ? new Date(input.reviewedAt) : new Date() } })
+            : await tx.pYQPaper.create({ data: { examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS', paperKey: input.paperKey, year: input.year, durationMin: input.durationMin ?? 120, answerKeyId: randomUUID(), sourceName: input.sourceName, sourceUrl: input.sourceUrl, answerKeyUrl: input.answerKeyUrl, verificationMethod: 'OFFICIAL_FINAL_KEY_CROSS_CHECK', verifiedAt: input.reviewedAt ? new Date(input.reviewedAt) : new Date() } });
+        await tx.answerKey.upsert({ where: { paperId: paper.id }, create: { id: paper.answerKeyId, paperId: paper.id, entries: input.answerKey as Prisma.InputJsonValue }, update: { entries: input.answerKey as Prisma.InputJsonValue } });
+        await tx.pYQ.deleteMany({ where: { paperId: paper.id } });
+        await tx.pYQ.createMany({ data: input.questions.map((question, index) => ({ paperId: paper.id, examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS', year: input.year, subjectId: question.subjectId, questionText: question.questionText, options: question.options, correctOption: input.answerKey[question.questionRef || String(index + 1)] })) });
+        return paper;
+    });
+    return saved.id ? input.questions.length : 0;
+}
+
 async function main(): Promise<void> {
     const subjectCount = await seedSubjects();
     const cutoffCount = await seedCutoffReferenceData();
     const scoreStandingCount = await seedScoreStandingMap();
     const topicFrequencyCount = await seedTopicFrequencyReferenceData();
     const questionTopicCount = await seedQuestionTopicMap();
+    const officialStarterCount = await seedReviewedOfficialStarter();
 
-    // eslint-disable-next-line no-console
     console.log(
         `Seed complete: upserted ${subjectCount} subjects, ${cutoffCount} cutoff rows, ` +
         `${scoreStandingCount} score-standing bands, ${topicFrequencyCount} topic-frequency rows, ` +
-        `${questionTopicCount} seeded questions + question-topic maps.`,
+        `${questionTopicCount} seeded questions + question-topic maps, ${officialStarterCount} reviewed official PYQ starter questions.`,
     );
 }
 
 main()
     .catch((error) => {
-        // eslint-disable-next-line no-console
         console.error('Seed failed:', error);
         process.exitCode = 1;
     })

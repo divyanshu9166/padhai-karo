@@ -52,6 +52,17 @@ export interface PyqExtractionDb {
             update: PyqUpdateInput;
         }): Promise<unknown>;
     };
+    pYQPaper?: {
+        update(args: {
+            where: { id: string };
+            data: {
+                examTrack: PyqUpsertRecord['examTrack'];
+                examProgram: PyqUpsertRecord['examProgram'];
+                examStage: PyqUpsertRecord['examStage'];
+                paperKey?: string;
+            };
+        }): Promise<unknown>;
+    };
 }
 
 /** Columns written when first creating a PYQ record. */
@@ -61,6 +72,8 @@ export interface PyqCreateInput {
     examTrack: PyqUpsertRecord['examTrack'];
     year: number;
     subjectId: string;
+    examProgram?: PyqUpsertRecord['examProgram'];
+    examStage?: PyqUpsertRecord['examStage'];
     questionText: string;
     options: string[];
     correctOption: number;
@@ -84,6 +97,8 @@ function toCreateInput(record: PyqUpsertRecord): PyqCreateInput {
         examTrack: record.examTrack,
         year: record.year,
         subjectId: record.subjectId,
+        ...(record.examProgram ? { examProgram: record.examProgram } : {}),
+        ...(record.examStage ? { examStage: record.examStage } : {}),
         questionText: record.questionText,
         options: record.options,
         correctOption: record.correctOption,
@@ -126,8 +141,26 @@ export async function processPyqExtractionJob(
         examTrack: data.examTrack,
         year: data.year,
         subjectId: data.subjectId,
+        examProgram: data.examProgram,
+        examStage: data.examStage,
+        paperKey: data.paperKey,
     };
     const paperId = data.paperId ?? null;
+
+    // Keep the paper metadata aligned with the extraction association when a modern job
+    // targets an existing paper. The optional dependency keeps legacy in-memory worker
+    // harnesses compatible while the real Prisma client supplies this model.
+    if (paperId && data.examProgram && data.examStage && deps.db.pYQPaper) {
+        await deps.db.pYQPaper.update({
+            where: { id: paperId },
+            data: {
+                examTrack: data.examTrack,
+                examProgram: data.examProgram,
+                examStage: data.examStage,
+                ...(data.paperKey ? { paperKey: data.paperKey } : {}),
+            },
+        });
+    }
 
     let produced = 0;
     let flaggedForReview = 0;
@@ -139,6 +172,8 @@ export async function processPyqExtractionJob(
             examTrack: association.examTrack,
             year: association.year,
             subjectId: association.subjectId,
+            examProgram: association.examProgram,
+            examStage: association.examStage,
         });
 
         const outcome = processExtractionResult(

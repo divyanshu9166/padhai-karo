@@ -12,6 +12,7 @@ const FALLBACK_API_BASE_URL = 'http://localhost:3000/api';
 
 interface AppExtra {
     apiBaseUrl?: string;
+    wsUrl?: string;
 }
 
 function readExtra(): AppExtra {
@@ -23,3 +24,4 @@ function readExtra(): AppExtra {
 
 /** The base URL the API client targets, e.g. `http://localhost:3000/api`. */
 export const API_BASE_URL: string = readExtra().apiBaseUrl ?? FALLBACK_API_BASE_URL;
+export const COMMUNITY_WS_URL: string = readExtra().wsUrl ?? API_BASE_URL.replace(/^http/i, 'ws').replace(/\/api\/?$/, '') + '/ws/community';

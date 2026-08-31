@@ -110,7 +110,7 @@ async function loadAttempt(
 
 /** Framework route context for the dynamic `/:attemptId` segment. */
 export interface AttemptQualityRouteContext {
-    params: { attemptId: string };
+    params: { attemptId: string } | Promise<{ attemptId: string }>;
 }
 
 /**
@@ -123,7 +123,7 @@ export async function getAttemptQualityHandler(
     auth: AuthContext,
     routeContext: AttemptQualityRouteContext,
 ): Promise<Response> {
-    const { attemptId } = routeContext.params;
+    const { attemptId } = await routeContext.params;
     if (typeof attemptId !== 'string' || attemptId.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'An attempt id is required.', {
             field: 'attemptId',

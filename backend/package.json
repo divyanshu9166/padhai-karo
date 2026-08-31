@@ -2,22 +2,28 @@
   "name": "jee-neet-study-app-backend",
   "version": "0.1.0",
   "private": true,
-  "description": "Server-side-only Next.js API backend for the JEE/NEET Study Companion (Phase 1 MVP).",
+  "description": "Server-side-only Next.js API backend for the UPSC/SSC PadhaiKaro study companion.",
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_ENV=development tsx server.ts",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "start": "cross-env NODE_ENV=production tsx server.ts",
+    "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:seed": "prisma db seed",
+    "pyq:import": "tsx prisma/import-official-pyq.ts",
+    "pyq:prepare": "tsx prisma/prepare-official-pyq.ts",
+    "worker:scheduler": "tsx src/workers/scheduler.ts",
+    "current-affairs:refresh": "tsx src/workers/refreshCurrentAffairs.ts",
+    "check:pdf-renderer": "node --env-file-if-exists=.env scripts/check-poppler.mjs",
+    "realtime": "tsx server.ts",
     "postinstall": "prisma generate"
   },
   "prisma": {
-    "seed": "vite-node prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
@@ -25,18 +31,24 @@
     "hash-wasm": "4.12.0",
     "ioredis": "^5.10.1",
     "next": "^16.2.9",
+    "pdf-parse": "^1.1.1",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "ws": "^8.21.3"
   },
   "devDependencies": {
     "@types/node": "20.14.10",
+    "@types/pdf-parse": "^1.1.5",
     "@types/react": "18.3.3",
-    "eslint": "8.57.0",
+    "@types/ws": "^8.18.1",
+    "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.9",
     "eslint-config-prettier": "9.1.0",
+    "cross-env": "^10.0.0",
     "fast-check": "3.22.0",
     "prettier": "3.3.3",
     "prisma": "^6.19.3",
+    "tsx": "^4.23.12",
     "typescript": "5.5.4",
     "vitest": "^4.1.9"
   }

@@ -26,7 +26,7 @@ import {
 import type { FixedCommitmentInput, PeakFocusWindow } from '@/services/onboarding';
 
 /** The supported Language_Preference values (mirrors the Prisma `LanguagePref` enum, Req 10.1). */
-export const LANGUAGE_PREF_VALUES = ['EN', 'HI'] as const;
+export const LANGUAGE_PREF_VALUES = ['EN', 'HI', 'TA', 'BN', 'TE', 'MR'] as const;
 
 /** A supported interface language. */
 export type LanguagePref = (typeof LANGUAGE_PREF_VALUES)[number];

@@ -25,8 +25,10 @@ import type { Language, StringCatalog } from './types';
 
 // The real, shipped allocation keys. Resolving against catalogs derived from these anchors the
 // property to actual catalog content rather than synthetic keys.
+type AllocationKey = Extract<keyof typeof stringCatalog, `allocation.${string}`>;
+
 const allocationKeys = (Object.keys(stringCatalog) as Array<keyof typeof stringCatalog>).filter(
-    (key): key is keyof typeof stringCatalog => key.startsWith('allocation.'),
+    (key): key is AllocationKey => key.startsWith('allocation.'),
 );
 
 // A single allocation key drawn from the real catalog.

@@ -10,6 +10,6 @@
 import { withAuth } from '@/lib/auth';
 import { deleteFixedCommitmentHandler } from '@/services/profile';
 
-export const DELETE = withAuth<{ params: { id: string } }>((request, ctx, routeContext) =>
+export const DELETE = withAuth<{ params: { id: string } | Promise<{ id: string }> }>((request, ctx, routeContext) =>
     deleteFixedCommitmentHandler(request, ctx, routeContext),
 );

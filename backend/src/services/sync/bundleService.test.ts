@@ -10,10 +10,16 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
  *
  * Validates: Requirements 21.1
  */
-const { findUniquePaper } = vi.hoisted(() => ({ findUniquePaper: vi.fn() }));
+const { findUniqueProfile, findUniquePaper } = vi.hoisted(() => ({
+    findUniqueProfile: vi.fn(),
+    findUniquePaper: vi.fn(),
+}));
 
 vi.mock('@/lib/db', () => {
-    const prisma = { pYQPaper: { findUnique: findUniquePaper } };
+    const prisma = {
+        profile: { findUnique: findUniqueProfile },
+        pYQPaper: { findUnique: findUniquePaper },
+    };
     return { default: prisma, prisma };
 });
 
@@ -27,6 +33,7 @@ function authCtx(userId = 'user-1'): AuthContext {
 const routeCtx = (id: string) => ({ params: { id } });
 
 beforeEach(() => {
+    findUniqueProfile.mockReset().mockResolvedValue({ examTrack: 'JEE_MAIN', examProgram: null, examStage: null });
     findUniquePaper.mockReset();
 });
 

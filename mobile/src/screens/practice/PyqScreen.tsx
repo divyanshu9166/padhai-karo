@@ -23,6 +23,7 @@ import {
 import { ApiError } from '@/api';
 import { Screen } from '@/components';
 import { useTranslation } from '@/localization';
+import type { PracticeStackScreenProps } from '@/navigation/types';
 
 import {
     getProfileTrack,
@@ -46,7 +47,7 @@ type Phase =
     | { kind: 'submitting'; questions: ClientPYQ[] }
     | { kind: 'results'; questions: ClientPYQ[]; result: AttemptResult };
 
-export function PyqScreen(): React.JSX.Element {
+export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): React.JSX.Element {
     const t = useTranslation();
 
     const [subjects, setSubjects] = useState<ReferenceSubject[]>([]);
@@ -60,8 +61,8 @@ export function PyqScreen(): React.JSX.Element {
     const loadFilters = useCallback(async (): Promise<void> => {
         setPhase({ kind: 'loadingFilters' });
         try {
-            const track = await getProfileTrack();
-            const list = await listSubjects(track);
+            const selection = await getProfileTrack();
+            const list = await listSubjects(selection);
             setSubjects(list);
             setPhase({ kind: 'filtering' });
         } catch (err) {
@@ -157,7 +158,7 @@ export function PyqScreen(): React.JSX.Element {
                     ) : phase.kind === 'practicing' || phase.kind === 'submitting' ? (
                         <>
                             {phase.questions.length === 0 ? (
-                                <Text style={styles.muted}>No questions match this filter.</Text>
+                                <Text style={styles.muted}>{t('practice.noQuestions')}</Text>
                             ) : (
                                 phase.questions.map((q, i) => (
                                     <QuestionCard
@@ -211,6 +212,10 @@ export function PyqScreen(): React.JSX.Element {
                                 busy={phase.kind === 'loadingQuestions'}
                                 onPress={() => void onLoadQuestions()}
                             />
+                            <SecondaryButton label="Start full mock" onPress={() => navigation.navigate('Mock')} />
+                            <SecondaryButton label="Review external paper" onPress={() => navigation.navigate('ExternalPaperReview')} />
+                            <SecondaryButton label="Timed paper" onPress={() => navigation.navigate('TimedPaper')} />
+                            <SecondaryButton label="Mistake journal" onPress={() => navigation.navigate('MistakeJournal')} />
                         </>
                     )}
                 </ScrollView>

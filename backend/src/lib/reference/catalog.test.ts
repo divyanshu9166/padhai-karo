@@ -10,7 +10,7 @@ import {
     getExamYears,
     getSubjects,
 } from './catalog';
-import type { ExamTrack, ReferenceChapter } from './types';
+import type { LegacyExamTrack, ReferenceChapter } from './types';
 
 /**
  * Unit + property tests for the track-keyed reference catalog (task 3.1).
@@ -21,7 +21,7 @@ import type { ExamTrack, ReferenceChapter } from './types';
  */
 
 const VALID_DIFFICULTIES = new Set(['HARD', 'LIGHT']);
-const EXPECTED_SUBJECTS: Record<ExamTrack, string[]> = {
+const EXPECTED_SUBJECTS: Record<LegacyExamTrack, string[]> = {
     JEE: ['Physics', 'Chemistry', 'Mathematics'],
     NEET: ['Physics', 'Chemistry', 'Biology'],
 };
@@ -95,11 +95,11 @@ describe('reference catalog — chapter integrity (Req 11, 12.6, 13)', () => {
 });
 
 describe('reference catalog — weightage patterns (Req 11.1)', () => {
-    function trackWeightageTotal(track: ExamTrack): number {
+    function trackWeightageTotal(track: LegacyExamTrack): number {
         return getChapters(track).reduce((sum, c) => sum + c.weightage, 0);
     }
 
-    function subjectWeightageTotal(track: ExamTrack, subjectName: string): number {
+    function subjectWeightageTotal(track: LegacyExamTrack, subjectName: string): number {
         const subject = getSubjects(track).find((s) => s.name === subjectName);
         return (subject?.chapters ?? []).reduce((sum, c) => sum + c.weightage, 0);
     }

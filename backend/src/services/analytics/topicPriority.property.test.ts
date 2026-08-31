@@ -180,6 +180,9 @@ describe('prioritizeTopics topic-prioritization properties', () => {
                         if (b.expectedPriority !== a.expectedPriority) {
                             return b.expectedPriority - a.expectedPriority;
                         }
+                        if (b.avgQuestionsPerYear !== a.avgQuestionsPerYear) {
+                            return b.avgQuestionsPerYear - a.avgQuestionsPerYear;
+                        }
                         return a.topicName.localeCompare(b.topicName);
                     });
                     expect(result.map((r) => r.topicKey)).toEqual(

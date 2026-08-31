@@ -1,10 +1,10 @@
 /**
  * Language toggle (task 21.8; Req 10.1/10.2/10.4).
  *
- * A compact EN/HI switch that reads the active Language_Preference and switches it via the
+ * A compact regional-language switch that reads the active Language_Preference and switches it via the
  * localization context's `setLanguage`. Selecting a language applies it immediately app-wide
  * (Req 10.2) and persists it to the User profile (Req 10.1, handled by
- * {@link AppLocalizationProvider}). EN and HI are the only options (Req 10.4).
+ * {@link AppLocalizationProvider}).
  *
  * Each option is labelled in its own script (English / Hindi) so the control is recognizable
  * regardless of the currently active language — these are language *names*, not catalog strings.
@@ -18,6 +18,10 @@ import type { Language } from './types';
 const OPTIONS: ReadonlyArray<{ value: Language; label: string }> = [
     { value: 'EN', label: 'English' },
     { value: 'HI', label: 'हिन्दी' },
+    { value: 'TA', label: 'தமிழ்' },
+    { value: 'BN', label: 'বাংলা' },
+    { value: 'TE', label: 'తెలుగు' },
+    { value: 'MR', label: 'मराठी' },
 ];
 
 export function LanguageToggle(): React.JSX.Element {

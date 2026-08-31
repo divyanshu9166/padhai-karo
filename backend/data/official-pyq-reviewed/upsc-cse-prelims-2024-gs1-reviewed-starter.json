@@ -1,0 +1,56 @@
+{
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2024,
+  "paperKey": "UPSC-CSE-PRELIMS-GS1-2024-STARTER",
+  "durationMin": 120,
+  "sourceName": "UPSC CSE Prelims 2024 GS Paper I — official question paper and final answer key",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-24-GENERAL-STUDIES-PAPER-I-180624.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CivilServicesPExam-2024-GeneralStudies-I-210525.pdf",
+  "reviewedAt": "2025-05-21T00:00:00.000Z",
+  "questionPaperSha256": "a7dd07c3e8cf3a05b5a739c1adc60df95270dba27dcb7f4190e4deb0d9aec505",
+  "answerKeySha256": "920d4abdd01508f62569e5a8de623fa9f2d5c860da50e57be7285019d342fb84",
+  "answerKey": { "1": 3, "2": 0, "3": 3, "4": 0, "5": 2 },
+  "questions": [
+    {
+      "questionRef": "1",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement-I: The atmosphere is heated more by incoming solar radiation than by terrestrial radiation. Statement-II: Carbon dioxide and other greenhouse gases in the atmosphere are good absorbers of long wave radiation. Which one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+        "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+        "Statement-I is correct, but Statement-II is incorrect",
+        "Statement-I is incorrect, but Statement-II is correct"
+      ]
+    },
+    {
+      "questionRef": "2",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement-I: Thickness of the troposphere at the equator is much greater as compared to poles. Statement-II: At the equator, heat is transported to great heights by strong convectional currents. Which one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+        "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+        "Statement-I is correct, but Statement-II is incorrect",
+        "Statement-I is incorrect, but Statement-II is correct"
+      ]
+    },
+    {
+      "questionRef": "3",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following: 1. Pyroclastic debris 2. Ash and dust 3. Nitrogen compounds 4. Sulphur compounds How many of the above are products of volcanic eruptions?",
+      "options": ["Only one", "Only two", "Only three", "All four"]
+    },
+    {
+      "questionRef": "4",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which of the following is/are correct inference/inferences from isothermal maps in the month of January? 1. The isotherms deviate to the north over the ocean and to the south over the continent. 2. The presence of cold ocean currents, Gulf Stream and North Atlantic Drift make the North Atlantic Ocean colder and the isotherms bend towards the north. Select the answer using the code given below:",
+      "options": ["1 only", "2 only", "Both 1 and 2", "Neither 1 nor 2"]
+    },
+    {
+      "questionRef": "5",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which of the following countries are well known as the two largest cocoa producers in the world?",
+      "options": ["Algeria and Morocco", "Botswana and Namibia", "Côte d’Ivoire and Ghana", "Madagascar and Mozambique"]
+    }
+  ]
+}

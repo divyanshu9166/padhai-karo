@@ -24,7 +24,7 @@ import { request } from '@/api';
 // ── AI notes DTOs ─────────────────────────────────────────────────────────────────────────
 
 /** Discriminator for a summarization request (Req 8.1 text / Req 8.2 photo). */
-export type AiInputType = 'TEXT' | 'PHOTO';
+export type AiInputType = 'TEXT' | 'PHOTO' | 'VOICE';
 
 /**
  * The structured summary returned by the model and stored as `NoteSummary.summary`
@@ -55,16 +55,26 @@ export interface CreateSummaryTextInput {
 /** Body of `POST /ai/summaries` for a PHOTO request (references an already-uploaded image). */
 export interface CreateSummaryPhotoInput {
   inputType: 'PHOTO';
-  imageUploadId: string;
+  imageData: string;
+  mimeType?: string;
 }
 
-export type CreateSummaryInput = CreateSummaryTextInput | CreateSummaryPhotoInput;
+export interface CreateSummaryVoiceInput {
+  inputType: 'VOICE';
+  audioData: string;
+  mimeType?: string;
+  audioUri?: string;
+  voiceNoteId?: string;
+}
+
+export type CreateSummaryInput = CreateSummaryTextInput | CreateSummaryPhotoInput | CreateSummaryVoiceInput;
 
 /** Response of `POST /ai/summaries` on success (201). */
 export interface CreateSummaryResponse {
   summary: NoteSummary;
   /** The user's remaining AI quota after this summary was produced (Req 8.6). */
-  remainingQuota: number;
+  remainingQuota?: number;
+  source?: string;
 }
 
 /** Response of `GET /ai/summaries`. */
@@ -147,12 +157,12 @@ export const SUBSCRIPTION_PLANS: readonly PlanDisplay[] = [
 
 /** `POST /ai/summaries` — summarize note text or a photo (Req 8.1/8.2). */
 export function createSummary(input: CreateSummaryInput): Promise<CreateSummaryResponse> {
-  return request<CreateSummaryResponse>('/ai/summaries', { method: 'POST', body: input });
+  return request<CreateSummaryResponse>('/ai/notes', { method: 'POST', body: input });
 }
 
 /** `GET /ai/summaries` — the authenticated user's prior summaries, newest first. */
 export function listSummaries(): Promise<ListSummariesResponse> {
-  return request<ListSummariesResponse>('/ai/summaries');
+  return request<ListSummariesResponse>('/ai/notes');
 }
 
 /** `POST /subscriptions/order` — create a Razorpay order for the chosen plan. */

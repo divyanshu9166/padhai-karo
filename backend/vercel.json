@@ -1,0 +1,8 @@
+{
+  "crons": [
+    { "path": "/api/current-affairs/cron", "schedule": "0 */6 * * *" },
+    { "path": "/api/briefing/cron", "schedule": "0 2 * * *" },
+    { "path": "/api/notifications/cron", "schedule": "*/15 * * * *" },
+    { "path": "/api/calendar/google/cron", "schedule": "*/30 * * * *" }
+  ]
+}

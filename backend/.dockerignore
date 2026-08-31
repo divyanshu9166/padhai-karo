@@ -1,0 +1,7 @@
+node_modules
+.next
+.env*
+coverage
+data/official-pyq-downloads/*.pdf
+data/official-pyq-downloads/*.receipt.json
+*.log

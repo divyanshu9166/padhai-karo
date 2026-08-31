@@ -111,6 +111,7 @@ async function createTargetAndLedger(
                         startTime: payload.startTime,
                         endTime: payload.endTime,
                         focusedDurationMin: payload.focusedDurationMin,
+                        abandoned: payload.abandoned,
                         sessionType: payload.sessionType,
                         clientId,
                     },
@@ -178,7 +179,77 @@ async function createTargetAndLedger(
             });
             return { serverId, score: totalScore };
         }
+
+        case 'ANSWER_WRITING_ATTEMPT': {
+            const { payload, clientId } = record;
+            const serverId = await prisma.$transaction(async (tx) => {
+                const attempt = await tx.answerWritingAttempt.create({ data: { userId, prompt: payload.prompt, answerText: payload.answerText, wordCount: payload.answerText.split(/\s+/).filter(Boolean).length, subjectId: payload.subjectId, timeTakenSec: payload.timeTakenSec, status: 'SUBMITTED', submittedAt: new Date() }, select: { id: true } });
+                await tx.localSyncRecord.create({ data: { userId, clientId, type: 'ANSWER_WRITING_ATTEMPT', serverId: attempt.id } });
+                return attempt.id;
+            });
+            return { serverId };
+        }
+
+        case 'WELLBEING_CHECKIN': {
+            const { payload, clientId } = record;
+            const serverId = await prisma.$transaction(async (tx) => {
+                const checkin = await tx.wellbeingCheckin.upsert({ where: { userId_checkinDate: { userId, checkinDate: payload.checkinDate } }, create: { userId, checkinDate: payload.checkinDate, mood: payload.mood, energy: payload.energy, stress: payload.stress, sleepHours: payload.sleepHours, note: payload.note }, update: { mood: payload.mood, energy: payload.energy, stress: payload.stress, sleepHours: payload.sleepHours, note: payload.note }, select: { id: true } });
+                await tx.localSyncRecord.create({ data: { userId, clientId, type: 'WELLBEING_CHECKIN', serverId: checkin.id } });
+                return checkin.id;
+            });
+            return { serverId };
+        }
+
+        case 'VOICE_NOTE': {
+            const { payload, clientId } = record;
+            const serverId = await prisma.$transaction(async (tx) => {
+                const note = await tx.voiceNote.create({ data: { userId, title: payload.title, audioUri: payload.audioUri, transcription: payload.transcription, durationSec: payload.durationSec, subjectId: payload.subjectId, chapterId: payload.chapterId, tags: payload.tags ?? [], searchText: `${payload.title} ${payload.transcription ?? ''}`.trim() }, select: { id: true } });
+                await tx.localSyncRecord.create({ data: { userId, clientId, type: 'VOICE_NOTE', serverId: note.id } });
+                return note.id;
+            });
+            return { serverId };
+        }
+
+        case 'NOTE_SUMMARY': {
+            const { payload, clientId } = record;
+            const serverId = await prisma.$transaction(async (tx) => {
+                const summary = await tx.noteSummary.create({ data: { userId, inputType: payload.inputType, summary: payload.summary as unknown as Prisma.InputJsonValue }, select: { id: true } });
+                await tx.localSyncRecord.create({ data: { userId, clientId, type: 'NOTE_SUMMARY', serverId: summary.id } });
+                return summary.id;
+            });
+            return { serverId };
+        }
+
+        case 'STUDY_RESOURCE': {
+            const { payload, clientId } = record;
+            const serverId = await prisma.$transaction(async (tx) => {
+                const resource = await tx.studyResource.create({ data: { userId, title: payload.title, url: payload.url, type: payload.type ?? 'LINK', tags: payload.tags, subjectId: payload.subjectId, chapterId: payload.chapterId }, select: { id: true } });
+                await tx.localSyncRecord.create({ data: { userId, clientId, type: 'STUDY_RESOURCE', serverId: resource.id } });
+                return resource.id;
+            });
+            return { serverId };
+        }
     }
+}
+
+/** Reject an offline timed-paper replay before it can score a paper from another track. */
+async function validateTimedPaperScope(userId: string, records: ReadonlyArray<ValidatedSyncRecord>): Promise<Response | null> {
+    const paperIds = [...new Set(records.filter((record): record is Extract<ValidatedSyncRecord, { type: 'TIMED_PAPER_ATTEMPT' }> => record.type === 'TIMED_PAPER_ATTEMPT').map((record) => record.payload.paperId))];
+    if (paperIds.length === 0) return null;
+    const profile = await prisma.profile.findUnique({ where: { userId }, select: { examTrack: true, examProgram: true, examStage: true } });
+    if (!profile) return errorResponse(404, ErrorCode.NOT_FOUND, 'Complete onboarding before syncing timed-paper attempts.');
+    const papers = await prisma.pYQPaper.findMany({
+        where: {
+            id: { in: paperIds },
+            examTrack: profile.examTrack,
+            ...(profile.examProgram ? { examProgram: profile.examProgram } : {}),
+            ...(profile.examStage ? { examStage: profile.examStage } : {}),
+            ...(profile.examTrack === 'UPSC' || profile.examTrack === 'SSC' ? { verifiedAt: { not: null }, answerKey: { isNot: null } } : {}),
+        },
+        select: { id: true },
+    });
+    if (papers.length !== paperIds.length) return errorResponse(404, ErrorCode.NOT_FOUND, 'One or more timed papers are not available for your exam track.');
+    return null;
 }
 
 /**
@@ -218,6 +289,9 @@ export async function syncHandler(request: Request, auth: AuthContext): Promise<
 
     const userId = auth.user.id;
     const { records } = validation.value;
+
+    const timedPaperScopeError = await validateTimedPaperScope(userId, records);
+    if (timedPaperScopeError) return timedPaperScopeError;
 
     // Preload the ledger rows already recorded for this user so the common (already-synced)
     // path is a pure map lookup; the per-create unique constraint remains the final backstop.

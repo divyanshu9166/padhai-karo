@@ -133,7 +133,7 @@ export async function listCalendarEventsHandler(
 
 /** Framework route context for the dynamic `/:id` segment. */
 export interface CalendarEventRouteContext {
-    params: { id: string };
+    params: { id: string } | Promise<{ id: string }>;
 }
 
 /**
@@ -146,7 +146,7 @@ export async function deleteCalendarEventHandler(
     auth: AuthContext,
     routeContext: CalendarEventRouteContext,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'An event id is required.', {
             field: 'id',

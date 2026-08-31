@@ -46,7 +46,6 @@ export function sanitizeText(value: string): string {
         // Drop anything that looks like a tag, including unclosed `<script ...` fragments.
         .replace(/<[^>]*>/g, '')
         .replace(/<[^<]*$/g, '')
-        // eslint-disable-next-line no-control-regex
         .replace(/[\u0000-\u001f\u007f]+/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
@@ -208,6 +207,8 @@ export function buildPyqRecord(
         examTrack: association.examTrack,
         year: association.year,
         subjectId: association.subjectId,
+        examProgram: association.examProgram,
+        examStage: association.examStage,
         questionText: sanitizeText(raw.questionText),
         options,
         correctOption: reconciledOption,

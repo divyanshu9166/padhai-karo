@@ -6,6 +6,7 @@ import {
     isTargetYearValid,
     parseHHmm,
     toChapterCreateInputs,
+    toProgramChapterCreateInputs,
     validateOnboardingInput,
 } from './validation';
 import { getChapters, getSubjects } from '@/lib/reference';
@@ -26,6 +27,7 @@ function validPayload(overrides: Record<string, unknown> = {}): Record<string, u
     return {
         examTrack: 'JEE',
         targetYear: CURRENT_YEAR + 1,
+        examDate: `${CURRENT_YEAR + 1}-06-01`,
         currentClass: 'Class 12',
         fixedCommitments: [
             { dayOfWeek: 1, startTime: '08:00', endTime: '14:00', label: 'School' },
@@ -107,7 +109,7 @@ describe('validateOnboardingInput', () => {
 
     it('accepts a target year equal to the current calendar year (boundary, Req 2.2)', () => {
         const result = validateOnboardingInput(
-            validPayload({ targetYear: CURRENT_YEAR }),
+            validPayload({ targetYear: CURRENT_YEAR, examDate: `${CURRENT_YEAR}-06-01` }),
             CURRENT_YEAR,
         );
         expect(result.ok).toBe(true);
@@ -143,6 +145,41 @@ describe('validateOnboardingInput', () => {
     it.each([...EXAM_TRACK_VALUES])('accepts exam track %s', (track) => {
         const result = validateOnboardingInput(validPayload({ examTrack: track }), CURRENT_YEAR);
         expect(result.ok).toBe(true);
+    });
+
+    it.each([
+        ['UPSC_CSE', 'PRELIMS'],
+        ['UPSC_CSE', 'MAINS'],
+        ['SSC_CGL', 'TIER_1'],
+        ['SSC_CGL', 'TIER_2'],
+    ] as const)('accepts modern program/stage selection %s/%s', (examProgram, examStage) => {
+        const result = validateOnboardingInput(
+            validPayload({ examTrack: undefined, examProgram, examStage }),
+            CURRENT_YEAR,
+        );
+        expect(result.ok).toBe(true);
+        if (result.ok) {
+            expect(result.value.examProgram).toBe(examProgram);
+            expect(result.value.examStage).toBe(examStage);
+            expect(result.value.examTrack).toBe(examProgram === 'UPSC_CSE' ? 'UPSC' : 'SSC');
+        }
+    });
+
+    it('rejects a stage that does not belong to the selected program', () => {
+        const result = validateOnboardingInput(
+            validPayload({ examTrack: undefined, examProgram: 'UPSC_CSE', examStage: 'TIER_1' }),
+            CURRENT_YEAR,
+        );
+        expect(result.ok).toBe(false);
+    });
+
+    it('requires both program and stage for modern onboarding selections', () => {
+        expect(
+            validateOnboardingInput(validPayload({ examTrack: undefined, examProgram: 'SSC_CGL' }), CURRENT_YEAR).ok,
+        ).toBe(false);
+        expect(
+            validateOnboardingInput(validPayload({ examTrack: undefined, examStage: 'TIER_1' }), CURRENT_YEAR).ok,
+        ).toBe(false);
     });
 
     it('rejects an unknown exam track', () => {
@@ -261,5 +298,19 @@ describe('toChapterCreateInputs (Req 2.4, 2.7, 12.6)', () => {
         const inputs = toChapterCreateInputs('NEET', 'user-x');
         const subjectKeys = new Set(getSubjects('NEET').map((s) => s.key));
         expect(inputs.every((c) => subjectKeys.has(c.subjectId))).toBe(true);
+    });
+
+    it.each([
+        ['UPSC_CSE', 'PRELIMS'],
+        ['UPSC_CSE', 'MAINS'],
+        ['SSC_CGL', 'TIER_1'],
+        ['SSC_CGL', 'TIER_2'],
+    ] as const)('maps %s/%s units into default planning chapters', (program, stage) => {
+        const inputs = toProgramChapterCreateInputs(program, stage, 'user-modern');
+        expect(inputs.length).toBeGreaterThan(0);
+        expect(inputs.every((chapter) => chapter.userId === 'user-modern')).toBe(true);
+        expect(inputs.every((chapter) => chapter.status === 'NOT_STARTED')).toBe(true);
+        expect(inputs.every((chapter) => chapter.weightageIsDefault)).toBe(true);
+        expect(new Set(inputs.map((chapter) => chapter.referenceKey)).size).toBe(inputs.length);
     });
 });

@@ -1,6 +1,7 @@
-# JEE/NEET Study Companion
+# Padhai Karo — UPSC/SSC Study Companion
 
-Phase 1 MVP monorepo for the JEE/NEET Study Companion.
+First-launch study companion for UPSC CSE and SSC CGL aspirants. The existing JEE/NEET
+implementation remains available as a compatibility path while the product is being migrated.
 
 ## Layout
 
@@ -15,4 +16,9 @@ The `backend/` service owns all persistence, scoring, generation algorithms, quo
 and authorization. The `mobile/` Expo app is the only user-facing surface.
 
 See `.kiro/specs/jee-neet-study-app/` for the requirements, design, and task plan.
+
+The UPSC/SSC exam registry lives in `backend/src/lib/exams/`. It models program, stage/tier,
+papers, sections, scoring rules, and syllabus units without treating official marks as planning
+weightage. `POST /api/onboarding` accepts the new `examProgram` + `examStage` shape, and
+`GET /api/reference/exam-programs` exposes the registry to clients.
 # padhai-karo

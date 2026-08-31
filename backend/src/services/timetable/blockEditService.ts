@@ -37,7 +37,7 @@ import { proposedBlockConflicts, type RecurringCommitment } from './overlap';
 
 /** Framework route context for the dynamic `/:id` segment. */
 export interface BlockRouteContext {
-    params: { id: string };
+    params: { id: string } | Promise<{ id: string }>;
 }
 
 /** Safely parse a JSON request body, returning `undefined` when absent/invalid. */
@@ -132,8 +132,8 @@ function parsePatchBody(body: unknown): PatchParse {
 }
 
 /** Validate and extract the `:id` route param, or return a 422 response. */
-function parseId(routeContext: BlockRouteContext): { ok: true; id: string } | { ok: false; response: Response } {
-    const { id } = routeContext.params;
+async function parseId(routeContext: BlockRouteContext): Promise<{ ok: true; id: string } | { ok: false; response: Response }> {
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return {
             ok: false,
@@ -157,7 +157,7 @@ export async function editBlockHandler(
     auth: AuthContext,
     routeContext: BlockRouteContext,
 ): Promise<Response> {
-    const idParse = parseId(routeContext);
+    const idParse = await parseId(routeContext);
     if (!idParse.ok) {
         return idParse.response;
     }
@@ -254,7 +254,7 @@ export async function deleteBlockHandler(
     auth: AuthContext,
     routeContext: BlockRouteContext,
 ): Promise<Response> {
-    const idParse = parseId(routeContext);
+    const idParse = await parseId(routeContext);
     if (!idParse.ok) {
         return idParse.response;
     }

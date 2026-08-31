@@ -53,11 +53,16 @@ export function BlockRow({
             {block.isBuffer ? (
                 <Text style={styles.bufferLabel}>{labels.bufferSlot}</Text>
             ) : (
-                <Text style={styles.subject}>
-                    {block.subjectId
-                        ? `${labels.subject}: ${block.subjectId}`
-                        : labels.noSubject}
-                </Text>
+                <>
+                    <Text style={styles.subject}>
+                        {block.subjectId ? `${labels.subject}: ${block.subjectId}` : labels.noSubject}
+                    </Text>
+                    <Text style={block.sessionType === 'REVISION' ? styles.revisionLabel : styles.sessionLabel}>
+                        {block.sessionType === 'REVISION'
+                            ? `${block.revisionLabel ?? `Revision ${block.revisionNumber ?? 1}`} · active recall`
+                            : block.sessionType.replaceAll('_', ' ')}
+                    </Text>
+                </>
             )}
 
             {block.scheduledOutsidePeak ? (
@@ -140,6 +145,8 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#b45309',
     },
+    sessionLabel: { marginTop: 3, fontSize: 12, color: '#64748b', textTransform: 'capitalize' },
+    revisionLabel: { marginTop: 3, fontSize: 12, color: '#7c3aed', fontWeight: '700' },
     actions: {
         flexDirection: 'row',
         marginTop: 10,

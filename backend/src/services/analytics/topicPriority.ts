@@ -213,6 +213,11 @@ export function prioritizeTopics(
         if (b.priority !== a.priority) {
             return b.priority - a.priority;
         }
+        // Preserve the frequency fallback even when floating-point normalization
+        // collapses extremely small differences to the same priority.
+        if (b.avgQuestionsPerYear !== a.avgQuestionsPerYear) {
+            return b.avgQuestionsPerYear - a.avgQuestionsPerYear;
+        }
         return a.topicName.localeCompare(b.topicName);
     });
 

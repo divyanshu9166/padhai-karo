@@ -46,6 +46,8 @@ export interface RequestOptions {
     signal?: AbortSignal;
 }
 
+export interface MultipartFile { uri: string; name: string; type: string; }
+
 /** A typed error thrown for any non-2xx response or transport failure. */
 export class ApiError extends Error {
     /** HTTP status code (0 for transport/parse failures). */
@@ -148,5 +150,49 @@ export async function request<T>(path: string, options: RequestOptions = {}): Pr
         );
     }
 
+    return parsed as T;
+}
+
+/** Fetch an authenticated non-JSON response, such as a CSV export. */
+export async function requestText(path: string, options: RequestOptions = {}): Promise<string> {
+    const { method = 'GET', body, signal } = options;
+    const headers: Record<string, string> = { Accept: 'text/plain, text/csv' };
+    if (authToken) headers.Authorization = `Bearer ${authToken}`;
+    let response: Response;
+    try {
+        response = await fetch(buildUrl(path), {
+            method,
+            headers: body === undefined ? headers : { ...headers, 'Content-Type': 'application/json' },
+            body: body === undefined ? undefined : JSON.stringify(body),
+            signal,
+        });
+    } catch (err) {
+        throw new ApiError(0, 'NETWORK_ERROR', err instanceof Error ? err.message : 'Network request failed');
+    }
+    const rawText = await response.text();
+    if (!response.ok) {
+        let parsed: unknown;
+        try { parsed = rawText ? JSON.parse(rawText) : undefined; } catch { parsed = undefined; }
+        const envelope = asErrorEnvelope(parsed);
+        if (envelope) throw new ApiError(response.status, envelope.code, envelope.message, envelope.details);
+        throw new ApiError(response.status, 'HTTP_ERROR', `Request failed with status ${response.status}`);
+    }
+    return rawText;
+}
+
+/** Upload a local device file without manually setting multipart boundaries. */
+export async function uploadMultipart<T>(path: string, file: MultipartFile, fields: Record<string, string> = {}): Promise<T> {
+    const form = new FormData();
+    form.append('file', file as unknown as Blob);
+    for (const [key, value] of Object.entries(fields)) form.append(key, value);
+    const headers: Record<string, string> = { Accept: 'application/json' };
+    if (authToken) headers.Authorization = `Bearer ${authToken}`;
+    let response: Response;
+    try { response = await fetch(buildUrl(path), { method: 'POST', headers, body: form }); }
+    catch (err) { throw new ApiError(0, 'NETWORK_ERROR', err instanceof Error ? err.message : 'Network request failed'); }
+    const rawText = await response.text();
+    let parsed: unknown;
+    try { parsed = rawText ? JSON.parse(rawText) : undefined; } catch { parsed = undefined; }
+    if (!response.ok) { const envelope = asErrorEnvelope(parsed); if (envelope) throw new ApiError(response.status, envelope.code, envelope.message, envelope.details); throw new ApiError(response.status, 'HTTP_ERROR', `Request failed with status ${response.status}`); }
     return parsed as T;
 }

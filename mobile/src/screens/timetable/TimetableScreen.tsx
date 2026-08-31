@@ -39,6 +39,9 @@ import {
 } from '@/api';
 import { Screen } from '@/components';
 import { useTranslation } from '@/localization';
+import { cacheJson, readCachedJson } from '@/offline/cache';
+import { useOffline } from '@/offline';
+import { queueMutation } from '@/offline/mutations';
 
 import { BlockRow } from './BlockRow';
 import { BufferPolicyBar } from './BufferPolicyBar';
@@ -49,6 +52,7 @@ import { HolidaySprintBanner } from './HolidaySprintBanner';
 
 export function TimetableScreen(): React.JSX.Element {
     const t = useTranslation();
+    const { isOffline } = useOffline();
 
     const [weekStart, setWeekStart] = useState<string>(() => currentWeekStartIso());
     const [blocks, setBlocks] = useState<StudyBlock[]>([]);
@@ -74,9 +78,11 @@ export function TimetableScreen(): React.JSX.Element {
             try {
                 const { studyBlocks } = await getTimetable(week);
                 setBlocks(studyBlocks);
+                await cacheJson('timetable:' + week, studyBlocks);
             } catch (err) {
-                setError(err instanceof ApiError ? err.message : 'Could not load the timetable.');
-                setBlocks([]);
+                const cached = await readCachedJson<StudyBlock[]>('timetable:' + week);
+                if (cached) { setBlocks(cached.value); setError('Showing the last saved timetable.'); }
+                else { setError(err instanceof ApiError ? err.message : 'Could not load the timetable.'); setBlocks([]); }
             } finally {
                 setLoading(false);
             }
@@ -115,7 +121,8 @@ export function TimetableScreen(): React.JSX.Element {
             const res = await generateTimetable(weekStart);
             setBlocks([...res.studyBlocks, ...res.bufferSlots]);
         } catch (err) {
-            setError(err instanceof ApiError ? err.message : 'Could not generate the timetable.');
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_GENERATE', { weekStart }); setError('Timetable generation queued. Your saved timetable remains available offline.'); }
+            else setError(err instanceof ApiError ? err.message : 'Could not generate the timetable.');
         } finally {
             setBusy(false);
         }
@@ -132,6 +139,7 @@ export function TimetableScreen(): React.JSX.Element {
             setBlocks((prev) => prev.map((b) => (b.id === studyBlock.id ? studyBlock : b)));
             setEditing(null);
         } catch (err) {
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_UPDATE', { id: editing.id, patch: patch as unknown as Record<string, unknown>, ...(editing.updatedAt ? { baseUpdatedAt: editing.updatedAt } : {}) }); setBlocks((prev) => prev.map((b) => b.id === editing.id ? { ...b, ...patch } as StudyBlock : b)); setEditing(null); setEditError('Edit saved offline and will sync when you reconnect.'); return; }
             // Surface a 409 overlap inline, leaving the original block unchanged (Req 3.5).
             if (err instanceof ApiError && err.code === 'TIMETABLE_OVERLAP') {
                 setEditError(t('timetable.overlapError'));
@@ -149,7 +157,8 @@ export function TimetableScreen(): React.JSX.Element {
             await deleteBlock(block.id);
             setBlocks((prev) => prev.filter((b) => b.id !== block.id));
         } catch (err) {
-            setError(err instanceof ApiError ? err.message : 'Could not delete the block.');
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_DELETE', { id: block.id, ...(block.updatedAt ? { baseUpdatedAt: block.updatedAt } : {}) }); setBlocks((prev) => prev.filter((b) => b.id !== block.id)); setError('Block deletion queued for sync.'); }
+            else setError(err instanceof ApiError ? err.message : 'Could not delete the block.');
         } finally {
             setBusy(false);
         }
@@ -161,7 +170,8 @@ export function TimetableScreen(): React.JSX.Element {
             await markBlockMissed(block.id);
             await load(weekStart);
         } catch (err) {
-            setError(err instanceof ApiError ? err.message : 'Could not rebalance the block.');
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_MISSED', { id: block.id, ...(block.updatedAt ? { baseUpdatedAt: block.updatedAt } : {}) }); setBlocks((prev) => prev.filter((item) => item.id !== block.id)); setError('Missed-block rebalance queued for sync.'); }
+            else setError(err instanceof ApiError ? err.message : 'Could not rebalance the block.');
         } finally {
             setBusy(false);
         }
@@ -181,7 +191,8 @@ export function TimetableScreen(): React.JSX.Element {
                 /* leave the existing offer state unchanged */
             }
         } catch (err) {
-            setEventError(err instanceof ApiError ? err.message : 'Could not save the event.');
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('CALENDAR_EVENT_CREATE', input as unknown as Record<string, unknown>); setEventModalOpen(false); setEventError('Event saved offline and will sync when you reconnect.'); }
+            else setEventError(err instanceof ApiError ? err.message : 'Could not save the event.');
         } finally {
             setEventSubmitting(false);
         }

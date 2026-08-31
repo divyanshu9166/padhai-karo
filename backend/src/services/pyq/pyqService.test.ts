@@ -123,6 +123,25 @@ describe('buildPyqWhere', () => {
             expect(where.examTrack).toBe(examTrack);
         }
     });
+
+    it('adds program and stage filters for the UPSC/SSC catalog path', () => {
+        expect(
+            buildPyqWhere({
+                examTrack: 'UPSC',
+                examProgram: 'UPSC_CSE',
+                examStage: 'PRELIMS',
+                year: 2026,
+                subjectId: 'UPSC-CSE-GS1',
+            }),
+        ).toEqual({
+            examTrack: 'UPSC',
+            examProgram: 'UPSC_CSE',
+            examStage: 'PRELIMS',
+            year: 2026,
+            subjectId: 'UPSC-CSE-GS1',
+            flaggedForReview: false,
+        });
+    });
 });
 
 describe('PYQ_CLIENT_SELECT', () => {
@@ -190,7 +209,7 @@ describe('pyqsHandler', () => {
         // Profile is looked up scoped to the authenticated user.
         expect(findUniqueProfile).toHaveBeenCalledWith({
             where: { userId: 'user-42' },
-            select: { examTrack: true },
+            select: { examTrack: true, examProgram: true, examStage: true },
         });
 
         // The query pins the track from the profile, the requested year/subject, and
@@ -212,5 +231,32 @@ describe('pyqsHandler', () => {
             expect(Object.keys(q).sort()).toEqual(['id', 'options', 'questionText']);
             expect('correctOption' in q).toBe(false);
         }
+    });
+
+    it('scopes modern users to their selected program and stage', async () => {
+        findUniqueProfile.mockResolvedValue({
+            examTrack: 'SSC',
+            examProgram: 'SSC_CGL',
+            examStage: 'TIER_1',
+        });
+        findManyPyq.mockResolvedValue([]);
+
+        const res = await pyqsHandler(
+            get('?year=2026&subjectId=SSC-CGL-QUANT'),
+            authCtx('user-modern'),
+        );
+        expect(res.status).toBe(200);
+        expect(findManyPyq).toHaveBeenCalledWith({
+            where: {
+                examTrack: 'SSC',
+                examProgram: 'SSC_CGL',
+                examStage: 'TIER_1',
+                year: 2026,
+                subjectId: 'SSC-CGL-QUANT',
+                flaggedForReview: false,
+            },
+            select: PYQ_CLIENT_SELECT,
+            orderBy: { id: 'asc' },
+        });
     });
 });

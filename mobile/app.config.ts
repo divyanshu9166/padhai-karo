@@ -18,7 +18,7 @@ import type { ExpoConfig, ConfigContext } from 'expo/config';
  * `API_BASE_URL` with your machine's LAN IP (e.g. http://192.168.1.20:3000/api) or
  * `http://10.0.2.2:3000/api` for the Android emulator.
  */
-const DEFAULT_API_BASE_URL = 'https://race-passport-footage.ngrok-free.dev/api';
+const DEFAULT_API_BASE_URL = 'http://localhost:3000/api';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
     ...config,
@@ -35,9 +35,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     android: {
         package: 'com.padhaikaro.app',
+        permissions: ['NOTIFICATIONS', 'RECORD_AUDIO', 'CAMERA'],
     },
+    plugins: ['expo-notifications', 'expo-image-picker', 'expo-av', './plugins/withPadhaiKaroWidget.js'],
     extra: {
         // Resolved at config-eval time; read at runtime via expo-constants (config/env.ts).
         apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? DEFAULT_API_BASE_URL,
+        wsUrl: process.env.EXPO_PUBLIC_WS_URL ?? ((process.env.EXPO_PUBLIC_API_BASE_URL ?? DEFAULT_API_BASE_URL).replace(/^http/i, 'ws').replace(/\/api\/?$/, '') + '/ws/community'),
     },
 });

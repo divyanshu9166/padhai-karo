@@ -28,7 +28,7 @@
  * so they are unit-testable without a live database; the {@link pyqsHandler} wires them to
  * Prisma and the authenticated user.
  */
-import type { ExamTrack, Prisma } from '@prisma/client';
+import type { ExamProgram, ExamStage, ExamTrack, Prisma } from '@prisma/client';
 
 import type { AuthContext } from '@/lib/auth';
 import prisma from '@/lib/db';
@@ -118,6 +118,8 @@ export function parseSubjectIdParam(url: URL): SubjectIdParse {
 /** The filter criteria for a PYQ practice query. */
 export interface PyqFilterCriteria {
     examTrack: ExamTrack;
+    examProgram?: ExamProgram | null;
+    examStage?: ExamStage | null;
     year: number;
     subjectId: string;
 }
@@ -131,6 +133,8 @@ export interface PyqFilterCriteria {
 export function buildPyqWhere(criteria: PyqFilterCriteria): Prisma.PYQWhereInput {
     return {
         examTrack: criteria.examTrack,
+        ...(criteria.examProgram ? { examProgram: criteria.examProgram } : {}),
+        ...(criteria.examStage ? { examStage: criteria.examStage } : {}),
         year: criteria.year,
         subjectId: criteria.subjectId,
         flaggedForReview: false,
@@ -177,7 +181,7 @@ export async function pyqsHandler(request: Request, ctx: AuthContext): Promise<R
 
     const profile = await prisma.profile.findUnique({
         where: { userId: ctx.user.id },
-        select: { examTrack: true },
+        select: { examTrack: true, examProgram: true, examStage: true },
     });
 
     if (!profile) {
@@ -190,6 +194,8 @@ export async function pyqsHandler(request: Request, ctx: AuthContext): Promise<R
 
     const where = buildPyqWhere({
         examTrack: profile.examTrack,
+        examProgram: profile.examProgram,
+        examStage: profile.examStage,
         year: parsedYear.year,
         subjectId: parsedSubject.subjectId,
     });

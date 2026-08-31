@@ -62,7 +62,7 @@ export async function recordFocusSessionHandler(
         );
     }
 
-    const { subjectId, startTime, endTime, focusedDurationMin, sessionType, clientId } =
+    const { subjectId, startTime, endTime, focusedDurationMin, sessionType, clientId, abandoned } =
         validation.value;
 
     try {
@@ -73,6 +73,7 @@ export async function recordFocusSessionHandler(
                 startTime,
                 endTime,
                 focusedDurationMin,
+                abandoned,
                 sessionType,
                 clientId,
             },

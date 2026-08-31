@@ -179,7 +179,7 @@ function wireTransaction(): { created: Array<Record<string, unknown>> } {
                 }),
                 findMany: vi.fn(async () =>
                     [...captured.created]
-                        .map((block, index) => ({ ...block, id: `block-${index}` }))
+                        .map((block, index) => ({ ...block, id: `block-${index}`, startTime: block.startTime as Date }))
                         .sort(
                             (a, b) =>
                                 (a.startTime as Date).getTime() - (b.startTime as Date).getTime(),

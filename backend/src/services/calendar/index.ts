@@ -10,6 +10,8 @@ export {
     holidaySprintHandler,
     listCalendarEventsHandler,
 } from './calendarEventService';
+export { importCalendarEventsHandler } from './calendarImportService';
+export { getGoogleConnectUrlHandler, googleOAuthCallbackHandler, importGoogleCalendarHandler, getGoogleCalendarStatusHandler, disconnectGoogleCalendarHandler, syncConnectedGoogleCalendars, syncGoogleCalendarsCronHandler } from './googleCalendarService';
 export type { CalendarEventRouteContext } from './calendarEventService';
 
 export {

@@ -86,6 +86,8 @@ export {
     ExamTrack,
     JEE_INTERLEAVE_SUBJECTS,
     NEET_INTERLEAVE_SUBJECTS,
+    SSC_INTERLEAVE_SUBJECTS,
+    UPSC_INTERLEAVE_SUBJECTS,
     interleaveSubjectsForTrack,
     distinctSubjectCount,
     maxConsecutiveSubjectMinutes,

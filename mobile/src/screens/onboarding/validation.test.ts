@@ -18,8 +18,10 @@ const CURRENT_YEAR = 2025;
 
 function basePayload(overrides: Partial<OnboardingPayload> = {}): OnboardingPayload {
     return {
-        examTrack: 'JEE',
+        examProgram: 'UPSC_CSE',
+        examStage: 'PRELIMS',
         targetYear: CURRENT_YEAR + 1,
+        examDate: `${CURRENT_YEAR + 1}-06-01`,
         currentClass: 'Class 12',
         fixedCommitments: [],
         peakFocusWindows: [],

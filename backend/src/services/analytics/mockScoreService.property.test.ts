@@ -39,7 +39,6 @@ const { db, store } = vi.hoisted(() => {
     const state = { counter: 0 };
 
     const externalMockScore = {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         create: vi.fn(async ({ data }: any) => {
             state.counter += 1;
             const now = new Date();
@@ -52,19 +51,16 @@ const { db, store } = vi.hoisted(() => {
             records.set(row.id, row);
             return { ...row };
         }),
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         findMany: vi.fn(async ({ where }: any) => {
             const userId = where?.userId;
             return [...records.values()]
                 .filter((r) => r.userId === userId)
                 .map((r) => ({ ...r }));
         }),
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         findUnique: vi.fn(async ({ where }: any) => {
             const row = records.get(where.id);
             return row ? { ...row } : null;
         }),
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         update: vi.fn(async ({ where, data }: any) => {
             const row = records.get(where.id);
             if (!row) throw new Error(`No ExternalMockScore with id ${where.id}`);
@@ -72,7 +68,6 @@ const { db, store } = vi.hoisted(() => {
             records.set(where.id, updated);
             return { ...updated };
         }),
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         delete: vi.fn(async ({ where }: any) => {
             const row = records.get(where.id);
             records.delete(where.id);

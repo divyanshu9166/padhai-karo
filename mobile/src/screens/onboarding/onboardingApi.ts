@@ -7,13 +7,16 @@
  * feature-screen tasks add their own endpoint wrappers independently).
  *
  * The payload mirrors the Backend_API contract:
- *   `{ examTrack, targetYear, currentClass, fixedCommitments[], peakFocusWindows[] }`
+ *   `{ examProgram, examStage, targetYear, currentClass, fixedCommitments[], peakFocusWindows[] }`
  * and the server enforces the same validation the screen pre-checks (Req 2.2, 2.3).
  */
 import { request } from '@/api';
 
-/** Exam track chosen at onboarding (mirrors the Prisma `ExamTrack` enum). */
-export type ExamTrack = 'JEE' | 'NEET';
+/** Modern exam program chosen at onboarding. */
+export type ExamProgramKey = 'UPSC_CSE' | 'SSC_CGL';
+
+/** Stage/tier selected within the program. */
+export type ExamStage = 'PRELIMS' | 'MAINS' | 'TIER_1' | 'TIER_2';
 
 /** Peak focus window the user can mark as high-energy (mirrors `PeakFocusWindow`, Req 2.8). */
 export type PeakFocusWindow = 'MORNING' | 'AFTERNOON' | 'NIGHT';
@@ -32,8 +35,10 @@ export interface FixedCommitmentInput {
 
 /** The onboarding request body (Req 2.1, 2.8, 2.9). */
 export interface OnboardingPayload {
-    examTrack: ExamTrack;
-    targetYear: number;
+    examProgram: ExamProgramKey;
+    examStage: ExamStage;
+  targetYear: number;
+  examDate: string;
     currentClass: string;
     fixedCommitments: FixedCommitmentInput[];
     /** May be empty — empty means no high-energy bands (Req 2.9). */

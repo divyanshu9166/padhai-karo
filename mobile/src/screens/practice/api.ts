@@ -22,7 +22,15 @@ import { request } from '@/api';
 
 // ── Shared enums (mirror the backend string contracts) ──────────────────────────────────────
 
-export type ExamTrack = 'JEE' | 'NEET';
+export type ExamTrack = 'JEE' | 'NEET' | 'UPSC' | 'SSC';
+export type ExamProgramKey = 'UPSC_CSE' | 'SSC_CGL';
+export type ExamStage = 'PRELIMS' | 'MAINS' | 'TIER_1' | 'TIER_2';
+
+export interface ProfileExamSelection {
+    examTrack: ExamTrack;
+    examProgram?: ExamProgramKey | null;
+    examStage?: ExamStage | null;
+}
 
 /** Per-question outcome from the shared scoring function. */
 export type QuestionOutcome = 'CORRECT' | 'INCORRECT' | 'UNANSWERED';
@@ -44,6 +52,8 @@ export interface ReferenceSubject {
     key: string;
     name: string;
     examTrack: ExamTrack;
+    examProgram?: ExamProgramKey;
+    examStage?: ExamStage;
 }
 
 /** A practice question as returned to the client — never carries the answer key. */
@@ -72,6 +82,9 @@ export interface AttemptResult {
 export interface PaperSummary {
     id: string;
     examTrack: ExamTrack;
+    examProgram?: ExamProgramKey;
+    examStage?: ExamStage;
+    paperKey?: string;
     year: number;
     session: string;
 }
@@ -106,15 +119,18 @@ export interface AttemptAnswer {
 // ── Calls ───────────────────────────────────────────────────────────────────────────────────
 
 /** Resolve the authenticated user's Exam_Track from their profile (drives subject filters). */
-export async function getProfileTrack(): Promise<ExamTrack> {
-    const res = await request<{ profile: { examTrack: ExamTrack } }>('/profile');
-    return res.profile.examTrack;
+export async function getProfileTrack(): Promise<ProfileExamSelection> {
+    const res = await request<{ profile: ProfileExamSelection }>('/profile');
+    return res.profile;
 }
 
-/** List the subjects for a track; each subject's `key` is a valid `subjectId` filter value. */
-export async function listSubjects(track: ExamTrack): Promise<ReferenceSubject[]> {
+/** List the subjects for the user's track or modern program/stage selection. */
+export async function listSubjects(selection: ProfileExamSelection): Promise<ReferenceSubject[]> {
+    const query = selection.examProgram && selection.examStage
+        ? `program=${encodeURIComponent(selection.examProgram)}&stage=${encodeURIComponent(selection.examStage)}`
+        : `track=${encodeURIComponent(selection.examTrack)}`;
     const res = await request<{ subjects: ReferenceSubject[] }>(
-        `/reference/subjects?track=${encodeURIComponent(track)}`,
+        `/reference/subjects?${query}`,
     );
     return res.subjects;
 }

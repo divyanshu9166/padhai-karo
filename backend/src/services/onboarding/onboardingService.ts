@@ -22,7 +22,7 @@ import { prisma } from '@/lib/db';
 import { ErrorCode, errorResponse } from '@/lib/errors';
 import { getExamDate } from '@/lib/reference';
 
-import { toChapterCreateInputs, validateOnboardingInput } from './validation';
+import { toChapterCreateInputs, toProgramChapterCreateInputs, validateOnboardingInput } from './validation';
 import type { OnboardingInput } from './validation';
 
 /** Parse the JSON request body, returning `null` when the body is not valid JSON. */
@@ -42,10 +42,14 @@ async function parseJsonBody(request: Request): Promise<unknown | null> {
  * update.
  */
 async function persistProfile(userId: string, input: OnboardingInput) {
-    const targetExamDate = getExamDate(input.examTrack, input.targetYear) ?? null;
+    const targetExamDate = input.examDate
+        ? new Date(`${input.examDate}T00:00:00.000Z`)
+        : getExamDate(input.examTrack, input.targetYear) ?? null;
 
     const profileData = {
         examTrack: input.examTrack,
+        examProgram: input.examProgram ?? null,
+        examStage: input.examStage ?? null,
         targetYear: input.targetYear,
         currentClass: input.currentClass,
         peakFocusWindows: input.peakFocusWindows,
@@ -90,11 +94,19 @@ async function persistFixedCommitments(userId: string, input: OnboardingInput): 
  * failure.
  */
 async function associateChapters(userId: string, input: OnboardingInput): Promise<void> {
-    const chapters = toChapterCreateInputs(input.examTrack, userId);
+    const chapters = input.examProgram && input.examStage
+        ? toProgramChapterCreateInputs(input.examProgram, input.examStage, userId)
+        : toChapterCreateInputs(input.examTrack, userId);
     await prisma.$transaction([
         prisma.chapter.deleteMany({ where: { userId } }),
         prisma.chapter.createMany({ data: chapters }),
     ]);
+}
+
+async function ensureChapterRevisionCards(userId: string): Promise<void> {
+    // Chapter revision starts only after the student marks a chapter DONE. Creating cards
+    // here made every untouched chapter immediately due on the first generated timetable.
+    await prisma.revisionCard.deleteMany({ where: { userId, sourceType: 'CHAPTER' } });
 }
 
 /**
@@ -132,6 +144,7 @@ export async function onboardingHandler(request: Request, ctx: AuthContext): Pro
     let chaptersAssociated = true;
     try {
         await associateChapters(userId, input);
+        await ensureChapterRevisionCards(userId);
     } catch {
         chaptersAssociated = false;
     }

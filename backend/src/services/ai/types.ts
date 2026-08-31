@@ -19,7 +19,7 @@
  */
 export type AiSummaryInput =
     | { inputType: 'TEXT'; text: string }
-    | { inputType: 'PHOTO'; imageUploadId: string };
+    | { inputType: 'PHOTO'; imageUploadId: string; imageData?: string; mimeType?: string };
 
 /**
  * The structured summary returned by the model and persisted as `NoteSummary.summary`

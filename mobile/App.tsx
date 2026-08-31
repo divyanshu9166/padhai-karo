@@ -22,6 +22,8 @@ import { AppLocalizationProvider } from '@/localization';
 import { RootNavigator } from '@/navigation';
 import { OfflineProvider } from '@/offline';
 import { AuthProvider } from '@/state';
+import { PushRegistration } from '@/notifications/PushRegistration';
+import { WidgetSync } from '@/notifications/WidgetSync';
 
 export default function App(): React.JSX.Element {
     return (
@@ -30,6 +32,8 @@ export default function App(): React.JSX.Element {
                 <AppLocalizationProvider>
                     <OfflineProvider>
                         <StatusBar style="auto" />
+                        <PushRegistration />
+                        <WidgetSync />
                         <RootNavigator />
                     </OfflineProvider>
                 </AppLocalizationProvider>

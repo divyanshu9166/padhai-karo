@@ -1,6 +1,6 @@
 /** Offline mode barrel (task 21.9; Req 21). */
 export { OfflineProvider, useOffline, OFFLINE_UNAVAILABLE_FEATURES } from './OfflineContext';
-export type { OfflineUnavailableFeature } from './OfflineContext';
+export type { OfflineDownloadProgress, OfflineUnavailableFeature } from './OfflineContext';
 export { OfflineBanner } from './OfflineBanner';
 export { scoreBundle } from './scoring';
 export type { LocalAttemptResult, LocalPerQuestion, LocalOutcome } from './scoring';

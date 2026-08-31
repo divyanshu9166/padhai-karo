@@ -12,9 +12,8 @@
  * model-specific prompt/response parsing is a deployment concern handled where the server
  * is started.
  */
-import { getConfig } from '@/lib/config';
-
 import type { AiSummarizer, AiSummaryInput, AiSummaryResult } from './types';
+import { summarizeImageWithGemini, summarizeWithGemini } from './liveProvider';
 
 /**
  * An {@link AiSummarizer} backed by the configured vision/text-capable AI provider.
@@ -26,24 +25,9 @@ import type { AiSummarizer, AiSummaryInput, AiSummaryResult } from './types';
  * service and surfaced as `503 AI_PROVIDER_UNAVAILABLE` without charging the user.
  */
 export class ProviderAiSummarizer implements AiSummarizer {
-    private apiKey: string | undefined;
-
-    /** Resolve (and memoize) the provider API key from server-side config. */
-    private getApiKey(): string {
-        if (this.apiKey === undefined) {
-            this.apiKey = getConfig().ai.apiKey;
-        }
-        return this.apiKey;
-    }
-
     async summarize(input: AiSummaryInput): Promise<AiSummaryResult> {
-        // Touch the key so misconfiguration surfaces here rather than mid-parse. The actual
-        // provider HTTP request + model-specific response mapping is wired at deployment.
-        this.getApiKey();
-        void input;
-        throw new Error(
-            'ProviderAiSummarizer.summarize is not wired to a live provider in this build. ' +
-            'Inject an AiSummarizer implementation when starting the server.',
-        );
+        if (input.inputType === 'TEXT') return summarizeWithGemini(input.text);
+        if (!input.imageData) throw new Error('A raw image is required for live vision summarization.');
+        return summarizeImageWithGemini(input.imageData, input.mimeType || 'image/jpeg');
     }
 }

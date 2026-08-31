@@ -207,7 +207,7 @@ export async function listMistakesHandler(
 
 /** Framework route context for the dynamic `/:id` segment. */
 export interface MistakeRouteContext {
-    params: { id: string };
+    params: { id: string } | Promise<{ id: string }>;
 }
 
 /**
@@ -220,7 +220,7 @@ export async function deleteMistakeHandler(
     auth: AuthContext,
     routeContext: MistakeRouteContext,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'An entry id is required.', {
             field: 'id',

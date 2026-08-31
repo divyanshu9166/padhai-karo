@@ -33,10 +33,12 @@
  */
 export const MAX_CONSECUTIVE_SUBJECT_MINUTES = 120;
 
-/** Exam track, mirroring the Prisma `ExamTrack` enum (Req 17.2 / 17.3). */
+/** Exam track, mirroring the Prisma `ExamTrack` enum. */
 export const ExamTrack = {
     JEE: 'JEE',
     NEET: 'NEET',
+    UPSC: 'UPSC',
+    SSC: 'SSC',
 } as const;
 
 export type ExamTrack = (typeof ExamTrack)[keyof typeof ExamTrack];
@@ -50,9 +52,43 @@ export const JEE_INTERLEAVE_SUBJECTS = ['Physics', 'Mathematics', 'Chemistry'] a
 /** Canonical NEET subject rotation order (Req 17.3). See {@link JEE_INTERLEAVE_SUBJECTS}. */
 export const NEET_INTERLEAVE_SUBJECTS = ['Biology', 'Physics', 'Chemistry'] as const;
 
+/**
+ * UPSC/SSC subjects are stage-specific and are already loaded in deterministic catalog
+ * order. Returning an empty priority list lets the generic interleaver append those subjects
+ * by first appearance instead of incorrectly applying the JEE/NEET rotation.
+ */
+export const UPSC_INTERLEAVE_SUBJECTS = [
+    'General Studies Paper I',
+    'General Studies Paper II (CSAT)',
+    'Indian Language (Qualifying)',
+    'English (Qualifying)',
+    'Essay',
+    'General Studies I',
+    'General Studies II',
+    'General Studies III',
+    'General Studies IV (Ethics)',
+    'Optional Subject',
+    'Current Affairs',
+] as const;
+export const SSC_INTERLEAVE_SUBJECTS = [
+    'General Intelligence and Reasoning',
+    'General Awareness',
+    'Quantitative Aptitude',
+    'English Comprehension',
+    'Computer Knowledge',
+    'Statistics',
+    'Tier-II Mathematical Abilities',
+    'Tier-II Reasoning and General Intelligence',
+    'Tier-II English Language and Comprehension',
+    'Tier-II General Awareness',
+] as const;
+
 /** The canonical subject rotation order for a track (Req 17.2 / 17.3). */
 export function interleaveSubjectsForTrack(track: ExamTrack): readonly string[] {
-    return track === ExamTrack.NEET ? NEET_INTERLEAVE_SUBJECTS : JEE_INTERLEAVE_SUBJECTS;
+    if (track === ExamTrack.NEET) return NEET_INTERLEAVE_SUBJECTS;
+    if (track === ExamTrack.UPSC) return UPSC_INTERLEAVE_SUBJECTS;
+    if (track === ExamTrack.SSC) return SSC_INTERLEAVE_SUBJECTS;
+    return JEE_INTERLEAVE_SUBJECTS;
 }
 
 /**

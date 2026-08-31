@@ -7,7 +7,7 @@
  * because the catalog ships in the client bundle (design "Localization": only the selected
  * preference is server-persisted). Keep the two copies in sync when strings change.
  *
- * The System supports exactly two interface languages — English and Hindi — matching the
+ * The system supports English, Hindi, Tamil, Bengali, Telugu and Marathi, matching the
  * `LanguagePref` enum persisted on the User profile (Req 10.4).
  */
 
@@ -16,7 +16,7 @@
  * `LanguagePref` enum values (`EN`, `HI`) so the persisted preference maps directly onto a
  * catalog lookup with no translation layer (Req 10.4).
  */
-export type Language = 'EN' | 'HI';
+export type Language = 'EN' | 'HI' | 'TA' | 'BN' | 'TE' | 'MR';
 
 /** The English language code, used as the universal fallback (Req 10.3). */
 export const DEFAULT_LANGUAGE: Language = 'EN';
@@ -25,7 +25,8 @@ export const DEFAULT_LANGUAGE: Language = 'EN';
  * A single localized UI string.
  *
  * `en` is REQUIRED and acts as the source of truth and the fallback value: every key in the
- * catalog always has an English value. `hi` is OPTIONAL — a key may ship without a Hindi
+ * catalog always has an English value. Regional translations are optional — a key may ship without a
+ * translation in one regional language and safely falls back to English
  * translation, in which case the resolver falls back to the English string (Req 10.3).
  */
 export interface LocalizedString {
@@ -33,6 +34,10 @@ export interface LocalizedString {
     en: string;
     /** Hindi value. Optional — when absent, the resolver returns the English value. */
     hi?: string;
+    ta?: string;
+    bn?: string;
+    te?: string;
+    mr?: string;
 }
 
 /**

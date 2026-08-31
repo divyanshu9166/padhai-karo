@@ -69,7 +69,7 @@ export async function missedBlockHandler(
     auth: AuthContext,
     routeContext: BlockRouteContext,
 ): Promise<Response> {
-    const id = routeContext.params.id;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'A block id is required.', {
             field: 'id',

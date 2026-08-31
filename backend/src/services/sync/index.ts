@@ -2,6 +2,7 @@ export { getPaperBundleHandler } from './bundleService';
 export type { PaperBundleRouteContext } from './bundleService';
 
 export { syncHandler } from './syncService';
+export { offlineMutationsHandler, listOfflineMutationFailuresHandler } from './offlineMutationService';
 
 export { decideSyncAction } from './syncReconciliation';
 export type { SyncDecision, SyncRecordResult, SyncStatus } from './syncReconciliation';

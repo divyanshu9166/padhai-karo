@@ -41,6 +41,10 @@ export interface StudyBlock {
     isBuffer: boolean;
     energyLevel: EnergyLevel;
     scheduledOutsidePeak: boolean;
+    sessionType: 'NEW_CHAPTER' | 'PRACTICE_PROBLEMS' | 'REVISION' | 'MOCK_ANALYSIS' | 'FORMULA_DRILL';
+    revisionNumber: number | null;
+    revisionLabel?: string | null;
+    updatedAt: string;
 }
 
 /** A generated weekly timetable header. `weekStart` is an ISO-8601 string. */

@@ -27,6 +27,7 @@
  */
 import type { AuthContext } from '@/lib/auth';
 import { ErrorCode, errorResponse } from '@/lib/errors';
+import { requireOperatorKey } from '@/lib/operatorAuth';
 import { getPyqExtractionQueue, QUEUE_NAMES } from '@/lib/queue';
 import type { PyqExtractionJobData, PyqExtractionJobResult } from '@/workers/pyqExtraction/types';
 
@@ -81,6 +82,8 @@ export async function createPyqExtractionJobHandler(
     _auth: AuthContext,
     queueAccessor: QueueAccessor = defaultQueueAccessor,
 ): Promise<Response> {
+    const accessError = requireOperatorKey(request);
+    if (accessError) return accessError;
     const body = await readJsonBody(request);
     if (typeof body !== 'object' || body === null) {
         return errorResponse(
@@ -110,7 +113,7 @@ export async function createPyqExtractionJobHandler(
 
 /** Framework route context for the dynamic `/:id` segment. */
 export interface PyqExtractionJobRouteContext {
-    params: { id: string };
+    params: { id: string } | Promise<{ id: string }>;
 }
 
 /**
@@ -127,7 +130,9 @@ export async function getPyqExtractionJobHandler(
     routeContext: PyqExtractionJobRouteContext,
     queueAccessor: QueueAccessor = defaultQueueAccessor,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const accessError = requireOperatorKey(_request);
+    if (accessError) return accessError;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'A job id is required.', {
             field: 'id',

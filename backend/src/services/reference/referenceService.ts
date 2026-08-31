@@ -25,6 +25,13 @@ import {
     getExamDate,
     getSubjects,
 } from '@/lib/reference';
+import {
+    EXAM_PROGRAM_KEYS,
+    getExamProgram,
+    getExamProgramsByFamily,
+    getSubjectsForStage,
+} from '@/lib/exams';
+import type { ExamFamily, ExamProgramKey, ExamStage } from '@/lib/exams';
 import type { ExamTrack } from '@/lib/reference';
 import { ErrorCode, errorResponse } from '@/lib/errors/errorEnvelope';
 
@@ -100,6 +107,75 @@ export function parseYearParam(url: URL): YearParse {
     return { ok: true, year: Number.parseInt(raw.trim(), 10) };
 }
 
+type ProgramStageParse =
+    | { ok: true; program?: ExamProgramKey; stage?: ExamStage }
+    | { ok: false; response: Response };
+
+/** Parse the optional modern `program` + `stage` reference filters. */
+function parseProgramStageParam(url: URL): ProgramStageParse {
+    const parsedProgram = parseExamProgramParam(url);
+    if (!parsedProgram.ok) return parsedProgram;
+
+    const rawStage = url.searchParams.get('stage');
+    if (parsedProgram.program === undefined && (rawStage === null || rawStage.trim() === '')) {
+        return { ok: true };
+    }
+    if (parsedProgram.program === undefined) {
+        return {
+            ok: false,
+            response: errorResponse(
+                422,
+                ErrorCode.VALIDATION_ERROR,
+                'Query parameter "program" is required when "stage" is provided.',
+                { param: 'program' },
+            ),
+        };
+    }
+
+    const program = getExamProgram(parsedProgram.program);
+    if (rawStage === null || rawStage.trim() === '') {
+        return {
+            ok: false,
+            response: errorResponse(
+                422,
+                ErrorCode.VALIDATION_ERROR,
+                'Query parameter "stage" is required for a program reference lookup.',
+                { param: 'stage', allowed: program.stages },
+            ),
+        };
+    }
+    if (!(program.stages as readonly string[]).includes(rawStage)) {
+        return {
+            ok: false,
+            response: errorResponse(
+                422,
+                ErrorCode.VALIDATION_ERROR,
+                `Query parameter "stage" must be one of: ${program.stages.join(', ')} for ${program.shortName}.`,
+                { param: 'stage', value: rawStage, allowed: program.stages },
+            ),
+        };
+    }
+    return { ok: true, program: parsedProgram.program, stage: rawStage as ExamStage };
+}
+
+function modernSubjects(program: ExamProgramKey, stage: ExamStage) {
+    const family = getExamProgram(program).family;
+    return getSubjectsForStage(program, stage).map((subject) => ({
+        key: subject.key,
+        name: subject.name,
+        examTrack: family,
+        examProgram: program,
+        examStage: stage,
+        chapters: subject.units.map((unit, index) => ({
+            referenceKey: `${subject.key}-${index + 1}`,
+            name: unit,
+            weightage: subject.planningPriority,
+            estimatedStudyHours: 2,
+            taskDifficulty: 'HARD' as const,
+        })),
+    }));
+}
+
 /**
  * GET /api/reference/subjects?track=JEE|NEET
  *
@@ -107,6 +183,15 @@ export function parseYearParam(url: URL): YearParse {
  */
 export function subjectsHandler(request: Request): Response {
     const url = new URL(request.url);
+    const parsedProgramStage = parseProgramStageParam(url);
+    if (!parsedProgramStage.ok) {
+        return parsedProgramStage.response;
+    }
+    if (parsedProgramStage.program && parsedProgramStage.stage) {
+        return Response.json({
+            subjects: modernSubjects(parsedProgramStage.program, parsedProgramStage.stage),
+        });
+    }
     const parsed = parseTrackParam(url);
     if (!parsed.ok) {
         return parsed.response;
@@ -122,6 +207,24 @@ export function subjectsHandler(request: Request): Response {
  */
 export function chaptersHandler(request: Request): Response {
     const url = new URL(request.url);
+    const parsedProgramStage = parseProgramStageParam(url);
+    if (!parsedProgramStage.ok) {
+        return parsedProgramStage.response;
+    }
+    if (parsedProgramStage.program && parsedProgramStage.stage) {
+        const chapters = modernSubjects(parsedProgramStage.program, parsedProgramStage.stage).flatMap(
+            (subject) =>
+                subject.chapters.map((chapter) => ({
+                    ...chapter,
+                    subjectKey: subject.key,
+                    subjectName: subject.name,
+                    examTrack: subject.examTrack,
+                    examProgram: subject.examProgram,
+                    examStage: subject.examStage,
+                })),
+        );
+        return Response.json({ chapters });
+    }
     const parsed = parseTrackParam(url);
     if (!parsed.ok) {
         return parsed.response;
@@ -161,4 +264,91 @@ export function examDateHandler(request: Request): Response {
     }
 
     return Response.json({ targetExamDate: examDate.toISOString() });
+}
+
+type FamilyParse = { ok: true; family?: ExamFamily } | { ok: false; response: Response };
+
+/**
+ * Parse the optional `family` filter for the new UPSC/SSC program registry.
+ * Omitting it returns both first-launch programs.
+ */
+export function parseExamFamilyParam(url: URL): FamilyParse {
+    const raw = url.searchParams.get('family');
+    if (raw === null || raw.trim() === '') {
+        return { ok: true };
+    }
+    if (raw !== 'UPSC' && raw !== 'SSC') {
+        return {
+            ok: false,
+            response: errorResponse(
+                422,
+                ErrorCode.VALIDATION_ERROR,
+                'Query parameter "family" must be one of: UPSC, SSC.',
+                { param: 'family', value: raw, allowed: ['UPSC', 'SSC'] },
+            ),
+        };
+    }
+    return { ok: true, family: raw };
+}
+
+/**
+ * Parse a program key when a single program is requested. This deliberately uses the
+ * catalog's allow-list instead of accepting arbitrary strings from the client.
+ */
+export function parseExamProgramParam(url: URL):
+    | { ok: true; program?: ExamProgramKey }
+    | { ok: false; response: Response } {
+    const raw = url.searchParams.get('program');
+    if (raw === null || raw.trim() === '') {
+        return { ok: true };
+    }
+    if (!(EXAM_PROGRAM_KEYS as readonly string[]).includes(raw)) {
+        return {
+            ok: false,
+            response: errorResponse(
+                422,
+                ErrorCode.VALIDATION_ERROR,
+                `Query parameter "program" must be one of: ${EXAM_PROGRAM_KEYS.join(', ')}.`,
+                { param: 'program', value: raw, allowed: EXAM_PROGRAM_KEYS },
+            ),
+        };
+    }
+    return { ok: true, program: raw as ExamProgramKey };
+}
+
+/**
+ * GET /api/reference/exam-programs[?family=UPSC|SSC|&program=UPSC_CSE|SSC_CGL]
+ *
+ * This additive endpoint exposes the program/stage/paper/subject vocabulary needed by
+ * the UPSC/SSC onboarding flow. The legacy JEE/NEET reference endpoints remain intact
+ * until their callers are migrated to this registry.
+ */
+export function examProgramsHandler(request: Request): Response {
+    const url = new URL(request.url);
+    const parsedFamily = parseExamFamilyParam(url);
+    if (!parsedFamily.ok) {
+        return parsedFamily.response;
+    }
+    const parsedProgram = parseExamProgramParam(url);
+    if (!parsedProgram.ok) {
+        return parsedProgram.response;
+    }
+
+    if (parsedProgram.program) {
+        const program = getExamProgram(parsedProgram.program);
+        if (parsedFamily.family && program.family !== parsedFamily.family) {
+            return errorResponse(
+                422,
+                ErrorCode.VALIDATION_ERROR,
+                `Program "${parsedProgram.program}" does not belong to family "${parsedFamily.family}".`,
+                { param: 'program', family: parsedFamily.family },
+            );
+        }
+        return Response.json({ programs: [program] });
+    }
+
+    const programs = parsedFamily.family
+        ? getExamProgramsByFamily(parsedFamily.family)
+        : EXAM_PROGRAM_KEYS.map((key) => getExamProgram(key));
+    return Response.json({ programs });
 }

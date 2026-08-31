@@ -15,7 +15,7 @@ import { ApiError, request } from './client';
  * not import from `@/localization` (which would create an import cycle, since the localization
  * wiring imports these helpers). EN and HI are the only values (Req 10.4).
  */
-export type ProfileLanguagePref = 'EN' | 'HI';
+export type ProfileLanguagePref = 'EN' | 'HI' | 'TA' | 'BN' | 'TE' | 'MR';
 
 /**
  * The Profile row as returned by the Backend_API. Only `language` is consumed on the client

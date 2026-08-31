@@ -8,4 +8,5 @@ export {
     getExamDate,
     getExamYears,
 } from './catalog';
-export type { ExamTrack, TaskDifficulty, ReferenceChapter, ReferenceSubject } from './types';
+export type { ExamTrack, LegacyExamTrack, TaskDifficulty, ReferenceChapter, ReferenceSubject } from './types';
+export { isLegacyExamTrack } from './types';

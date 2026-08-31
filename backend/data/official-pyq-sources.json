@@ -1,0 +1,37 @@
+[
+  {
+    "id": "upsc-cse-prelims-2024-gs1",
+    "program": "UPSC_CSE",
+    "stage": "PRELIMS",
+    "year": 2024,
+    "paperKey": "UPSC-CSE-PRELIMS-GS1-2024",
+    "sourceName": "UPSC official previous question papers",
+    "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers",
+    "downloadUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-24-GENERAL-STUDIES-PAPER-I-180624.pdf",
+    "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CivilServicesPExam-2024-GeneralStudies-I-210525.pdf",
+    "requiresFinalKeyReview": true
+  },
+  {
+    "id": "upsc-cse-prelims-2024-csat",
+    "program": "UPSC_CSE",
+    "stage": "PRELIMS",
+    "year": 2024,
+    "paperKey": "UPSC-CSE-PRELIMS-GS2-2024",
+    "sourceName": "UPSC official previous question papers",
+    "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers",
+    "downloadUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-24-GENERAL-STUDIES-PAPER-II-180624.pdf",
+    "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CivilServicesPExam-2024-GeneralStudies-II-210525.pdf",
+    "requiresFinalKeyReview": true
+  },
+  {
+    "id": "ssc-cgl-official-archive",
+    "program": "SSC_CGL",
+    "stage": "TIER_1",
+    "year": 2024,
+    "paperKey": "SSC-CGL-TIER1-2024",
+    "sourceName": "SSC official CGL examination page",
+    "sourcePageUrl": "https://ssc.gov.in/for-candidates/cgl-exam/xsd91hjkshdk92xk",
+    "requiresFinalKeyReview": true,
+    "notes": "SSC question papers and final answer keys are released through the official candidate/login flow; no public download URL is hard-coded."
+  }
+]

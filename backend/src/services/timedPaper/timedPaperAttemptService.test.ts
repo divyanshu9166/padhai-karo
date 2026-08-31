@@ -20,7 +20,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
  */
 
 // --- Prisma mock -------------------------------------------------------------
-const { findUniquePaper, findManyPyq, createAttempt, findUniqueAttempt } = vi.hoisted(() => ({
+const { findUniqueProfile, findUniquePaper, findManyPyq, createAttempt, findUniqueAttempt } = vi.hoisted(() => ({
+    findUniqueProfile: vi.fn(),
     findUniquePaper: vi.fn(),
     findManyPyq: vi.fn(),
     createAttempt: vi.fn(),
@@ -29,6 +30,7 @@ const { findUniquePaper, findManyPyq, createAttempt, findUniqueAttempt } = vi.ho
 
 vi.mock('@/lib/db', () => {
     const prisma = {
+        profile: { findUnique: findUniqueProfile },
         pYQPaper: { findUnique: findUniquePaper },
         pYQ: { findMany: findManyPyq },
         timedPaperAttempt: { create: createAttempt, findUnique: findUniqueAttempt },
@@ -57,7 +59,24 @@ function postReq(body: unknown): Request {
 }
 
 beforeEach(() => {
+    findUniqueProfile.mockReset().mockResolvedValue({
+        examTrack: 'JEE',
+        examProgram: null,
+        examStage: null,
+    });
     findUniquePaper.mockReset();
+    findUniquePaper.mockResolvedValue({
+        id: 'paper-1',
+        examTrack: 'JEE',
+        examProgram: null,
+        examStage: null,
+        paperKey: null,
+        year: 2024,
+        session: null,
+        durationMin: 180,
+        verifiedAt: null,
+        answerKey: null,
+    });
     findManyPyq.mockReset();
     createAttempt.mockReset();
     findUniqueAttempt.mockReset();
@@ -206,6 +225,42 @@ describe('getPaperHandler', () => {
         expect(res.status).toBe(404);
         expect(findManyPyq).not.toHaveBeenCalled();
     });
+
+    it('does not expose a paper from another exam track', async () => {
+        findUniqueProfile.mockResolvedValue({ examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS' });
+        findUniquePaper.mockResolvedValue({
+            id: 'paper-1', examTrack: 'SSC', examProgram: 'SSC_CGL', examStage: 'TIER_1',
+            paperKey: 'ssc-paper', year: 2024, session: null, durationMin: 60,
+            verifiedAt: new Date(), answerKey: { id: 'key-1' },
+        });
+
+        const res = await getPaperHandler(
+            new Request('http://localhost/api/papers/paper-1'),
+            authCtx(),
+            routeCtx('paper-1'),
+        );
+
+        expect(res.status).toBe(404);
+        expect(findManyPyq).not.toHaveBeenCalled();
+    });
+
+    it('requires reviewed official metadata for UPSC/SSC papers', async () => {
+        findUniqueProfile.mockResolvedValue({ examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS' });
+        findUniquePaper.mockResolvedValue({
+            id: 'paper-1', examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS',
+            paperKey: 'upsc-paper', year: 2024, session: null, durationMin: 120,
+            verifiedAt: null, answerKey: null,
+        });
+
+        const res = await getPaperHandler(
+            new Request('http://localhost/api/papers/paper-1'),
+            authCtx(),
+            routeCtx('paper-1'),
+        );
+
+        expect(res.status).toBe(404);
+        expect(findManyPyq).not.toHaveBeenCalled();
+    });
 });
 
 describe('createTimedAttemptHandler', () => {
@@ -232,6 +287,24 @@ describe('createTimedAttemptHandler', () => {
             authCtx(),
         );
         expect(res.status).toBe(404);
+        expect(createAttempt).not.toHaveBeenCalled();
+    });
+
+    it('rejects a timed attempt for a paper outside the learner profile', async () => {
+        findUniqueProfile.mockResolvedValue({ examTrack: 'SSC', examProgram: 'SSC_CGL', examStage: 'TIER_1' });
+        findUniquePaper.mockResolvedValue({
+            id: 'paper-1', examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS',
+            paperKey: 'upsc-paper', year: 2024, session: null, durationMin: 120,
+            verifiedAt: new Date(), answerKey: { id: 'key-1' },
+        });
+
+        const res = await createTimedAttemptHandler(
+            postReq({ paperId: 'paper-1', answers: [], timeTakenSec: 10 }),
+            authCtx('user-42'),
+        );
+
+        expect(res.status).toBe(404);
+        expect(findManyPyq).not.toHaveBeenCalled();
         expect(createAttempt).not.toHaveBeenCalled();
     });
 

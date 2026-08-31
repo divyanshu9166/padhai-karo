@@ -17,7 +17,8 @@
  * per-user `Chapter.referenceKey` so a chapter instance always links back to its catalog
  * row even after the catalog is revised.
  */
-import type { ExamTrack, ReferenceChapter, ReferenceSubject } from './types';
+import { isLegacyExamTrack } from './types';
+import type { ExamTrack, LegacyExamTrack, ReferenceChapter, ReferenceSubject } from './types';
 
 // === JEE ====================================================================
 
@@ -153,7 +154,7 @@ const NEET_BIOLOGY: ReferenceSubject = {
  * (Req 2.4). Ordering is stable and intentional (it is the order subjects/chapters
  * are presented and seeded in).
  */
-export const REFERENCE_CATALOG: Record<ExamTrack, ReferenceSubject[]> = {
+export const REFERENCE_CATALOG: Record<LegacyExamTrack, ReferenceSubject[]> = {
     JEE: [JEE_PHYSICS, JEE_CHEMISTRY, JEE_MATHEMATICS],
     NEET: [NEET_PHYSICS, NEET_CHEMISTRY, NEET_BIOLOGY],
 };
@@ -164,7 +165,7 @@ export const REFERENCE_CATALOG: Record<ExamTrack, ReferenceSubject[]> = {
  * these are reasonable placeholders that the NTA ingestion feed updates once official
  * dates are published (Req 20.6 / design "Reference Data Service").
  */
-export const TARGET_EXAM_DATES: Record<ExamTrack, Record<number, string>> = {
+export const TARGET_EXAM_DATES: Record<LegacyExamTrack, Record<number, string>> = {
     JEE: {
         2026: '2026-04-08',
         2027: '2027-04-07',
@@ -184,11 +185,11 @@ export const TARGET_EXAM_DATES: Record<ExamTrack, Record<number, string>> = {
 // === Accessors ==============================================================
 
 /** All Exam_Tracks the catalog covers. */
-export const EXAM_TRACKS: ExamTrack[] = ['JEE', 'NEET'];
+export const EXAM_TRACKS: LegacyExamTrack[] = ['JEE', 'NEET'];
 
 /** Returns the subjects (with chapters) for an Exam_Track (Req 2.4, 2.7). */
 export function getSubjects(track: ExamTrack): ReferenceSubject[] {
-    return REFERENCE_CATALOG[track];
+    return isLegacyExamTrack(track) ? REFERENCE_CATALOG[track] : [];
 }
 
 /**
@@ -199,7 +200,7 @@ export function getSubjects(track: ExamTrack): ReferenceSubject[] {
 export function getChapters(
     track: ExamTrack,
 ): Array<ReferenceChapter & { subjectKey: string; subjectName: string }> {
-    return REFERENCE_CATALOG[track].flatMap((subject) =>
+    return getSubjects(track).flatMap((subject) =>
         subject.chapters.map((chapter) => ({
             ...chapter,
             subjectKey: subject.key,
@@ -218,12 +219,13 @@ export function getAllSubjects(): ReferenceSubject[] {
  * catalog has no representative date for that year.
  */
 export function getExamDate(track: ExamTrack, year: number): Date | undefined {
-    const iso = TARGET_EXAM_DATES[track]?.[year];
+    const iso = isLegacyExamTrack(track) ? TARGET_EXAM_DATES[track]?.[year] : undefined;
     return iso === undefined ? undefined : new Date(`${iso}T00:00:00.000Z`);
 }
 
 /** The years for which a representative Target_Exam_Date exists for a track. */
 export function getExamYears(track: ExamTrack): number[] {
+    if (!isLegacyExamTrack(track)) return [];
     return Object.keys(TARGET_EXAM_DATES[track])
         .map((y) => Number(y))
         .sort((a, b) => a - b);

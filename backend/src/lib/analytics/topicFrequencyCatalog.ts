@@ -27,7 +27,7 @@
  * audited NTA paper data; they are not an authoritative count.
  */
 import { getChapters } from '../reference';
-import type { ExamTrack } from '../reference';
+import type { ExamTrack, LegacyExamTrack } from '../reference';
 
 /**
  * A single Topic_Frequency_Reference_Data entry for one Topic within a
@@ -54,7 +54,7 @@ export interface TopicFrequencyRecord {
 
 /** A complete Topic_Frequency_Reference_Data version for one track. */
 export interface TopicFrequencyDataset {
-    examTrack: ExamTrack;
+    examTrack: LegacyExamTrack;
     /** Yearly version label (Reference_Data_Year). Active = max per track (Req 6.3). */
     referenceDataYear: number;
     records: TopicFrequencyRecord[];
@@ -66,7 +66,7 @@ export interface TopicFrequencyDataset {
  * matched on the natural key `(examTrack, referenceDataYear, topicKey)`.
  */
 export interface TopicFrequencyRow extends TopicFrequencyRecord {
-    examTrack: ExamTrack;
+    examTrack: LegacyExamTrack;
     referenceDataYear: number;
 }
 
@@ -80,7 +80,7 @@ const SPAN_YEARS = YEAR_SPAN_END - YEAR_SPAN_START + 1; // 10
  * chapter's catalog weightage (~ % of the paper) into a representative illustrative
  * question count over the span. JEE Main = 75 scored questions; NEET = 180.
  */
-const QUESTIONS_PER_PAPER: Record<ExamTrack, number> = {
+const QUESTIONS_PER_PAPER: Record<LegacyExamTrack, number> = {
     JEE: 75,
     NEET: 180,
 };
@@ -92,7 +92,7 @@ const QUESTIONS_PER_PAPER: Record<ExamTrack, number> = {
  * `avgQuestionsPerYear` is `appearanceCount / spanYears` rounded to one decimal.
  */
 function deriveRecord(
-    track: ExamTrack,
+    track: LegacyExamTrack,
     chapter: { referenceKey: string; name: string; subjectKey: string; weightage: number },
 ): TopicFrequencyRecord {
     const perPaper = (chapter.weightage / 100) * QUESTIONS_PER_PAPER[track];
@@ -110,7 +110,7 @@ function deriveRecord(
 }
 
 /** Build the full record set for a track from the Phase 1 reference chapter catalog. */
-function buildRecords(track: ExamTrack): TopicFrequencyRecord[] {
+function buildRecords(track: LegacyExamTrack): TopicFrequencyRecord[] {
     return getChapters(track).map((chapter) =>
         deriveRecord(track, {
             referenceKey: chapter.referenceKey,
@@ -126,7 +126,7 @@ function buildRecords(track: ExamTrack): TopicFrequencyRecord[] {
  * A later version is added as an additional `TopicFrequencyDataset` entry below; prior
  * entries are retained so historical versions remain queryable (Req 6.4).
  */
-export const TOPIC_FREQUENCY_REFERENCE_DATA_YEAR: Record<ExamTrack, number> = {
+export const TOPIC_FREQUENCY_REFERENCE_DATA_YEAR: Record<LegacyExamTrack, number> = {
     JEE: 2025,
     NEET: 2025,
 };

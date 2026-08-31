@@ -64,6 +64,13 @@ export function validateOnboarding(
     if (!isTargetYearValid(payload.targetYear, currentYear)) {
         return `Target year must not be earlier than ${currentYear}.`;
     }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(payload.examDate) || Number(payload.examDate.slice(0, 4)) !== payload.targetYear) {
+        return 'Enter the exact exam date as YYYY-MM-DD, matching the target year.';
+    }
+    const parsedDate = new Date(`${payload.examDate}T00:00:00.000Z`);
+    if (Number.isNaN(parsedDate.getTime()) || parsedDate.toISOString().slice(0, 10) !== payload.examDate) {
+        return 'Enter a real calendar date for the exam.';
+    }
     for (const commitment of payload.fixedCommitments) {
         const err = validateCommitment(commitment);
         if (err) return err;

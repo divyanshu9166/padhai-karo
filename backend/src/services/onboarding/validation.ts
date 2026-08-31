@@ -19,11 +19,19 @@
  * in Req 2.2 is deterministic and testable.
  */
 import { ErrorCode } from '@/lib/errors';
+import { getExamProgram, getSubjectsForStage } from '@/lib/exams';
+import type { ExamProgramKey, ExamStage } from '@/lib/exams';
 import { getChapters } from '@/lib/reference';
 import type { ExamTrack, TaskDifficulty } from '@/lib/reference';
 
 /** The exam tracks accepted at onboarding (mirrors the Prisma `ExamTrack` enum). */
 export const EXAM_TRACK_VALUES = ['JEE', 'NEET'] as const;
+
+/** Program keys supported by the UPSC/SSC-first onboarding flow. */
+export const EXAM_PROGRAM_VALUES = ['UPSC_CSE', 'SSC_CGL'] as const;
+
+/** All stage/tier values used by the supported programs. */
+export const EXAM_STAGE_VALUES = ['PRELIMS', 'MAINS', 'TIER_1', 'TIER_2'] as const;
 
 /** Valid Peak_Focus_Window values (mirrors the Prisma `PeakFocusWindow` enum, Req 2.8). */
 export const PEAK_FOCUS_WINDOW_VALUES = ['MORNING', 'AFTERNOON', 'NIGHT'] as const;
@@ -46,7 +54,13 @@ export interface FixedCommitmentInput {
 /** A fully validated onboarding payload. */
 export interface OnboardingInput {
     examTrack: ExamTrack;
+    /** Present for the UPSC/SSC flow; omitted for the legacy JEE/NEET flow. */
+    examProgram?: ExamProgramKey;
+    /** Stage/tier selected within `examProgram`. */
+    examStage?: ExamStage;
     targetYear: number;
+    /** Optional exact exam date for modern UPSC/SSC onboarding. */
+    examDate?: string;
     currentClass: string;
     fixedCommitments: FixedCommitmentInput[];
     peakFocusWindows: PeakFocusWindow[];
@@ -141,14 +155,54 @@ export function validateOnboardingInput(
         return validationError('Onboarding payload must be a JSON object.');
     }
 
-    const { examTrack, targetYear, currentClass, fixedCommitments, peakFocusWindows } = raw;
+    const { examTrack, examProgram, examStage, targetYear, examDate, currentClass, fixedCommitments, peakFocusWindows } = raw;
 
-    // Exam track (Req 2.1, 2.4).
-    if (typeof examTrack !== 'string' || !(EXAM_TRACK_VALUES as readonly string[]).includes(examTrack)) {
-        return validationError(`"examTrack" must be one of: ${EXAM_TRACK_VALUES.join(', ')}.`, {
-            field: 'examTrack',
-            allowed: EXAM_TRACK_VALUES,
-        });
+    // Exam selection. New users choose a program + stage/tier; the old direct track
+    // shape remains accepted so existing JEE/NEET accounts and tests can be migrated
+    // without a breaking API change.
+    let normalizedTrack: ExamTrack;
+    let normalizedProgram: ExamProgramKey | undefined;
+    let normalizedStage: ExamStage | undefined;
+
+    if (examProgram !== undefined || examStage !== undefined) {
+        if (typeof examProgram !== 'string' || !(EXAM_PROGRAM_VALUES as readonly string[]).includes(examProgram)) {
+            return validationError(`"examProgram" must be one of: ${EXAM_PROGRAM_VALUES.join(', ')}.`, {
+                field: 'examProgram',
+                allowed: EXAM_PROGRAM_VALUES,
+            });
+        }
+
+        const program = getExamProgram(examProgram as ExamProgramKey);
+        if (typeof examStage !== 'string' || !(EXAM_STAGE_VALUES as readonly string[]).includes(examStage)) {
+            return validationError(`"examStage" must be one of: ${program.stages.join(', ')} for ${program.shortName}.`, {
+                field: 'examStage',
+                allowed: program.stages,
+            });
+        }
+        if (!(program.stages as readonly string[]).includes(examStage)) {
+            return validationError(`"examStage" is not valid for ${program.shortName}.`, {
+                field: 'examStage',
+                program: examProgram,
+                allowed: program.stages,
+            });
+        }
+        if (examTrack !== undefined && examTrack !== program.family) {
+            return validationError('"examTrack" does not match the selected exam program.', {
+                field: 'examTrack',
+                expected: program.family,
+            });
+        }
+
+        normalizedTrack = program.family;
+        normalizedProgram = examProgram as ExamProgramKey;
+        normalizedStage = examStage as ExamStage;
+    } else if (typeof examTrack === 'string' && (EXAM_TRACK_VALUES as readonly string[]).includes(examTrack)) {
+        normalizedTrack = examTrack as ExamTrack;
+    } else {
+        return validationError(
+            `Choose an exam program and stage, or a legacy exam track (${EXAM_TRACK_VALUES.join(', ')}).`,
+            { fields: ['examProgram', 'examStage', 'examTrack'], legacyAllowed: EXAM_TRACK_VALUES },
+        );
     }
 
     // Target year (Req 2.1, 2.2).
@@ -160,6 +214,28 @@ export function validateOnboardingInput(
             `"targetYear" must not be earlier than the current calendar year (${currentYear}).`,
             { field: 'targetYear', value: targetYear, currentYear },
         );
+    }
+
+    let normalizedExamDate: string | undefined;
+    if (examDate !== undefined && examDate !== null && examDate !== '') {
+        if (typeof examDate !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(examDate)) {
+            return validationError('"examDate" must use YYYY-MM-DD format.', { field: 'examDate' });
+        }
+        const parsed = new Date(`${examDate}T00:00:00.000Z`);
+        if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== examDate) {
+            return validationError('"examDate" must be a real calendar date.', { field: 'examDate' });
+        }
+        if (parsed.getUTCFullYear() !== targetYear) {
+            return validationError('"examDate" must belong to the selected target year.', { field: 'examDate', targetYear });
+        }
+        normalizedExamDate = examDate;
+    }
+
+    // UPSC/SSC planning cannot derive a reliable countdown or revision phase
+    // without the user's exact exam date. Legacy JEE/NEET onboarding keeps the
+    // catalog-backed date behavior for backwards compatibility.
+    if (normalizedProgram && !normalizedExamDate) {
+        return validationError('"examDate" is required for UPSC/SSC onboarding.', { field: 'examDate' });
     }
 
     // Current class (Req 2.1).
@@ -240,8 +316,10 @@ export function validateOnboardingInput(
     return {
         ok: true,
         value: {
-            examTrack: examTrack as ExamTrack,
+            examTrack: normalizedTrack,
+            ...(normalizedProgram ? { examProgram: normalizedProgram, examStage: normalizedStage } : {}),
             targetYear,
+            ...(normalizedExamDate ? { examDate: normalizedExamDate } : {}),
             currentClass: currentClass.trim(),
             fixedCommitments: validatedCommitments,
             peakFocusWindows: validatedWindows,
@@ -271,4 +349,30 @@ export function toChapterCreateInputs(track: ExamTrack, userId: string): Chapter
         estimatedStudyHours: chapter.estimatedStudyHours,
         taskDifficulty: chapter.taskDifficulty,
     }));
+}
+
+/**
+ * Expand a UPSC/SSC program stage into planning chapters. The generic exam catalog's
+ * `planningPriority` is intentionally stored as a default weightage: it is a scheduling
+ * priority, not a claim about official marks distribution. Unit study hours are likewise
+ * conservative defaults until a versioned syllabus-hours dataset is added.
+ */
+export function toProgramChapterCreateInputs(
+    programKey: ExamProgramKey,
+    stage: ExamStage,
+    userId: string,
+): ChapterCreateInput[] {
+    return getSubjectsForStage(programKey, stage).flatMap((subject) =>
+        subject.units.map((unit, index) => ({
+            userId,
+            subjectId: subject.key,
+            referenceKey: `${subject.key}-${index + 1}`,
+            name: unit,
+            status: 'NOT_STARTED' as const,
+            weightage: subject.planningPriority,
+            weightageIsDefault: true,
+            estimatedStudyHours: 2,
+            taskDifficulty: 'HARD' as TaskDifficulty,
+        })),
+    );
 }

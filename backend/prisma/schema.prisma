@@ -1,4 +1,4 @@
-// Prisma schema for the JEE/NEET Study Companion backend.
+// Prisma schema for the PadhaiKaro UPSC/SSC study companion backend.
 //
 // Task 1.3 authors the full Phase 1 data model: every enum and model from the design
 // "Data Models" section, with relations, per-user isolation (`userId` on all user-owned
@@ -23,6 +23,20 @@ datasource db {
 enum ExamTrack {
   JEE
   NEET
+  UPSC
+  SSC
+}
+
+enum ExamProgram {
+  UPSC_CSE
+  SSC_CGL
+}
+
+enum ExamStage {
+  PRELIMS
+  MAINS
+  TIER_1
+  TIER_2
 }
 
 enum ChapterStatus {
@@ -61,6 +75,10 @@ enum CalendarEventType {
 enum LanguagePref {
   EN
   HI
+  TA
+  BN
+  TE
+  MR
 }
 
 enum PeakFocusWindow {
@@ -89,6 +107,12 @@ enum SyncRecordType {
   FOCUS_SESSION
   PYQ_ATTEMPT
   TIMED_PAPER_ATTEMPT
+  ANSWER_WRITING_ATTEMPT
+  WELLBEING_CHECKIN
+  VOICE_NOTE
+  NOTE_SUMMARY
+  STUDY_RESOURCE
+  PDF_ANNOTATION
 }
 
 enum PaymentStatus {
@@ -104,6 +128,11 @@ enum MockSeriesSource {
   ALLEN
   AAKASH
   OTHER
+}
+
+enum CommunityContentStatus {
+  VISIBLE
+  HIDDEN
 }
 
 enum CutoffUnit {
@@ -135,31 +164,70 @@ model User {
   updatedAt    DateTime @updatedAt
 
   // Relations (per-user isolation)
-  profile          Profile?
-  subscription     Subscription?
-  sessions         Session[]
-  chapters         Chapter[]
-  fixedCommitments FixedCommitment[]
-  timetables       Timetable[]
-  focusSessions    FocusSession[]
-  dailyTimeAudits  DailyTimeAudit[]
-  calendarEvents   CalendarEvent[]
-  pyqAttempts      PYQAttempt[]
-  timedAttempts    TimedPaperAttempt[]
-  mistakeEntries   MistakeJournalEntry[]
-  noteSummaries    NoteSummary[]
-  aiUsageEvents    AiUsageEvent[]
-  payments         Payment[]
-  syncRecords      LocalSyncRecord[]
-  offlineDownloads OfflineDownload[]
+  profile                 Profile?
+  subscription            Subscription?
+  sessions                Session[]
+  chapters                Chapter[]
+  fixedCommitments        FixedCommitment[]
+  timetables              Timetable[]
+  focusSessions           FocusSession[]
+  dailyTimeAudits         DailyTimeAudit[]
+  calendarEvents          CalendarEvent[]
+  pyqAttempts             PYQAttempt[]
+  timedAttempts           TimedPaperAttempt[]
+  mistakeEntries          MistakeJournalEntry[]
+  noteSummaries           NoteSummary[]
+  aiUsageEvents           AiUsageEvent[]
+  payments                Payment[]
+  syncRecords             LocalSyncRecord[]
+  offlineMutations        OfflineMutation[]
+  offlineDownloads        OfflineDownload[]
+  answerWritingAttempts   AnswerWritingAttempt[]
+  dailyBriefings          DailyBriefing[]
+  wellbeingCheckins       WellbeingCheckin[]
+  sleepSchedule           SleepSchedule?
+  currentAffairsBookmarks CurrentAffairsBookmark[]
+  studyResources          StudyResource[]
+  pdfDocuments            PdfDocument[]
+  voiceNotes              VoiceNote[]
+  communityPosts          CommunityPost[]
+  communityReportsFiled   CommunityReport[]        @relation("CommunityReportReporter")
+  buddyRequestsSent       StudyBuddy[]             @relation("BuddyRequester")
+  buddyRequestsReceived   StudyBuddy[]             @relation("BuddyRecipient")
+  calendarConnections     CalendarConnection[]
+  notificationPreferences NotificationPreference?
+  examDates               ExamDate[]
 
   // Phase 2: Performance Analytics (additive back-relations)
-  externalMockScores ExternalMockScore[]
+  externalMockScores    ExternalMockScore[]
+  externalPaperReviews  ExternalPaperReview[]
   targetCutoffSelection TargetCollegeCutoffSelection?
 
   // Weightage-Based Time Allocation (additive back-relations)
-  allocationPreference         AllocationPreference?
-  suggestedAllocationSnapshot  SuggestedAllocationSnapshot?
+  allocationPreference        AllocationPreference?
+  suggestedAllocationSnapshot SuggestedAllocationSnapshot?
+  revisionCards               RevisionCard[]
+  revisionReviews             RevisionReview[]
+  formulaItems                FormulaItem[]
+  conceptMaps                 ConceptMap[]
+  quickRevisionCapsules       QuickRevisionCapsule[]
+  mockExamAttempts            MockExamAttempt[]
+  pacingAttempts              PacingAttempt[]
+  recallDrillAttempts         RecallDrillAttempt[]
+  examChecklistItems          ExamChecklistItem[]
+  studyMilestones             StudyMilestone[]
+  topperStrategies            TopperStrategy[]
+  anxietyProtocolLogs         AnxietyProtocolLog[]
+  recoveryPlans               RecoveryPlan[]
+  coachingConnections         CoachingConnection[]
+  doubtItems                  DoubtItem[]
+  pushDevices                 PushDevice[]
+  oauthStates                 CalendarOAuthState[]
+  pdfAnnotations              PdfAnnotation[]
+  communityMessagesSent       CommunityMessage[]           @relation("CommunityMessageSender")
+  communityMessagesReceived   CommunityMessage[]           @relation("CommunityMessageRecipient")
+  dashboardSharesCreated      BuddyDashboardShare[]        @relation("DashboardShareOwner")
+  dashboardSharesReceived     BuddyDashboardShare[]        @relation("DashboardShareRecipient")
 }
 
 model Session {
@@ -179,6 +247,8 @@ model Profile {
   id                 String            @id @default(uuid())
   userId             String            @unique
   examTrack          ExamTrack
+  examProgram        ExamProgram?
+  examStage          ExamStage?
   targetYear         Int
   currentClass       String
   language           LanguagePref      @default(EN)
@@ -198,15 +268,18 @@ model Profile {
 // === Reference & Study Structure =============================================
 
 model Subject {
-  id        String    @id @default(uuid())
-  examTrack ExamTrack
-  name      String // Physics, Chemistry, Maths/Biology
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id          String       @id @default(uuid())
+  examTrack   ExamTrack
+  examProgram ExamProgram?
+  examStage   ExamStage?
+  name        String // Physics, Chemistry, Maths/Biology
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 
   chapters Chapter[]
 
   @@index([examTrack])
+  @@index([examProgram, examStage])
 }
 
 model Chapter {
@@ -264,18 +337,21 @@ model Timetable {
 }
 
 model StudyBlock {
-  id                   String   @id @default(uuid())
+  id                   String      @id @default(uuid())
   timetableId          String
   userId               String
   subjectId            String? // null when isBuffer = true (Buffer_Slot, Req 15)
   chapterId            String?
   startTime            DateTime
   durationMin          Int
-  isBuffer             Boolean  @default(false) // Buffer_Slot flag (Req 15.1)
+  isBuffer             Boolean     @default(false) // Buffer_Slot flag (Req 15.1)
   energyLevel          String // "HIGH" | "LOW" (Req 13.1)
-  scheduledOutsidePeak Boolean  @default(false) // Req 13.4 flag
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
+  scheduledOutsidePeak Boolean     @default(false) // Req 13.4 flag
+  sessionType          SessionType @default(NEW_CHAPTER)
+  revisionNumber       Int?
+  revisionLabel        String?
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
 
   timetable Timetable @relation(fields: [timetableId], references: [id], onDelete: Cascade)
 
@@ -292,6 +368,7 @@ model FocusSession {
   startTime          DateTime
   endTime            DateTime
   focusedDurationMin Int // > 0 and <= wall-clock (Req 4.5)
+  abandoned          Boolean     @default(false)
   sessionType        SessionType @default(NEW_CHAPTER) // Req 4.7/4.8
   clientId           String? // offline idempotency (Req 21)
   createdAt          DateTime    @default(now())
@@ -319,30 +396,41 @@ model DailyTimeAudit {
 }
 
 model CalendarEvent {
-  id        String            @id @default(uuid())
-  userId    String
-  type      CalendarEventType
-  startDate DateTime
-  endDate   DateTime // >= startDate (Req 16.2)
-  createdAt DateTime          @default(now())
-  updatedAt DateTime          @updatedAt
+  id         String            @id @default(uuid())
+  userId     String
+  type       CalendarEventType
+  externalId String?
+  source     String            @default("MANUAL")
+  startDate  DateTime
+  endDate    DateTime // >= startDate (Req 16.2)
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@unique([userId, externalId])
   @@index([userId])
 }
 
 // === PYQ, Papers & Practice ==================================================
 
 model PYQPaper {
-  id          String    @id @default(uuid())
-  examTrack   ExamTrack
-  year        Int
-  session     String? // shift/session where applicable
-  durationMin Int // standard duration (Req 19.1)
-  answerKeyId String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id                 String       @id @default(uuid())
+  examTrack          ExamTrack
+  examProgram        ExamProgram?
+  examStage          ExamStage?
+  paperKey           String?
+  year               Int
+  session            String? // shift/session where applicable
+  durationMin        Int // standard duration (Req 19.1)
+  answerKeyId        String
+    sourceName         String?
+    sourceUrl          String?
+    answerKeyUrl       String?
+    verificationMethod String?
+  verifiedAt         DateTime?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
 
   questions PYQ[]
   answerKey AnswerKey?
@@ -361,17 +449,19 @@ model AnswerKey {
 }
 
 model PYQ {
-  id               String    @id @default(uuid())
+  id               String       @id @default(uuid())
   paperId          String?
   examTrack        ExamTrack // Req 7.4
+  examProgram      ExamProgram?
+  examStage        ExamStage?
   year             Int
   subjectId        String
   questionText     String
   options          String[] // must be exactly 4 to be practice-eligible (Req 7.1/7.3)
   correctOption    Int // reconciled to Answer_Key (Req 7.2)
-  flaggedForReview Boolean   @default(false) // Req 7.3 (excluded from practice)
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  flaggedForReview Boolean      @default(false) // Req 7.3 (excluded from practice)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
 
   paper PYQPaper? @relation(fields: [paperId], references: [id])
 
@@ -537,6 +627,317 @@ model OfflineDownload {
   @@index([userId])
 }
 
+// === UPSC/SSC learning, wellbeing and utility models =======================
+
+model AnswerWritingAttempt {
+  id           String    @id @default(uuid())
+  userId       String
+  subjectId    String?
+  prompt       String
+  answerText   String
+  wordCount    Int
+  timeTakenSec Int?
+  selfScore    Float?
+  feedback     Json?
+  status       String    @default("DRAFT") // DRAFT | SUBMITTED | REVIEWED
+  submittedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([userId, subjectId])
+}
+
+model DailyBriefing {
+  id            String   @id @default(uuid())
+  userId        String
+  briefingDate  DateTime
+  phase         String
+  countdownDays Int?
+  priorities    Json
+  schedule      Json
+  insights      Json?
+  wellbeing     Json?
+  generatedAt   DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, briefingDate])
+  @@index([userId, briefingDate])
+}
+
+model WellbeingCheckin {
+  id          String   @id @default(uuid())
+  userId      String
+  checkinDate DateTime
+  mood        Int // 1-5
+  energy      Int // 1-5
+  stress      Int // 1-5
+  sleepHours  Float?
+  note        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, checkinDate])
+  @@index([userId, checkinDate])
+}
+
+model SleepSchedule {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  bedtime     String
+  wakeTime    String
+  windDownMin Int      @default(30)
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CurrentAffairsItem {
+  id          String       @id @default(uuid())
+  examProgram ExamProgram?
+  title       String
+  summary     String
+  body        String?
+  category    String
+  tags        String[]
+  sourceName  String
+  sourceUrl   String
+  publishedAt DateTime
+  dedupeHash  String       @unique
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  bookmarks CurrentAffairsBookmark[]
+
+  @@index([examProgram, publishedAt])
+  @@index([category, publishedAt])
+}
+
+model CurrentAffairsBookmark {
+  id        String   @id @default(uuid())
+  userId    String
+  itemId    String
+  notes     String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  item CurrentAffairsItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemId])
+  @@index([userId, read])
+}
+
+model StudyResource {
+  id        String   @id @default(uuid())
+  userId    String
+  subjectId String?
+  chapterId String?
+  title     String
+  url       String?
+  type      String   @default("LINK") // LINK | BOOK | VIDEO | DOCUMENT
+  tags      String[]
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([userId, subjectId])
+}
+
+model PdfDocument {
+  id            String          @id @default(uuid())
+  userId        String
+  title         String
+  fileUrl       String?
+  fileName      String?
+  fileMimeType  String?         @default("application/pdf")
+  fileData      Bytes?
+  fileChecksum  String?
+  extractedText String?
+  pageText      Json?
+  tags          String[]
+  pageCount     Int?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  annotations   PdfAnnotation[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model VoiceNote {
+  id            String   @id @default(uuid())
+  userId        String
+  title         String
+  audioUri      String?
+  audioFileName String?
+  audioMimeType String?
+  audioData     Bytes?
+  transcription String?
+  durationSec   Int?
+  subjectId     String?
+  chapterId     String?
+  tags          String[] @default([])
+  searchText    String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([userId, chapterId])
+}
+
+model CommunityPost {
+  id               String                 @id @default(uuid())
+  userId           String
+  examProgram      ExamProgram?
+  title            String
+  body             String
+  tags             String[]
+  anonymous        Boolean                @default(true)
+  moderationStatus CommunityContentStatus @default(VISIBLE)
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+
+  user    User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reports CommunityReport[]
+
+  @@index([examProgram, createdAt])
+}
+
+model StudyBuddy {
+  id          String   @id @default(uuid())
+  requesterId String
+  recipientId String
+  status      String   @default("PENDING") // PENDING | ACCEPTED | DECLINED | BLOCKED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  requester User @relation("BuddyRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  recipient User @relation("BuddyRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+
+  @@unique([requesterId, recipientId])
+  @@index([recipientId, status])
+}
+
+model CommunityMessage {
+  id               String                 @id @default(uuid())
+  senderId         String
+  recipientId      String
+  body             String
+  moderationStatus CommunityContentStatus @default(VISIBLE)
+  readAt           DateTime?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+
+  sender    User              @relation("CommunityMessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  recipient User              @relation("CommunityMessageRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  reports   CommunityReport[]
+
+  @@index([senderId, recipientId, createdAt])
+  @@index([recipientId, readAt])
+}
+
+model CommunityReport {
+  id         String   @id @default(uuid())
+  reporterId String
+  postId     String?
+  messageId  String?
+  reason     String
+  status     String   @default("OPEN") // OPEN | REVIEWED | ACTIONED | DISMISSED
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  reporter User              @relation("CommunityReportReporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  post     CommunityPost?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  message  CommunityMessage? @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([status, createdAt])
+  @@index([reporterId, createdAt])
+  @@index([postId])
+  @@index([messageId])
+}
+
+model BuddyDashboardShare {
+  id          String   @id @default(uuid())
+  ownerId     String
+  recipientId String
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  owner     User @relation("DashboardShareOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  recipient User @relation("DashboardShareRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+
+  @@unique([ownerId, recipientId])
+  @@index([recipientId, enabled])
+}
+
+model CalendarConnection {
+  id                 String    @id @default(uuid())
+  userId             String
+  provider           String // GOOGLE | DEVICE | MANUAL
+  externalCalendarId String?
+  accessTokenCipher  String?
+  refreshTokenCipher String?
+  tokenExpiresAt     DateTime?
+  syncToken          String?
+  status             String    @default("CONNECTED")
+  lastImportedAt     DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, provider])
+}
+
+model NotificationPreference {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  dailyBriefing     Boolean  @default(true)
+  revisionReminders Boolean  @default(true)
+  currentAffairs    Boolean  @default(true)
+  wellbeing         Boolean  @default(true)
+  quietStart        String?
+  quietEnd          String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ExamDate {
+  id          String       @id @default(uuid())
+  userId      String
+  examProgram ExamProgram?
+  examStage   ExamStage?
+  label       String
+  examDate    DateTime
+  priority    Int          @default(1)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, examDate])
+}
+
 // === Phase 2: Performance Analytics models (additive) ========================
 //
 // All models below are additive; no existing Phase 1 enum, model, or column is
@@ -561,6 +962,32 @@ model ExternalMockScore {
 
   @@index([userId])
   @@index([userId, testDate])
+}
+
+// A structured review of a paper attempted outside PadhaiKaro. The analysis is deliberately
+// a study plan, not a selection/rank prediction: all source scores remain self-reported and
+// the optional attachment is checked for user ownership in the service layer.
+model ExternalPaperReview {
+  id                   String   @id @default(uuid())
+  userId               String
+  title                String
+  sourceName           String?
+  testDate             DateTime
+  obtainedScore        Float
+  maxScore             Float
+  breakdown            Json
+  mistakeTags          String[] @default([])
+  selfNotes            String?
+  documentId           String?
+  externalMockScoreId  String?  @unique
+  analysis             Json
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, testDate])
+  @@index([userId, createdAt])
 }
 
 // Target_College_Cutoff selection (Req 4.1). One active selection per user; the
@@ -692,4 +1119,343 @@ model SuggestedAllocationSnapshot {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+// === Learning acceleration, wellbeing and integrations =====================
+
+model RevisionCard {
+  id             String    @id @default(uuid())
+  userId         String
+  title          String
+  prompt         String
+  answer         String
+  sourceType     String    @default("MANUAL")
+  sourceId       String?
+  chapterId      String?
+  revisionPhase  String?
+  tags           String[]
+  dueAt          DateTime
+  intervalDays   Int       @default(1)
+  ease           Float     @default(2.5)
+  repetitions    Int       @default(0)
+  lapses         Int       @default(0)
+  lastReviewedAt DateTime?
+  suspended      Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  user    User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviews RevisionReview[]
+
+  @@index([userId, dueAt])
+  @@index([userId, sourceType])
+  @@index([userId, chapterId])
+}
+
+model RevisionReview {
+  id         String   @id @default(uuid())
+  userId     String
+  cardId     String
+  rating     Int
+  reviewedAt DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  card RevisionCard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  @@index([userId, reviewedAt])
+}
+
+model FormulaItem {
+  id          String   @id @default(uuid())
+  userId      String
+  subjectId   String?
+  chapterId   String?
+  title       String
+  expression  String
+  explanation String?
+  tags        String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, subjectId])
+  @@index([userId, chapterId])
+}
+
+model ConceptMap {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String
+  nodes     Json
+  edges     Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, updatedAt])
+}
+
+model QuickRevisionCapsule {
+  id           String   @id @default(uuid())
+  userId       String
+  chapterId    String?
+  title        String
+  points       Json
+  sourceNoteId String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, chapterId])
+}
+
+model MockExamAttempt {
+  id              String    @id @default(uuid())
+  userId          String
+  paperId         String?
+  title           String
+  durationSec     Int
+  status          String    @default("IN_PROGRESS")
+  currentQuestion Int       @default(0)
+  answers         Json
+  markedForReview Json
+  sectionTimings  Json
+  startedAt       DateTime  @default(now())
+  submittedAt     DateTime?
+  totalScore      Int?
+  maxScore        Int?
+  obtainedScore   Float?
+  maximumScore    Float?
+  correctCount    Int?
+  incorrectCount  Int?
+  unansweredCount Int?
+  negativeMarks   Float?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@index([userId, createdAt])
+}
+
+model PacingAttempt {
+  id            String   @id @default(uuid())
+  userId        String
+  subjectId     String?
+  questionCount Int
+  targetSeconds Int
+  actualSeconds Int
+  correct       Int
+  skipped       Int
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model RecallDrillAttempt {
+  id          String   @id @default(uuid())
+  userId      String
+  sourceType  String
+  itemCount   Int
+  durationSec Int
+  correct     Int
+  revealed    Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model ExamChecklistItem {
+  id         String    @id @default(uuid())
+  userId     String
+  examDateId String?
+  label      String
+  category   String
+  completed  Boolean   @default(false)
+  dueAt      DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, completed])
+}
+
+model StudyMilestone {
+  id           String    @id @default(uuid())
+  userId       String
+  key          String
+  label        String
+  targetValue  Float
+  currentValue Float     @default(0)
+  achievedAt   DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, key])
+  @@index([userId, achievedAt])
+}
+
+model TopperStrategy {
+  id         String   @id @default(uuid())
+  userId     String
+  title      String
+  body       String
+  sourceName String?
+  sourceUrl  String?
+  tags       String[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model AnxietyProtocolLog {
+  id          String   @id @default(uuid())
+  userId      String
+  protocol    String
+  durationSec Int?
+  completed   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model RecoveryPlan {
+  id        String   @id @default(uuid())
+  userId    String
+  startDate DateTime
+  endDate   DateTime
+  reason    String
+  dailyPlan Json
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, startDate])
+}
+
+model CoachingConnection {
+  id         String   @id @default(uuid())
+  userId     String
+  provider   String
+  externalId String?
+  status     String   @default("CONNECTED")
+  metadata   Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, provider, externalId])
+  @@index([userId, status])
+}
+
+model DoubtItem {
+  id           String   @id @default(uuid())
+  userId       String
+  title        String
+  question     String
+  tags         String[]
+  resourceUrls String[]
+  status       String   @default("OPEN")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@index([userId, createdAt])
+}
+
+model PushDevice {
+  id                     String    @id @default(uuid())
+  userId                 String
+  expoPushToken          String
+  platform               String
+  active                 Boolean   @default(true)
+  lastSeenAt             DateTime  @default(now())
+  lastRevisionReminderAt DateTime?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, expoPushToken])
+  @@index([userId, active])
+}
+
+model CalendarOAuthState {
+  id        String   @id @default(uuid())
+  userId    String
+  state     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, expiresAt])
+}
+
+model PdfAnnotation {
+  id             String   @id @default(uuid())
+  userId         String
+  documentId     String
+  page           Int
+  type           String   @default("HIGHLIGHT")
+  quote          String?
+  note           String?
+  color          String   @default("#facc15")
+  selectionStart Int?
+  selectionEnd   Int?
+  rect           Json?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user     User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document PdfDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([userId, documentId, page])
+}
+
+model OfflineMutation {
+  id        String    @id @default(uuid())
+  userId    String
+  clientId  String
+  type      String
+  payload   Json
+  status    String    @default("PENDING")
+  attempts  Int       @default(0)
+  lastError String?
+  appliedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, clientId])
+  @@index([userId, status, createdAt])
 }

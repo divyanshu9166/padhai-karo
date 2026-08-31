@@ -1,6 +1,6 @@
 # PadhaiKaro — Mobile Client (Expo / React Native)
 
-The user-facing mobile app for the JEE/NEET Study Companion. The backend lives in the sibling
+The user-facing mobile app for the UPSC/SSC-first Padhai Karo Study Companion. The backend lives in the sibling
 `../backend` folder (Next.js API-only); this app talks to it over HTTPS. Task **21.1** owns the
 scaffold (navigation, API client, auth/session state, onboarding gating, localization wiring);
 tasks 21.2–21.9 build the feature screens.
@@ -15,6 +15,8 @@ tasks 21.2–21.9 build the feature screens.
   (`app.config.ts` → `extra.apiBaseUrl`, read in `src/config/env.ts`). It defaults to
   `http://localhost:3000/api` and is overridable with the `EXPO_PUBLIC_API_BASE_URL` env var.
   No production URL is hardcoded.
+- **Community realtime** uses `EXPO_PUBLIC_WS_URL` (or derives `/ws/community` from the API URL)
+  and falls back to delta polling when the WebSocket server is unavailable.
 - **API client:** a single generic `request<T>(path, { method, body, signal })` in
   `src/api/client.ts` that attaches the session token as `Authorization: Bearer <token>` (set
   via `setAuthToken`) and throws a typed `ApiError` carrying the backend error code. Feature
@@ -61,6 +63,18 @@ is server-persisted). Each file carries a `COPIED FROM` header; keep the copies 
 strings change. The client adds a few `auth.*` keys not present in the backend copy.
 `LocalizationContext.tsx` wraps the pure resolver in a React context (`useLocalization` / `t`),
 where `t(key)` resolves by the active `Language_Preference` with English fallback.
+
+## Offline workspace and iOS widget
+
+The Offline workspace action downloads timetable/resources/PDF binaries, rendered PDF page
+images, annotations and voice-note media into durable app storage. Edits carry the server
+`updatedAt` version; a conflict is shown in More with explicit **Keep server** or **Keep mine**
+resolution.
+
+The iOS WidgetKit target is wired by `plugins/withPadhaiKaroWidget.js` during `expo prebuild`.
+Run prebuild and `expo run:ios` on macOS, then select the Apple Developer team and enable the
+`group.com.padhaikaro.app` App Group for both the app and widget target. Windows cannot perform
+Apple signing or compile WidgetKit targets.
 
 ## Running
 

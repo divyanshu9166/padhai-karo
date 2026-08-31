@@ -82,6 +82,79 @@ export interface ClientPaperQuestion {
     options: string[];
 }
 
+interface UserPaperScope {
+    examTrack: string;
+    examProgram: string | null;
+    examStage: string | null;
+}
+
+interface ScopedPaper extends UserPaperScope {
+    id: string;
+    paperKey: string | null;
+    year: number;
+    session: string | null;
+    durationMin: number;
+    verifiedAt: Date | null;
+    answerKey: { id: string } | null;
+}
+
+/**
+ * Paper access is scoped to the authenticated learner's selected exam family. A null
+ * program/stage means the learner selected the broader family, so it is intentionally
+ * treated as a wildcard for older profiles and family-level onboarding.
+ */
+function paperMatchesProfile(paper: UserPaperScope, profile: UserPaperScope): boolean {
+    return (
+        paper.examTrack === profile.examTrack &&
+        (profile.examProgram === null ||
+            paper.examProgram === null ||
+            paper.examProgram === profile.examProgram) &&
+        (profile.examStage === null ||
+            paper.examStage === null ||
+            paper.examStage === profile.examStage)
+    );
+}
+
+async function loadScopedPaper(userId: string, paperId: string): Promise<ScopedPaper | null> {
+    const [profile, paper] = await Promise.all([
+        prisma.profile.findUnique({
+            where: { userId },
+            select: { examTrack: true, examProgram: true, examStage: true },
+        }),
+        prisma.pYQPaper.findUnique({
+            where: { id: paperId },
+            select: {
+                id: true,
+                examTrack: true,
+                examProgram: true,
+                examStage: true,
+                paperKey: true,
+                year: true,
+                session: true,
+                durationMin: true,
+                verifiedAt: true,
+                answerKey: { select: { id: true } },
+            },
+        }),
+    ]);
+
+    if (!profile || !paper || !paperMatchesProfile(paper, profile)) {
+        return null;
+    }
+
+    // UPSC/SSC timed papers must come from the reviewed official corpus. Legacy JEE/NEET
+    // rows remain readable for existing accounts, but cannot weaken the current product's
+    // official-data rule for the UPSC/SSC launch scope.
+    if (
+        (paper.examTrack === 'UPSC' || paper.examTrack === 'SSC') &&
+        (!paper.verifiedAt || !paper.answerKey)
+    ) {
+        return null;
+    }
+
+    return paper;
+}
+
 /**
  * Prisma `select` for the paper listing. Restricts the columns fetched to exactly the safe
  * client projection so `correctOption` is never read out of the database for the listing.
@@ -146,7 +219,7 @@ async function readJsonBody(request: Request): Promise<unknown> {
 
 /** Framework route context for the dynamic `/:id` segment. */
 export interface IdRouteContext {
-    params: { id: string };
+    params: { id: string } | Promise<{ id: string }>;
 }
 
 /**
@@ -156,20 +229,17 @@ export interface IdRouteContext {
  */
 export async function getPaperHandler(
     _request: Request,
-    _auth: AuthContext,
+    auth: AuthContext,
     routeContext: IdRouteContext,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'A paper id is required.', {
             field: 'id',
         });
     }
 
-    const paper = await prisma.pYQPaper.findUnique({
-        where: { id },
-        select: { id: true, examTrack: true, year: true, session: true, durationMin: true },
-    });
+    const paper = await loadScopedPaper(auth.user.id, id);
 
     if (!paper) {
         return errorResponse(404, ErrorCode.NOT_FOUND, 'Paper not found.');
@@ -187,6 +257,9 @@ export async function getPaperHandler(
             examTrack: paper.examTrack,
             year: paper.year,
             session: paper.session,
+            ...(paper.examProgram ? { examProgram: paper.examProgram } : {}),
+            ...(paper.examStage ? { examStage: paper.examStage } : {}),
+            ...(paper.paperKey ? { paperKey: paper.paperKey } : {}),
         },
         durationMin: paper.durationMin,
         questions,
@@ -233,6 +306,13 @@ export async function createTimedAttemptHandler(
     }
 
     const { paperId, answers, timeTakenSec, clientId }: ValidatedTimedAttempt = validation.value;
+
+    const paper = await loadScopedPaper(auth.user.id, paperId);
+    if (!paper) {
+        return errorResponse(404, ErrorCode.NOT_FOUND, 'Paper not found or is not available for your exam track.', {
+            field: 'paperId',
+        });
+    }
 
     // Resolve the answer key SERVER-SIDE from the paper's stored PYQ rows (never from the
     // client). This is the FULL paper, so every question is scored (Req 19.5).
@@ -294,7 +374,7 @@ export async function getTimedAttemptHandler(
     auth: AuthContext,
     routeContext: IdRouteContext,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'An attempt id is required.', {
             field: 'id',

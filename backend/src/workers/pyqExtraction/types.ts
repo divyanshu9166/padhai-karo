@@ -13,6 +13,7 @@
  * see `extraction.ts` for structural validation, sanitization, and key reconciliation.
  */
 import type { ExamTrack } from '@prisma/client';
+import type { ExamProgramKey, ExamStage } from '@/lib/exams';
 
 /**
  * One question as returned by the vision model. This is UNTRUSTED data: fields may be
@@ -52,6 +53,8 @@ export interface VisionExtractionInput {
     examTrack: ExamTrack;
     year: number;
     subjectId: string;
+    examProgram?: ExamProgramKey;
+    examStage?: ExamStage;
 }
 
 /**
@@ -68,6 +71,9 @@ export interface ExtractionAssociation {
     examTrack: ExamTrack;
     year: number;
     subjectId: string;
+    examProgram?: ExamProgramKey;
+    examStage?: ExamStage;
+    paperKey?: string;
 }
 
 /**
@@ -93,6 +99,8 @@ export interface PyqUpsertRecord {
     examTrack: ExamTrack;
     year: number;
     subjectId: string;
+    examProgram?: ExamProgramKey;
+    examStage?: ExamStage;
     questionText: string;
     options: string[];
     /** Reconciled from the official key (Req 7.2); -1 sentinel when no key entry exists. */
@@ -121,6 +129,9 @@ export interface PyqExtractionJobData {
     year: number;
     subjectId: string;
     answerKeyId: string;
+    examProgram?: ExamProgramKey;
+    examStage?: ExamStage;
+    paperKey?: string;
     /** Optional paper association; null for ad-hoc question sets. */
     paperId?: string | null;
 }

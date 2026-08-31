@@ -67,8 +67,8 @@ export function MistakeJournalScreen(): React.JSX.Element {
         let cancelled = false;
         (async () => {
             try {
-                const track = await getProfileTrack();
-                const list = await listSubjects(track);
+                const selection = await getProfileTrack();
+                const list = await listSubjects(selection);
                 if (!cancelled) setSubjects(list);
             } catch {
                 // Subjects are an optional filter aid; ignore failures.

@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator<OnboardingStackParamList>();
 
 export function OnboardingStack(): React.JSX.Element {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
                 name="Onboarding"
                 component={OnboardingScreen}

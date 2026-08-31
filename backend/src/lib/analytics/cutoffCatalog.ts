@@ -31,7 +31,8 @@
  * year's dataset replaces, not an authoritative reproduction of any single counseling
  * round.
  */
-import type { ExamTrack } from '../reference';
+import { isLegacyExamTrack } from '../reference';
+import type { ExamTrack, LegacyExamTrack } from '../reference';
 
 /**
  * Mirrors the Prisma `CutoffUnit` enum (see prisma/schema.prisma). Declared structurally
@@ -155,7 +156,7 @@ const NEET_SCORE_STANDING_2024: ScoreStandingBand[] = [
  * per track is provided; additional years can be added without removing prior years
  * (the resolver selects the maximum year as active — Req 5.2, 5.3).
  */
-export const CUTOFF_CATALOG: Record<ExamTrack, Record<number, CutoffCatalogEntry[]>> = {
+export const CUTOFF_CATALOG: Record<LegacyExamTrack, Record<number, CutoffCatalogEntry[]>> = {
     JEE: {
         2024: JEE_CUTOFFS_2024,
     },
@@ -169,7 +170,7 @@ export const CUTOFF_CATALOG: Record<ExamTrack, Record<number, CutoffCatalogEntry
  * alongside `CUTOFF_CATALOG`. Bands are contiguous and cover the full 0–100 score%
  * range so Rank_Prediction can always clamp to a band.
  */
-export const SCORE_STANDING_CATALOG: Record<ExamTrack, Record<number, ScoreStandingBand[]>> = {
+export const SCORE_STANDING_CATALOG: Record<LegacyExamTrack, Record<number, ScoreStandingBand[]>> = {
     JEE: {
         2024: JEE_SCORE_STANDING_2024,
     },
@@ -181,10 +182,11 @@ export const SCORE_STANDING_CATALOG: Record<ExamTrack, Record<number, ScoreStand
 // === Accessors ===============================================================
 
 /** Exam_Tracks the cutoff/score-standing catalog covers. */
-export const CUTOFF_EXAM_TRACKS: ExamTrack[] = ['JEE', 'NEET'];
+export const CUTOFF_EXAM_TRACKS: LegacyExamTrack[] = ['JEE', 'NEET'];
 
 /** The Reference_Data_Years for which cutoff data exists for a track, ascending. */
 export function getCutoffYears(track: ExamTrack): number[] {
+    if (!isLegacyExamTrack(track)) return [];
     return Object.keys(CUTOFF_CATALOG[track])
         .map((y) => Number(y))
         .sort((a, b) => a - b);
@@ -192,6 +194,7 @@ export function getCutoffYears(track: ExamTrack): number[] {
 
 /** The Reference_Data_Years for which score-standing data exists for a track, ascending. */
 export function getScoreStandingYears(track: ExamTrack): number[] {
+    if (!isLegacyExamTrack(track)) return [];
     return Object.keys(SCORE_STANDING_CATALOG[track])
         .map((y) => Number(y))
         .sort((a, b) => a - b);
@@ -199,10 +202,10 @@ export function getScoreStandingYears(track: ExamTrack): number[] {
 
 /** Returns the cutoff entries for a track + year, or `[]` when none exist. */
 export function getCutoffEntries(track: ExamTrack, year: number): CutoffCatalogEntry[] {
-    return CUTOFF_CATALOG[track]?.[year] ?? [];
+    return isLegacyExamTrack(track) ? CUTOFF_CATALOG[track]?.[year] ?? [] : [];
 }
 
 /** Returns the score-standing bands for a track + year, or `[]` when none exist. */
 export function getScoreStandingBands(track: ExamTrack, year: number): ScoreStandingBand[] {
-    return SCORE_STANDING_CATALOG[track]?.[year] ?? [];
+    return isLegacyExamTrack(track) ? SCORE_STANDING_CATALOG[track]?.[year] ?? [] : [];
 }

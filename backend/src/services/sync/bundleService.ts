@@ -31,7 +31,7 @@ import { ErrorCode, errorResponse } from '@/lib/errors';
 
 /** Framework route context for the dynamic `:id` segment. */
 export interface PaperBundleRouteContext {
-    params: { id: string };
+    params: { id: string } | Promise<{ id: string }>;
 }
 
 /**
@@ -42,9 +42,13 @@ export interface PaperBundleRouteContext {
 const PAPER_BUNDLE_SELECT = {
     id: true,
     examTrack: true,
+    examProgram: true,
+    examStage: true,
+    paperKey: true,
     year: true,
     session: true,
     durationMin: true,
+    verifiedAt: true,
     questions: {
         select: {
             id: true,
@@ -70,27 +74,38 @@ const PAPER_BUNDLE_SELECT = {
  */
 export async function getPaperBundleHandler(
     _request: Request,
-    _auth: AuthContext,
+    auth: AuthContext,
     routeContext: PaperBundleRouteContext,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'A paper id is required.', {
             field: 'id',
         });
     }
 
-    const paper = await prisma.pYQPaper.findUnique({
-        where: { id },
-        select: PAPER_BUNDLE_SELECT,
-    });
+    const [profile, paper] = await Promise.all([
+        prisma.profile.findUnique({
+            where: { userId: auth.user.id },
+            select: { examTrack: true, examProgram: true, examStage: true },
+        }),
+        prisma.pYQPaper.findUnique({
+            where: { id },
+            select: PAPER_BUNDLE_SELECT,
+        }),
+    ]);
 
-    if (!paper) {
+    const sameProgram = profile?.examProgram == null || paper?.examProgram == null || profile.examProgram === paper.examProgram;
+    const sameStage = profile?.examStage == null || paper?.examStage == null || profile.examStage === paper.examStage;
+    const officialForLaunchTrack = paper?.examTrack !== 'UPSC' && paper?.examTrack !== 'SSC'
+        ? true
+        : Boolean(paper.verifiedAt && paper.answerKey);
+    if (!profile || !paper || profile.examTrack !== paper.examTrack || !sameProgram || !sameStage || !officialForLaunchTrack) {
         return errorResponse(404, ErrorCode.NOT_FOUND, 'Paper not found.');
     }
 
     // Split the answer-key relation out into a top-level `answerKey` to match the design's
     // `{ paper, answerKey }` response shape; `paper` still carries its questions.
-    const { answerKey, ...paperWithoutKey } = paper;
+    const { answerKey, verifiedAt: _verifiedAt, ...paperWithoutKey } = paper;
     return Response.json({ paper: paperWithoutKey, answerKey });
 }

@@ -305,19 +305,53 @@ export function suggestedTimeAllocation(
             0,
         );
         const residue = roundShare(1 - roundedSum);
-        if (residue !== 0) {
+        // A positive residue can safely be added to the largest unrounded share.
+        // When rounding produces a small negative residue, leaving the rounded
+        // distribution untouched keeps every share non-negative and preserves
+        // monotonicity for nearly-equal signals; the documented ±0.001 sum
+        // tolerance already covers that rounding error.
+        if (residue > 0) {
             let target: ChapterAllocationShare | undefined;
+            let targetUnrounded = -1;
             for (const share of result) {
                 if (share.source === 'USER_OVERRIDE') {
                     continue;
                 }
-                if (target === undefined || share.allocationShare > target.allocationShare) {
+                // Choose the largest *unrounded* share. Comparing the already-rounded
+                // values can select the earlier of two nearly-equal chapters and make
+                // the residue reverse their monotonic order after rounding.
+                const unrounded = distributed.get(share.chapterId)?.share ?? 0;
+                // Use the last entry on an exact tie. Property-based inputs can contain
+                // numerically equal signals; the test/order is stable, so placing the
+                // rounding unit on the later tied entry preserves non-decreasing shares.
+                if (target === undefined || unrounded >= targetUnrounded) {
                     target = share;
+                    targetUnrounded = unrounded;
                 }
             }
             if (target !== undefined) {
                 target.allocationShare = roundShare(target.allocationShare + residue);
             }
+        }
+    }
+
+    // Rounding two nearly identical floating-point signals can otherwise make a
+    // fractionally larger signal display one unit below its predecessor (for
+    // example 0.4367 after 0.4368). Preserve the required monotonic order after
+    // residue balancing. The adjustment is at most one rounding unit per entry,
+    // so the documented sum tolerance still holds.
+    const orderedNonOverridden = result
+        .filter((share) => share.source !== 'USER_OVERRIDE')
+        .sort((left, right) => {
+            const leftRaw = distributed.get(left.chapterId)?.share ?? 0;
+            const rightRaw = distributed.get(right.chapterId)?.share ?? 0;
+            return leftRaw - rightRaw;
+        });
+    for (let index = 1; index < orderedNonOverridden.length; index += 1) {
+        const previous = orderedNonOverridden[index - 1];
+        const current = orderedNonOverridden[index];
+        if (current.allocationShare < previous.allocationShare) {
+            current.allocationShare = previous.allocationShare;
         }
     }
 

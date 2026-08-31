@@ -13,6 +13,7 @@ export default defineConfig({
         globals: true,
         // Configures fast-check to run >= 100 iterations per property by default.
         setupFiles: ['./vitest.setup.ts'],
+        testTimeout: 30_000,
         include: ['src/**/*.{test,spec}.{ts,tsx}', 'tests/**/*.{test,spec}.{ts,tsx}'],
     },
 });

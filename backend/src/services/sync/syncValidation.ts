@@ -46,7 +46,18 @@ export const SYNC_RECORD_TYPES: readonly SyncRecordType[] = [
     'FOCUS_SESSION',
     'PYQ_ATTEMPT',
     'TIMED_PAPER_ATTEMPT',
+    'ANSWER_WRITING_ATTEMPT',
+    'WELLBEING_CHECKIN',
+    'VOICE_NOTE',
+    'NOTE_SUMMARY',
+    'STUDY_RESOURCE',
 ];
+
+export interface ValidatedAnswerWritingPayload { prompt: string; answerText: string; subjectId?: string; timeTakenSec?: number; }
+export interface ValidatedWellbeingPayload { checkinDate: Date; mood: number; energy: number; stress: number; sleepHours?: number; note?: string; }
+export interface ValidatedVoiceNotePayload { title: string; audioUri?: string; transcription?: string; durationSec?: number; subjectId?: string; chapterId?: string; tags?: string[]; }
+export interface ValidatedNoteSummaryPayload { inputType: 'TEXT' | 'PHOTO' | 'VOICE'; summary: Record<string, unknown>; }
+export interface ValidatedStudyResourcePayload { title: string; url?: string; type?: string; tags: string[]; subjectId?: string; chapterId?: string; }
 
 /**
  * A validated, normalized sync record ready to reconcile + persist. The `payload` is
@@ -56,7 +67,12 @@ export const SYNC_RECORD_TYPES: readonly SyncRecordType[] = [
 export type ValidatedSyncRecord =
     | { clientId: string; type: 'FOCUS_SESSION'; payload: ValidatedFocusSession }
     | { clientId: string; type: 'PYQ_ATTEMPT'; payload: ValidatedPyqAttempt }
-    | { clientId: string; type: 'TIMED_PAPER_ATTEMPT'; payload: ValidatedTimedAttempt };
+    | { clientId: string; type: 'TIMED_PAPER_ATTEMPT'; payload: ValidatedTimedAttempt }
+    | { clientId: string; type: 'ANSWER_WRITING_ATTEMPT'; payload: ValidatedAnswerWritingPayload }
+    | { clientId: string; type: 'WELLBEING_CHECKIN'; payload: ValidatedWellbeingPayload }
+    | { clientId: string; type: 'VOICE_NOTE'; payload: ValidatedVoiceNotePayload }
+    | { clientId: string; type: 'NOTE_SUMMARY'; payload: ValidatedNoteSummaryPayload }
+    | { clientId: string; type: 'STUDY_RESOURCE'; payload: ValidatedStudyResourcePayload };
 
 /** A validated sync request: the list of records to reconcile. */
 export interface ValidatedSyncRequest {
@@ -107,6 +123,34 @@ function validatePayload(
                 };
             }
             return { ok: true, record: { clientId: '', type, payload: result.value } };
+        }
+        case 'ANSWER_WRITING_ATTEMPT': {
+            const prompt = typeof payload.prompt === 'string' ? payload.prompt.trim() : '';
+            const answerText = typeof payload.answerText === 'string' ? payload.answerText.trim() : '';
+            if (!prompt || !answerText || answerText.length > 50_000) return { ok: false, message: 'answer-writing prompt and answerText are required.', details: { field: `records[${index}].payload` } };
+            return { ok: true, record: { clientId: '', type, payload: { prompt, answerText, subjectId: typeof payload.subjectId === 'string' ? payload.subjectId : undefined, timeTakenSec: typeof payload.timeTakenSec === 'number' ? payload.timeTakenSec : undefined } } };
+        }
+        case 'WELLBEING_CHECKIN': {
+            const date = typeof payload.checkinDate === 'string' ? new Date(payload.checkinDate) : new Date();
+            const values = [payload.mood, payload.energy, payload.stress];
+            if (Number.isNaN(date.getTime()) || values.some((value) => typeof value !== 'number' || !Number.isInteger(value) || value < 1 || value > 5)) return { ok: false, message: 'wellbeing values must be integers from 1 to 5.', details: { field: `records[${index}].payload` } };
+            return { ok: true, record: { clientId: '', type, payload: { checkinDate: date, mood: payload.mood as number, energy: payload.energy as number, stress: payload.stress as number, sleepHours: typeof payload.sleepHours === 'number' ? payload.sleepHours : undefined, note: typeof payload.note === 'string' ? payload.note.trim() : undefined } } };
+        }
+        case 'VOICE_NOTE': {
+            const title = typeof payload.title === 'string' ? payload.title.trim() : '';
+            if (!title) return { ok: false, message: 'voice-note title is required.', details: { field: `records[${index}].payload.title` } };
+            return { ok: true, record: { clientId: '', type, payload: { title, audioUri: typeof payload.audioUri === 'string' ? payload.audioUri : undefined, transcription: typeof payload.transcription === 'string' ? payload.transcription : undefined, durationSec: typeof payload.durationSec === 'number' ? payload.durationSec : undefined, subjectId: typeof payload.subjectId === 'string' ? payload.subjectId : undefined, chapterId: typeof payload.chapterId === 'string' ? payload.chapterId : undefined, tags: Array.isArray(payload.tags) ? payload.tags.filter((item): item is string => typeof item === 'string').slice(0, 20) : undefined } } };
+        }
+        case 'NOTE_SUMMARY': {
+            const inputType = payload.inputType === 'TEXT' || payload.inputType === 'PHOTO' || payload.inputType === 'VOICE' ? payload.inputType : null;
+            const summary = payload.summary && typeof payload.summary === 'object' && !Array.isArray(payload.summary) ? payload.summary as Record<string, unknown> : null;
+            if (!inputType || !summary) return { ok: false, message: 'offline note summary needs a valid inputType and summary object.', details: { field: `records[${index}].payload` } };
+            return { ok: true, record: { clientId: '', type, payload: { inputType, summary } } };
+        }
+        case 'STUDY_RESOURCE': {
+            const title = typeof payload.title === 'string' ? payload.title.trim() : '';
+            if (!title) return { ok: false, message: 'offline resource title is required.', details: { field: `records[${index}].payload.title` } };
+            return { ok: true, record: { clientId: '', type, payload: { title, url: typeof payload.url === 'string' ? payload.url.trim() || undefined : undefined, type: typeof payload.type === 'string' ? payload.type.trim() || undefined : undefined, tags: Array.isArray(payload.tags) ? payload.tags.filter((item): item is string => typeof item === 'string').map((item) => item.trim()).filter(Boolean).slice(0, 30) : [], subjectId: typeof payload.subjectId === 'string' ? payload.subjectId : undefined, chapterId: typeof payload.chapterId === 'string' ? payload.chapterId : undefined } } };
         }
         default: {
             // Exhaustiveness guard: never reached because `type` is validated upstream.

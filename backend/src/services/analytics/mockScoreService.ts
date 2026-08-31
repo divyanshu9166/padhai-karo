@@ -52,6 +52,20 @@ async function readJsonBody(request: Request): Promise<unknown> {
 }
 
 /**
+ * Scores created from the external-paper review flow are a single audited record: changing
+ * their marks through generic analytics would make the saved section analysis untrue. The
+ * optional access keeps older isolated unit mocks compatible while production Prisma always
+ * supplies the model.
+ */
+async function isLinkedExternalPaperReview(scoreId: string, userId: string): Promise<boolean> {
+    const reviewModel = (prisma as unknown as {
+        externalPaperReview?: { findFirst: (args: { where: { externalMockScoreId: string; userId: string }; select: { id: boolean } }) => Promise<unknown> };
+    }).externalPaperReview;
+    if (!reviewModel) return false;
+    return Boolean(await reviewModel.findFirst({ where: { externalMockScoreId: scoreId, userId }, select: { id: true } }));
+}
+
+/**
  * Handle `POST /api/analytics/mock-scores`. Validates the body via the pure
  * {@link validateMockScoreInput} (invalid score bounds / future date / bad source -> 422,
  * Req 1.2–1.4) and persists an `ExternalMockScore` scoped to the authenticated user (Req 1.1).
@@ -113,7 +127,7 @@ export async function listMockScoresHandler(
 
 /** Framework route context for the dynamic `/:id` segment. */
 export interface MockScoreRouteContext {
-    params: { id: string };
+    params: { id: string } | Promise<{ id: string }>;
 }
 
 /**
@@ -128,7 +142,7 @@ export async function editMockScoreHandler(
     auth: AuthContext,
     routeContext: MockScoreRouteContext,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'A mock score id is required.', {
             field: 'id',
@@ -152,6 +166,10 @@ export async function editMockScoreHandler(
 
     // Cross-user edit attempt -> 403 FORBIDDEN (thrown, mapped by withAuth).
     assertOwnership(existing.userId, auth.user.id);
+
+    if (await isLinkedExternalPaperReview(id, auth.user.id)) {
+        return errorResponse(409, ErrorCode.CONFLICT, 'This score belongs to an external-paper review. Edit or delete the review from External Paper Review so its action plan stays accurate.');
+    }
 
     // Merge the patch onto the persisted record: a field present in the patch overrides the
     // stored value, an absent field retains it. The merged candidate is then re-validated so
@@ -201,7 +219,7 @@ export async function deleteMockScoreHandler(
     auth: AuthContext,
     routeContext: MockScoreRouteContext,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'A mock score id is required.', {
             field: 'id',
@@ -219,6 +237,10 @@ export async function deleteMockScoreHandler(
 
     // Cross-user delete attempt -> 403 FORBIDDEN (thrown, mapped by withAuth).
     assertOwnership(existing.userId, auth.user.id);
+
+    if (await isLinkedExternalPaperReview(id, auth.user.id)) {
+        return errorResponse(409, ErrorCode.CONFLICT, 'This score belongs to an external-paper review. Delete the review from External Paper Review so its action plan and analytics stay in sync.');
+    }
 
     await prisma.externalMockScore.delete({ where: { id } });
 

@@ -9,7 +9,7 @@
 export { API_BASE_URL } from '@/config/env';
 
 // Generic client.
-export { request, setAuthToken, getAuthToken, ApiError } from './client';
+export { request, requestText, uploadMultipart, setAuthToken, getAuthToken, ApiError } from './client';
 export type { RequestOptions } from './client';
 
 // Auth/profile DTOs.

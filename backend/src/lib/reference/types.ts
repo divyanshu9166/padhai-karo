@@ -15,8 +15,15 @@
  * declared structurally here so this module never needs to import the Prisma client.
  */
 
-/** Mirrors the Prisma `ExamTrack` enum. */
-export type ExamTrack = 'JEE' | 'NEET';
+/** Tracks supported by the legacy catalog plus the new UPSC/SSC family values. */
+export type ExamTrack = 'JEE' | 'NEET' | 'UPSC' | 'SSC';
+
+/** The legacy chapter/analytics catalog currently covers only JEE and NEET. */
+export type LegacyExamTrack = 'JEE' | 'NEET';
+
+export function isLegacyExamTrack(track: ExamTrack): track is LegacyExamTrack {
+    return track === 'JEE' || track === 'NEET';
+}
 
 /** Mirrors the Prisma `TaskDifficulty` enum (Req 13 — hard vs light tasks). */
 export type TaskDifficulty = 'HARD' | 'LIGHT';

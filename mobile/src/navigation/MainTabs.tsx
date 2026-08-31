@@ -6,9 +6,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 
-import { DashboardScreen, FocusTimerScreen, NtaFeedScreen, TimetableScreen } from '@/screens';
+import { DashboardScreen, FocusTimerScreen, PlannerScreen, TimetableScreen } from '@/screens';
 
-import { NotesStack } from './NotesStack';
+import { MoreStack } from './MoreStack';
 import { PracticeStack } from './PracticeStack';
 import type { MainTabParamList } from './types';
 
@@ -16,8 +16,9 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 
 export function MainTabs(): React.JSX.Element {
     return (
-        <Tab.Navigator initialRouteName="Dashboard">
+        <Tab.Navigator initialRouteName="Dashboard" screenOptions={{ headerShown: false }}>
             <Tab.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Progress' }} />
+            <Tab.Screen name="Plan" component={PlannerScreen} options={{ title: 'Plan' }} />
             <Tab.Screen name="Timetable" component={TimetableScreen} options={{ title: 'Timetable' }} />
             <Tab.Screen name="Focus" component={FocusTimerScreen} options={{ title: 'Focus' }} />
             <Tab.Screen
@@ -25,12 +26,7 @@ export function MainTabs(): React.JSX.Element {
                 component={PracticeStack}
                 options={{ title: 'Practice', headerShown: false }}
             />
-            <Tab.Screen
-                name="Notes"
-                component={NotesStack}
-                options={{ title: 'AI notes', headerShown: false }}
-            />
-            <Tab.Screen name="Nta" component={NtaFeedScreen} options={{ title: 'NTA' }} />
+            <Tab.Screen name="More" component={MoreStack} options={{ title: 'More' }} />
         </Tab.Navigator>
     );
 }

@@ -22,9 +22,11 @@ export type OnboardingStackParamList = {
 /** Practice tab stack — PYQ practice, Timed Paper mode, Mistake journal (task 21.6). */
 export type PracticeStackParamList = {
     Pyq: undefined;
+    Mock: undefined;
     /** A paper id may be passed in to auto-start Timed Paper Mode. */
     TimedPaper: { paperId?: string } | undefined;
     MistakeJournal: undefined;
+    ExternalPaperReview: undefined;
 };
 
 /** Notes tab stack — AI notes summarizer + subscription/paywall (task 21.7). */
@@ -36,11 +38,22 @@ export type NotesStackParamList = {
 /** Main app bottom tabs (authenticated + onboarded users). */
 export type MainTabParamList = {
     Dashboard: undefined;
+    Plan: undefined;
     Timetable: undefined;
     Focus: undefined;
     Practice: undefined;
+    More: undefined;
+};
+
+/** Secondary app surfaces grouped behind the More tab to keep the primary tab bar usable. */
+export type MoreStackParamList = {
+    More: undefined;
     Notes: undefined;
-    Nta: undefined;
+    Updates: undefined;
+    Tools: undefined;
+    Library: undefined;
+    Community: undefined;
+    Analytics: undefined;
 };
 
 // ── Screen-prop helpers ─────────────────────────────────────────────────────────────────────
@@ -67,5 +80,10 @@ export type NotesStackScreenProps<T extends keyof NotesStackParamList> = Composi
 
 export type MainTabScreenProps<T extends keyof MainTabParamList> = BottomTabScreenProps<
     MainTabParamList,
+    T
+>;
+
+export type MoreStackScreenProps<T extends keyof MoreStackParamList> = NativeStackScreenProps<
+    MoreStackParamList,
     T
 >;

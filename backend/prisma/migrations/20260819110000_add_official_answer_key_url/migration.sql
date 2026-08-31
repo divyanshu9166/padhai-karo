@@ -1,0 +1,1 @@
+ALTER TABLE "PYQPaper" ADD COLUMN "answerKeyUrl" TEXT;

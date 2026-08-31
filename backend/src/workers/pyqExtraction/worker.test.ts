@@ -65,6 +65,14 @@ const JOB: PyqExtractionJobData = {
     paperId: 'paper-1',
 };
 
+const MODERN_JOB: PyqExtractionJobData = {
+    ...JOB,
+    examTrack: 'UPSC',
+    examProgram: 'UPSC_CSE',
+    examStage: 'PRELIMS',
+    paperKey: 'UPSC-CSE-PRELIMS-GS1',
+};
+
 const RESULT: VisionExtractionResult = {
     questions: [
         {
@@ -119,6 +127,18 @@ describe('processPyqExtractionJob', () => {
 
         expect(sizeAfterFirst).toBe(2);
         expect(sizeAfterSecond).toBe(2); // upserts updated in place, no duplicates
+    });
+
+    it('persists modern program/stage association metadata', async () => {
+        const harness = fakeDb({ Q1: 1 });
+        await processPyqExtractionJob(MODERN_JOB, {
+            extractor: mockExtractor({ questions: [RESULT.questions[0]] }),
+            db: harness.db,
+        });
+        const q1 = harness.store.get(deriveIdempotencyKey(MODERN_JOB.sourceImageRefs[0], 'Q1'));
+        expect(q1?.examTrack).toBe('UPSC');
+        expect(q1?.examProgram).toBe('UPSC_CSE');
+        expect(q1?.examStage).toBe('PRELIMS');
     });
 
     it('skips malformed items but still produces the valid ones', async () => {

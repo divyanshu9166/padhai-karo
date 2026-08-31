@@ -10,6 +10,9 @@
  * intact `PaywallScreen` (reachable via the Notes stack).
  */
 import React, { useCallback, useEffect, useState } from 'react';
+import { Audio } from 'expo-av';
+import * as FileSystem from 'expo-file-system/legacy';
+import * as ImagePicker from 'expo-image-picker';
 import {
   ActivityIndicator,
   Pressable,
@@ -24,13 +27,15 @@ import { ApiError } from '@/api';
 import { Screen } from '@/components';
 import { useTranslation } from '@/localization';
 import type { NotesStackScreenProps } from '@/navigation/types';
-import { OfflineBanner, useOffline } from '@/offline';
+import { OfflineBanner, generateClientId, useOffline } from '@/offline';
+import { cacheJson, readCachedJson } from '@/offline/cache';
+import { queueVoiceNote } from '@/offline/pendingVoice';
+import { queuePhotoNote } from '@/offline/pendingPhoto';
+import { uploadVoiceNote } from '@/api/upscProduct';
 
 import {
   createSummary,
-  getSubscription,
   listSummaries,
-  pickAndUploadImagePlaceholder,
   type NoteSummary,
 } from './api';
 
@@ -39,27 +44,23 @@ export function AiNotesScreen({
 }: NotesStackScreenProps<'AiNotes'>): React.JSX.Element {
   const t = useTranslation();
   // The AI summarizer requires connectivity; surface it as unavailable offline (Req 21.6).
-  const { isFeatureUnavailable } = useOffline();
+  const { isFeatureUnavailable, isOffline, enqueueRecord } = useOffline();
   const aiUnavailable = isFeatureUnavailable('AI_NOTES_SUMMARIZER');
 
   const [text, setText] = useState('');
   const [summaries, setSummaries] = useState<NoteSummary[]>([]);
-  const [remainingQuota, setRemainingQuota] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
+  const [recording, setRecording] = useState<Audio.Recording | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const refresh = useCallback(async (): Promise<void> => {
     try {
-      const [{ summaries: list }, subscription] = await Promise.all([
-        listSummaries(),
-        getSubscription().catch(() => null),
-      ]);
+      const { summaries: list } = await listSummaries();
       setSummaries(list);
-      if (subscription) {
-        setRemainingQuota(subscription.aiQuota);
-      }
+      await cacheJson('ai-note-summaries', list);
     } catch {
-      // Non-fatal: the compose box still works; surface errors on submit instead.
+      const cached = await readCachedJson<NoteSummary[]>('ai-note-summaries');
+      if (cached) setSummaries(cached.value);
     }
   }, []);
 
@@ -101,8 +102,17 @@ export function AiNotesScreen({
     setBusy(true);
     setError(null);
     try {
-      const res = await createSummary({ inputType: 'TEXT', text });
-      setRemainingQuota(res.remainingQuota);
+      if (isOffline) {
+        const sentences = text.replace(/\s+/g, ' ').split(/(?<=[.!?।])\s+/).map((item) => item.trim()).filter(Boolean).slice(0, 7);
+        const keyPoints = (sentences.length > 0 ? sentences : [text.trim()]).map((item) => item.length > 220 ? `${item.slice(0, 217)}…` : item);
+        const summary: NoteSummary = { id: 'offline-' + Date.now(), userId: 'offline', inputType: 'TEXT', summary: { title: 'Offline quick note', keyPoints, revisionCapsule: keyPoints.slice(0, 5), flashcards: keyPoints.slice(0, 5).map((point, index) => ({ question: `Recall point ${index + 1}`, answer: point })) }, createdAt: new Date().toISOString() };
+        await enqueueRecord({ clientId: generateClientId(), type: 'NOTE_SUMMARY', payload: { inputType: 'TEXT', summary: summary.summary } });
+        setSummaries((previous) => [summary, ...previous]);
+        setText('');
+        setError(null);
+        return;
+      }
+      await createSummary({ inputType: 'TEXT', text });
       setText('');
       await refresh();
     } catch (err) {
@@ -116,9 +126,18 @@ export function AiNotesScreen({
     setBusy(true);
     setError(null);
     try {
-      const imageUploadId = await pickAndUploadImagePlaceholder();
-      const res = await createSummary({ inputType: 'PHOTO', imageUploadId });
-      setRemainingQuota(res.remainingQuota);
+      const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!permission.granted) throw new Error('Photo permission is required.');
+      const picked = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, quality: 0.8, base64: false });
+      if (picked.canceled || !picked.assets[0]) return;
+      const asset = picked.assets[0];
+      if (isOffline) {
+        await queuePhotoNote(asset.uri, asset.mimeType || 'image/jpeg', asset.fileName || 'Photo note.jpg');
+        setError('Photo note saved on this device. It will be processed when you reconnect.');
+        return;
+      }
+      const base64 = await FileSystem.readAsStringAsync(asset.uri, { encoding: FileSystem.EncodingType.Base64 });
+      await createSummary({ inputType: 'PHOTO', imageData: 'data:' + (asset.mimeType || 'image/jpeg') + ';base64,' + base64, mimeType: asset.mimeType || 'image/jpeg' });
       await refresh();
     } catch (err) {
       handleSummaryError(err, 'Could not summarize the photo.');
@@ -127,16 +146,70 @@ export function AiNotesScreen({
     }
   };
 
+  const onCapturePhoto = async (): Promise<void> => {
+    setBusy(true);
+    setError(null);
+    try {
+      const permission = await ImagePicker.requestCameraPermissionsAsync();
+      if (!permission.granted) throw new Error('Camera permission is required.');
+      const captured = await ImagePicker.launchCameraAsync({ quality: 0.8, base64: false });
+      if (captured.canceled || !captured.assets[0]) return;
+      const asset = captured.assets[0];
+      if (isOffline) {
+        await queuePhotoNote(asset.uri, asset.mimeType || 'image/jpeg', asset.fileName || 'Camera note.jpg');
+        setError('Photo note saved on this device. It will be processed when you reconnect.');
+        return;
+      }
+      const base64 = await FileSystem.readAsStringAsync(asset.uri, { encoding: FileSystem.EncodingType.Base64 });
+      await createSummary({ inputType: 'PHOTO', imageData: 'data:' + (asset.mimeType || 'image/jpeg') + ';base64,' + base64, mimeType: asset.mimeType || 'image/jpeg' });
+      await refresh();
+    } catch (err) {
+      handleSummaryError(err, 'Could not process the captured photo.');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const onVoiceNote = async (): Promise<void> => {
+    setError(null);
+    if (recording) {
+      setBusy(true);
+      try {
+        await recording.stopAndUnloadAsync();
+        const uri = recording.getURI();
+        setRecording(null);
+        if (!uri) throw new Error('Recording file was not created.');
+        if (isOffline) {
+          await queueVoiceNote(uri);
+          setError('Voice note saved on this device. It will be transcribed when you reconnect.');
+          return;
+        }
+        const uploaded = await uploadVoiceNote(uri, 'Voice note.m4a', undefined, ['voice-note']);
+        const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+        await createSummary({ inputType: 'VOICE', audioData: 'data:audio/mp4;base64,' + base64, mimeType: 'audio/mp4', audioUri: uploaded.note.audioUri ?? uri, voiceNoteId: uploaded.note.id });
+        await refresh();
+      } catch (err) {
+        handleSummaryError(err, 'Could not transcribe the voice note.');
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
+    try {
+      const permission = await Audio.requestPermissionsAsync();
+      if (!permission.granted) throw new Error('Microphone permission is required.');
+      await Audio.setAudioModeAsync({ allowsRecordingIOS: true, playsInSilentModeIOS: true });
+      const created = await Audio.Recording.createAsync(Audio.RecordingOptionsPresets.HIGH_QUALITY);
+      setRecording(created.recording);
+    } catch (err) {
+      handleSummaryError(err, 'Could not start recording.');
+    }
+  };
+
   return (
     <Screen title={t('ai.title')}>
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-        <OfflineBanner note="The AI notes summarizer is unavailable offline." />
-
-        {remainingQuota !== null ? (
-          <Text style={styles.quota}>
-            {t('ai.remainingQuota')}: {remainingQuota}
-          </Text>
-        ) : null}
+        <OfflineBanner note="Offline text notes use a quick local summary. Photo and voice processing need internet." />
 
         <TextInput
           style={styles.input}
@@ -144,7 +217,7 @@ export function AiNotesScreen({
           onChangeText={setText}
           placeholder="Paste notes to summarize…"
           multiline
-          editable={!busy && !aiUnavailable}
+          editable={!busy}
         />
 
         {error ? <Text style={styles.error}>{error}</Text> : null}
@@ -152,7 +225,7 @@ export function AiNotesScreen({
         <Pressable
           style={[styles.primary, (busy || aiUnavailable) && styles.disabled]}
           onPress={() => void onSummarizeText()}
-          disabled={busy || aiUnavailable}
+          disabled={busy}
         >
           {busy ? (
             <ActivityIndicator color="#ffffff" />
@@ -164,13 +237,25 @@ export function AiNotesScreen({
         <Pressable
           style={[styles.secondary, (busy || aiUnavailable) && styles.disabled]}
           onPress={() => void onSummarizePhoto()}
-          disabled={busy || aiUnavailable}
+          disabled={busy}
         >
           <Text style={styles.secondaryText}>{t('ai.summarizePhoto')}</Text>
         </Pressable>
 
-        <Pressable style={styles.link} onPress={() => navigation.navigate('Paywall')}>
-          <Text style={styles.linkText}>{t('paywall.title')}</Text>
+        <Pressable
+          style={[styles.secondary, (busy || aiUnavailable) && styles.disabled]}
+          onPress={() => void onCapturePhoto()}
+          disabled={busy}
+        >
+          <Text style={styles.secondaryText}>Capture note with camera</Text>
+        </Pressable>
+
+        <Pressable
+          style={[styles.secondary, (busy || (!recording && aiUnavailable)) && styles.disabled]}
+          onPress={() => void onVoiceNote()}
+          disabled={busy || (!recording && isOffline === false && aiUnavailable)}
+        >
+          <Text style={styles.secondaryText}>{recording ? 'Stop and transcribe recording' : 'Record voice note'}</Text>
         </Pressable>
 
         {summaries.map((summary) => (

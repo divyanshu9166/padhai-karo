@@ -188,7 +188,7 @@ export async function createPyqAttemptHandler(
 
 /** Framework route context for the dynamic `/:id` segment. */
 export interface PyqAttemptRouteContext {
-    params: { id: string };
+    params: { id: string } | Promise<{ id: string }>;
 }
 
 /**
@@ -202,7 +202,7 @@ export async function getPyqAttemptHandler(
     auth: AuthContext,
     routeContext: PyqAttemptRouteContext,
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
     if (typeof id !== 'string' || id.trim() === '') {
         return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'An attempt id is required.', {
             field: 'id',

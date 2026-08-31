@@ -51,7 +51,10 @@ function bundleToPaper(bundle: PaperBundle): PaperResponse {
     return {
         paper: {
             id: bundle.paper.id,
-            examTrack: bundle.paper.examTrack as 'JEE' | 'NEET',
+            examTrack: bundle.paper.examTrack as 'JEE' | 'NEET' | 'UPSC' | 'SSC',
+            ...(bundle.paper.examProgram ? { examProgram: bundle.paper.examProgram as 'UPSC_CSE' | 'SSC_CGL' } : {}),
+            ...(bundle.paper.examStage ? { examStage: bundle.paper.examStage as 'PRELIMS' | 'MAINS' | 'TIER_1' | 'TIER_2' } : {}),
+            ...(bundle.paper.paperKey ? { paperKey: bundle.paper.paperKey } : {}),
             year: bundle.paper.year,
             session: bundle.paper.session ?? '',
         },
@@ -264,7 +267,7 @@ export function TimedPaperScreen({
     };
 
     return (
-        <Screen title="Timed paper">
+        <Screen title={t('practice.timedPaper')}>
             {phase.kind === 'loadingPaper' ? (
                 <Centered>
                     <ActivityIndicator size="large" color="#2563eb" />

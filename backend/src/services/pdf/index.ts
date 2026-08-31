@@ -1,0 +1,1 @@
+export { getPdfPageImageHandler } from './pdfRenderService';

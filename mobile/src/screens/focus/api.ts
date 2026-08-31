@@ -16,12 +16,20 @@ import { request } from '@/api';
 
 import type { SessionType } from './sessionTypes';
 
-/** The user's Exam_Track, mirroring the backend `ExamTrack` enum (only JEE/NEET in Phase 1). */
-export type ExamTrack = 'JEE' | 'NEET';
+/** The user's family/track, including the UPSC/SSC launch tracks. */
+export type ExamTrack = 'JEE' | 'NEET' | 'UPSC' | 'SSC';
+export type ExamProgramKey = 'UPSC_CSE' | 'SSC_CGL';
+export type ExamStage = 'PRELIMS' | 'MAINS' | 'TIER_1' | 'TIER_2';
+
+export interface ProfileExamSelection {
+    examTrack: ExamTrack;
+    examProgram?: ExamProgramKey | null;
+    examStage?: ExamStage | null;
+}
 
 /** Shape of `GET /api/profile` (we only need `examTrack` here). */
 interface ProfileResponse {
-    profile: { examTrack: ExamTrack };
+    profile: ProfileExamSelection;
 }
 
 /** A reference subject as returned by `GET /api/reference/subjects` (`key` === `Subject.id`). */
@@ -29,6 +37,8 @@ interface ReferenceSubject {
     key: string;
     name: string;
     examTrack: ExamTrack;
+    examProgram?: ExamProgramKey;
+    examStage?: ExamStage;
 }
 
 interface SubjectsResponse {
@@ -53,6 +63,7 @@ export interface RecordFocusSessionBody {
     sessionType: SessionType;
     /** Client-generated UUID for offline-idempotency-friendly recording (Req 21). */
     clientId: string;
+    abandoned?: boolean;
 }
 
 /** The recorded session echoed back by the API (only the fields the screen may surface). */
@@ -73,8 +84,11 @@ interface RecordFocusSessionResponse {
  */
 export async function fetchSubjectOptions(signal?: AbortSignal): Promise<SubjectOption[]> {
     const { profile } = await request<ProfileResponse>('/profile', { signal });
+    const selector = profile.examProgram && profile.examStage
+        ? `program=${encodeURIComponent(profile.examProgram)}&stage=${encodeURIComponent(profile.examStage)}`
+        : `track=${encodeURIComponent(profile.examTrack)}`;
     const { subjects } = await request<SubjectsResponse>(
-        `/reference/subjects?track=${encodeURIComponent(profile.examTrack)}`,
+        `/reference/subjects?${selector}`,
         { signal },
     );
     return subjects.map((subject) => ({ id: subject.key, name: subject.name }));

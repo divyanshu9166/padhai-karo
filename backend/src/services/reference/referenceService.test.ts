@@ -3,6 +3,9 @@ import { describe, expect, it } from 'vitest';
 import {
     chaptersHandler,
     examDateHandler,
+    examProgramsHandler,
+    parseExamFamilyParam,
+    parseExamProgramParam,
     parseTrackParam,
     parseYearParam,
     subjectsHandler,
@@ -51,6 +54,27 @@ describe('GET /reference/subjects', () => {
         const body = (await res.json()) as { error: { code: string; details?: unknown } };
         expect(body.error.code).toBe('VALIDATION_ERROR');
     });
+
+    it('returns stage-specific subjects for UPSC/SSC program selections', async () => {
+        const res = subjectsHandler(get('/subjects?program=UPSC_CSE&stage=PRELIMS'));
+        expect(res.status).toBe(200);
+        const body = (await res.json()) as {
+            subjects: Array<{ key: string; examTrack: string; examProgram: string; examStage: string; chapters: unknown[] }>;
+        };
+        expect(body.subjects.map((subject) => subject.key)).toEqual([
+            'UPSC-CSE-GS1',
+            'UPSC-CSE-CSAT',
+        ]);
+        expect(body.subjects.every((subject) => subject.examTrack === 'UPSC')).toBe(true);
+        expect(body.subjects.every((subject) => subject.examProgram === 'UPSC_CSE')).toBe(true);
+        expect(body.subjects.every((subject) => subject.examStage === 'PRELIMS')).toBe(true);
+        expect(body.subjects.every((subject) => subject.chapters.length > 0)).toBe(true);
+    });
+
+    it('rejects a missing or invalid stage for a modern program lookup', () => {
+        expect(subjectsHandler(get('/subjects?program=SSC_CGL')).status).toBe(422);
+        expect(subjectsHandler(get('/subjects?program=SSC_CGL&stage=PRELIMS')).status).toBe(422);
+    });
 });
 
 describe('GET /reference/chapters', () => {
@@ -80,6 +104,18 @@ describe('GET /reference/chapters', () => {
     it('rejects an invalid track with 422', async () => {
         const res = chaptersHandler(get('/chapters?track=jee')); // case-sensitive: not allowed
         expect(res.status).toBe(422);
+    });
+
+    it('returns flattened stage-specific chapters for SSC CGL Tier 1', async () => {
+        const res = chaptersHandler(get('/chapters?program=SSC_CGL&stage=TIER_1'));
+        expect(res.status).toBe(200);
+        const body = (await res.json()) as {
+            chapters: Array<{ subjectKey: string; subjectName: string; examProgram: string; examStage: string }>;
+        };
+        expect(body.chapters.length).toBeGreaterThan(0);
+        expect(body.chapters.every((chapter) => chapter.examProgram === 'SSC_CGL')).toBe(true);
+        expect(body.chapters.every((chapter) => chapter.examStage === 'TIER_1')).toBe(true);
+        expect(body.chapters.every((chapter) => chapter.subjectKey && chapter.subjectName)).toBe(true);
     });
 });
 
@@ -134,5 +170,42 @@ describe('parseTrackParam / parseYearParam helpers', () => {
         if (parsed.ok) {
             expect(parsed.year).toBe(2027);
         }
+    });
+});
+
+describe('GET /reference/exam-programs', () => {
+    it('returns both first-launch programs', async () => {
+        const res = examProgramsHandler(get('/exam-programs'));
+        expect(res.status).toBe(200);
+        const body = (await res.json()) as { programs: Array<{ key: string; family: string }> };
+        expect(body.programs.map((program) => program.key)).toEqual(['UPSC_CSE', 'SSC_CGL']);
+        expect(body.programs.map((program) => program.family)).toEqual(['UPSC', 'SSC']);
+    });
+
+    it('filters programs by family and supports a single program', async () => {
+        const familyResponse = examProgramsHandler(get('/exam-programs?family=UPSC'));
+        expect((await familyResponse.json()).programs).toHaveLength(1);
+
+        const programResponse = examProgramsHandler(get('/exam-programs?program=SSC_CGL'));
+        const programBody = (await programResponse.json()) as { programs: Array<{ key: string }> };
+        expect(programBody.programs[0].key).toBe('SSC_CGL');
+    });
+
+    it('rejects invalid or contradictory filters', async () => {
+        expect(examProgramsHandler(get('/exam-programs?family=JEE')).status).toBe(422);
+        expect(examProgramsHandler(get('/exam-programs?program=JEE')).status).toBe(422);
+        expect(examProgramsHandler(get('/exam-programs?family=UPSC&program=SSC_CGL')).status).toBe(422);
+    });
+
+    it('parses optional filters without accepting arbitrary values', () => {
+        expect(parseExamFamilyParam(new URL(`${BASE}/exam-programs`))).toEqual({ ok: true });
+        expect(parseExamFamilyParam(new URL(`${BASE}/exam-programs?family=UPSC`))).toEqual({
+            ok: true,
+            family: 'UPSC',
+        });
+        expect(parseExamProgramParam(new URL(`${BASE}/exam-programs?program=SSC_CGL`))).toEqual({
+            ok: true,
+            program: 'SSC_CGL',
+        });
     });
 });

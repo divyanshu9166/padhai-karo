@@ -13,8 +13,8 @@
 import { withAuth } from '@/lib/auth';
 import { updateChapterStatusHandler } from '@/services/chapter';
 
-type RouteContext = { params: { id: string } };
+type RouteContext = { params: { id: string } | Promise<{ id: string }> };
 
-export const PATCH = withAuth<RouteContext>((request, auth, ctx) =>
-    updateChapterStatusHandler(request, auth, ctx.params.id),
+export const PATCH = withAuth<RouteContext>(async (request, auth, ctx) =>
+    updateChapterStatusHandler(request, auth, (await ctx.params).id),
 );

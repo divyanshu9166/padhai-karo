@@ -54,6 +54,33 @@ describe('validateCreateJobInput', () => {
         expect(result.ok).toBe(true);
     });
 
+    it('accepts UPSC/SSC program-stage ingestion metadata', () => {
+        const result = validateCreateJobInput({
+            ...VALID_INPUT,
+            track: undefined,
+            program: 'UPSC_CSE',
+            stage: 'PRELIMS',
+            paperKey: 'UPSC-CSE-PRELIMS-GS1',
+        });
+        expect(result.ok).toBe(true);
+        if (result.ok) {
+            expect(result.value.track).toBe('UPSC');
+            expect(result.value.examProgram).toBe('UPSC_CSE');
+            expect(result.value.examStage).toBe('PRELIMS');
+            expect(result.value.paperKey).toBe('UPSC-CSE-PRELIMS-GS1');
+        }
+    });
+
+    it('rejects a stage that does not belong to the selected program', () => {
+        const result = validateCreateJobInput({
+            ...VALID_INPUT,
+            track: undefined,
+            program: 'SSC_CGL',
+            stage: 'PRELIMS',
+        });
+        expect(result.ok).toBe(false);
+    });
+
     it('rejects a non-array sourceImageRefs', () => {
         const result = validateCreateJobInput({ ...VALID_INPUT, sourceImageRefs: 'not-array' });
         expect(result.ok).toBe(false);
@@ -142,6 +169,25 @@ describe('assembleJobData', () => {
                 subjectId: 'subject-biology',
                 answerKeyId: 'answer-key-1',
                 paperId: 'paper-1',
+            });
+        }
+    });
+
+    it('carries modern program/stage/paper metadata into the worker job', () => {
+        const result = validateCreateJobInput({
+            ...VALID_INPUT,
+            track: undefined,
+            program: 'SSC_CGL',
+            stage: 'TIER_1',
+            paperKey: 'SSC-CGL-TIER1',
+        });
+        expect(result.ok).toBe(true);
+        if (result.ok) {
+            expect(assembleJobData(result.value)).toMatchObject({
+                examTrack: 'SSC',
+                examProgram: 'SSC_CGL',
+                examStage: 'TIER_1',
+                paperKey: 'SSC-CGL-TIER1',
             });
         }
     });

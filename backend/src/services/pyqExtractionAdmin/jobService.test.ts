@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { AuthContext } from '@/lib/auth';
 import type { PyqExtractionJobData } from '@/workers/pyqExtraction/types';
@@ -37,10 +37,13 @@ const VALID_BODY = {
 function postRequest(body: unknown): Request {
     return new Request(BASE, {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: { 'content-type': 'application/json', 'x-pyq-import-key': 'test-operator-key' },
         body: JSON.stringify(body),
     });
 }
+
+beforeEach(() => vi.stubEnv('PYQ_IMPORT_KEY', 'test-operator-key'));
+afterEach(() => vi.unstubAllEnvs());
 
 describe('createPyqExtractionJobHandler', () => {
     it('enqueues a pyq-extraction job and returns 202 { jobId }', async () => {
@@ -93,7 +96,7 @@ describe('createPyqExtractionJobHandler', () => {
 
     it('returns 422 when the body is not a JSON object', async () => {
         const queue: PyqExtractionJobQueue = { add: vi.fn(), getJob: vi.fn() };
-        const request = new Request(BASE, { method: 'POST', body: 'not json' });
+        const request = new Request(BASE, { method: 'POST', headers: { 'x-pyq-import-key': 'test-operator-key' }, body: 'not json' });
 
         const response = await createPyqExtractionJobHandler(request, authCtx(), () => queue);
 
@@ -113,7 +116,7 @@ describe('getPyqExtractionJobHandler', () => {
         };
 
         const response = await getPyqExtractionJobHandler(
-            new Request(`${BASE}/job-42`),
+            new Request(`${BASE}/job-42`, { headers: { 'x-pyq-import-key': 'test-operator-key' } }),
             authCtx(),
             { params: { id: 'job-42' } },
             () => queueWithJob(job),
@@ -134,7 +137,7 @@ describe('getPyqExtractionJobHandler', () => {
         };
 
         const response = await getPyqExtractionJobHandler(
-            new Request(`${BASE}/job-7`),
+            new Request(`${BASE}/job-7`, { headers: { 'x-pyq-import-key': 'test-operator-key' } }),
             authCtx(),
             { params: { id: 'job-7' } },
             () => queueWithJob(job),
@@ -150,7 +153,7 @@ describe('getPyqExtractionJobHandler', () => {
 
     it('returns 404 when no job exists for the id', async () => {
         const response = await getPyqExtractionJobHandler(
-            new Request(`${BASE}/missing`),
+            new Request(`${BASE}/missing`, { headers: { 'x-pyq-import-key': 'test-operator-key' } }),
             authCtx(),
             { params: { id: 'missing' } },
             () => queueWithJob(undefined),

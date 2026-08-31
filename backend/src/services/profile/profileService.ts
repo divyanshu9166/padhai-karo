@@ -136,9 +136,9 @@ export async function createFixedCommitmentHandler(
 export async function deleteFixedCommitmentHandler(
     _request: Request,
     auth: AuthContext,
-    routeContext: { params: { id: string } },
+    routeContext: { params: { id: string } | Promise<{ id: string }> },
 ): Promise<Response> {
-    const { id } = routeContext.params;
+    const { id } = await routeContext.params;
 
     const commitment = await prisma.fixedCommitment.findUnique({ where: { id } });
     if (!commitment) {

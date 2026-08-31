@@ -27,6 +27,7 @@ import type { AuthContext } from '@/lib/auth';
 import { assertOwnership } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { ErrorCode, errorResponse } from '@/lib/errors';
+import { addUtcDays, REVISION_SEQUENCE } from '@/lib/revision/sequence';
 
 import { isChapterStatus, isValidStatusTransition } from './chapterStatus';
 
@@ -134,10 +135,44 @@ export async function updateChapterStatusHandler(
         );
     }
 
-    const updated = await prisma.chapter.update({
-        where: { id: chapterId },
-        data: { status },
-        select: CHAPTER_CLIENT_SELECT,
+    const updated = await prisma.$transaction(async (tx) => {
+        const next = await tx.chapter.update({
+            where: { id: chapterId },
+            data: { status },
+            select: CHAPTER_CLIENT_SELECT,
+        });
+        if (status === 'DONE') {
+            const existingCards = await tx.revisionCard.findMany({
+                where: { userId: auth.user.id, sourceType: 'CHAPTER', sourceId: chapterId },
+                select: { id: true, revisionPhase: true },
+            });
+            const existingByPhase = new Map(existingCards.map((card) => [card.revisionPhase, card]));
+            const firstStudyAt = new Date();
+            for (const phase of REVISION_SEQUENCE.slice(1)) {
+                let existing = existingByPhase.get(phase.phase);
+                const legacy = phase.phase === 'REVISION_1' ? existingByPhase.get(null) : undefined;
+                if (!existing && legacy) {
+                    existing = await tx.revisionCard.update({ where: { id: legacy.id }, data: { title: `${next.name} · ${phase.label}`, revisionPhase: phase.phase, tags: [`+${phase.offsetDays}`, phase.label], dueAt: addUtcDays(firstStudyAt, phase.offsetDays) }, select: { id: true, revisionPhase: true } });
+                    existingByPhase.set(phase.phase, existing);
+                }
+                if (existing) continue;
+                await tx.revisionCard.create({
+                    data: {
+                        userId: auth.user.id,
+                        title: `${next.name} · ${phase.label}`,
+                        prompt: `Recall the key concepts, examples and common traps in ${next.name}.`,
+                        answer: 'Explain it without looking, then solve one related PYQ.',
+                        sourceType: 'CHAPTER',
+                        sourceId: chapterId,
+                        chapterId,
+                        revisionPhase: phase.phase,
+                        tags: [`+${phase.offsetDays}`, phase.label],
+                        dueAt: addUtcDays(firstStudyAt, phase.offsetDays),
+                    },
+                });
+            }
+        }
+        return next;
     });
 
     return Response.json({ chapter: updated });

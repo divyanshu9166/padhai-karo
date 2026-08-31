@@ -18,12 +18,12 @@ import {
     updateChapterOverrideHandler,
 } from '@/services/chapter';
 
-type RouteContext = { params: { id: string } };
+type RouteContext = { params: { id: string } | Promise<{ id: string }> };
 
-export const PATCH = withAuth<RouteContext>((request, auth, ctx) =>
-    updateChapterOverrideHandler(request, auth, ctx.params.id),
+export const PATCH = withAuth<RouteContext>(async (request, auth, ctx) =>
+    updateChapterOverrideHandler(request, auth, (await ctx.params).id),
 );
 
-export const DELETE = withAuth<RouteContext>((request, auth, ctx) =>
-    clearChapterOverrideHandler(request, auth, ctx.params.id),
+export const DELETE = withAuth<RouteContext>(async (request, auth, ctx) =>
+    clearChapterOverrideHandler(request, auth, (await ctx.params).id),
 );

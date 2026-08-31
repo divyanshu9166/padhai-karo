@@ -1,0 +1,19 @@
+{
+  "id": "upsc-cse-prelims-2024-csat",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2024,
+  "paperKey": "UPSC-CSE-PRELIMS-GS2-2024",
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-24-GENERAL-STUDIES-PAPER-II-180624.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CivilServicesPExam-2024-GeneralStudies-II-210525.pdf",
+  "requiresFinalKeyReview": true,
+  "bytes": 31301895,
+  "sha256": "35964642f9b81b8e840f1bb828c4990564bb3e67925a80e9402def69205f2fba",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2024-csat-answer-key.pdf",
+  "answerKeyBytes": 365112,
+  "answerKeySha256": "a9d7e7c6712993baf31dc528947e516e432cbdb034f7d07d636a80d9e538e9e5",
+  "downloadedAt": "2026-08-19T12:50:25.055Z",
+  "finalKeyReviewed": false
+}

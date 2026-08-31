@@ -23,6 +23,8 @@
  */
 import type { ExamTrack } from '@prisma/client';
 
+import { getExamProgram } from '@/lib/exams';
+import type { ExamProgramKey, ExamStage } from '@/lib/exams';
 import type { PyqExtractionJobData } from '@/workers/pyqExtraction/types';
 
 /** Raw, untrusted create-job input as received from the request body. */
@@ -33,6 +35,9 @@ export interface CreateJobInput {
     subjectId?: unknown;
     answerKeyId?: unknown;
     paperId?: unknown;
+    program?: unknown;
+    stage?: unknown;
+    paperKey?: unknown;
 }
 
 /** A validated, normalized create-job request ready to assemble into a job payload. */
@@ -43,6 +48,9 @@ export interface ValidatedCreateJob {
     subjectId: string;
     answerKeyId: string;
     paperId: string | null;
+    examProgram?: ExamProgramKey;
+    examStage?: ExamStage;
+    paperKey?: string;
 }
 
 /** Discriminated result of {@link validateCreateJobInput}. */
@@ -81,15 +89,47 @@ export function validateCreateJobInput(input: CreateJobInput): CreateJobValidati
         sourceImageRefs.push(ref.trim());
     }
 
-    // 2. track must be a valid Exam_Track.
-    if (typeof input.track !== 'string' || !VALID_TRACKS.has(input.track)) {
-        return {
-            ok: false,
-            message: '"track" must be one of JEE, NEET.',
-            details: { field: 'track' },
-        };
+    // 2. New PYQ jobs may target a program/stage; the legacy direct track shape remains
+    // valid for existing JEE/NEET ingestion jobs.
+    let track: ExamTrack;
+    let examProgram: ExamProgramKey | undefined;
+    let examStage: ExamStage | undefined;
+    if (input.program !== undefined || input.stage !== undefined) {
+        if (typeof input.program !== 'string' || (input.program !== 'UPSC_CSE' && input.program !== 'SSC_CGL')) {
+            return {
+                ok: false,
+                message: '"program" must be one of UPSC_CSE, SSC_CGL.',
+                details: { field: 'program' },
+            };
+        }
+        const program = getExamProgram(input.program as ExamProgramKey);
+        if (typeof input.stage !== 'string' || !(program.stages as readonly string[]).includes(input.stage)) {
+            return {
+                ok: false,
+                message: `"stage" must be one of ${program.stages.join(', ')} for ${program.shortName}.`,
+                details: { field: 'stage', allowed: program.stages },
+            };
+        }
+        if (input.track !== undefined && input.track !== program.family) {
+            return {
+                ok: false,
+                message: '"track" does not match the selected program.',
+                details: { field: 'track', expected: program.family },
+            };
+        }
+        track = program.family;
+        examProgram = input.program as ExamProgramKey;
+        examStage = input.stage as ExamStage;
+    } else {
+        if (typeof input.track !== 'string' || !VALID_TRACKS.has(input.track)) {
+            return {
+                ok: false,
+                message: '"track" must be one of JEE, NEET.',
+                details: { field: 'track' },
+            };
+        }
+        track = input.track as ExamTrack;
     }
-    const track = input.track as ExamTrack;
 
     // 3. year must be an integer.
     if (typeof input.year !== 'number' || !Number.isInteger(input.year)) {
@@ -134,9 +174,34 @@ export function validateCreateJobInput(input: CreateJobInput): CreateJobValidati
         paperId = input.paperId.trim();
     }
 
+    let paperKey: string | undefined;
+    if (input.paperKey !== undefined && input.paperKey !== null) {
+        if (typeof input.paperKey !== 'string' || input.paperKey.trim() === '') {
+            return {
+                ok: false,
+                message: '"paperKey" must be a non-blank string when provided.',
+                details: { field: 'paperKey' },
+            };
+        }
+        paperKey = input.paperKey.trim();
+    }
+
+    const value: ValidatedCreateJob = {
+        sourceImageRefs,
+        track,
+        year,
+        subjectId,
+        answerKeyId,
+        paperId,
+    };
+    if (examProgram && examStage) {
+        value.examProgram = examProgram;
+        value.examStage = examStage;
+    }
+    if (paperKey) value.paperKey = paperKey;
     return {
         ok: true,
-        value: { sourceImageRefs, track, year, subjectId, answerKeyId, paperId },
+        value,
     };
 }
 
@@ -154,5 +219,8 @@ export function assembleJobData(value: ValidatedCreateJob): PyqExtractionJobData
         subjectId: value.subjectId,
         answerKeyId: value.answerKeyId,
         paperId: value.paperId,
+        ...(value.examProgram ? { examProgram: value.examProgram } : {}),
+        ...(value.examStage ? { examStage: value.examStage } : {}),
+        ...(value.paperKey ? { paperKey: value.paperKey } : {}),
     };
 }

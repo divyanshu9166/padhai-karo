@@ -67,6 +67,16 @@ export interface MaterializeChapter {
     taskDifficulty: TaskDifficulty;
 }
 
+/** A compact revision task created from the cards due during the generated week. */
+export interface MaterializeRevision {
+    chapterId: string | null;
+    subjectId: string | null;
+    /** Keep a revision block short enough for active recall (20–30 minutes). */
+    durationMin: number;
+    revisionNumber: number;
+    revisionLabel?: string;
+}
+
 /** All inputs the materializer needs to produce concrete blocks. */
 export interface MaterializeInput {
     /** The seven UTC-midnight dates of the target week (e.g. {@link weekDatesFromStart}). */
@@ -79,6 +89,8 @@ export interface MaterializeInput {
     peakWindows: ReadonlyArray<PeakFocusWindow>;
     /** Per-chapter hour allocations (STEPS 3–5) with difficulty. */
     allocations: ReadonlyArray<MaterializeChapter>;
+    /** Due-card work is scheduled before new coverage and never consumes buffer time. */
+    revisions?: ReadonlyArray<MaterializeRevision>;
     /** Reserved buffer hours `B` (STEP 3, Req 15.1). */
     bufferHours: number;
     /** Assignable hours `A = W - B` (STEP 3); drives the buffer-to-study ratio. */
@@ -106,6 +118,9 @@ export interface MaterializedBlock {
     energyLevel: EnergyLevel;
     /** True for a HARD task that could not be placed entirely in a peak window (Req 13.4). */
     scheduledOutsidePeak: boolean;
+    sessionType?: 'NEW_CHAPTER' | 'PRACTICE_PROBLEMS' | 'REVISION' | 'MOCK_ANALYSIS' | 'FORMULA_DRILL';
+    revisionNumber?: number | null;
+    revisionLabel?: string | null;
 }
 
 /** The materialized timetable: study blocks plus reserved buffer slots, each `startTime`-ordered. */
@@ -129,6 +144,18 @@ interface ChapterTask extends InterleaveUnit {
     difficulty: TaskDifficulty;
     slotCount: number;
     durationMinutes: number;
+}
+
+interface ScheduledTask extends InterleaveUnit {
+    id: string;
+    chapterId: string | null;
+    subjectId: string;
+    difficulty: TaskDifficulty;
+    slotCount: number;
+    durationMinutes: number;
+    sessionType: NonNullable<MaterializedBlock['sessionType']>;
+    revisionNumber: number | null;
+    revisionLabel: string | null;
 }
 
 /** Stable key uniquely identifying a slot within a single week (`dayOfWeek` is unique there). */
@@ -198,6 +225,26 @@ function buildTasks(allocations: ReadonlyArray<MaterializeChapter>): ChapterTask
     return tasks;
 }
 
+function buildRevisionTasks(revisions: ReadonlyArray<MaterializeRevision>): ScheduledTask[] {
+    return revisions.map((revision, index) => {
+        const durationMin = Math.min(30, Math.max(20, Math.round(revision.durationMin / 5) * 5));
+        const slotCount = Math.max(1, Math.ceil(durationMin / SLOT_MINUTES));
+        return {
+            id: `revision:${revision.chapterId ?? 'general'}:${revision.revisionNumber}:${index}`,
+            chapterId: revision.chapterId,
+            // A synthetic subject keeps the energy slotter/interleaver types strict. It is
+            // converted back to null only when the persisted block is built.
+            subjectId: revision.subjectId ?? '__REVISION__',
+            difficulty: 'LIGHT',
+            slotCount,
+            durationMinutes: slotCount * SLOT_MINUTES,
+            sessionType: 'REVISION',
+            revisionNumber: Math.max(1, Math.floor(revision.revisionNumber)),
+            revisionLabel: revision.revisionLabel ?? `Revision ${Math.max(1, Math.floor(revision.revisionNumber))}`,
+        };
+    });
+}
+
 /**
  * Split the available capacity between study slots and buffer slots, keeping buffer
  * proportional to the study time actually scheduled (Req 15.1). Returns how many leading
@@ -257,6 +304,9 @@ function runToBlock(
         chapterId: string | null;
         isBuffer: boolean;
         difficulty: TaskDifficulty | null;
+        sessionType?: NonNullable<MaterializedBlock['sessionType']>;
+        revisionNumber?: number | null;
+        revisionLabel?: string | null;
     },
 ): MaterializedBlock {
     const allHigh = run.every((slot) => slot.energyLevel === 'HIGH');
@@ -270,6 +320,9 @@ function runToBlock(
         energyLevel,
         // A HARD task occupying any non-HIGH slot was scheduled outside its peak window (Req 13.4).
         scheduledOutsidePeak: options.difficulty === 'HARD' && !allHigh,
+        sessionType: options.sessionType ?? (options.isBuffer ? 'REVISION' : 'NEW_CHAPTER'),
+        revisionNumber: options.isBuffer ? null : options.revisionNumber ?? 0,
+        revisionLabel: options.isBuffer ? null : options.revisionLabel ?? null,
     };
 }
 
@@ -300,8 +353,9 @@ export function materializeTimetable(input: MaterializeInput): MaterializeResult
     );
     const capacity = concreteSlots.length;
 
-    const tasks = buildTasks(input.allocations);
-    const studyDemandSlots = tasks.reduce((sum, task) => sum + task.slotCount, 0);
+    const coverageTasks = buildTasks(input.allocations);
+    const revisionTasks = buildRevisionTasks(input.revisions ?? []);
+    const studyDemandSlots = [...revisionTasks, ...coverageTasks].reduce((sum, task) => sum + task.slotCount, 0);
 
     const { studySlots, bufferSlots } = splitStudyAndBuffer(
         studyDemandSlots,
@@ -314,10 +368,22 @@ export function materializeTimetable(input: MaterializeInput): MaterializeResult
     const bufferPool = concreteSlots.slice(studySlots, studySlots + bufferSlots);
 
     // STEP 8: interleave so no subject runs long; priority is a deterministic tie-break.
-    const interleaved = interleaveBlocks(tasks, { subjectPriority: [...input.subjectPriority] });
-    const taskMeta = new Map(
-        interleaved.map((task) => [task.chapterId, task] as const),
-    );
+    const interleavedCoverage = interleaveBlocks(coverageTasks, { subjectPriority: [...input.subjectPriority] });
+    // Due revision is intentionally first. When free time is scarce, the system preserves
+    // memory retention work before adding more new coverage.
+    const scheduledTasks: ScheduledTask[] = [
+        ...revisionTasks,
+        ...interleavedCoverage.map((task) => ({
+            ...task,
+            id: task.chapterId,
+            chapterId: task.chapterId,
+            subjectId: task.subjectId,
+            sessionType: 'NEW_CHAPTER' as const,
+            revisionNumber: null,
+            revisionLabel: null,
+        })),
+    ];
+    const taskMeta = new Map(scheduledTasks.map((task) => [task.id, task] as const));
 
     // STEPS 6–7: energy-tag the study-pool slots and greedily place tasks.
     const energySlots: EnergySlot[] = studyPool.map((slot) => ({
@@ -328,8 +394,8 @@ export function materializeTimetable(input: MaterializeInput): MaterializeResult
     const concreteByKey = new Map(
         studyPool.map((slot) => [slotKey(slot.dayOfWeek, slot.startMinute), slot] as const),
     );
-    const studyTasks: StudyTask[] = interleaved.map((task) => ({
-        id: task.chapterId,
+    const studyTasks: StudyTask[] = scheduledTasks.map((task) => ({
+        id: task.id,
         difficulty: task.difficulty,
         slotCount: task.slotCount,
     }));
@@ -348,10 +414,13 @@ export function materializeTimetable(input: MaterializeInput): MaterializeResult
         for (const run of groupContiguous(concrete)) {
             studyBlocks.push(
                 runToBlock(run, {
-                    subjectId: meta.subjectId,
+                    subjectId: meta.subjectId === '__REVISION__' ? null : meta.subjectId,
                     chapterId: meta.chapterId,
                     isBuffer: false,
                     difficulty: meta.difficulty,
+                    sessionType: meta.sessionType,
+                    revisionNumber: meta.revisionNumber,
+                    revisionLabel: meta.revisionLabel,
                 }),
             );
         }

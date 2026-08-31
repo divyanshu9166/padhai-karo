@@ -45,12 +45,15 @@ import {
 import { computeEfficiencyScore } from '@/services/audit/efficiencyScore';
 import { startOfUtcDay } from '@/services/dashboard';
 import type { PeakFocusWindow } from '@/services/onboarding/validation';
+import { computeCountdownDays, determinePlanningPhase, type PlanningPhase } from '@/lib/planning';
+import { REVISION_SEQUENCE } from '@/lib/revision/sequence';
 
 import {
     assertNoOverlap,
     materializeTimetable,
     type MaterializeChapter,
     type MaterializedBlock,
+    type MaterializeRevision,
 } from './materialize';
 
 /** Discriminated result of parsing the `weekStart` input. */
@@ -86,6 +89,47 @@ function parseWeekStart(raw: unknown, source: 'body' | 'query'): WeekStartParse 
         };
     }
     return { ok: true, weekStart: startOfUtcDay(date) };
+}
+
+function subtractMinutes(hhmm: string, minutes: number): string {
+    const match = /^(\d{2}):(\d{2})$/.exec(hhmm);
+    if (!match) return '23:00';
+    const total = Math.max(0, Number(match[1]) * 60 + Number(match[2]) - Math.max(0, minutes));
+    return String(Math.floor(total / 60)).padStart(2, '0') + ':' + String(total % 60).padStart(2, '0');
+}
+
+function minutes(hhmm: string): number | null {
+    const match = /^(\d{2}):(\d{2})$/.exec(hhmm);
+    if (!match) return null;
+    const hour = Number(match[1]);
+    const minute = Number(match[2]);
+    return hour >= 24 || minute >= 60 ? null : hour * 60 + minute;
+}
+
+function buildRevisionAllocations(
+    cards: ReadonlyArray<{ id: string; sourceId: string | null; chapterId: string | null; repetitions: number; revisionPhase: string | null }>,
+    chapters: ReadonlyArray<{ id: string; subjectId: string; status: string }>,
+    phase: PlanningPhase,
+): MaterializeRevision[] {
+    const chapterById = new Map(chapters.map((chapter) => [chapter.id, chapter]));
+    const result: MaterializeRevision[] = [];
+    const dueChapterIds = new Set<string>();
+    for (const card of cards) {
+        const chapter = card.chapterId ? chapterById.get(card.chapterId) : card.sourceId ? chapterById.get(card.sourceId) : undefined;
+        if (chapter) {
+            dueChapterIds.add(chapter.id);
+            const phase = REVISION_SEQUENCE.find((item) => item.phase === card.revisionPhase);
+            result.push({ chapterId: chapter.id, subjectId: chapter.subjectId, durationMin: 25, revisionNumber: phase ? Math.max(1, phase.offsetDays === 1 ? 1 : phase.offsetDays === 3 ? 2 : phase.offsetDays === 7 ? 3 : 4) : card.repetitions + 1, revisionLabel: phase?.label ?? `Revision ${card.repetitions + 1}` });
+        } else {
+            result.push({ chapterId: null, subjectId: null, durationMin: 25, revisionNumber: card.repetitions + 1, revisionLabel: `Revision ${card.repetitions + 1}` });
+        }
+    }
+    if (phase === 'REVISION' || phase === 'FINAL_SPRINT') {
+        for (const chapter of chapters.filter((item) => (item.status === 'DONE' || item.status === 'REVISED') && !dueChapterIds.has(item.id)).slice(0, 14)) {
+            result.push({ chapterId: chapter.id, subjectId: chapter.subjectId, durationMin: 20, revisionNumber: 1, revisionLabel: 'Revision 1' });
+        }
+    }
+    return result;
 }
 
 /** Safely parse a JSON request body, returning `undefined` when absent/invalid. */
@@ -158,11 +202,15 @@ export async function generateTimetableHandler(
     const [
         commitmentRows,
         chapterRows,
+        allChapterRows,
         eventRows,
         auditRows,
         subjectRows,
         allocationPreference,
         suggestedSnapshot,
+        sleepSchedule,
+        dueRevisionCards,
+        examDates,
     ] = await Promise.all([
         prisma.fixedCommitment.findMany({
             where: { userId },
@@ -170,6 +218,23 @@ export async function generateTimetableHandler(
         }),
         prisma.chapter.findMany({
             where: { userId, status: { in: ['NOT_STARTED', 'IN_PROGRESS'] } },
+            select: {
+                id: true,
+                subjectId: true,
+                status: true,
+                weightage: true,
+                weightageOverride: true,
+                timeAllocationOverride: true,
+                estimatedStudyHours: true,
+                estHoursOverride: true,
+                taskDifficulty: true,
+            },
+        }),
+        // Keep the legacy pending-only query as the allocator's source, while the
+        // complete chapter set is used only to materialize revision work for chapters
+        // that are already DONE/REVISED during the final phases.
+        prisma.chapter.findMany({
+            where: { userId },
             select: {
                 id: true,
                 subjectId: true,
@@ -198,9 +263,24 @@ export async function generateTimetableHandler(
         // Phase 2 (additive, read-only): the user's Effective_Allocation_Mode and the most
         // recently computed Suggested_Time_Allocation snapshot. Both are optional and default
         // to the unchanged Phase 1 behavior when absent (Req 7.6, 7.7).
-        prisma.allocationPreference.findUnique({ where: { userId } }),
-        prisma.suggestedAllocationSnapshot.findUnique({ where: { userId } }),
+        prisma.allocationPreference?.findUnique({ where: { userId } }) ?? Promise.resolve(null),
+        prisma.suggestedAllocationSnapshot?.findUnique({ where: { userId } }) ?? Promise.resolve(null),
+        prisma.sleepSchedule?.findUnique({ where: { userId } }) ?? Promise.resolve(null),
+        prisma.revisionCard?.findMany({
+            where: { userId, suspended: false, dueAt: { lte: weekEnd } },
+            select: { id: true, sourceId: true, chapterId: true, repetitions: true, revisionPhase: true },
+        }) ?? Promise.resolve([]),
+        prisma.examDate?.findMany({
+            where: { userId, examDate: { gte: weekStart } },
+            orderBy: { examDate: 'asc' },
+            take: 1,
+            select: { examDate: true },
+        }) ?? Promise.resolve([]),
     ]);
+
+    const pendingChapterRows = chapterRows.filter((row) => row.status === 'NOT_STARTED' || row.status === 'IN_PROGRESS');
+    const nearestExamDate = examDates[0]?.examDate ?? profile.targetExamDate;
+    const planningPhase = determinePlanningPhase(computeCountdownDays(nearestExamDate, weekStart));
 
     // STEP 1 — free-time grid (Req 3.1).
     const commitments: GridCommitment[] = commitmentRows.map((row) => ({
@@ -208,7 +288,17 @@ export async function generateTimetableHandler(
         startTime: row.startTime,
         endTime: row.endTime,
     }));
-    const freeGrid = computeFreeTimeGrid(commitments);
+    const activeSleepSchedule = sleepSchedule?.enabled === false ? null : sleepSchedule;
+    const sleepEnd = activeSleepSchedule ? subtractMinutes(activeSleepSchedule.bedtime, activeSleepSchedule.windDownMin) : undefined;
+    const wakeMinutes = activeSleepSchedule ? minutes(activeSleepSchedule.wakeTime) : null;
+    const endMinutes = sleepEnd ? minutes(sleepEnd) : null;
+    // A bedtime after midnight belongs to the following calendar day. The grid is a
+    // single-day interval, so schedule from wake time until midnight in that case; this
+    // is conservative and never creates a block inside the user's sleep window.
+    const wakingWindow = activeSleepSchedule && sleepEnd && wakeMinutes !== null && endMinutes !== null
+        ? { start: activeSleepSchedule.wakeTime, end: endMinutes > wakeMinutes ? sleepEnd : '23:59' }
+        : undefined;
+    const freeGrid = computeFreeTimeGrid(commitments, wakingWindow);
 
     // STEP 2 — weekly budget reshaped by calendar events (Req 16).
     const events: BudgetCalendarEvent[] = eventRows.map((row) => ({
@@ -220,7 +310,7 @@ export async function generateTimetableHandler(
 
     // STEPS 3–5 — buffer + weightage allocation + efficiency scaling (Req 11, 12.3, 14.5, 15.1).
     const efficiencyScore = computeEfficiencyScore(auditRows);
-    const allocatorChapters: AllocatorChapter[] = chapterRows.map((row) => ({
+    const allocatorChapters: AllocatorChapter[] = pendingChapterRows.map((row) => ({
         id: row.id,
         subjectId: row.subjectId,
         status: row.status,
@@ -261,14 +351,16 @@ export async function generateTimetableHandler(
 
     // STEP 9 — materialize concrete blocks (+ STEPS 6–8 inside, Req 13, 17).
     const difficultyByChapter = new Map(
-        chapterRows.map((row) => [row.id, row.taskDifficulty] as const),
+        pendingChapterRows.map((row) => [row.id, row.taskDifficulty] as const),
     );
+    const statusByChapter = new Map(allChapterRows.map((row) => [row.id, row.status] as const));
     const materializeChapters: MaterializeChapter[] = allocation.allocations.map((entry) => ({
         chapterId: entry.chapterId,
         subjectId: entry.subjectId,
         allocatedHours: entry.allocatedHours,
         taskDifficulty: difficultyByChapter.get(entry.chapterId) ?? 'LIGHT',
     }));
+    const revisions = buildRevisionAllocations(dueRevisionCards, allChapterRows, planningPhase);
 
     const { studyBlocks, bufferSlots } = materializeTimetable({
         weekDates,
@@ -276,10 +368,20 @@ export async function generateTimetableHandler(
         freeGrid,
         peakWindows,
         allocations: materializeChapters,
+        revisions,
         bufferHours: allocation.bufferHours,
         assignableHours: allocation.assignableHours,
         subjectPriority: buildSubjectPriority(track, subjectRows),
     });
+    // The materializer already stamps session type/revision number. Keep this invariant
+    // explicit for any legacy block returned by a custom materializer.
+    for (const block of studyBlocks) {
+        if (block.chapterId && statusByChapter.get(block.chapterId) === 'REVISED' && block.sessionType === 'NEW_CHAPTER') {
+            block.sessionType = 'REVISION';
+            block.revisionNumber = 1;
+            block.revisionLabel = 'Revision 1';
+        }
+    }
 
     // Re-assert the core invariant before persisting (Req 3.1/3.3): no block overlaps another
     // or a fixed commitment (the latter holds because every block sits in a free-grid slot).

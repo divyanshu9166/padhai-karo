@@ -1,7 +1,7 @@
 /**
  * Onboarding screen (task 21.2; Req 2.1, 2.2, 2.3, 2.6, 2.8, 2.9).
  *
- * Collects exam track, target year, current class, fixed commitments, and peak focus windows,
+ * Collects exam program/stage, target year, study status, fixed commitments, and peak focus windows,
  * pre-validates with the pure {@link validateOnboarding} helper (Req 2.2/2.3), then submits to
  * `POST /onboarding` (the server re-validates and loads the track's reference chapters, Req 2.4).
  * On success it calls `useAuth().refresh()` so `/auth/me` reports `profileComplete: true` and
@@ -24,12 +24,14 @@ import { ApiError } from '@/api';
 import { Screen } from '@/components';
 import { useTranslation } from '@/localization';
 import { useAuth } from '@/state';
+import { saveSleepSchedule } from '@/api/upscProduct';
 
 import { FixedCommitmentsEditor } from './FixedCommitmentsEditor';
 import { Chip, ChipRow, Section } from './OnboardingControls';
 import {
     submitOnboarding,
-    type ExamTrack,
+    type ExamProgramKey,
+    type ExamStage,
     type FixedCommitmentInput,
     type PeakFocusWindow,
 } from './onboardingApi';
@@ -41,17 +43,32 @@ const PEAK_WINDOWS: readonly { value: PeakFocusWindow; labelKey: string }[] = [
     { value: 'NIGHT', labelKey: 'onboarding.peakNight' },
 ];
 
+const PROGRAM_STAGES: Record<ExamProgramKey, readonly { value: ExamStage; labelKey: string }[]> = {
+    UPSC_CSE: [
+        { value: 'PRELIMS', labelKey: 'onboarding.stagePrelims' },
+        { value: 'MAINS', labelKey: 'onboarding.stageMains' },
+    ],
+    SSC_CGL: [
+        { value: 'TIER_1', labelKey: 'onboarding.stageTier1' },
+        { value: 'TIER_2', labelKey: 'onboarding.stageTier2' },
+    ],
+};
+
 export function OnboardingScreen(): React.JSX.Element {
     const t = useTranslation();
     const { refresh } = useAuth();
 
     const currentYear = useMemo(() => new Date().getUTCFullYear(), []);
 
-    const [examTrack, setExamTrack] = useState<ExamTrack>('JEE');
+    const [examProgram, setExamProgram] = useState<ExamProgramKey>('UPSC_CSE');
+    const [examStage, setExamStage] = useState<ExamStage>('PRELIMS');
     const [targetYearText, setTargetYearText] = useState(String(currentYear + 1));
+    const [examDate, setExamDate] = useState(`${currentYear + 1}-06-01`);
     const [currentClass, setCurrentClass] = useState('');
     const [peakWindows, setPeakWindows] = useState<PeakFocusWindow[]>([]);
     const [commitments, setCommitments] = useState<FixedCommitmentInput[]>([]);
+    const [bedtime, setBedtime] = useState('23:00');
+    const [wakeTime, setWakeTime] = useState('07:00');
 
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -74,8 +91,10 @@ export function OnboardingScreen(): React.JSX.Element {
         setError(null);
         const targetYear = Number(targetYearText.trim());
         const payload = {
-            examTrack,
+            examProgram,
+            examStage,
             targetYear: Number.isInteger(targetYear) ? targetYear : Number.NaN,
+            examDate,
             currentClass,
             fixedCommitments: commitments,
             peakFocusWindows: peakWindows,
@@ -89,6 +108,7 @@ export function OnboardingScreen(): React.JSX.Element {
 
         setSubmitting(true);
         try {
+            await saveSleepSchedule({ bedtime, wakeTime, windDownMin: 30 });
             await submitOnboarding(payload);
             // Advance the onboarding gate: /auth/me now reports profileComplete: true (Req 2.6).
             await refresh();
@@ -105,15 +125,35 @@ export function OnboardingScreen(): React.JSX.Element {
                 <Section title={t('onboarding.selectExam')}>
                     <ChipRow>
                         <Chip
-                            label={t('onboarding.examJee')}
-                            selected={examTrack === 'JEE'}
-                            onPress={() => setExamTrack('JEE')}
+                            label={t('onboarding.examUpsc')}
+                            selected={examProgram === 'UPSC_CSE'}
+                            onPress={() => {
+                                setExamProgram('UPSC_CSE');
+                                setExamStage('PRELIMS');
+                            }}
                         />
                         <Chip
-                            label={t('onboarding.examNeet')}
-                            selected={examTrack === 'NEET'}
-                            onPress={() => setExamTrack('NEET')}
+                            label={t('onboarding.examSsc')}
+                            selected={examProgram === 'SSC_CGL'}
+                            onPress={() => {
+                                setExamProgram('SSC_CGL');
+                                setExamStage('TIER_1');
+                            }}
                         />
+                    </ChipRow>
+                </Section>
+
+                <Section title={t('onboarding.selectStage')}>
+                    <ChipRow>
+                        {PROGRAM_STAGES[examProgram].map((stage) => (
+                            <Chip
+                                key={stage.value}
+                                label={t(stage.labelKey)}
+                                selected={examStage === stage.value}
+                                onPress={() => setExamStage(stage.value)}
+                                disabled={submitting}
+                            />
+                        ))}
                     </ChipRow>
                 </Section>
 
@@ -128,12 +168,12 @@ export function OnboardingScreen(): React.JSX.Element {
                     />
                 </Section>
 
-                <Section title={t('onboarding.currentClass')}>
+                <Section title={t('onboarding.studyStatus')}>
                     <TextInput
                         style={styles.input}
                         value={currentClass}
                         onChangeText={setCurrentClass}
-                        placeholder={t('onboarding.currentClassPlaceholder')}
+                        placeholder={t('onboarding.studyStatusPlaceholder')}
                         editable={!submitting}
                     />
                 </Section>
@@ -144,6 +184,15 @@ export function OnboardingScreen(): React.JSX.Element {
                     onRemove={removeCommitment}
                     disabled={submitting}
                 />
+
+                <Section title={t('onboarding.sleepSchedule')} caption={t('onboarding.sleepScheduleCaption')}>
+                    <TextInput style={styles.input} value={bedtime} onChangeText={setBedtime} placeholder={t('onboarding.bedtimePlaceholder')} editable={!submitting} />
+                    <TextInput style={styles.input} value={wakeTime} onChangeText={setWakeTime} placeholder={t('onboarding.wakeTimePlaceholder')} editable={!submitting} />
+                </Section>
+
+                <Section title={t('onboarding.exactExamDate')} caption={t('onboarding.exactExamDateCaption')}>
+                    <TextInput style={styles.input} value={examDate} onChangeText={setExamDate} placeholder={t('onboarding.examDatePlaceholder')} editable={!submitting} autoCapitalize="none" />
+                </Section>
 
                 <Section
                     title={t('onboarding.peakFocusWindows')}

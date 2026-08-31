@@ -6,47 +6,36 @@
  * exercised by the unit tests — tests inject a mock {@link VisionExtractor} instead, so no
  * API key is read and no HTTP request is made during the suite.
  *
- * The provider key is read lazily from the server-side config (`config.ai.apiKey`) so
- * importing this module never requires the secret to be present (e.g. during `next build`
- * or when only the pure logic is loaded). Wiring the actual HTTP request and the
- * model-specific prompt/response parsing is a deployment concern handled where the worker
- * process is started; the request body shape returned by the model is then validated by
- * the untrusted-input pipeline in `extraction.ts` before anything is stored.
+ * The provider key is read lazily from server-side environment variables so importing this
+ * module never requires the secret to be present (e.g. during `next build`). The provider
+ * response is still untrusted and is validated by the extraction pipeline before anything is
+ * stored.
  */
-import { getConfig } from '@/lib/config';
-
+import { extractQuestionsWithVision, loadVisionSource } from '@/services/ai/liveProvider';
 import type { VisionExtractionInput, VisionExtractionResult, VisionExtractor } from './types';
 
 /**
  * A {@link VisionExtractor} backed by the configured vision-capable AI provider.
  *
  * The provider key is resolved on first use rather than at construction so this class can
- * be referenced without the secret being set. The concrete HTTP call is intentionally left
- * as the single integration point to be wired at deploy time; until then it fails loudly
+ * be referenced without the secret being set. If the provider is unavailable it fails loudly
  * rather than silently returning fabricated data, since fabricated questions must never
  * enter the practice corpus.
  */
 export class ProviderVisionExtractor implements VisionExtractor {
-    private apiKey: string | undefined;
-
-    /** Resolve (and memoize) the provider API key from server-side config. */
-    private getApiKey(): string {
-        if (this.apiKey === undefined) {
-            this.apiKey = getConfig().ai.apiKey;
-        }
-        return this.apiKey;
-    }
-
     async extractQuestionsFromImage(
         input: VisionExtractionInput,
     ): Promise<VisionExtractionResult> {
-        // Touch the key so misconfiguration surfaces here rather than mid-parse. The actual
-        // provider HTTP request + model-specific response mapping is wired at deployment.
-        this.getApiKey();
-        void input;
-        throw new Error(
-            'ProviderVisionExtractor.extractQuestionsFromImage is not wired to a live provider ' +
-            'in this build. Inject a VisionExtractor implementation when starting the worker.',
-        );
+        if (!process.env.AI_PROVIDER_API_KEY?.trim()) throw new Error('AI vision provider is not configured.');
+        const source = await loadVisionSource(input.sourceImageRef);
+        const result = await extractQuestionsWithVision(source.dataUrl, source.mimeType, {
+            examTrack: input.examTrack,
+            year: input.year,
+            subjectId: input.subjectId,
+        });
+        if (!result || typeof result !== 'object' || !Array.isArray((result as { questions?: unknown }).questions)) {
+            throw new Error('Vision provider returned no questions array.');
+        }
+        return result as VisionExtractionResult;
     }
 }

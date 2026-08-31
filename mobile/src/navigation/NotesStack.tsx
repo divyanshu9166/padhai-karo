@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator<NotesStackParamList>();
 export function NotesStack(): React.JSX.Element {
     return (
         <Stack.Navigator initialRouteName="AiNotes">
-            <Stack.Screen name="AiNotes" component={AiNotesScreen} options={{ title: 'AI notes' }} />
+            <Stack.Screen name="AiNotes" component={AiNotesScreen} options={{ title: 'AI notes', headerShown: false }} />
             <Stack.Screen name="Paywall" component={PaywallScreen} options={{ title: 'Upgrade' }} />
         </Stack.Navigator>
     );

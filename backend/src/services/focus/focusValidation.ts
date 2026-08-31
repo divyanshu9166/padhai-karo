@@ -40,6 +40,7 @@ export interface FocusSessionInput {
     focusedDurationMin?: unknown;
     sessionType?: unknown;
     clientId?: unknown;
+    abandoned?: unknown;
 }
 
 /** A validated, normalized focus session ready to persist. */
@@ -50,6 +51,7 @@ export interface ValidatedFocusSession {
     focusedDurationMin: number;
     sessionType: SessionType;
     clientId: string | null;
+    abandoned: boolean;
 }
 
 /** Discriminated result of {@link validateFocusSessionInput}. */
@@ -150,10 +152,11 @@ export function validateFocusSessionInput(input: FocusSessionInput): FocusSessio
 
     // 3. Focused duration must be a positive integer (Req 4.5: greater than zero).
     const { focusedDurationMin } = input;
+    const abandoned = input.abandoned === true;
     if (
         typeof focusedDurationMin !== 'number' ||
         !Number.isInteger(focusedDurationMin) ||
-        focusedDurationMin <= 0
+        (abandoned ? focusedDurationMin < 0 : focusedDurationMin <= 0)
     ) {
         return {
             ok: false,
@@ -198,6 +201,7 @@ export function validateFocusSessionInput(input: FocusSessionInput): FocusSessio
             focusedDurationMin,
             sessionType: sessionTypeResult.sessionType,
             clientId,
+            abandoned,
         },
     };
 }
