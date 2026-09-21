@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client';
 import type { AuthContext } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { ErrorCode, errorResponse } from '@/lib/errors';
-import { liveProviderConfigured, summarizeImageWithGemini, summarizeWithGemini, transcribeAudio } from './liveProvider';
+import { configuredProviderName, liveProviderConfigured, summarizeImageWithGemini, summarizeWithGemini, transcribeAudio } from './liveProvider';
 
 function extractiveSummary(text: string, title?: string): { title: string; keyPoints: string[]; revisionCapsule: string[]; flashcards: { question: string; answer: string }[] } {
     const sentences = text.replace(/\s+/g, ' ').split(/(?<=[.!?।])\s+/).map((sentence) => sentence.trim()).filter(Boolean);
@@ -41,7 +41,7 @@ export async function createOpenNoteHandler(request: Request, auth: AuthContext)
             if (!liveProviderConfigured()) return errorResponse(503, ErrorCode.AI_PROVIDER_UNAVAILABLE, 'Configure the AI provider before processing a photo.');
             const result = await summarizeImageWithGemini(input.imageData, typeof input.mimeType === 'string' ? input.mimeType : 'image/jpeg');
             const summary = { ...result, title: typeof input.title === 'string' && input.title.trim() ? input.title.trim() : result.title };
-            return persistOpenNote(auth.user.id, inputType, summary, 'GEMINI_VISION');
+            return persistOpenNote(auth.user.id, inputType, summary, `${configuredProviderName()}_VISION`);
         }
         if (inputType === 'VOICE' && typeof input.audioData === 'string' && input.audioData.trim()) {
             text = await transcribeAudio(input.audioData, typeof input.mimeType === 'string' ? input.mimeType : 'audio/mp4');
@@ -51,7 +51,7 @@ export async function createOpenNoteHandler(request: Request, auth: AuthContext)
             ? { ...(await summarizeWithGemini(text)), title: typeof input.title === 'string' && input.title.trim() ? input.title.trim() : undefined }
             : extractiveSummary(text, typeof input.title === 'string' ? input.title : undefined);
         const voiceMeta = inputType === 'VOICE' ? await autoTagVoice(auth.user.id, text) : undefined;
-        return persistOpenNote(auth.user.id, inputType, summary, liveProviderConfigured() && inputType === 'TEXT' ? 'GEMINI_TEXT' : 'LOCAL_EXTRACTIVE', text, typeof input.audioUri === 'string' ? input.audioUri : undefined, voiceMeta, typeof input.voiceNoteId === 'string' ? input.voiceNoteId : undefined);
+        return persistOpenNote(auth.user.id, inputType, summary, liveProviderConfigured() && inputType === 'TEXT' ? `${configuredProviderName()}_TEXT` : 'LOCAL_EXTRACTIVE', text, typeof input.audioUri === 'string' ? input.audioUri : undefined, voiceMeta, typeof input.voiceNoteId === 'string' ? input.voiceNoteId : undefined);
     } catch (error) {
         if (error instanceof AiQuotaRaceError) return errorResponse(429, ErrorCode.QUOTA_EXCEEDED, 'Your AI usage quota has been exhausted.');
         return errorResponse(503, ErrorCode.AI_PROVIDER_UNAVAILABLE, 'The AI provider is currently unavailable. Please retry.');

@@ -6,6 +6,7 @@ import { ErrorCode, errorResponse } from '@/lib/errors';
 
 import { analyseExternalPaper } from './externalPaperAnalysis';
 import { validateExternalPaperReviewInput } from './externalPaperReviewValidation';
+import { analysePaperDocumentText } from './paperDocumentInsights';
 
 async function body(request: Request): Promise<unknown> {
     try { return await request.json(); } catch { return null; }
@@ -19,18 +20,22 @@ export async function createExternalPaperReviewHandler(request: Request, auth: A
     if (!validation.ok) return errorResponse(422, ErrorCode.VALIDATION_ERROR, validation.message, validation.details);
     const input = validation.value;
 
-    if (input.documentId) {
-        const document = await prisma.pdfDocument.findFirst({ where: { id: input.documentId, userId: auth.user.id }, select: { id: true } });
-        if (!document) return errorResponse(404, ErrorCode.NOT_FOUND, 'The attached PDF was not found in your library.');
-    }
+    const [document, profile] = await Promise.all([
+        input.documentId ? prisma.pdfDocument.findFirst({ where: { id: input.documentId, userId: auth.user.id }, select: { id: true, extractedText: true } }) : null,
+        prisma.profile.findUnique({ where: { userId: auth.user.id }, select: { examProgram: true } }),
+    ]);
+    if (input.documentId && !document) return errorResponse(404, ErrorCode.NOT_FOUND, 'The attached PDF was not found in your library.');
 
-    const previous = await prisma.externalPaperReview.findFirst({
-        where: { userId: auth.user.id, testDate: { lte: input.testDate } }, orderBy: [{ testDate: 'desc' }, { createdAt: 'desc' }], select: { analysis: true },
+    const history = await prisma.externalPaperReview.findMany({
+        where: { userId: auth.user.id, testDate: { lte: input.testDate } }, orderBy: [{ testDate: 'desc' }, { createdAt: 'desc' }], take: 8,
+        select: { testDate: true, obtainedScore: true, maxScore: true, analysis: true },
     });
+    const previous = history[0];
     const previousAnalysis = previous?.analysis && typeof previous.analysis === 'object' && !Array.isArray(previous.analysis)
         ? previous.analysis as Record<string, unknown> : null;
     const previousScorePercent = typeof previousAnalysis?.scorePercent === 'number' ? previousAnalysis.scorePercent : null;
-    const analysis = analyseExternalPaper(input, previousScorePercent);
+    const baseAnalysis = analyseExternalPaper(input, previousScorePercent, history.map((review) => ({ date: review.testDate, obtainedScore: review.obtainedScore, maxScore: review.maxScore })));
+    const analysis = document ? { ...baseAnalysis, documentInsights: analysePaperDocumentText(document.extractedText, profile?.examProgram ?? null) } : baseAnalysis;
 
     const review = await prisma.$transaction(async (tx) => {
         const score = await tx.externalMockScore.create({

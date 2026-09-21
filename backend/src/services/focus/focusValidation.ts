@@ -26,9 +26,16 @@ export const DEFAULT_SESSION_TYPE: SessionType = 'NEW_CHAPTER';
  */
 export const SESSION_TYPES: readonly SessionType[] = [
     'NEW_CHAPTER',
+    'NOTES_MAKING',
     'PRACTICE_PROBLEMS',
     'REVISION',
+    'ANSWER_WRITING',
+    'MOCK_TEST',
     'MOCK_ANALYSIS',
+    'CURRENT_AFFAIRS',
+    'QUANT_PRACTICE',
+    'REASONING_PRACTICE',
+    'VOCABULARY',
     'FORMULA_DRILL',
 ];
 
@@ -39,6 +46,7 @@ export interface FocusSessionInput {
     endTime?: unknown;
     focusedDurationMin?: unknown;
     sessionType?: unknown;
+    taskId?: unknown;
     clientId?: unknown;
     abandoned?: unknown;
 }
@@ -50,6 +58,7 @@ export interface ValidatedFocusSession {
     endTime: Date;
     focusedDurationMin: number;
     sessionType: SessionType;
+    taskId: string | null;
     clientId: string | null;
     abandoned: boolean;
 }
@@ -191,6 +200,10 @@ export function validateFocusSessionInput(input: FocusSessionInput): FocusSessio
         typeof input.clientId === 'string' && input.clientId.trim() !== ''
             ? input.clientId.trim()
             : null;
+    const taskId =
+        typeof input.taskId === 'string' && input.taskId.trim() !== ''
+            ? input.taskId.trim()
+            : null;
 
     return {
         ok: true,
@@ -200,6 +213,7 @@ export function validateFocusSessionInput(input: FocusSessionInput): FocusSessio
             endTime,
             focusedDurationMin,
             sessionType: sessionTypeResult.sessionType,
+            taskId,
             clientId,
             abandoned,
         },

@@ -198,6 +198,10 @@ export function suggestedTimeAllocation(
         (chapter) => !isOverride(chapter.timeAllocationOverride),
     );
     const distributed = new Map<string, { share: number; source: AllocationSource }>();
+    // Keep the original allocation basis as well as the normalized share.  Very close
+    // floating-point signals can normalize to the same binary fraction; using that fraction
+    // alone for residue/tie handling can reverse the visible four-decimal ordering.
+    const basisByChapter = new Map<string, number>();
 
     if (nonOverridden.length > 0) {
         // Step 2: when no share remains (overrides total >= 1), every
@@ -255,6 +259,7 @@ export function suggestedTimeAllocation(
                 if (entry.basis <= 0) {
                     entry.basis = minPositiveBasis > 0 ? minPositiveBasis : 1;
                 }
+                basisByChapter.set(entry.chapter.chapterId, entry.basis);
             }
 
             const totalBasis = bases.reduce((sum, entry) => sum + entry.basis, 0);
@@ -313,6 +318,7 @@ export function suggestedTimeAllocation(
         if (residue > 0) {
             let target: ChapterAllocationShare | undefined;
             let targetUnrounded = -1;
+            let targetBasis = -1;
             for (const share of result) {
                 if (share.source === 'USER_OVERRIDE') {
                     continue;
@@ -321,12 +327,19 @@ export function suggestedTimeAllocation(
                 // values can select the earlier of two nearly-equal chapters and make
                 // the residue reverse their monotonic order after rounding.
                 const unrounded = distributed.get(share.chapterId)?.share ?? 0;
+                const basis = basisByChapter.get(share.chapterId) ?? 0;
                 // Use the last entry on an exact tie. Property-based inputs can contain
                 // numerically equal signals; the test/order is stable, so placing the
                 // rounding unit on the later tied entry preserves non-decreasing shares.
-                if (target === undefined || unrounded >= targetUnrounded) {
+                if (
+                    target === undefined ||
+                    unrounded > targetUnrounded ||
+                    (unrounded === targetUnrounded && basis > targetBasis) ||
+                    (unrounded === targetUnrounded && basis === targetBasis)
+                ) {
                     target = share;
                     targetUnrounded = unrounded;
+                    targetBasis = basis;
                 }
             }
             if (target !== undefined) {
@@ -343,9 +356,9 @@ export function suggestedTimeAllocation(
     const orderedNonOverridden = result
         .filter((share) => share.source !== 'USER_OVERRIDE')
         .sort((left, right) => {
-            const leftRaw = distributed.get(left.chapterId)?.share ?? 0;
-            const rightRaw = distributed.get(right.chapterId)?.share ?? 0;
-            return leftRaw - rightRaw;
+            const leftBasis = basisByChapter.get(left.chapterId) ?? 0;
+            const rightBasis = basisByChapter.get(right.chapterId) ?? 0;
+            return leftBasis - rightBasis;
         });
     for (let index = 1; index < orderedNonOverridden.length; index += 1) {
         const previous = orderedNonOverridden[index - 1];

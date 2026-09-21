@@ -1,4 +1,6 @@
 import type { ExternalPaperMistakeTag, PaperBreakdownInput, ValidExternalPaperReviewInput } from './externalPaperReviewValidation';
+import { forecastNextPracticeScore, type ImprovementForecast } from '@/services/analytics/improvementForecast';
+import type { PaperDocumentInsights } from './paperDocumentInsights';
 
 export interface ExternalPaperAnalysis {
     scorePercent: number;
@@ -8,6 +10,8 @@ export interface ExternalPaperAnalysis {
     encouragement: string;
     priorityAreas: Array<{ label: string; scorePercent: number; reason: string }>;
     actionPlan: string[];
+    forecast: ImprovementForecast;
+    documentInsights?: PaperDocumentInsights;
     disclaimer: string;
 }
 
@@ -33,6 +37,7 @@ function tagAction(tag: ExternalPaperMistakeTag): string {
 export function analyseExternalPaper(
     input: ValidExternalPaperReviewInput,
     previousScorePercent: number | null,
+    history: readonly { date: Date; obtainedScore: number; maxScore: number }[] = [],
 ): ExternalPaperAnalysis {
     const scorePercent = percent(input.obtainedScore, input.maxScore);
     const scoreChangePoints = previousScorePercent === null ? null : Math.round((scorePercent - previousScorePercent) * 10) / 10;
@@ -76,6 +81,7 @@ export function analyseExternalPaper(
         encouragement,
         priorityAreas: withReasons,
         actionPlan: actions.slice(0, 4),
+        forecast: forecastNextPracticeScore([...history, { date: input.testDate, obtainedScore: input.obtainedScore, maxScore: input.maxScore }]),
         disclaimer: 'This review helps plan your next study actions. It does not predict rank, selection, or an exam outcome.',
     };
 }

@@ -21,9 +21,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# env files (never commit secrets)
+# Environment files (never commit secrets). Keep only documented examples in Git.
 .env
-.env*.local
+.env.*
+!.env.example
+!.env.*.example
 
 # typescript
 *.tsbuildinfo

@@ -6,15 +6,23 @@ import { useTranslation, type StringKey } from '@/localization';
 import { useOffline } from '@/offline';
 import type { MoreStackScreenProps } from './types';
 
-type MoreRoute = Exclude<keyof import('./types').MoreStackParamList, 'More'>;
+type MoreRoute = 'Notes' | 'Updates' | 'ConceptCoach' | 'Library' | 'Analytics' | 'WeeklyReview' | 'AccountPrivacy';
+type FeatureRoute = 'DailyBriefing' | 'RecallStudio' | 'WellbeingProtocol' | 'OfflineManager';
 
 const MENU: readonly { route: MoreRoute; titleKey: StringKey; descriptionKey: StringKey }[] = [
     { route: 'Notes', titleKey: 'ai.title', descriptionKey: 'more.notesDescription' },
     { route: 'Updates', titleKey: 'currentAffairs.title', descriptionKey: 'more.updatesDescription' },
-    { route: 'Tools', titleKey: 'tools.title', descriptionKey: 'more.toolsDescription' },
+    { route: 'ConceptCoach', titleKey: 'conceptCoach.title', descriptionKey: 'conceptCoach.menuDescription' },
     { route: 'Library', titleKey: 'library.title', descriptionKey: 'more.libraryDescription' },
-    { route: 'Community', titleKey: 'community.title', descriptionKey: 'more.communityDescription' },
     { route: 'Analytics', titleKey: 'analytics.title', descriptionKey: 'more.analyticsDescription' },
+    { route: 'WeeklyReview', titleKey: 'analytics.review', descriptionKey: 'more.analyticsDescription' },
+    { route: 'AccountPrivacy', titleKey: 'account.title', descriptionKey: 'account.menuDescription' },
+];
+const FEATURE_MENU: readonly { route: FeatureRoute; titleKey: StringKey; descriptionKey: StringKey }[] = [
+    { route: 'DailyBriefing', titleKey: 'more.dailyBriefingTitle', descriptionKey: 'more.dailyBriefingDescription' },
+    { route: 'RecallStudio', titleKey: 'more.recallStudioTitle', descriptionKey: 'more.recallStudioDescription' },
+    { route: 'WellbeingProtocol', titleKey: 'more.wellbeingTitle', descriptionKey: 'more.wellbeingDescription' },
+    { route: 'OfflineManager', titleKey: 'more.offlineTitle', descriptionKey: 'more.offlineManagerDescription' },
 ];
 
 export function MoreMenuScreen({ navigation }: MoreStackScreenProps<'More'>): React.JSX.Element {
@@ -38,6 +46,7 @@ export function MoreMenuScreen({ navigation }: MoreStackScreenProps<'More'>): Re
                         <Text style={styles.chevron}>›</Text>
                     </Pressable>
                 ))}
+                {FEATURE_MENU.map((item) => <Pressable key={item.route} accessibilityRole="button" style={styles.card} onPress={() => navigation.navigate(item.route)}><View style={styles.copy}><Text style={styles.title}>{t(item.titleKey)}</Text><Text style={styles.description}>{t(item.descriptionKey)}</Text></View><Text style={styles.chevron}>›</Text></Pressable>)}
                 <View style={styles.offlineCard}>
                     <Text style={styles.title}>{t('more.offlineTitle')}</Text>
                     <Text style={styles.description}>{t('more.offlineDescription')}</Text>

@@ -24,6 +24,7 @@ import {
     type MistakeCategory,
     type MistakeEntry,
     type ReferenceSubject,
+    addMistakeToRevision,
 } from './api';
 import { Chip } from './components/Chip';
 
@@ -93,6 +94,12 @@ export function MistakeJournalScreen(): React.JSX.Element {
         },
         [t],
     );
+    const [savingRevision, setSavingRevision] = useState<string | null>(null);
+    const saveForRevision = async (entry: MistakeEntry): Promise<void> => {
+        setSavingRevision(entry.id);
+        try { await addMistakeToRevision(entry.id); }
+        finally { setSavingRevision(null); }
+    };
 
     return (
         <Screen title={t('mistakes.title')}>
@@ -187,6 +194,7 @@ export function MistakeJournalScreen(): React.JSX.Element {
                             {entry.note ? (
                                 <Text style={styles.entryNote}>{entry.note}</Text>
                             ) : null}
+                            <Pressable style={styles.revisionButton} onPress={() => void saveForRevision(entry)} disabled={savingRevision === entry.id}><Text style={styles.revisionText}>{savingRevision === entry.id ? 'Saving…' : 'Add to revision queue'}</Text></Pressable>
                         </View>
                     ))}
                 </ScrollView>
@@ -274,4 +282,6 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         marginTop: 6,
     },
+    revisionButton: { alignSelf: 'flex-start', marginTop: 10, backgroundColor: '#f5f3ff', borderRadius: 7, paddingVertical: 7, paddingHorizontal: 10 },
+    revisionText: { color: '#6d28d9', fontWeight: '800', fontSize: 12 },
 });

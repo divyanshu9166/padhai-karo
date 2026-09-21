@@ -311,6 +311,8 @@ describe('toChapterCreateInputs (Req 2.4, 2.7, 12.6)', () => {
         expect(inputs.every((chapter) => chapter.userId === 'user-modern')).toBe(true);
         expect(inputs.every((chapter) => chapter.status === 'NOT_STARTED')).toBe(true);
         expect(inputs.every((chapter) => chapter.weightageIsDefault)).toBe(true);
+        expect(inputs.every((chapter) => chapter.estimatedStudyHours > 2)).toBe(true);
+        expect(new Set(inputs.map((chapter) => chapter.estimatedStudyHours)).size).toBeGreaterThan(1);
         expect(new Set(inputs.map((chapter) => chapter.referenceKey)).size).toBe(inputs.length);
     });
 });

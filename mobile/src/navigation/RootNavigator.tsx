@@ -15,7 +15,7 @@
  */
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import { useAuth } from '@/state';
 
@@ -26,6 +26,9 @@ import { OnboardingStack } from './OnboardingStack';
 function BootSplash(): React.JSX.Element {
     return (
         <View style={styles.splash}>
+            <View style={styles.mark}><Text style={styles.markText}>PK</Text></View>
+            <Text style={styles.brand}>Padhai Karo</Text>
+            <Text style={styles.loading}>Preparing today’s plan…</Text>
             <ActivityIndicator size="large" color="#2563eb" />
         </View>
     );
@@ -54,5 +57,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#ffffff',
     },
+    mark: { width: 72, height: 72, borderRadius: 22, backgroundColor: '#2563eb', alignItems: 'center', justifyContent: 'center', marginBottom: 18 },
+    markText: { color: '#fff', fontSize: 24, fontWeight: '900' },
+    brand: { color: '#111827', fontSize: 26, fontWeight: '900', marginBottom: 8 },
+    loading: { color: '#6b7280', marginBottom: 20 },
 });

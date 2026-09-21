@@ -7,6 +7,8 @@
  */
 import Constants from 'expo-constants';
 
+import { validateProductionEndpoints } from './endpointSecurity';
+
 /** Fallback used only if the config somehow did not provide a value (keeps the app bootable). */
 const FALLBACK_API_BASE_URL = 'http://localhost:3000/api';
 
@@ -23,5 +25,12 @@ function readExtra(): AppExtra {
 }
 
 /** The base URL the API client targets, e.g. `http://localhost:3000/api`. */
-export const API_BASE_URL: string = readExtra().apiBaseUrl ?? FALLBACK_API_BASE_URL;
-export const COMMUNITY_WS_URL: string = readExtra().wsUrl ?? API_BASE_URL.replace(/^http/i, 'ws').replace(/\/api\/?$/, '') + '/ws/community';
+const configuredApiBaseUrl = readExtra().apiBaseUrl ?? FALLBACK_API_BASE_URL;
+const configuredWsUrl = readExtra().wsUrl ?? configuredApiBaseUrl.replace(/^http/i, 'ws').replace(/\/api\/?$/, '') + '/ws/community';
+
+const isDevelopmentBuild = typeof __DEV__ !== 'undefined' ? __DEV__ : process.env.NODE_ENV !== 'production';
+validateProductionEndpoints(configuredApiBaseUrl, configuredWsUrl, isDevelopmentBuild);
+
+export const API_BASE_URL: string = configuredApiBaseUrl;
+export const COMMUNITY_WS_URL: string = configuredWsUrl;
+export { validateProductionEndpoints } from './endpointSecurity';

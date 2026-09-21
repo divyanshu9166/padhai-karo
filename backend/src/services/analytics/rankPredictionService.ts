@@ -66,6 +66,7 @@ function toPerQuestionArray(value: unknown): AttemptRow['perQuestion'] {
  */
 export type UserRankPredictionOutcome =
     | { kind: 'REFERENCE_UNAVAILABLE' }
+    | { kind: 'NOT_APPLICABLE'; track: 'UPSC' | 'SSC' }
     | { kind: 'COMPUTED'; track: ExamTrack; result: RankPredictionResult };
 
 /**
@@ -99,6 +100,9 @@ export async function computeUserRankPrediction(
     }
 
     const examTrack = profile.examTrack as ExamTrack;
+    if (examTrack === 'UPSC' || examTrack === 'SSC') {
+        return { kind: 'NOT_APPLICABLE', track: examTrack };
+    }
 
     // 2. Active (most-recent) ScoreStandingMap year for the track (Req 5.2); none -> unavailable.
     const referenceDataYear = await resolveActiveReferenceYear(
@@ -189,6 +193,14 @@ export async function getRankPredictionHandler(
             ErrorCode.REFERENCE_DATA_UNAVAILABLE,
             'No score-standing reference data is available for your exam track.',
         );
+    }
+
+    if (outcome.kind === 'NOT_APPLICABLE') {
+        return Response.json({
+            kind: 'NOT_APPLICABLE', track: outcome.track,
+            reason: 'Rank or selection prediction is not offered for UPSC/SSC. Use the evidence-based next-practice score range instead.',
+            alternativeEndpoint: '/api/analytics/improvement-forecast',
+        });
     }
 
     const { track, result } = outcome;

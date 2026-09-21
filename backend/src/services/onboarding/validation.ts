@@ -19,7 +19,7 @@
  * in Req 2.2 is deterministic and testable.
  */
 import { ErrorCode } from '@/lib/errors';
-import { getExamProgram, getSubjectsForStage } from '@/lib/exams';
+import { getExamProgram, getSubjectsForStage, getUnitPlanningProfile } from '@/lib/exams';
 import type { ExamProgramKey, ExamStage } from '@/lib/exams';
 import { getChapters } from '@/lib/reference';
 import type { ExamTrack, TaskDifficulty } from '@/lib/reference';
@@ -62,6 +62,10 @@ export interface OnboardingInput {
     /** Optional exact exam date for modern UPSC/SSC onboarding. */
     examDate?: string;
     currentClass: string;
+    preparationProfile?: string;
+    weekdayStudyMinutes?: number;
+    weekendStudyMinutes?: number;
+    optionalSubject?: string;
     fixedCommitments: FixedCommitmentInput[];
     peakFocusWindows: PeakFocusWindow[];
 }
@@ -155,7 +159,7 @@ export function validateOnboardingInput(
         return validationError('Onboarding payload must be a JSON object.');
     }
 
-    const { examTrack, examProgram, examStage, targetYear, examDate, currentClass, fixedCommitments, peakFocusWindows } = raw;
+    const { examTrack, examProgram, examStage, targetYear, examDate, currentClass, preparationProfile, weekdayStudyMinutes, weekendStudyMinutes, optionalSubject, fixedCommitments, peakFocusWindows } = raw;
 
     // Exam selection. New users choose a program + stage/tier; the old direct track
     // shape remains accepted so existing JEE/NEET accounts and tests can be migrated
@@ -242,6 +246,17 @@ export function validateOnboardingInput(
     if (typeof currentClass !== 'string' || currentClass.trim() === '') {
         return validationError('"currentClass" is required.', { field: 'currentClass' });
     }
+    if (preparationProfile !== undefined && (typeof preparationProfile !== 'string' || preparationProfile.trim().length > 80)) {
+        return validationError('"preparationProfile" must be brief text.', { field: 'preparationProfile' });
+    }
+    for (const [field, value] of [['weekdayStudyMinutes', weekdayStudyMinutes], ['weekendStudyMinutes', weekendStudyMinutes]] as const) {
+        if (value !== undefined && (typeof value !== 'number' || !Number.isInteger(value) || value < 30 || value > 960)) {
+            return validationError(`"${field}" must be an integer from 30 to 960.`, { field });
+        }
+    }
+    if (optionalSubject !== undefined && (typeof optionalSubject !== 'string' || optionalSubject.trim().length > 120)) {
+        return validationError('"optionalSubject" must be brief text.', { field: 'optionalSubject' });
+    }
 
     // Fixed commitments (Req 2.1, 2.3). Omitted => empty set.
     const fixedCommitmentsRaw = fixedCommitments ?? [];
@@ -321,6 +336,10 @@ export function validateOnboardingInput(
             targetYear,
             ...(normalizedExamDate ? { examDate: normalizedExamDate } : {}),
             currentClass: currentClass.trim(),
+            ...(typeof preparationProfile === 'string' && preparationProfile.trim() ? { preparationProfile: preparationProfile.trim() } : {}),
+            ...(typeof weekdayStudyMinutes === 'number' ? { weekdayStudyMinutes } : {}),
+            ...(typeof weekendStudyMinutes === 'number' ? { weekendStudyMinutes } : {}),
+            ...(typeof optionalSubject === 'string' && optionalSubject.trim() ? { optionalSubject: optionalSubject.trim() } : {}),
             fixedCommitments: validatedCommitments,
             peakFocusWindows: validatedWindows,
         },
@@ -363,16 +382,19 @@ export function toProgramChapterCreateInputs(
     userId: string,
 ): ChapterCreateInput[] {
     return getSubjectsForStage(programKey, stage).flatMap((subject) =>
-        subject.units.map((unit, index) => ({
-            userId,
-            subjectId: subject.key,
-            referenceKey: `${subject.key}-${index + 1}`,
-            name: unit,
-            status: 'NOT_STARTED' as const,
-            weightage: subject.planningPriority,
-            weightageIsDefault: true,
-            estimatedStudyHours: 2,
-            taskDifficulty: 'HARD' as TaskDifficulty,
-        })),
+        subject.units.map((unit, index) => {
+            const profile = getUnitPlanningProfile(programKey, stage, unit, subject.planningPriority);
+            return {
+                userId,
+                subjectId: subject.key,
+                referenceKey: `${subject.key}-${index + 1}`,
+                name: unit,
+                status: 'NOT_STARTED' as const,
+                weightage: profile.planningWeight,
+                weightageIsDefault: true,
+                estimatedStudyHours: profile.estimatedStudyHours,
+                taskDifficulty: profile.taskDifficulty,
+            };
+        }),
     );
 }

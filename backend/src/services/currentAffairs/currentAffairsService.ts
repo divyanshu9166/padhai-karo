@@ -10,6 +10,9 @@ export interface CurrentAffairsIngestionInput {
     body?: string;
     category: string;
     tags?: string[];
+    syllabusTags?: string[];
+    prelimsRelevance?: 'LOW' | 'MEDIUM' | 'HIGH';
+    mainsRelevance?: 'LOW' | 'MEDIUM' | 'HIGH';
     sourceName: string;
     sourceUrl: string;
     publishedAt: Date;
@@ -19,8 +22,8 @@ export interface CurrentAffairsIngestionInput {
 export async function upsertCurrentAffairsItem(input: CurrentAffairsIngestionInput) {
     return prisma.currentAffairsItem.upsert({
         where: { dedupeHash: input.dedupeHash },
-        create: { ...input, tags: input.tags ?? [] },
-        update: { ...input, tags: input.tags ?? [] },
+        create: { ...input, tags: input.tags ?? [], syllabusTags: input.syllabusTags ?? [input.category] },
+        update: { ...input, tags: input.tags ?? [], syllabusTags: input.syllabusTags ?? [input.category] },
     });
 }
 
@@ -52,7 +55,23 @@ export async function createCurrentAffairsBookmarkHandler(request: Request, auth
         create: { userId: auth.user.id, itemId, read: input.read === true, notes: typeof input.notes === 'string' ? input.notes.trim() : undefined },
         update: { read: input.read === true, notes: typeof input.notes === 'string' ? input.notes.trim() : undefined },
     });
-    return Response.json({ bookmark });
+    let revisionCard = null;
+    if (input.addToRevision === true) {
+        const item = await prisma.currentAffairsItem.findUnique({ where: { id: itemId }, select: { title: true, summary: true, category: true, syllabusTags: true } });
+        if (item) revisionCard = await prisma.revisionCard.create({
+            data: {
+                userId: auth.user.id,
+                title: item.title,
+                prompt: `Recall why this current-affairs item matters: ${item.title}`,
+                answer: item.summary,
+                sourceType: 'CURRENT_AFFAIRS',
+                sourceId: itemId,
+                tags: [...new Set(['current-affairs', item.category, ...item.syllabusTags])],
+                dueAt: new Date(),
+            },
+        });
+    }
+    return Response.json({ bookmark, revisionCard });
 }
 
 export async function listCurrentAffairsBookmarksHandler(_request: Request, auth: AuthContext): Promise<Response> {

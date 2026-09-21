@@ -6,6 +6,7 @@
  * can be unit-tested and reused.
  */
 export {
+    addMistakeToRevisionHandler,
     flagMistakeHandler,
     listMistakesHandler,
     deleteMistakeHandler,

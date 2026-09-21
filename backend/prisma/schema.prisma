@@ -48,10 +48,57 @@ enum ChapterStatus {
 
 enum SessionType {
   NEW_CHAPTER
+  NOTES_MAKING
   PRACTICE_PROBLEMS
   REVISION
+  ANSWER_WRITING
+  MOCK_TEST
   MOCK_ANALYSIS
+  CURRENT_AFFAIRS
+  QUANT_PRACTICE
+  REASONING_PRACTICE
+  VOCABULARY
   FORMULA_DRILL
+}
+
+// A study task is the student-facing unit of work. Study blocks reserve time; tasks explain
+// what needs to be finished in that time and let the product close the plan → focus → review loop.
+enum StudyTaskType {
+  READING
+  NOTES_MAKING
+  REVISION
+  PYQ_PRACTICE
+  ANSWER_WRITING
+  MOCK_TEST
+  MOCK_ANALYSIS
+  CURRENT_AFFAIRS
+  QUANT_PRACTICE
+  REASONING_PRACTICE
+  VOCABULARY
+  FORMULA_REVISION
+}
+
+enum StudyTaskPriority {
+  LOW
+  NORMAL
+  HIGH
+  CRITICAL
+}
+
+enum StudyTaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  MISSED
+}
+
+enum StudyTaskSource {
+  MANUAL
+  PLANNER
+  REVISION
+  WEAK_AREA
+  CURRENT_AFFAIRS
+  QUICK_CAPTURE
 }
 
 enum MistakeCategory {
@@ -171,6 +218,7 @@ model User {
   fixedCommitments        FixedCommitment[]
   timetables              Timetable[]
   focusSessions           FocusSession[]
+  studyTasks              StudyTask[]
   dailyTimeAudits         DailyTimeAudit[]
   calendarEvents          CalendarEvent[]
   pyqAttempts             PYQAttempt[]
@@ -251,6 +299,10 @@ model Profile {
   examStage          ExamStage?
   targetYear         Int
   currentClass       String
+  preparationProfile String?
+  weekdayStudyMinutes Int?
+  weekendStudyMinutes Int?
+  optionalSubject    String?
   language           LanguagePref      @default(EN)
   subscriptionTier   SubscriptionTier  @default(FREE)
   aiQuota            Int               @default(0)
@@ -354,9 +406,42 @@ model StudyBlock {
   updatedAt            DateTime    @updatedAt
 
   timetable Timetable @relation(fields: [timetableId], references: [id], onDelete: Cascade)
+  tasks     StudyTask[]
 
   @@index([timetableId])
   @@index([userId])
+}
+
+// User-visible work item. `scheduledDate = null` represents the quick-capture inbox until the
+// learner schedules it. Tasks made from a timetable block retain the original scheduling
+// intelligence while remaining independently completable and reschedulable.
+model StudyTask {
+  id             String            @id @default(uuid())
+  userId         String
+  studyBlockId   String?           @unique
+  title          String
+  syllabusUnit   String?
+  subjectId      String?
+  chapterId      String?
+  examProgram    ExamProgram?
+  examStage      ExamStage?
+  taskType       StudyTaskType
+  plannedMinutes Int
+  scheduledDate  DateTime?
+  priority       StudyTaskPriority @default(NORMAL)
+  status         StudyTaskStatus   @default(PENDING)
+  source         StudyTaskSource   @default(MANUAL)
+  completedAt    DateTime?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  studyBlock    StudyBlock?    @relation(fields: [studyBlockId], references: [id], onDelete: SetNull)
+  focusSessions FocusSession[]
+
+  @@index([userId, scheduledDate, status])
+  @@index([userId, status, priority])
+  @@index([userId, source])
 }
 
 // === Activity & Progress =====================================================
@@ -370,14 +455,17 @@ model FocusSession {
   focusedDurationMin Int // > 0 and <= wall-clock (Req 4.5)
   abandoned          Boolean     @default(false)
   sessionType        SessionType @default(NEW_CHAPTER) // Req 4.7/4.8
+  taskId             String?
   clientId           String? // offline idempotency (Req 21)
   createdAt          DateTime    @default(now())
   updatedAt          DateTime    @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  task StudyTask? @relation(fields: [taskId], references: [id], onDelete: SetNull)
 
   @@unique([userId, clientId])
   @@index([userId])
+  @@index([taskId])
 }
 
 model DailyTimeAudit {
@@ -709,6 +797,9 @@ model CurrentAffairsItem {
   body        String?
   category    String
   tags        String[]
+  syllabusTags String[] @default([])
+  prelimsRelevance String?
+  mainsRelevance String?
   sourceName  String
   sourceUrl   String
   publishedAt DateTime

@@ -108,6 +108,16 @@ async function applyMutation(auth: AuthContext, mutation: MutationInput): Promis
             const output = await response.json() as { timetable?: { id?: string } };
             return output.timetable?.id;
         }
+        case 'STUDY_TASK_UPDATE': {
+            const id = stringValue(payload.id); if (!id) throw new Error('Study task id is required.');
+            const existing = await prisma.studyTask.findFirst({ where: { id, userId: auth.user.id } });
+            if (!existing) throw new Error('Study task not found.');
+            assertFreshVersion(existing, payload, { id: existing.id, title: existing.title, status: existing.status, scheduledDate: existing.scheduledDate?.toISOString() ?? null, updatedAt: existing.updatedAt.toISOString() });
+            const status = stringValue(payload.status);
+            if (!['PENDING', 'IN_PROGRESS', 'COMPLETED', 'MISSED'].includes(status)) throw new Error('Study task status is invalid.');
+            const updated = await prisma.studyTask.update({ where: { id }, data: { status: status as 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'MISSED', completedAt: status === 'COMPLETED' ? new Date() : null } });
+            return updated.id;
+        }
         case 'CALENDAR_EVENT_CREATE': {
             const type = stringValue(payload.type); const startDate = new Date(stringValue(payload.startDate)); const endDate = new Date(stringValue(payload.endDate));
             if (!['SCHOOL_EXAM', 'HOLIDAY', 'MOCK_TEST'].includes(type) || Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime())) throw new Error('Calendar event is invalid.');

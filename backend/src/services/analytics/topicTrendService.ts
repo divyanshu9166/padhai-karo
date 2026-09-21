@@ -33,6 +33,7 @@ import { prisma } from '@/lib/db';
 import { ErrorCode, errorResponse } from '@/lib/errors';
 import { resolveActiveReferenceYear } from '@/lib/analytics/referenceVersion';
 import { getChapters } from '@/lib/reference';
+import { getSubjectsForStage } from '@/lib/exams';
 
 import {
     projectTopicTrends,
@@ -53,7 +54,7 @@ export async function topicTrendsHandler(
 ): Promise<Response> {
     const profile = await prisma.profile.findUnique({
         where: { userId: ctx.user.id },
-        select: { examTrack: true },
+        select: { examTrack: true, examProgram: true, examStage: true },
     });
 
     if (!profile) {
@@ -68,11 +69,15 @@ export async function topicTrendsHandler(
 
     // The Topic universe is the track's chapter catalog: Topic == Chapter.referenceKey, with
     // the chapter's display name as the Topic name and its owning subject's display name.
-    const topicUniverse: TopicUniverseEntry[] = getChapters(examTrack).map((chapter) => ({
+    const legacyUniverse: TopicUniverseEntry[] = getChapters(examTrack).map((chapter) => ({
         topicKey: chapter.referenceKey,
         topicName: chapter.name,
         subjectName: chapter.subjectName,
     }));
+    const programUniverse: TopicUniverseEntry[] = profile.examProgram && profile.examStage
+        ? getSubjectsForStage(profile.examProgram, profile.examStage).flatMap((subject) => subject.units.map((unit, index) => ({ topicKey: `${subject.key}-${index + 1}`, topicName: unit, subjectName: subject.name })))
+        : [];
+    const topicUniverse = legacyUniverse.length > 0 ? legacyUniverse : programUniverse;
 
     // Active version = most recent referenceDataYear for the track (Req 6.3). When none
     // exists the dataset is unavailable for this track (Req 5.4).
@@ -82,11 +87,7 @@ export async function topicTrendsHandler(
     );
 
     if (referenceDataYear === null) {
-        return errorResponse(
-            503,
-            ErrorCode.REFERENCE_DATA_UNAVAILABLE,
-            'No topic-frequency reference data is available for your exam track.',
-        );
+        return Response.json({ referenceDataYear: null, dataSource: 'SYLLABUS_ONLY', topics: projectTopicTrends(topicUniverse, []) });
     }
 
     const records = await prisma.topicFrequencyReferenceData.findMany({

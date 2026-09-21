@@ -5,14 +5,40 @@ import type { AiSummaryResult } from './types';
 
 interface GeminiPart { text?: string; inlineData?: { mimeType: string; data: string } }
 
+export interface LiveConceptClarification {
+    explanation: string;
+    keyPoints: string[];
+    analogy: string;
+    commonMisconception: string;
+    quiz: { question: string; options: string[]; correctOption: number; hint: string; explanation: string };
+}
+
+export interface LiveAnswerEvaluation {
+    score: number;
+    criteria: Record<string, number>;
+    strengths: string[];
+    nextSteps: string[];
+    demandAnalysis: string;
+    factualCautions: string[];
+}
+
 function apiKey(): string { return process.env.AI_PROVIDER_API_KEY?.trim() ?? ''; }
-function model(): string { return process.env.AI_PROVIDER_MODEL?.trim() || 'gemini-2.0-flash'; }
-function provider(): 'GEMINI' | 'CLAUDE' { return process.env.AI_PROVIDER?.trim().toUpperCase() === 'CLAUDE' ? 'CLAUDE' : 'GEMINI'; }
+function provider(): 'GEMINI' | 'CLAUDE' | 'GROQ' {
+    const configured = process.env.AI_PROVIDER?.trim().toUpperCase();
+    return configured === 'CLAUDE' || configured === 'GROQ' ? configured : 'GEMINI';
+}
+function model(): string {
+    return process.env.AI_PROVIDER_MODEL?.trim() || (provider() === 'GROQ' ? 'openai/gpt-oss-20b' : 'gemini-2.0-flash');
+}
+function visionModel(): string {
+    return process.env.AI_PROVIDER_VISION_MODEL?.trim() || (provider() === 'GROQ' ? 'qwen/qwen3.6-27b' : model());
+}
 
 export function liveProviderConfigured(): boolean { return apiKey().length > 0; }
 export function transcriptionProviderConfigured(): boolean {
-    return Boolean((process.env.TRANSCRIPTION_API_URL?.trim() && process.env.TRANSCRIPTION_PROVIDER_API_KEY?.trim()) || (apiKey() && provider() === 'GEMINI'));
+    return Boolean((process.env.TRANSCRIPTION_API_URL?.trim() && process.env.TRANSCRIPTION_PROVIDER_API_KEY?.trim()) || (apiKey() && (provider() === 'GEMINI' || provider() === 'GROQ')));
 }
+export function configuredProviderName(): 'GEMINI' | 'CLAUDE' | 'GROQ' { return provider(); }
 
 export async function summarizeWithGemini(text: string): Promise<AiSummaryResult> {
     return parseGemini(await callLive([
@@ -25,6 +51,39 @@ export async function summarizeImageWithGemini(imageData: string, mimeType: stri
         { text: 'Read this study-note image and return strict JSON with keys title, keyPoints, revisionCapsule and flashcards. Preserve uncertainty instead of hallucinating.' },
         { inlineData: { mimeType: mimeType || 'image/jpeg', data: stripDataUrl(imageData) } },
     ]));
+}
+
+export async function clarifyConceptWithProvider(input: { concept: string; confusion?: string; level: string; language: string; mode: 'EXPLAIN' | 'SIMPLIFY' | 'ANALOGY' | 'QUIZ' }): Promise<LiveConceptClarification> {
+    const output = await callLive([{ text: `You are a careful UPSC/SSC concept coach. Explain only established facts and admit uncertainty. Return strict JSON with keys explanation, keyPoints (3-5 strings), analogy, commonMisconception, quiz. quiz must contain question, exactly 4 options, correctOption (0-3), hint, explanation. Requested mode: ${input.mode}. For SIMPLIFY, use short beginner-friendly sentences and avoid unexplained jargon. For ANALOGY, lead with a concrete accurate analogy and then state its limits. For QUIZ, keep the explanation brief and make the quiz diagnostic. Language: ${input.language}. Learner level: ${input.level}. Concept: ${input.concept}. Specific confusion: ${input.confusion || 'not provided'}.` }]);
+    const cleaned = output.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim();
+    const parsed = JSON.parse(cleaned) as Record<string, unknown>;
+    const quiz = parsed.quiz && typeof parsed.quiz === 'object' ? parsed.quiz as Record<string, unknown> : {};
+    const keyPoints = Array.isArray(parsed.keyPoints) ? parsed.keyPoints.filter((item): item is string => typeof item === 'string').map((item) => item.trim()).filter(Boolean).slice(0, 5) : [];
+    const options = Array.isArray(quiz.options) ? quiz.options.filter((item): item is string => typeof item === 'string').map((item) => item.trim()).filter(Boolean) : [];
+    const correctOption = typeof quiz.correctOption === 'number' ? Math.floor(quiz.correctOption) : -1;
+    const string = (value: unknown): string => typeof value === 'string' ? value.trim() : '';
+    const result: LiveConceptClarification = {
+        explanation: string(parsed.explanation), keyPoints, analogy: string(parsed.analogy),
+        commonMisconception: string(parsed.commonMisconception),
+        quiz: { question: string(quiz.question), options, correctOption, hint: string(quiz.hint), explanation: string(quiz.explanation) },
+    };
+    if (!result.explanation || keyPoints.length < 2 || !result.quiz.question || options.length !== 4 || correctOption < 0 || correctOption > 3 || !result.quiz.explanation) {
+        throw new Error('AI concept clarification response was incomplete.');
+    }
+    return result;
+}
+
+export async function evaluateAnswerWithProvider(input: { prompt: string; answerText: string; wordCount: number }): Promise<LiveAnswerEvaluation> {
+    const output = await callLive([{ text: `Evaluate this UPSC/SSC descriptive answer conservatively. Return strict JSON with score (0-100), criteria object with relevance, structure, evidence, analysis, clarity (each 0-20), strengths (2-4 strings), nextSteps (2-4 strings), demandAnalysis, factualCautions. Do not claim a fact is correct unless it can be established from the text; list uncertain claims in factualCautions. Prompt: ${input.prompt}\nWord count: ${input.wordCount}\nAnswer: ${input.answerText}` }]);
+    const parsed = JSON.parse(output.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '').trim()) as Record<string, unknown>;
+    const strings = (value: unknown): string[] => Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string').map((item) => item.trim()).filter(Boolean).slice(0, 5) : [];
+    const criteriaRaw = parsed.criteria && typeof parsed.criteria === 'object' ? parsed.criteria as Record<string, unknown> : {};
+    const criteria = Object.fromEntries(['relevance', 'structure', 'evidence', 'analysis', 'clarity'].map((key) => [key, Math.max(0, Math.min(20, typeof criteriaRaw[key] === 'number' ? criteriaRaw[key] as number : 0))]));
+    const score = Math.max(0, Math.min(100, typeof parsed.score === 'number' ? parsed.score : Object.values(criteria).reduce((sum, value) => sum + value, 0)));
+    const demandAnalysis = typeof parsed.demandAnalysis === 'string' ? parsed.demandAnalysis.trim() : '';
+    const strengths = strings(parsed.strengths); const nextSteps = strings(parsed.nextSteps);
+    if (!demandAnalysis || strengths.length === 0 || nextSteps.length === 0) throw new Error('AI answer evaluation response was incomplete.');
+    return { score: Math.round(score), criteria, strengths, nextSteps, demandAnalysis, factualCautions: strings(parsed.factualCautions) };
 }
 
 export async function transcribeAudio(audioData: string, mimeType: string): Promise<string> {
@@ -41,6 +100,18 @@ export async function transcribeAudio(audioData: string, mimeType: string): Prom
         const output = typeof payload.text === 'string' ? payload.text.trim() : typeof payload.transcript === 'string' ? payload.transcript.trim() : '';
         if (!output) throw new Error('Transcription provider returned no text.');
         return output;
+    }
+    if (apiKey() && provider() === 'GROQ') {
+        const bytes = Buffer.from(stripDataUrl(audioData), 'base64');
+        const form = new FormData();
+        form.append('file', new Blob([bytes], { type: mimeType || 'audio/mp4' }), 'voice-note.' + extensionForMime(mimeType));
+        form.append('model', process.env.TRANSCRIPTION_PROVIDER_MODEL?.trim() || 'whisper-large-v3-turbo');
+        form.append('response_format', 'json');
+        const response = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', { method: 'POST', headers: { Authorization: 'Bearer ' + apiKey() }, body: form });
+        if (!response.ok) throw new Error('Transcription provider returned ' + response.status);
+        const payload = await response.json() as { text?: string };
+        if (!payload.text?.trim()) throw new Error('Transcription provider returned no text.');
+        return payload.text.trim();
     }
     if (!apiKey() || provider() !== 'GEMINI') throw new Error('Transcription provider is not configured.');
     return parseTranscript(await callLive([
@@ -104,6 +175,7 @@ async function callGemini(parts: GeminiPart[], jsonOutput = true): Promise<strin
 }
 
 async function callLive(parts: GeminiPart[], jsonOutput = true): Promise<string> {
+    if (provider() === 'GROQ') return callGroq(parts, jsonOutput);
     if (provider() === 'CLAUDE') {
         const response = await fetch('https://api.anthropic.com/v1/messages', {
             method: 'POST',
@@ -117,6 +189,29 @@ async function callLive(parts: GeminiPart[], jsonOutput = true): Promise<string>
         return output;
     }
     return callGemini(parts, jsonOutput);
+}
+
+async function callGroq(parts: GeminiPart[], jsonOutput: boolean): Promise<string> {
+    const containsImage = parts.some((part) => Boolean(part.inlineData));
+    const content = parts.map((part) => part.text
+        ? { type: 'text', text: part.text }
+        : { type: 'image_url', image_url: { url: `data:${part.inlineData?.mimeType || 'image/jpeg'};base64,${part.inlineData?.data || ''}` } });
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { Authorization: 'Bearer ' + apiKey(), 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            model: containsImage ? visionModel() : model(),
+            messages: [{ role: 'user', content }],
+            temperature: 0.2,
+            max_completion_tokens: 1800,
+            ...(jsonOutput ? { response_format: { type: 'json_object' } } : {}),
+        }),
+    });
+    if (!response.ok) throw new Error('AI provider returned ' + response.status);
+    const payload = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
+    const output = payload.choices?.[0]?.message?.content?.trim();
+    if (!output) throw new Error('AI provider returned no content.');
+    return output;
 }
 
 function parseTranscript(output: string): string {
@@ -142,3 +237,9 @@ function parseGemini(output: string): AiSummaryResult {
 }
 
 function stripDataUrl(value: string): string { return value.replace(/^data:[^;]+;base64,/i, ''); }
+function extensionForMime(mimeType: string): string {
+    if (mimeType.includes('mpeg')) return 'mp3';
+    if (mimeType.includes('wav')) return 'wav';
+    if (mimeType.includes('webm')) return 'webm';
+    return 'm4a';
+}

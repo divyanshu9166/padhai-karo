@@ -25,10 +25,13 @@ import { ApiError, type LocalSyncRecord } from '@/api';
 import { getAmbientModes, type AmbientMode } from '@/api/upscProduct';
 import { Screen } from '@/components';
 import { useTranslation } from '@/localization';
+import type { MainTabScreenProps } from '@/navigation/types';
 import { OfflineBanner, useOffline } from '@/offline';
+import { queueMutation } from '@/offline/mutations';
+import { updateStudyTask } from '@/screens/dashboard/todayApi';
 
 import {
-    fetchSubjectOptions,
+    fetchFocusSetup,
     generateClientId,
     recordFocusSession,
     type SubjectOption,
@@ -47,7 +50,7 @@ import {
 } from './timing';
 import { scheduleFocusBreakReminder } from '@/notifications/reminders';
 
-export function FocusTimerScreen(): React.JSX.Element {
+export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.JSX.Element {
     const t = useTranslation();
     // The timer runs locally; while offline the recorded session is queued for sync (Req 21.3).
     const { isOffline, enqueueRecord } = useOffline();
@@ -56,11 +59,14 @@ export function FocusTimerScreen(): React.JSX.Element {
     const [subjectsError, setSubjectsError] = useState<string | null>(null);
     const [subjectId, setSubjectId] = useState<string | null>(null);
     const [sessionType, setSessionType] = useState<SessionType>(DEFAULT_SESSION_TYPE);
+    const [examSelection, setExamSelection] = useState<{ examProgram?: string | null; examStage?: string | null } | null>(null);
+    const activeTask = route.params?.task;
 
     const [timer, setTimer] = useState<TimerState>(() => createTimer());
     const [, setTick] = useState(0); // force re-render once per second while running
     const [saving, setSaving] = useState(false);
     const [message, setMessage] = useState<string | null>(null);
+    const [finishPrompt, setFinishPrompt] = useState<{ id: string; title: string; minutes: number } | null>(null);
     const [ambientModes, setAmbientModes] = useState<AmbientMode[]>([]);
     const [selectedAmbientId, setSelectedAmbientId] = useState<string | null>(null);
     const [ambientMessage, setAmbientMessage] = useState<string | null>(null);
@@ -113,9 +119,10 @@ export function FocusTimerScreen(): React.JSX.Element {
         mounted.current = true;
         (async () => {
             try {
-                const options = await fetchSubjectOptions();
+                const setup = await fetchFocusSetup();
                 if (mounted.current) {
-                    setSubjects(options);
+                    setSubjects(setup.subjects);
+                    setExamSelection(setup.selection);
                 }
             } catch (err) {
                 if (mounted.current) {
@@ -136,6 +143,13 @@ export function FocusTimerScreen(): React.JSX.Element {
             void stopAmbient();
         };
     }, [stopAmbient]);
+
+    useEffect(() => {
+        if (!activeTask || timer.status !== 'idle') return;
+        setSubjectId(activeTask.subjectId ?? null);
+        setSessionType(activeTask.sessionType);
+        setMessage(`Ready to focus: ${activeTask.title}`);
+    }, [activeTask, timer.status]);
 
     // Tick the display each second while running.
     useEffect(() => {
@@ -187,6 +201,7 @@ export function FocusTimerScreen(): React.JSX.Element {
                         focusedDurationMin: stopped.focusedMinutes,
                         abandoned,
                         sessionType,
+                        taskId: activeTask?.id,
                     },
                 };
                 await enqueueRecord(record);
@@ -199,10 +214,12 @@ export function FocusTimerScreen(): React.JSX.Element {
                     focusedDurationMin: stopped.focusedMinutes,
                     abandoned,
                     sessionType,
+                    taskId: activeTask?.id,
                     clientId,
                 });
                 setMessage(abandoned ? t('focus.sessionAbandoned') : `${t('focus.recorded')} ${stopped.focusedMinutes} min`);
             }
+            if (activeTask && !abandoned) setFinishPrompt({ id: activeTask.id, title: activeTask.title, minutes: stopped.focusedMinutes });
         } catch (err) {
             setMessage(err instanceof ApiError ? err.message : t('focus.recordError'));
         } finally {
@@ -210,10 +227,38 @@ export function FocusTimerScreen(): React.JSX.Element {
                 setSaving(false);
             }
         }
-    }, [timer, subjectId, sessionType, isOffline, enqueueRecord, cancelBreakReminder, stopAmbient]);
+    }, [timer, subjectId, sessionType, activeTask, isOffline, enqueueRecord, cancelBreakReminder, stopAmbient]);
+
+    const completeLinkedTask = async (): Promise<void> => {
+        if (!finishPrompt) return;
+        setSaving(true);
+        try {
+            if (isOffline) await queueMutation('STUDY_TASK_UPDATE', { id: finishPrompt.id, status: 'COMPLETED' });
+            else await updateStudyTask(finishPrompt.id, { status: 'COMPLETED' });
+            setMessage(`${finishPrompt.title} marked complete.`);
+            setFinishPrompt(null);
+        } catch (error) { setMessage(error instanceof ApiError ? error.message : 'Could not update this task.'); }
+        finally { if (mounted.current) setSaving(false); }
+    };
 
     const elapsedMs = focusedMs(timer, Date.now());
     const minutes = focusedMinutes(timer, Date.now());
+    const relevantSessionTypes = SESSION_TYPE_OPTIONS.filter((option) => {
+        if (examSelection?.examProgram === 'SSC_CGL') {
+            return [
+                'NEW_CHAPTER', 'NOTES_MAKING', 'PRACTICE_PROBLEMS', 'REVISION', 'MOCK_TEST', 'MOCK_ANALYSIS',
+                'QUANT_PRACTICE', 'REASONING_PRACTICE', 'VOCABULARY', 'FORMULA_DRILL',
+            ].includes(option.value);
+        }
+        if (examSelection?.examProgram === 'UPSC_CSE') {
+            const common = ['NEW_CHAPTER', 'NOTES_MAKING', 'REVISION', 'MOCK_TEST', 'MOCK_ANALYSIS', 'CURRENT_AFFAIRS'];
+            const stageSpecific = examSelection.examStage === 'MAINS'
+                ? ['ANSWER_WRITING']
+                : ['PRACTICE_PROBLEMS'];
+            return [...common, ...stageSpecific].includes(option.value);
+        }
+        return true;
+    });
 
     return (
         <Screen title={t('focus.title')}>
@@ -248,7 +293,7 @@ export function FocusTimerScreen(): React.JSX.Element {
 
                 <Text style={styles.label}>{t('focus.sessionType')}</Text>
                 <View style={styles.chipRow}>
-                    {SESSION_TYPE_OPTIONS.map((option) => (
+                    {relevantSessionTypes.map((option) => (
                         <Pressable
                             key={option.value}
                             onPress={() => setSessionType(option.value)}
@@ -265,6 +310,7 @@ export function FocusTimerScreen(): React.JSX.Element {
                         </Pressable>
                     ))}
                 </View>
+                {activeTask ? <View style={styles.taskCard}><Text style={styles.taskEyebrow}>CURRENT TASK</Text><Text style={styles.taskTitle}>{activeTask.title}</Text><Text style={styles.taskMeta}>{activeTask.plannedMinutes} min planned</Text></View> : null}
 
                 {ambientModes.length > 0 ? <>
                     <Text style={styles.label}>{t('focus.ambientLabel')}</Text>
@@ -285,6 +331,7 @@ export function FocusTimerScreen(): React.JSX.Element {
                 </> : null}
 
                 {message ? <Text style={styles.message}>{message}</Text> : null}
+                {finishPrompt ? <View style={styles.finishCard}><Text style={styles.taskEyebrow}>SESSION COMPLETE</Text><Text style={styles.taskTitle}>{finishPrompt.minutes} min of focus logged for {finishPrompt.title}</Text><Text style={styles.taskMeta}>Did you finish the planned task?</Text><View style={styles.finishActions}><PrimaryButton label="Mark task complete" onPress={() => void completeLinkedTask()} busy={saving} /><Pressable style={styles.continueButton} onPress={() => setFinishPrompt(null)} disabled={saving}><Text style={styles.continueText}>Continue later</Text></Pressable></View></View> : null}
 
                 <View style={styles.controls}>
                     {timer.status === 'idle' ? (
@@ -357,6 +404,14 @@ const styles = StyleSheet.create({
         fontVariant: ['tabular-nums'],
     },
     clockMeta: { marginTop: 6, fontSize: 14, color: '#475569' },
+    taskCard: { backgroundColor: '#ecfdf5', borderColor: '#a7f3d0', borderWidth: 1, borderRadius: 12, padding: 13, marginBottom: 8 },
+    taskEyebrow: { color: '#047857', fontWeight: '800', fontSize: 11, letterSpacing: 0.6 },
+    taskTitle: { color: '#064e3b', fontWeight: '800', fontSize: 16, marginTop: 3 },
+    taskMeta: { color: '#047857', marginTop: 3 },
+    finishCard: { backgroundColor: '#f0fdf4', borderColor: '#86efac', borderWidth: 1, borderRadius: 12, padding: 13, marginTop: 12 },
+    finishActions: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 11 },
+    continueButton: { padding: 9 },
+    continueText: { color: '#1d4ed8', fontWeight: '800' },
     label: { fontSize: 14, fontWeight: '600', color: '#374151', marginTop: 12, marginBottom: 8 },
     chipRow: { flexDirection: 'row', flexWrap: 'wrap' },
     chip: {

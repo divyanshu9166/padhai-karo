@@ -1,13 +1,32 @@
 services:
+  migrate:
+    build: .
+    env_file: .env.production
+    command: sh -c "npx prisma migrate deploy && npx prisma db seed"
+    restart: "no"
+
   app:
     build: .
     env_file: .env.production
+    # Keep the API private to the VPS; Nginx/Caddy on the host can proxy to this port.
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
     restart: unless-stopped
     command: npm run start
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:3000/api/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
   scheduler:
     build: .
     env_file: .env.production
     restart: unless-stopped
     command: npm run worker:scheduler
+    depends_on:
+      migrate:
+        condition: service_completed_successfully

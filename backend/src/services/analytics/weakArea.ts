@@ -66,9 +66,16 @@ export type MistakeCategory = (typeof MISTAKE_CATEGORIES)[number];
  */
 export const SESSION_TYPES = [
     'NEW_CHAPTER',
+    'NOTES_MAKING',
     'PRACTICE_PROBLEMS',
     'REVISION',
+    'ANSWER_WRITING',
+    'MOCK_TEST',
     'MOCK_ANALYSIS',
+    'CURRENT_AFFAIRS',
+    'QUANT_PRACTICE',
+    'REASONING_PRACTICE',
+    'VOCABULARY',
     'FORMULA_DRILL',
 ] as const;
 

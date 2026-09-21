@@ -90,6 +90,13 @@ export async function getScoreGapHandler(
             'No score-standing reference data is available for your exam track.',
         );
     }
+    if (prediction.kind === 'NOT_APPLICABLE') {
+        return errorResponse(
+            422,
+            ErrorCode.VALIDATION_ERROR,
+            'Rank and target-cutoff gaps are not applicable to UPSC/SSC. Use the next-practice improvement forecast.',
+        );
+    }
 
     // 4. Delegate the comparison to the pure module, echoing the cutoff reference year.
     const result = computeScoreGap(prediction.result, target, cutoff.referenceDataYear);

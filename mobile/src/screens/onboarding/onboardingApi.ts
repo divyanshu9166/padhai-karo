@@ -40,6 +40,10 @@ export interface OnboardingPayload {
   targetYear: number;
   examDate: string;
     currentClass: string;
+    preparationProfile?: string;
+    weekdayStudyMinutes?: number;
+    weekendStudyMinutes?: number;
+    optionalSubject?: string;
     fixedCommitments: FixedCommitmentInput[];
     /** May be empty — empty means no high-energy bands (Req 2.9). */
     peakFocusWindows: PeakFocusWindow[];

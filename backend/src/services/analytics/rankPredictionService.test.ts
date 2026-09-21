@@ -75,6 +75,13 @@ beforeEach(() => {
 });
 
 describe('getRankPredictionHandler — reference-data behavior (Req 3.5, 5.4)', () => {
+    it('does not apply legacy rank bands to UPSC/SSC profiles', async () => {
+        profileFindUnique.mockResolvedValue({ examTrack: 'UPSC' });
+        const res = await getRankPredictionHandler(getReq(), authCtx());
+        expect(res.status).toBe(200);
+        expect(await res.json()).toMatchObject({ kind: 'NOT_APPLICABLE', track: 'UPSC' });
+        expect(scoreStandingAggregate).not.toHaveBeenCalled();
+    });
     it('reflects the MAX reference-data year in a 200 OK payload (Req 3.5, 5.2)', async () => {
         // Several years exist for the track; the active-version resolver picks the maximum.
         const maxYear = 2026;

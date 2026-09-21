@@ -80,6 +80,8 @@ export interface FocusSessionPayload {
     /** One of the five Session_Types; defaults server-side to NEW_CHAPTER when omitted. */
     sessionType?: string;
     abandoned?: boolean;
+    /** Optional action-first task that this offline focus session advances on sync. */
+    taskId?: string;
 }
 
 /** PYQ attempt payload (mirrors the server's `pyqAttemptValidation` input). */

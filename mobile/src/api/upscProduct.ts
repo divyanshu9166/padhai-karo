@@ -13,7 +13,7 @@ export interface PlanningOverview {
 
 export interface DailyBriefing { phase: string; countdownDays: number | null; priorities: unknown; schedule: unknown; insights: { greeting: string; actions: string[]; weakAreas: unknown[]; updates: unknown[]; wellbeing: unknown; source?: 'AI' | 'RULE_BASED'; ai?: { title?: string; keyPoints?: string[] } | null } }
 export interface PracticeInsights { summary: { totalAttempts: number; correct: number; incorrect: number; unanswered: number; accuracyPercent: number; averageTimedSeconds: number | null }; weakAreas: unknown[]; strategy: string[]; }
-export interface CurrentAffairsItem { id: string; title: string; summary: string; category: string; sourceName: string; sourceUrl: string; publishedAt: string; tags: string[]; bookmark: { id: string; read: boolean; notes: string | null } | null }
+export interface CurrentAffairsItem { id: string; title: string; summary: string; category: string; sourceName: string; sourceUrl: string; publishedAt: string; tags: string[]; syllabusTags: string[]; prelimsRelevance: 'LOW' | 'MEDIUM' | 'HIGH' | null; mainsRelevance: 'LOW' | 'MEDIUM' | 'HIGH' | null; bookmark: { id: string; read: boolean; notes: string | null } | null }
 
 export function getPlanningOverview(date?: string): Promise<PlanningOverview> {
     return request<PlanningOverview>(`/planning/overview${date ? `?date=${encodeURIComponent(date)}` : ''}`);
@@ -22,7 +22,12 @@ export function createExamDate(input: { label: string; examDate: string; priorit
 export function getDailyBriefing(): Promise<{ briefing: DailyBriefing }> { return request('/briefing/daily'); }
 export function refreshDailyBriefing(): Promise<{ briefing: DailyBriefing }> { return request('/briefing/daily', { method: 'POST' }); }
 export function getPracticeInsights(): Promise<PracticeInsights> { return request('/practice/insights'); }
-export function getAnalyticsDashboard(rangeDays?: number): Promise<{ weakAreas?: unknown[]; sessionTypeDistribution?: unknown; topics?: unknown[]; points?: unknown[]; benchmark?: unknown; rankPrediction?: unknown; errors: string[] }> {
+/**
+ * Analytics deliberately reports actionable learning signals, not a rank promise.  UPSC/SSC
+ * outcomes depend on changing vacancies, cut-offs and later-stage evaluation, so a precise
+ * rank estimate is neither reliable nor helpful for a student's next study decision.
+ */
+export function getAnalyticsDashboard(rangeDays?: number): Promise<{ weakAreas?: unknown[]; sessionTypeDistribution?: unknown; topics?: unknown[]; points?: unknown[]; benchmark?: unknown; improvementForecast?: ImprovementForecast; errors: string[] }> {
     const from = typeof rangeDays === 'number' && rangeDays > 0
         ? new Date(Date.now() - Math.floor(rangeDays) * 86_400_000).toISOString()
         : null;
@@ -31,24 +36,28 @@ export function getAnalyticsDashboard(rangeDays?: number): Promise<{ weakAreas?:
         request<{ weakAreas?: unknown[]; sessionTypeDistribution?: unknown }>('/analytics/weak-areas'),
         request<{ topics?: unknown[] }>('/analytics/topic-trends'),
         request<{ points?: unknown[] }>(scoreTrajectoryUrl),
-        request<unknown>('/analytics/rank-prediction'),
         request<{ benchmark?: unknown }>('/analytics/benchmark'),
+        request<{ forecast: ImprovementForecast }>('/analytics/improvement-forecast'),
     ]).then((results) => ({
         weakAreas: results[0].status === 'fulfilled' ? results[0].value.weakAreas : [],
         sessionTypeDistribution: results[0].status === 'fulfilled' ? results[0].value.sessionTypeDistribution : null,
         topics: results[1].status === 'fulfilled' ? results[1].value.topics : [],
         points: results[2].status === 'fulfilled' ? results[2].value.points : [],
-        rankPrediction: results[3].status === 'fulfilled' ? results[3].value : null,
-        benchmark: results[4].status === 'fulfilled' ? results[4].value.benchmark : null,
+        benchmark: results[3].status === 'fulfilled' ? results[3].value.benchmark : null,
+        improvementForecast: results[4].status === 'fulfilled' ? results[4].value.forecast : undefined,
         errors: results.map((result, index) => result.status === 'rejected' ? `Analytics section ${index + 1} could not load.` : '').filter(Boolean),
     }));
 }
-export function submitAnswerWriting(input: { prompt: string; answerText: string; subjectId?: string; timeTakenSec?: number }): Promise<{ attempt: unknown }> { return request('/answer-writing', { method: 'POST', body: input }); }
+export function submitAnswerWriting(input: { prompt: string; answerText: string; subjectId?: string; timeTakenSec?: number }): Promise<{ attempt: AnswerWritingAttempt }> { return request('/answer-writing', { method: 'POST', body: input }); }
 export function saveWellbeing(input: { checkinDate?: string; mood: number; energy: number; stress: number; sleepHours?: number; note?: string }): Promise<{ checkin: unknown }> { return request('/wellbeing/checkins', { method: 'POST', body: input }); }
 export function saveSleepSchedule(input: { bedtime: string; wakeTime: string; windDownMin?: number }): Promise<{ schedule: unknown }> { return request('/wellbeing/sleep-schedule', { method: 'PUT', body: input }); }
 export function getCurrentAffairs(): Promise<{ items: CurrentAffairsItem[] }> { return request('/current-affairs'); }
-export function bookmarkCurrentAffairs(itemId: string, read = true): Promise<{ bookmark: unknown }> { return request('/current-affairs', { method: 'POST', body: { itemId, read } }); }
-export function createOpenNote(input: { inputType: 'TEXT' | 'PHOTO' | 'VOICE'; text: string; title?: string }): Promise<{ summary: unknown }> { return request('/ai/notes', { method: 'POST', body: input }); }
+export function bookmarkCurrentAffairs(itemId: string, read = true, addToRevision = false): Promise<{ bookmark: unknown; revisionCard?: unknown }> { return request('/current-affairs', { method: 'POST', body: { itemId, read, addToRevision } }); }
+type OpenNoteInput =
+    | { inputType: 'TEXT'; text: string; title?: string }
+    | { inputType: 'PHOTO'; imageData: string; mimeType: string; title?: string }
+    | { inputType: 'VOICE'; audioData: string; mimeType: string; audioUri?: string; voiceNoteId?: string; title?: string };
+export function createOpenNote(input: OpenNoteInput): Promise<{ summary: { id: string; summary: AiStudySummary }; remainingQuota: number; source: string; message: string }> { return request('/ai/notes', { method: 'POST', body: input }); }
 export function getResources(): Promise<{ resources: unknown[] }> { return request('/resources'); }
 export function createResource(input: { title: string; url?: string; type?: string; tags?: string[] }): Promise<{ resource: unknown }> { return request('/resources', { method: 'POST', body: input }); }
 export function updateResource(id: string, input: { title?: string; url?: string | null; tags?: string[]; completed?: boolean }): Promise<{ resource: unknown }> { return request('/resources/' + encodeURIComponent(id), { method: 'PATCH', body: input }); }
@@ -73,6 +82,7 @@ export function createFormula(input: { title: string; expression: string; explan
 export function getFormulas(): Promise<{ items: FormulaItem[] }> { return request('/formulas'); }
 export function createConceptMap(input: { title: string; nodes: unknown[]; edges: unknown[] }): Promise<{ map: ConceptMap }> { return request('/concept-maps', { method: 'POST', body: input }); }
 export function getConceptMaps(): Promise<{ maps: ConceptMap[] }> { return request('/concept-maps'); }
+export function createConceptClarification(input: { concept: string; confusion?: string; level: string; mode: ConceptMode }): Promise<ConceptClarification> { return request('/learning/concept-clarification', { method: 'POST', body: input }); }
 export function createCapsule(input: { title: string; points: string[]; chapterId?: string }): Promise<{ capsule: unknown }> { return request('/revision-capsules', { method: 'POST', body: input }); }
 export function getWellbeingInsights(): Promise<WellbeingInsights> { return request('/wellbeing/insights'); }
 export function createRecoveryPlan(reason?: string): Promise<{ plan: unknown }> { return request('/wellbeing/recovery', { method: 'POST', body: { reason } }); }
@@ -110,12 +120,12 @@ export function getPdfPageImageUrl(documentId: string, page: number, scale = 1.5
 export function uploadVoiceNote(uri: string, name: string, durationSec?: number, tags: string[] = []): Promise<{ note: VoiceNote; transcription: string | null; transcriptionAvailable: boolean }> { return uploadMultipart('/voice-notes/upload', { uri, name, type: 'audio/mp4' }, { title: name.replace(/\.[^.]+$/, ''), ...(durationSec ? { durationSec: String(durationSec) } : {}), tags: tags.join(',') }); }
 export function transcribeVoiceNote(id: string): Promise<{ note: VoiceNote }> { return request('/voice-notes/' + encodeURIComponent(id) + '/transcribe', { method: 'POST' }); }
 export function getPdfAnnotations(documentId: string): Promise<{ annotations: PdfAnnotation[] }> { return request('/pdf-documents/annotations?documentId=' + encodeURIComponent(documentId)); }
-export async function createPdfAnnotation(input: { documentId: string; page: number; type?: string; quote?: string; note?: string; selectionStart?: number; selectionEnd?: number; rect?: { x: number; y: number; width: number; height: number } }): Promise<{ annotation: PdfAnnotation }> {
+export async function createPdfAnnotation(input: { documentId: string; page: number; type?: string; quote?: string; note?: string; color?: string; selectionStart?: number; selectionEnd?: number; rect?: { x: number; y: number; width: number; height: number } }): Promise<{ annotation: PdfAnnotation }> {
     try { return await request('/pdf-documents/annotations', { method: 'POST', body: input }); }
     catch (error) {
         if (!(error instanceof ApiError) || error.status !== 0) throw error;
         const id = 'offline-annotation-' + Date.now(); await queueMutation('PDF_ANNOTATION_CREATE', { ...input, id });
-        return { annotation: { id, documentId: input.documentId, page: input.page, type: input.type ?? 'HIGHLIGHT', quote: input.quote ?? null, note: input.note ?? null, color: '#facc15', selectionStart: input.selectionStart ?? null, selectionEnd: input.selectionEnd ?? null } };
+        return { annotation: { id, documentId: input.documentId, page: input.page, type: input.type ?? 'HIGHLIGHT', quote: input.quote ?? null, note: input.note ?? null, color: input.color ?? '#facc15', selectionStart: input.selectionStart ?? null, selectionEnd: input.selectionEnd ?? null } };
     }
 }
 export async function updatePdfAnnotation(id: string, input: Partial<{ page: number; type: string; quote: string | null; note: string | null; color: string; selectionStart: number | null; selectionEnd: number | null; rect: { x: number; y: number; width: number; height: number } | null; baseUpdatedAt: string }>): Promise<{ annotation: PdfAnnotation }> {
@@ -139,6 +149,24 @@ export interface RevisionCard { id: string; title: string; prompt: string; answe
 export interface RevisionSequence { chapterId: string; chapterName: string; phases: { phase: string; label: string; dueAt: string | null; cardId: string | null }[]; }
 export interface FormulaItem { id: string; title: string; expression: string; explanation: string | null; tags: string[]; }
 export interface ConceptMap { id: string; title: string; nodes: unknown; edges: unknown; }
+export type ConceptMode = 'EXPLAIN' | 'SIMPLIFY' | 'ANALOGY' | 'QUIZ';
+export interface ConceptClarification { concept: string; mode: ConceptMode; source: 'AI' | 'CURATED_OR_GUIDED'; content: { explanation: string; keyPoints: string[]; analogy: string; commonMisconception: string; quiz: { question: string; options: string[]; correctOption: number; hint: string; explanation: string } } }
+export interface AnswerWritingAttempt {
+    id: string;
+    prompt: string;
+    wordCount: number;
+    selfScore: number | null;
+    feedback: {
+        score: number;
+        criteria: Record<'relevance' | 'structure' | 'evidence' | 'analysis' | 'clarity', number>;
+        strengths: string[];
+        nextSteps: string[];
+        demandAnalysis: string;
+        factualCautions: string[];
+        source: 'RUBRIC' | 'AI';
+    };
+}
+export interface AiStudySummary { title?: string; keyPoints: string[]; revisionCapsule?: string[]; flashcards?: Array<{ question: string; answer: string }> }
 export interface WellbeingInsights { risk: 'LOW' | 'WATCH' | 'HIGH'; signals: { averageStress: number; averageEnergy: number; heavyStudyDays: number; missedPlanDays: number; abandonedSessions?: number }; recoveryPlan: unknown[] | null; }
 export interface Milestone { id: string; label: string; targetValue: number; currentValue: number; achievedAt: string | null; }
 export interface ChecklistItem { id: string; label: string; category: string; completed: boolean; dueAt?: string | null; }
@@ -156,7 +184,9 @@ export interface MockAttempt { id: string; title: string; durationSec: number; c
 export type ExternalPaperMistakeTag = 'CONCEPT_GAP' | 'SILLY_MISTAKE' | 'TIME_PRESSURE' | 'REVISION_GAP' | 'UNATTEMPTED';
 export interface ExternalPaperBreakdown { label: string; obtainedScore: number; maxScore: number; }
 export interface ExternalPaperReviewInput { title: string; sourceName?: string; testDate: string; obtainedScore: number; maxScore: number; breakdown?: ExternalPaperBreakdown[]; mistakeTags?: ExternalPaperMistakeTag[]; selfNotes?: string; documentId?: string; }
-export interface ExternalPaperAnalysis { scorePercent: number; previousScorePercent: number | null; scoreChangePoints: number | null; confidence: { level: 'EARLY_SIGNAL' | 'PATTERN_FORMING'; message: string }; encouragement: string; priorityAreas: Array<{ label: string; scorePercent: number; reason: string }>; actionPlan: string[]; disclaimer: string; }
+export type ImprovementForecast = { kind: 'INSUFFICIENT_DATA'; minimumRequired: 3; available: number; message: string } | { kind: 'ESTIMATE'; confidence: 'LOW' | 'MEDIUM' | 'HIGH'; sampleSize: number; currentPercent: number; estimatedNextPercent: { low: number; high: number }; estimatedNextMarks: { low: number; high: number; maximum: number }; trendPointsPerAttempt: number; assumptions: string[]; message: string; disclaimer: string };
+export interface PaperDocumentInsights { source: 'EXTRACTED_TEXT' | 'UNAVAILABLE'; detectedTopics: Array<{ label: string; evidenceCount: number }>; estimatedQuestionCount: number | null; coverage: 'NONE' | 'LIMITED' | 'GOOD'; message: string; limitation: string; }
+export interface ExternalPaperAnalysis { scorePercent: number; previousScorePercent: number | null; scoreChangePoints: number | null; confidence: { level: 'EARLY_SIGNAL' | 'PATTERN_FORMING'; message: string }; encouragement: string; priorityAreas: Array<{ label: string; scorePercent: number; reason: string }>; actionPlan: string[]; forecast: ImprovementForecast; documentInsights?: PaperDocumentInsights; disclaimer: string; }
 export interface ExternalPaperReview { id: string; title: string; sourceName: string | null; testDate: string; obtainedScore: number; maxScore: number; breakdown: ExternalPaperBreakdown[]; mistakeTags: ExternalPaperMistakeTag[]; selfNotes: string | null; documentId: string | null; analysis: ExternalPaperAnalysis; createdAt: string; }
 export interface Counselling { roles: Array<{ name: string; fit: string; next: string }>; disclaimer: string; }
 export interface VoiceNote { id: string; title: string; audioUri?: string | null; transcription?: string | null; durationSec?: number | null; tags: string[]; }

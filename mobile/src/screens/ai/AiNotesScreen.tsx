@@ -18,6 +18,7 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
+  Share,
   Text,
   TextInput,
   View,
@@ -260,15 +261,18 @@ export function AiNotesScreen({
 
         {summaries.map((summary) => (
           <View key={summary.id} style={styles.summaryCard}>
-            <Text style={styles.summaryMeta}>{summary.inputType}</Text>
+            <View style={styles.summaryTop}><Text style={styles.summaryMeta}>{summary.inputType} • GENERATED • EDITABLE SOURCE</Text><Pressable onPress={() => void Share.share({ title: summary.summary.title ?? 'Study note', message: `${summary.summary.title ?? 'Study note'}\n\n${summary.summary.keyPoints.map((point) => `• ${point}`).join('\n')}` })}><Text style={styles.export}>Export</Text></Pressable></View>
             {summary.summary.title ? (
               <Text style={styles.summaryTitle}>{summary.summary.title}</Text>
             ) : null}
+            <Text style={styles.capsuleLabel}>30-second summary</Text>
             {summary.summary.keyPoints.map((point, i) => (
               <Text key={i} style={styles.point}>
                 • {point}
               </Text>
             ))}
+            {summary.summary.revisionCapsule?.length ? <View style={styles.capsule}><Text style={styles.capsuleLabel}>Quick revision capsule</Text>{summary.summary.revisionCapsule.slice(0, 5).map((point, index) => <Text key={`${index}-${point}`} style={styles.point}>{index + 1}. {point}</Text>)}</View> : null}
+            {summary.summary.flashcards?.length ? <View style={styles.recallReady}><Text style={styles.summaryTitle}>{summary.summary.flashcards.length} recall cards ready</Text><Text style={styles.point}>First review is placed in your active-recall queue.</Text></View> : null}
           </View>
         ))}
       </ScrollView>
@@ -321,7 +325,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   summaryMeta: { fontSize: 12, fontWeight: '600', color: '#6b7280', marginBottom: 4 },
+  summaryTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8 },
+  export: { color: '#1d4ed8', fontWeight: '700', fontSize: 12 },
   summaryTitle: { fontSize: 15, fontWeight: '700', color: '#111827', marginBottom: 6 },
   point: { fontSize: 14, color: '#374151', marginTop: 2 },
+  capsuleLabel: { color: '#1d4ed8', fontSize: 12, fontWeight: '800', marginTop: 8, marginBottom: 4 },
+  capsule: { backgroundColor: '#eff6ff', borderRadius: 12, padding: 12, marginTop: 10 },
+  recallReady: { backgroundColor: '#ecfdf5', borderRadius: 12, padding: 12, marginTop: 10 },
   disabled: { opacity: 0.6 },
 });

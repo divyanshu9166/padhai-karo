@@ -19,6 +19,12 @@ export type OnboardingStackParamList = {
     Onboarding: undefined;
 };
 
+/** Daily planning first; the advanced weekly calendar remains one tap inside Plan. */
+export type PlanStackParamList = {
+    Plan: undefined;
+    Timetable: undefined;
+};
+
 /** Practice tab stack — PYQ practice, Timed Paper mode, Mistake journal (task 21.6). */
 export type PracticeStackParamList = {
     Pyq: undefined;
@@ -27,6 +33,9 @@ export type PracticeStackParamList = {
     TimedPaper: { paperId?: string } | undefined;
     MistakeJournal: undefined;
     ExternalPaperReview: undefined;
+    AnswerWriting: undefined;
+    PracticeLab: undefined;
+    FormulaSprint: undefined;
 };
 
 /** Notes tab stack — AI notes summarizer + subscription/paywall (task 21.7). */
@@ -38,11 +47,10 @@ export type NotesStackParamList = {
 /** Main app bottom tabs (authenticated + onboarded users). */
 export type MainTabParamList = {
     Dashboard: undefined;
-    Plan: undefined;
-    Timetable: undefined;
-    Focus: undefined;
-    Practice: undefined;
-    More: undefined;
+    Plan: { screen?: keyof PlanStackParamList } | undefined;
+    Focus: { task?: { id: string; title: string; subjectId: string | null; plannedMinutes: number; sessionType: import('@/screens/focus/sessionTypes').SessionType } } | undefined;
+    Practice: { screen?: keyof PracticeStackParamList } | undefined;
+    More: { screen?: keyof MoreStackParamList } | undefined;
 };
 
 /** Secondary app surfaces grouped behind the More tab to keep the primary tab bar usable. */
@@ -54,6 +62,22 @@ export type MoreStackParamList = {
     Library: undefined;
     Community: undefined;
     Analytics: undefined;
+    WeeklyReview: undefined;
+    ConceptCoach: undefined;
+    DailyBriefing: undefined;
+    OfflineManager: undefined;
+    RecallStudio: undefined;
+    FormulaSprint: undefined;
+    ConceptMapBuilder: undefined;
+    PracticeLab: undefined;
+    AnswerWritingCanvas: undefined;
+    WellbeingProtocol: undefined;
+    GuidanceDoubts: undefined;
+    AnalyticsDrilldown: undefined;
+    CommunityChat: { userId: string; label?: string };
+    SharedStudyDashboard: { userId: string; label?: string };
+    PdfAnnotationEditor: { documentId: string; documentTitle: string; page: number; pageText?: string; annotationId?: string; quote?: string; note?: string; color?: string; updatedAt?: string };
+    AccountPrivacy: undefined;
 };
 
 // ── Screen-prop helpers ─────────────────────────────────────────────────────────────────────
@@ -80,6 +104,11 @@ export type NotesStackScreenProps<T extends keyof NotesStackParamList> = Composi
 
 export type MainTabScreenProps<T extends keyof MainTabParamList> = BottomTabScreenProps<
     MainTabParamList,
+    T
+>;
+
+export type PlanStackScreenProps<T extends keyof PlanStackParamList> = NativeStackScreenProps<
+    PlanStackParamList,
     T
 >;
 

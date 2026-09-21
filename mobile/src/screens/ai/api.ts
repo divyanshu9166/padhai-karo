@@ -34,6 +34,8 @@ export type AiInputType = 'TEXT' | 'PHOTO' | 'VOICE';
 export interface AiSummaryContent {
   keyPoints: string[];
   title?: string;
+  revisionCapsule?: string[];
+  flashcards?: Array<{ question: string; answer: string }>;
   [key: string]: unknown;
 }
 

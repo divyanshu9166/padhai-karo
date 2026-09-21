@@ -186,6 +186,11 @@ function wireTransaction(): { created: Array<Record<string, unknown>> } {
                         ),
                 ),
             },
+            studyTask: {
+                deleteMany: vi.fn(async () => ({ count: 0 })),
+                findMany: vi.fn(async () => []),
+                createMany: vi.fn(async ({ data }: { data: Array<Record<string, unknown>> }) => ({ count: data.length })),
+            },
         };
         return cb(tx);
     });

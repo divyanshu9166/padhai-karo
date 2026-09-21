@@ -32,6 +32,7 @@ import {
     submitPyqAttempt,
     type AttemptResult,
     type ClientPYQ,
+    type ProfileExamSelection,
     type ReferenceSubject,
 } from './api';
 import { AttemptResults } from './components/AttemptResults';
@@ -51,6 +52,8 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
     const t = useTranslation();
 
     const [subjects, setSubjects] = useState<ReferenceSubject[]>([]);
+    const [examProgram, setExamProgram] = useState<ProfileExamSelection['examProgram']>(null);
+    const [examStage, setExamStage] = useState<ProfileExamSelection['examStage']>(null);
     const [phase, setPhase] = useState<Phase>({ kind: 'loadingFilters' });
 
     const [yearText, setYearText] = useState('');
@@ -62,6 +65,8 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
         setPhase({ kind: 'loadingFilters' });
         try {
             const selection = await getProfileTrack();
+            setExamProgram(selection.examProgram ?? null);
+            setExamStage(selection.examStage ?? null);
             const list = await listSubjects(selection);
             setSubjects(list);
             setPhase({ kind: 'filtering' });
@@ -184,6 +189,8 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
                         </>
                     ) : (
                         <>
+                            {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <View style={styles.stageCard}><Text style={styles.stageEyebrow}>UPSC MAINS MODE</Text><Text style={styles.stageTitle}>Lead with writing and mock analysis.</Text><Text style={styles.stageBody}>Use MCQs selectively; your core practice here is answer structure, depth and review.</Text><PrimaryButton label="Start answer writing" onPress={() => navigation.navigate('AnswerWriting')} /><SecondaryButton label="Analyse my test" onPress={() => navigation.navigate('ExternalPaperReview')} /></View> : null}
+                            {examProgram === 'SSC_CGL' ? <View style={styles.stageCard}><Text style={styles.stageEyebrow}>SSC MODE</Text><Text style={styles.stageTitle}>Build speed, accuracy and recall.</Text><SecondaryButton label="Open pacing trainer" onPress={() => navigation.navigate('PracticeLab')} /><SecondaryButton label="Open formula sprint" onPress={() => navigation.navigate('FormulaSprint')} /></View> : null}
                             <Text style={styles.label}>{t('pyq.filterByYear')}</Text>
                             <TextInput
                                 style={styles.input}
@@ -215,6 +222,9 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
                             <SecondaryButton label="Start full mock" onPress={() => navigation.navigate('Mock')} />
                             <SecondaryButton label="Review external paper" onPress={() => navigation.navigate('ExternalPaperReview')} />
                             <SecondaryButton label="Timed paper" onPress={() => navigation.navigate('TimedPaper')} />
+                            <SecondaryButton label="Pacing trainer" onPress={() => navigation.navigate('PracticeLab')} />
+                            {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <SecondaryButton label="Answer writing" onPress={() => navigation.navigate('AnswerWriting')} /> : null}
+                            {examProgram === 'SSC_CGL' ? <SecondaryButton label="Formula sprint" onPress={() => navigation.navigate('FormulaSprint')} /> : null}
                             <SecondaryButton label="Mistake journal" onPress={() => navigation.navigate('MistakeJournal')} />
                         </>
                     )}
@@ -312,6 +322,10 @@ const styles = StyleSheet.create({
         color: '#dc2626',
         marginBottom: 12,
     },
+    stageCard: { backgroundColor: '#eff6ff', borderWidth: 1, borderColor: '#bfdbfe', borderRadius: 12, padding: 13, marginBottom: 14 },
+    stageEyebrow: { color: '#1d4ed8', fontSize: 10, letterSpacing: .7, fontWeight: '800' },
+    stageTitle: { color: '#172554', fontSize: 17, fontWeight: '800', marginTop: 5 },
+    stageBody: { color: '#475569', lineHeight: 19, marginTop: 5 },
     primaryButton: {
         backgroundColor: '#2563eb',
         borderRadius: 10,

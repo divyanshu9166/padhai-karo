@@ -19,14 +19,7 @@ const VALID_ENV: EnvSource = {
     RAZORPAY_WEBHOOK_SECRET: 'rzp_webhook_secret',
 };
 
-const REQUIRED_KEYS = [
-    'DATABASE_URL',
-    'REDIS_URL',
-    'AI_PROVIDER_API_KEY',
-    'RAZORPAY_KEY_ID',
-    'RAZORPAY_KEY_SECRET',
-    'RAZORPAY_WEBHOOK_SECRET',
-] as const;
+const REQUIRED_KEYS = ['DATABASE_URL', 'REDIS_URL'] as const;
 
 describe('loadConfig', () => {
     it('reads and maps every value when all required vars are present', () => {
@@ -55,7 +48,7 @@ describe('loadConfig', () => {
         expect(() => loadConfig({ ...VALID_ENV, REDIS_URL: '   ' })).toThrow(ConfigError);
     });
 
-    it('reports every missing var, not just the first', () => {
+    it('reports every missing core var, not just the first', () => {
         try {
             loadConfig({});
             expect.unreachable('expected ConfigError');
@@ -63,6 +56,16 @@ describe('loadConfig', () => {
             expect(err).toBeInstanceOf(ConfigError);
             expect((err as ConfigError).missing).toEqual([...REQUIRED_KEYS]);
         }
+    });
+
+    it('allows optional providers to be disabled for a core deployment', () => {
+        const config = loadConfig({
+            DATABASE_URL: VALID_ENV.DATABASE_URL,
+            REDIS_URL: VALID_ENV.REDIS_URL,
+        });
+
+        expect(config.ai.apiKey).toBe('');
+        expect(config.razorpay).toEqual({ keyId: '', keySecret: '', webhookSecret: '' });
     });
 
     it('does not leak secret values into the error message', () => {

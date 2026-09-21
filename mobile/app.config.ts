@@ -26,18 +26,38 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     slug: 'padhaikaro',
     scheme: 'padhaikaro',
     version: '1.0.0',
+    runtimeVersion: { policy: 'appVersion' },
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
     newArchEnabled: true,
     ios: {
         supportsTablet: true,
         bundleIdentifier: 'com.padhaikaro.app',
+        buildNumber: '1',
+        infoPlist: {
+            NSCameraUsageDescription: 'PadhaiKaro uses the camera only when you choose to capture a study note.',
+            NSMicrophoneUsageDescription: 'PadhaiKaro uses the microphone only when you choose to record a study note.',
+            NSPhotoLibraryUsageDescription: 'PadhaiKaro uses your photo library only when you choose a study note to upload.',
+            ITSAppUsesNonExemptEncryption: false,
+        },
     },
     android: {
         package: 'com.padhaikaro.app',
+        versionCode: 1,
         permissions: ['NOTIFICATIONS', 'RECORD_AUDIO', 'CAMERA'],
+        blockedPermissions: [
+            'android.permission.READ_EXTERNAL_STORAGE',
+            'android.permission.WRITE_EXTERNAL_STORAGE',
+            'android.permission.SYSTEM_ALERT_WINDOW',
+        ],
     },
-    plugins: ['expo-notifications', 'expo-image-picker', 'expo-av', './plugins/withPadhaiKaroWidget.js'],
+    plugins: [
+        'expo-notifications',
+        'expo-image-picker',
+        'expo-av',
+        './plugins/withPadhaiKaroWidget.js',
+        './plugins/withNetworkSecurity.js',
+    ],
     extra: {
         // Resolved at config-eval time; read at runtime via expo-constants (config/env.ts).
         apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? DEFAULT_API_BASE_URL,

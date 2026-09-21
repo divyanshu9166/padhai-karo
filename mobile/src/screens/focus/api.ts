@@ -61,6 +61,8 @@ export interface RecordFocusSessionBody {
     /** Accumulated focused minutes (excludes paused time; integer > 0). */
     focusedDurationMin: number;
     sessionType: SessionType;
+    /** Optional Today/Plan task this timer session advances. */
+    taskId?: string;
     /** Client-generated UUID for offline-idempotency-friendly recording (Req 21). */
     clientId: string;
     abandoned?: boolean;
@@ -82,7 +84,7 @@ interface RecordFocusSessionResponse {
  * Load the authenticated user's selectable subjects: resolve the profile's `examTrack`, then
  * fetch that track's reference subjects. Returns picker-ready `{ id, name }` options.
  */
-export async function fetchSubjectOptions(signal?: AbortSignal): Promise<SubjectOption[]> {
+export async function fetchFocusSetup(signal?: AbortSignal): Promise<{ subjects: SubjectOption[]; selection: ProfileExamSelection }> {
     const { profile } = await request<ProfileResponse>('/profile', { signal });
     const selector = profile.examProgram && profile.examStage
         ? `program=${encodeURIComponent(profile.examProgram)}&stage=${encodeURIComponent(profile.examStage)}`
@@ -91,7 +93,11 @@ export async function fetchSubjectOptions(signal?: AbortSignal): Promise<Subject
         `/reference/subjects?${selector}`,
         { signal },
     );
-    return subjects.map((subject) => ({ id: subject.key, name: subject.name }));
+    return { subjects: subjects.map((subject) => ({ id: subject.key, name: subject.name })), selection: profile };
+}
+
+export async function fetchSubjectOptions(signal?: AbortSignal): Promise<SubjectOption[]> {
+    return (await fetchFocusSetup(signal)).subjects;
 }
 
 /** Record a completed focus session. Throws {@link import('@/api').ApiError} on 4xx/5xx. */

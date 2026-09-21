@@ -41,6 +41,7 @@ import {
     type StrategyItem,
     type WellbeingInsights,
     type AmbientMode,
+    type AnswerWritingAttempt,
 } from '@/api/upscProduct';
 
 type ToolSection = 'recall' | 'practice' | 'wellbeing' | 'guidance';
@@ -58,6 +59,7 @@ export function StudyToolsScreen(): React.JSX.Element {
     const [wellbeing, setWellbeing] = useState<WellbeingInsights | null>(null);
     const [prompt, setPrompt] = useState('');
     const [answer, setAnswer] = useState('');
+    const [answerReview, setAnswerReview] = useState<AnswerWritingAttempt | null>(null);
     const [formulaTitle, setFormulaTitle] = useState('');
     const [formulaExpression, setFormulaExpression] = useState('');
     const [mapTitle, setMapTitle] = useState('');
@@ -236,7 +238,22 @@ export function StudyToolsScreen(): React.JSX.Element {
 
         <View style={[styles.card, visible('practice')] }><Text style={styles.heading}>Pacing trainer</Text><Text style={styles.muted}>A live round trains read → decide → skip reflexes. The timer records speed, accuracy and skipped questions.</Text><View style={styles.twoCol}><TextInput style={[styles.input, styles.half]} keyboardType="numeric" placeholder="Questions" value={paceQuestions} onChangeText={setPaceQuestions} /><TextInput style={[styles.input, styles.half]} keyboardType="numeric" placeholder="Target total sec" value={paceTarget} onChangeText={setPaceTarget} /></View>{paceRunning ? <View style={styles.sprint}><Text style={paceRemaining <= 10 ? styles.warning : styles.muted}>Time left {Math.floor(paceRemaining / 60)}:{String(paceRemaining % 60).padStart(2, '0')} · Question {Math.min(paceAnswered + 1, Number(paceQuestions) || 1)}/{paceQuestions}</Text><View style={styles.buttonRow}><Pressable style={styles.secondary} onPress={() => recordPacingOutcome('CORRECT')}><Text style={styles.secondaryText}>Correct / next</Text></Pressable><Pressable style={styles.secondary} onPress={() => recordPacingOutcome('SKIP')}><Text style={styles.secondaryText}>Skip / next</Text></Pressable></View><Pressable style={styles.secondary} onPress={() => void finishPacingRound()}><Text style={styles.secondaryText}>Finish round</Text></Pressable></View> : <Pressable style={styles.button} disabled={busy} onPress={startPacingRound}><Text style={styles.buttonText}>Start live pacing round</Text></Pressable>}<Text style={styles.muted}>For manual import: log a completed set below.</Text><View style={styles.twoCol}><TextInput style={[styles.input, styles.half]} keyboardType="numeric" placeholder="Actual sec" value={paceActual} onChangeText={setPaceActual} /><TextInput style={[styles.input, styles.half]} keyboardType="numeric" placeholder="Correct" value={paceCorrect} onChangeText={setPaceCorrect} /></View><TextInput style={styles.input} keyboardType="numeric" placeholder="Skipped" value={paceSkipped} onChangeText={setPaceSkipped} /><Pressable style={styles.secondary} disabled={busy} onPress={() => void run(() => savePacing({ questionCount: Number(paceQuestions), targetSeconds: Number(paceTarget), actualSeconds: Number(paceActual), correct: Number(paceCorrect), skipped: Number(paceSkipped) }), 'Pacing attempt logged.') }><Text style={styles.secondaryText}>Log completed set</Text></Pressable></View>
 
-        <View style={[styles.card, visible('practice')] }><Text style={styles.heading}>UPSC answer writing</Text><TextInput style={styles.input} placeholder="Question / prompt" value={prompt} onChangeText={setPrompt} multiline /><TextInput style={[styles.input, styles.multiline]} placeholder="Write your answer" value={answer} onChangeText={setAnswer} multiline /><Pressable style={styles.button} disabled={busy} onPress={() => void run(async () => { await submitAnswerWriting({ prompt, answerText: answer }); setPrompt(''); setAnswer(''); }, 'Answer saved for review.') }><Text style={styles.buttonText}>Submit answer</Text></Pressable></View>
+        <View style={[styles.card, visible('practice')] }>
+            <Text style={styles.heading}>Answer evaluation</Text><Text style={styles.muted}>Get a supportive rubric for structure and improvement. Verify facts with trusted sources.</Text>
+            <TextInput style={styles.input} placeholder="Question / prompt" value={prompt} onChangeText={setPrompt} multiline />
+            <TextInput style={[styles.input, styles.multiline]} placeholder="Write your answer" value={answer} onChangeText={setAnswer} multiline />
+            <Pressable style={styles.button} disabled={busy} onPress={() => void run(async () => {
+                const { attempt } = await submitAnswerWriting({ prompt, answerText: answer });
+                setAnswerReview(attempt); setPrompt(''); setAnswer('');
+            }, 'Your answer has been reviewed.') }><Text style={styles.buttonText}>Evaluate answer</Text></Pressable>
+            {answerReview ? <View style={styles.answerReview}>
+                <View style={styles.answerHero}><Text style={styles.answerHeroLabel}>WRITING REVIEW · {answerReview.feedback.source === 'AI' ? 'AI-ASSISTED' : 'RUBRIC'}</Text><Text style={styles.answerHeroScore}>{answerReview.feedback.score}/100</Text><Text style={styles.answerHeroMeta}>{answerReview.wordCount} words · a practice signal, not an exam score</Text></View>
+                <Text style={styles.reviewLead}>{answerReview.feedback.demandAnalysis}</Text>
+                {(Object.entries(answerReview.feedback.criteria) as Array<[string, number]>).map(([label, value]) => <View key={label} style={styles.rubricRow}><View style={styles.rubricTop}><Text style={styles.rubricLabel}>{label}</Text><Text style={styles.rubricValue}>{value}/20</Text></View><View style={styles.rubricTrack}><View style={[styles.rubricFill, { width: `${Math.max(0, Math.min(100, value * 5))}%` }]} /></View></View>)}
+                <View style={styles.successPanel}><Text style={styles.panelTitle}>What is working</Text>{answerReview.feedback.strengths.slice(0, 2).map((item) => <Text key={item} style={styles.panelText}>• {item}</Text>)}</View>
+                <View style={styles.warningPanel}><Text style={styles.panelTitle}>Next improvement</Text>{answerReview.feedback.nextSteps.slice(0, 2).map((item) => <Text key={item} style={styles.panelText}>• {item}</Text>)}{answerReview.feedback.factualCautions.slice(0, 1).map((item) => <Text key={item} style={styles.caution}>Fact check: {item}</Text>)}</View>
+            </View> : null}
+        </View>
 
         <View style={[styles.card, visible('wellbeing')] }><Text style={styles.heading}>Wellbeing and anxiety protocol</Text>{wellbeing ? <Text style={wellbeing.risk === 'HIGH' ? styles.warning : styles.muted}>Risk: {wellbeing.risk}. Average stress {wellbeing.signals.averageStress.toFixed(1)}, energy {wellbeing.signals.averageEnergy.toFixed(1)}.</Text> : <ActivityIndicator color="#2563eb" />}<View style={styles.buttonRow}><Pressable style={styles.secondary} onPress={() => void run(() => logAnxietyProtocol('BOX_BREATHING', 120), 'Two-minute box breathing logged.') }><Text style={styles.secondaryText}>Box breathing</Text></Pressable><Pressable style={styles.secondary} onPress={() => void run(() => logAnxietyProtocol('GROUNDING_5_4_3_2_1', 180), 'Grounding protocol logged.') }><Text style={styles.secondaryText}>Grounding</Text></Pressable></View><Pressable style={styles.button} onPress={() => void run(() => createRecoveryPlan('User requested a lighter three-day reset'), 'Three-day recovery plan created.') }><Text style={styles.buttonText}>Create 3-day recovery plan</Text></Pressable></View>
 
@@ -298,4 +315,5 @@ const styles = StyleSheet.create({
     doneText: { color: '#15803d', textDecorationLine: 'line-through' },
     message: { color: '#15803d', fontWeight: '700', marginBottom: 12 },
     link: { color: '#2563eb', marginTop: 5 },
+    answerReview: { marginTop: 12, gap: 10 }, answerHero: { backgroundColor: '#eff6ff', borderRadius: 12, padding: 14 }, answerHeroLabel: { color: '#1d4ed8', fontSize: 11, fontWeight: '800' }, answerHeroScore: { color: '#111827', fontSize: 30, fontWeight: '800', marginTop: 4 }, answerHeroMeta: { color: '#475569', marginTop: 3, fontSize: 12 }, reviewLead: { color: '#374151', lineHeight: 20 }, rubricRow: { marginTop: 2 }, rubricTop: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5 }, rubricLabel: { color: '#334155', textTransform: 'capitalize', fontWeight: '700' }, rubricValue: { color: '#1d4ed8', fontWeight: '800' }, rubricTrack: { height: 8, borderRadius: 999, backgroundColor: '#dbeafe', overflow: 'hidden' }, rubricFill: { height: '100%', borderRadius: 999, backgroundColor: '#2563eb' }, successPanel: { backgroundColor: '#ecfdf5', borderRadius: 10, padding: 11 }, warningPanel: { backgroundColor: '#fffbeb', borderRadius: 10, padding: 11 }, panelTitle: { color: '#111827', fontWeight: '800', marginBottom: 4 }, panelText: { color: '#374151', lineHeight: 19 }, caution: { color: '#92400e', lineHeight: 19, marginTop: 7 },
 });

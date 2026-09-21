@@ -16,6 +16,7 @@
     "prisma:seed": "prisma db seed",
     "pyq:import": "tsx prisma/import-official-pyq.ts",
     "pyq:prepare": "tsx prisma/prepare-official-pyq.ts",
+    "planning:backfill": "tsx prisma/backfill-upsc-ssc-planning.ts",
     "worker:scheduler": "tsx src/workers/scheduler.ts",
     "current-affairs:refresh": "tsx src/workers/refreshCurrentAffairs.ts",
     "check:pdf-renderer": "node --env-file-if-exists=.env scripts/check-poppler.mjs",

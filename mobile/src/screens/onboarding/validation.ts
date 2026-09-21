@@ -61,6 +61,10 @@ export function validateOnboarding(
     if (payload.currentClass.trim().length === 0) {
         return 'Enter your current class.';
     }
+    for (const [label, value] of [['weekday study time', payload.weekdayStudyMinutes], ['weekend study time', payload.weekendStudyMinutes]] as const) {
+        if (value !== undefined && (!Number.isInteger(value) || value < 30 || value > 960)) return `Enter ${label} between 30 and 960 minutes.`;
+    }
+    if (payload.examProgram === 'UPSC_CSE' && payload.examStage === 'MAINS' && !payload.optionalSubject?.trim()) return 'Enter your UPSC Mains optional subject.';
     if (!isTargetYearValid(payload.targetYear, currentYear)) {
         return `Target year must not be earlier than ${currentYear}.`;
     }

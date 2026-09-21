@@ -8,9 +8,10 @@
  * those values. It must only ever be imported from server-side code (API route
  * handlers, services, workers) — never from client/shared bundles.
  *
- * Required variables are validated up front (`loadConfig`) so the process fails fast
- * with a clear, aggregated error listing every missing variable rather than throwing
- * an opaque `undefined` deep inside a request.
+ * Core infrastructure variables are validated up front (`loadConfig`) so the process
+ * fails fast with a clear, aggregated error listing every missing variable. Optional
+ * providers (AI, payments, calendar, and notifications) stay disabled until their own
+ * credentials are supplied; the core study app must remain usable without them.
  */
 
 /** Typed, structured view of the server-side configuration. */
@@ -44,10 +45,6 @@ export type EnvSource = Record<string, string | undefined>;
 const REQUIRED_ENV_VARS = [
     'DATABASE_URL',
     'REDIS_URL',
-    'AI_PROVIDER_API_KEY',
-    'RAZORPAY_KEY_ID',
-    'RAZORPAY_KEY_SECRET',
-    'RAZORPAY_WEBHOOK_SECRET',
 ] as const;
 
 type RequiredEnvVar = (typeof REQUIRED_ENV_VARS)[number];
@@ -81,6 +78,11 @@ function readRequired(env: EnvSource, key: RequiredEnvVar, missing: string[]): s
     return value;
 }
 
+/** Optional provider value. Blank optional secrets intentionally disable that provider. */
+function readOptional(env: EnvSource, key: string): string {
+    return env[key]?.trim() ?? '';
+}
+
 /**
  * Validate and parse a configuration object from the given environment source.
  *
@@ -93,10 +95,10 @@ export function loadConfig(env: EnvSource): AppConfig {
 
     const databaseUrl = readRequired(env, 'DATABASE_URL', missing);
     const redisUrl = readRequired(env, 'REDIS_URL', missing);
-    const aiApiKey = readRequired(env, 'AI_PROVIDER_API_KEY', missing);
-    const razorpayKeyId = readRequired(env, 'RAZORPAY_KEY_ID', missing);
-    const razorpayKeySecret = readRequired(env, 'RAZORPAY_KEY_SECRET', missing);
-    const razorpayWebhookSecret = readRequired(env, 'RAZORPAY_WEBHOOK_SECRET', missing);
+    const aiApiKey = readOptional(env, 'AI_PROVIDER_API_KEY');
+    const razorpayKeyId = readOptional(env, 'RAZORPAY_KEY_ID');
+    const razorpayKeySecret = readOptional(env, 'RAZORPAY_KEY_SECRET');
+    const razorpayWebhookSecret = readOptional(env, 'RAZORPAY_WEBHOOK_SECRET');
 
     if (missing.length > 0) {
         throw new ConfigError(missing);
@@ -112,6 +114,24 @@ export function loadConfig(env: EnvSource): AppConfig {
             webhookSecret: razorpayWebhookSecret,
         },
     };
+}
+
+/**
+ * Resolve Razorpay credentials only when a payment operation is requested. This keeps a
+ * free/core deployment bootable while still failing safely and clearly for subscriptions.
+ */
+export function requireRazorpayConfig(): AppConfig['razorpay'] {
+    const razorpay = getConfig().razorpay;
+    const missing = Object.entries({
+        RAZORPAY_KEY_ID: razorpay.keyId,
+        RAZORPAY_KEY_SECRET: razorpay.keySecret,
+        RAZORPAY_WEBHOOK_SECRET: razorpay.webhookSecret,
+    }).filter(([, value]) => value.trim() === '').map(([key]) => key);
+
+    if (missing.length > 0) {
+        throw new ConfigError(missing);
+    }
+    return razorpay;
 }
 
 let cached: AppConfig | undefined;

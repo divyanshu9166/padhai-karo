@@ -205,6 +205,32 @@ export async function listMistakesHandler(
     return Response.json({ entries });
 }
 
+/** Turn one error-book entry into a single, de-duplicated active-recall card. */
+export async function addMistakeToRevisionHandler(
+    _request: Request,
+    auth: AuthContext,
+    id: string,
+): Promise<Response> {
+    const entry = await prisma.mistakeJournalEntry.findFirst({
+        where: { id, userId: auth.user.id },
+        select: { id: true, subjectId: true, category: true, note: true, questionId: true, correctAnswer: true },
+    });
+    if (!entry) return errorResponse(404, ErrorCode.NOT_FOUND, 'Mistake journal entry not found.');
+    const existing = await prisma.revisionCard.findFirst({ where: { userId: auth.user.id, sourceType: 'MISTAKE', sourceId: entry.id } });
+    if (existing) return Response.json({ card: existing, duplicate: true });
+    const question = await prisma.pYQ.findUnique({ where: { id: entry.questionId }, select: { questionText: true } });
+    const card = await prisma.revisionCard.create({
+        data: {
+            userId: auth.user.id,
+            title: `Mistake review · ${entry.category.replaceAll('_', ' ').toLowerCase()}`,
+            prompt: question?.questionText ?? entry.note ?? 'Recall the concept behind this earlier mistake.',
+            answer: `${entry.note ? `${entry.note}\n\n` : ''}Correct answer: option ${entry.correctAnswer + 1}. Explain why the other choice was wrong before revealing this.`,
+            sourceType: 'MISTAKE', sourceId: entry.id, tags: ['mistake-journal', entry.subjectId, entry.category.toLowerCase()], dueAt: new Date(),
+        },
+    });
+    return Response.json({ card, duplicate: false }, { status: 201 });
+}
+
 /** Framework route context for the dynamic `/:id` segment. */
 export interface MistakeRouteContext {
     params: { id: string } | Promise<{ id: string }>;

@@ -7,7 +7,7 @@
  * test suite — tests inject a mock gateway so no live network call or real-secret HMAC
  * runs. Signature verification delegates to the pure {@link verifyPaymentSignature} helper.
  */
-import { getConfig } from '@/lib/config';
+import { requireRazorpayConfig } from '@/lib/config';
 
 import { verifyPaymentSignature } from './signature';
 import type {
@@ -30,7 +30,7 @@ function authHeader(keyId: string, keySecret: string): string {
 /** The live Razorpay implementation used in production wiring. */
 export class RazorpayHttpGateway implements RazorpayGateway {
     async createOrder(input: CreateOrderInput): Promise<RazorpayOrder> {
-        const { keyId, keySecret } = getConfig().razorpay;
+        const { keyId, keySecret } = requireRazorpayConfig();
         const response = await fetch(`${RAZORPAY_API_BASE}/orders`, {
             method: 'POST',
             headers: {
@@ -51,12 +51,12 @@ export class RazorpayHttpGateway implements RazorpayGateway {
     }
 
     verifyPaymentSignature(input: VerifyPaymentSignatureInput): boolean {
-        const { keySecret } = getConfig().razorpay;
+        const { keySecret } = requireRazorpayConfig();
         return verifyPaymentSignature(input, keySecret);
     }
 
     async refund(input: RefundInput): Promise<RazorpayRefund> {
-        const { keyId, keySecret } = getConfig().razorpay;
+        const { keyId, keySecret } = requireRazorpayConfig();
         const response = await fetch(
             `${RAZORPAY_API_BASE}/payments/${input.paymentId}/refund`,
             {

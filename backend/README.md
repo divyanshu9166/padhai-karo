@@ -65,14 +65,60 @@ PDF page images are rendered by the native Poppler `pdftoppm` binary through
 `PDF_RENDERER_BIN` to its absolute executable path. The route is authenticated and removes its
 short-lived temporary files after every render.
 
+For the zero-cost development AI setup, use Groq server-side:
+
+```env
+AI_PROVIDER=GROQ
+AI_PROVIDER_API_KEY=<your Groq key>
+AI_PROVIDER_MODEL=openai/gpt-oss-20b
+AI_PROVIDER_VISION_MODEL=qwen/qwen3.6-27b
+TRANSCRIPTION_PROVIDER_MODEL=whisper-large-v3-turbo
+```
+
+The text model powers PDF/note summaries, briefings, concept coaching and answer feedback.
+The separate vision model handles photographed notes and image extraction. Free-plan limits
+are organization-wide, so local/rule-based fallbacks remain enabled and the API key stays out
+of the mobile bundle.
+
 The included `Dockerfile` installs `poppler-utils` in both the build and runtime images and runs
 the HTTP + WebSocket server. Use `npm run check:pdf-renderer` before a non-container deployment;
 `GET /api/health` exposes the same check without revealing credentials.
 
 `docker-compose.production.yml` starts the HTTP/WebSocket app and the scheduler as separate
-restartable processes. Copy `.env.production.example` to `.env.production`, provide the database,
-Redis and desired provider credentials, then run `docker compose -f docker-compose.production.yml
-up -d --build`.
+restartable processes. The one-shot migration service applies migrations and runs the idempotent
+reference-data seed before either long-lived process starts. Copy `.env.production.example` to
+`.env.production`, provide the database, Redis and desired provider credentials, then run
+`docker compose -f docker-compose.production.yml up -d --build`.
+
+## Single-VPS deployment
+
+For a simple self-contained VPS deployment, use `docker-compose.vps.yml`. It provisions persistent
+PostgreSQL and Redis volumes, runs Prisma migrations as a one-shot dependency before the app starts,
+keeps the scheduler separate, adds Docker readiness checks, and terminates HTTPS with Caddy. The
+stack also preserves the `/ws/community` WebSocket upgrade through Caddy.
+
+On a fresh Ubuntu VPS:
+
+```bash
+cd backend
+cp .env.production.example .env.production
+# Edit API_DOMAIN, POSTGRES_PASSWORD, CRON_SECRET, and provider keys.
+chmod +x deploy/vps/deploy.sh
+./deploy/vps/deploy.sh
+```
+
+The first run obtains a TLS certificate automatically after the `API_DOMAIN` DNS A record points to
+the VPS and ports 80/443 are allowed by the firewall. Do not expose port 3000 publicly. Persistent
+application data lives in Docker volumes (`postgres_data`, `redis_data`, `caddy_data`, and
+`caddy_config`), so back up PostgreSQL regularly and treat the VPS volume as production data.
+
+For managed PostgreSQL/Redis, keep using `docker-compose.production.yml`; it deliberately does not
+create database services and expects `DATABASE_URL` and `REDIS_URL` to point at the managed services.
+The core app only requires those two infrastructure variables. AI, Razorpay, calendar, push, and
+coaching integrations are optional and remain disabled until their credentials are supplied.
+
+Readiness probe: `GET /api/health/ready` checks PostgreSQL and Redis and returns HTTP 503 until both
+are reachable. Liveness/capability probe: `GET /api/health`.
 
 The offline workspace endpoint is cursor-paginated across timetable blocks, resources, PDFs,
 annotations, voice notes and calendar events. The mobile client persists the cursor checkpoint,

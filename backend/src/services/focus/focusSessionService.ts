@@ -62,21 +62,40 @@ export async function recordFocusSessionHandler(
         );
     }
 
-    const { subjectId, startTime, endTime, focusedDurationMin, sessionType, clientId, abandoned } =
+    const { subjectId, startTime, endTime, focusedDurationMin, sessionType, taskId, clientId, abandoned } =
         validation.value;
 
     try {
-        const session = await prisma.focusSession.create({
-            data: {
-                userId: auth.user.id,
-                subjectId,
-                startTime,
-                endTime,
-                focusedDurationMin,
-                abandoned,
-                sessionType,
-                clientId,
-            },
+        if (taskId) {
+            const task = await prisma.studyTask.findFirst({ where: { id: taskId, userId: auth.user.id }, select: { subjectId: true, status: true } });
+            if (!task) return errorResponse(404, ErrorCode.NOT_FOUND, 'The linked study task was not found.');
+            if (task.subjectId && task.subjectId !== subjectId) {
+                return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'The focus subject must match the linked study task.', { field: 'subjectId' });
+            }
+        }
+        const session = await prisma.$transaction(async (tx) => {
+            const created = await tx.focusSession.create({
+                data: {
+                    userId: auth.user.id,
+                    subjectId,
+                    startTime,
+                    endTime,
+                    focusedDurationMin,
+                    abandoned,
+                    sessionType,
+                    taskId,
+                    clientId,
+                },
+            });
+            // Starting/recording work is meaningful progress, but the learner still controls
+            // completion explicitly after the timer stops.
+            if (taskId && !abandoned) {
+                await tx.studyTask.updateMany({
+                    where: { id: taskId, userId: auth.user.id, status: { in: ['PENDING', 'MISSED'] } },
+                    data: { status: 'IN_PROGRESS' },
+                });
+            }
+            return created;
         });
         return Response.json({ session }, { status: 201 });
     } catch (error) {

@@ -238,6 +238,7 @@ export async function generateTimetableHandler(
             select: {
                 id: true,
                 subjectId: true,
+                name: true,
                 status: true,
                 weightage: true,
                 weightageOverride: true,
@@ -389,6 +390,17 @@ export async function generateTimetableHandler(
 
     // Persist atomically: replace any existing timetable for this (userId, weekStart).
     const { timetable, persistedBlocks } = await prisma.$transaction(async (tx) => {
+        const nextWeekStart = new Date(weekEnd.getTime() + 24 * 60 * 60 * 1000);
+        // Regeneration replaces unfinished planner projections only. A learner's completed
+        // work remains part of history even if the underlying calendar is rebuilt.
+        await tx.studyTask.deleteMany({
+            where: {
+                userId,
+                source: { in: ['PLANNER', 'REVISION'] },
+                status: { in: ['PENDING', 'IN_PROGRESS', 'MISSED'] },
+                scheduledDate: { gte: weekStart, lt: nextWeekStart },
+            },
+        });
         await tx.timetable.deleteMany({ where: { userId, weekStart } });
         const created = await tx.timetable.create({ data: { userId, weekStart } });
 
@@ -404,6 +416,47 @@ export async function generateTimetableHandler(
             where: { timetableId: created.id },
             orderBy: [{ startTime: 'asc' }, { id: 'asc' }],
         });
+        const chapterNameById = new Map(allChapterRows.map((chapter) => [chapter.id, chapter.name] as const));
+        const subjectNameById = new Map(subjectRows.map((subject) => [subject.id, subject.name] as const));
+        const completed = await tx.studyTask.findMany({
+            where: { userId, status: 'COMPLETED', scheduledDate: { gte: weekStart, lt: nextWeekStart } },
+            select: { chapterId: true, subjectId: true, scheduledDate: true, taskType: true },
+        });
+        const completedKeys = new Set(completed.map((task) => `${task.scheduledDate?.toISOString().slice(0, 10)}:${task.chapterId ?? ''}:${task.subjectId ?? ''}:${task.taskType}`));
+        const taskType = (sessionType: string) => {
+            if (sessionType === 'REVISION') return 'REVISION' as const;
+            if (sessionType === 'PRACTICE_PROBLEMS') return 'PYQ_PRACTICE' as const;
+            if (sessionType === 'MOCK_ANALYSIS') return 'MOCK_ANALYSIS' as const;
+            if (sessionType === 'FORMULA_DRILL') return 'FORMULA_REVISION' as const;
+            return 'READING' as const;
+        };
+        const generatedTasks = stored.filter((block) => !block.isBuffer).flatMap((block) => {
+            const type = taskType(block.sessionType);
+            const scheduledDate = startOfUtcDay(block.startTime);
+            const key = `${scheduledDate.toISOString().slice(0, 10)}:${block.chapterId ?? ''}:${block.subjectId ?? ''}:${type}`;
+            if (completedKeys.has(key)) return [];
+            const chapterName = block.chapterId ? chapterNameById.get(block.chapterId) : null;
+            const subjectName = block.subjectId ? subjectNameById.get(block.subjectId) : null;
+            const title = block.revisionLabel
+                ? `${block.revisionLabel}${chapterName ? `: ${chapterName}` : ''}`
+                : `${subjectName ?? 'Study'}${chapterName ? `: ${chapterName}` : ''}`;
+            return [{
+                userId,
+                studyBlockId: block.id,
+                title,
+                syllabusUnit: chapterName ?? null,
+                subjectId: block.subjectId,
+                chapterId: block.chapterId,
+                examProgram: profile.examProgram,
+                examStage: profile.examStage,
+                taskType: type,
+                plannedMinutes: block.durationMin,
+                scheduledDate,
+                priority: block.revisionLabel ? 'HIGH' as const : 'NORMAL' as const,
+                source: block.revisionLabel ? 'REVISION' as const : 'PLANNER' as const,
+            }];
+        });
+        if (generatedTasks.length > 0) await tx.studyTask.createMany({ data: generatedTasks });
         return { timetable: created, persistedBlocks: stored };
     });
 

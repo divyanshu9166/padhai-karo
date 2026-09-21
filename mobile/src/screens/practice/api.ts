@@ -189,6 +189,11 @@ export async function listMistakes(filter: {
     return res.entries;
 }
 
+/** Add a mistake-journal entry to the active-recall queue; repeated taps are idempotent. */
+export function addMistakeToRevision(id: string): Promise<{ duplicate: boolean }> {
+    return request<{ duplicate: boolean }>(`/mistakes/${encodeURIComponent(id)}/revision`, { method: 'POST' });
+}
+
 // ── Display helpers ─────────────────────────────────────────────────────────────────────────
 
 /** The four categories with their localization keys, for category pickers/filters. */

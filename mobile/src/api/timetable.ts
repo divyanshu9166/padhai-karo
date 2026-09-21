@@ -41,7 +41,7 @@ export interface StudyBlock {
     isBuffer: boolean;
     energyLevel: EnergyLevel;
     scheduledOutsidePeak: boolean;
-    sessionType: 'NEW_CHAPTER' | 'PRACTICE_PROBLEMS' | 'REVISION' | 'MOCK_ANALYSIS' | 'FORMULA_DRILL';
+    sessionType: 'NEW_CHAPTER' | 'NOTES_MAKING' | 'PRACTICE_PROBLEMS' | 'REVISION' | 'ANSWER_WRITING' | 'MOCK_TEST' | 'MOCK_ANALYSIS' | 'CURRENT_AFFAIRS' | 'QUANT_PRACTICE' | 'REASONING_PRACTICE' | 'VOCABULARY' | 'FORMULA_DRILL';
     revisionNumber: number | null;
     revisionLabel?: string | null;
     updatedAt: string;

@@ -1,4 +1,4 @@
-import { liveProviderConfigured, transcriptionProviderConfigured } from '@/services/ai/liveProvider';
+import { configuredProviderName, liveProviderConfigured, transcriptionProviderConfigured } from '@/services/ai/liveProvider';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
@@ -14,10 +14,12 @@ async function pdfRendererConfigured(): Promise<boolean> {
  */
 export async function GET(): Promise<Response> {
     const pdfRenderer = await pdfRendererConfigured();
+    const aiProvider = configuredProviderName();
     return Response.json({
         status: 'ok',
         service: 'padhai-karo-backend',
         capabilities: {
+            aiProvider,
             aiVisionAndText: liveProviderConfigured(),
             voiceTranscription: transcriptionProviderConfigured(),
             currentAffairsFeed: true,
@@ -34,8 +36,8 @@ export async function GET(): Promise<Response> {
         setup: {
             pdfRenderer: pdfRenderer ? 'ready' : 'Install Poppler or set PDF_RENDERER_BIN.',
             scheduler: 'Run npm run worker:scheduler on a long-lived worker, or configure the documented platform cron endpoints.',
-            ai: liveProviderConfigured() ? 'configured' : 'Set AI_PROVIDER and AI_PROVIDER_API_KEY for live vision/text.',
-            transcription: transcriptionProviderConfigured() ? 'configured' : 'Set TRANSCRIPTION_API_URL/KEY or Gemini audio credentials.',
+            ai: liveProviderConfigured() ? `${aiProvider} configured` : 'Set AI_PROVIDER and AI_PROVIDER_API_KEY for live vision/text.',
+            transcription: transcriptionProviderConfigured() ? 'configured' : 'Set TRANSCRIPTION_API_URL/KEY or configure Groq/Gemini audio credentials.',
             googleCalendar: process.env.GOOGLE_CLIENT_ID?.trim() && process.env.GOOGLE_CLIENT_SECRET?.trim() && process.env.GOOGLE_REDIRECT_URI?.trim() ? 'configured' : 'Set Google OAuth credentials.',
         },
     });

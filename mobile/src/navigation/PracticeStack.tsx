@@ -5,7 +5,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { ExternalPaperReviewScreen, MistakeJournalScreen, MockExamScreen, PyqScreen, TimedPaperScreen } from '@/screens';
+import { AnswerWritingCanvasScreen, ExternalPaperReviewScreen, FormulaSprintScreen, MistakeJournalScreen, MockExamScreen, PracticeLabScreen, PyqScreen, TimedPaperScreen } from '@/screens';
 import type { PracticeStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<PracticeStackParamList>();
@@ -28,8 +28,11 @@ export function PracticeStack(): React.JSX.Element {
             <Stack.Screen
                 name="ExternalPaperReview"
                 component={ExternalPaperReviewScreen}
-                options={{ title: 'Review external paper' }}
+                options={{ title: 'Analyse my test' }}
             />
+            <Stack.Screen name="AnswerWriting" component={AnswerWritingCanvasScreen} options={{ title: 'Answer writing' }} />
+            <Stack.Screen name="PracticeLab" component={PracticeLabScreen} options={{ title: 'Pacing trainer' }} />
+            <Stack.Screen name="FormulaSprint" component={FormulaSprintScreen} options={{ title: 'Formula sprint' }} />
         </Stack.Navigator>
     );
 }

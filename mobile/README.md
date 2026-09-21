@@ -7,7 +7,7 @@ tasks 21.2–21.9 build the feature screens.
 
 ## Tech choices
 
-- **Expo (TypeScript)**, SDK 52, React Native 0.76.
+- **Expo (TypeScript)**, SDK 54, React Native 0.81.
 - **Navigation: React Navigation** (native-stack + bottom-tabs). Chosen over Expo Router
   because the design's layout has an explicit `navigation/` folder and the onboarding gate is
   expressed cleanly as state-driven navigator selection in `src/navigation/RootNavigator.tsx`.
@@ -17,6 +17,9 @@ tasks 21.2–21.9 build the feature screens.
   No production URL is hardcoded.
 - **Community realtime** uses `EXPO_PUBLIC_WS_URL` (or derives `/ws/community` from the API URL)
   and falls back to delta polling when the WebSocket server is unavailable.
+- **Native PDF reader:** `react-native-pdf` + `react-native-blob-util` provide visual pages,
+  zooming, paging and local-file support. These native modules require an Expo development/EAS
+  build and do not run inside Expo Go. Use `npx expo run:android` or an EAS development build.
 - **API client:** a single generic `request<T>(path, { method, body, signal })` in
   `src/api/client.ts` that attaches the session token as `Authorization: Bearer <token>` (set
   via `setAuthToken`) and throws a typed `ApiError` carrying the backend error code. Feature
@@ -85,6 +88,24 @@ npm run lint                     # eslint
 npm test                         # vitest (pure-logic units)
 npm start                        # expo start (requires a device/emulator — out of scope for 21.1)
 ```
+
+### Production API build
+
+Copy `.env.production.example` to `.env.production`, replace `api.example.com` with the deployed
+backend domain, and build with EAS. Only public HTTPS/WebSocket endpoints belong in this file; all
+database, AI, payment, OAuth, and cron secrets stay in `backend/.env.production`.
+
+```bash
+npx eas-cli login
+npx eas-cli init                         # first setup only; creates the EAS project link
+copy .env.production.example .env.production  # PowerShell/Windows
+# On Linux/macOS: cp .env.production.example .env.production
+npx eas-cli build --platform android --profile production
+npx eas-cli build --platform ios --profile production
+```
+
+The app requires `https://` for API traffic and `wss://` for community realtime traffic in
+production. If the WebSocket is unavailable, the app uses its authenticated delta-polling fallback.
 
 ### Install note
 

@@ -20,3 +20,5 @@ export type {
     QuestionFormat,
     SyllabusSubjectDefinition,
 } from './types';
+export { getUnitPlanningProfile } from './planningCatalog';
+export type { UnitPlanningProfile } from './planningCatalog';

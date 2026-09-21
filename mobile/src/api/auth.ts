@@ -27,3 +27,11 @@ export function logoutUser(): Promise<void> {
 export function fetchMe(): Promise<AuthMeResponse> {
     return request<AuthMeResponse>('/auth/me');
 }
+
+/** Permanently delete the authenticated account after explicit confirmation and password proof. */
+export function deleteAccount(password: string, confirmation: string): Promise<void> {
+    return request<void>('/account/delete', {
+        method: 'DELETE',
+        body: { confirmation, password },
+    });
+}

@@ -2,6 +2,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system/legacy';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Image, Linking, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import NativePdf from 'react-native-pdf';
 
 import { ApiError, getAuthToken } from '@/api';
 import { API_BASE_URL } from '@/config/env';
@@ -11,7 +12,8 @@ import { cacheJson, readCachedJson } from '@/offline/cache';
 import { useOffline } from '@/offline';
 import { queueMutation } from '@/offline/mutations';
 import { queuePdfUpload } from '@/offline/pendingMedia';
-import { createPdfAnnotation, createResource, deletePdfAnnotation, deleteResource, getPdfAnnotations, getPdfDocuments, getPdfPageImageUrl, getStudyResources, updatePdfAnnotation, updateResource, uploadPdfDocument, type PdfAnnotation, type PdfDocument } from '@/api/upscProduct';
+import { createOpenNote, createResource, createRevisionCard, deletePdfAnnotation, deleteResource, getPdfAnnotations, getPdfDocuments, getPdfPageImageUrl, getStudyResources, updateResource, uploadPdfDocument, type AiStudySummary, type PdfAnnotation, type PdfDocument } from '@/api/upscProduct';
+import type { MoreStackScreenProps } from '@/navigation/types';
 
 type StudyResource = { id: string; title: string; url?: string | null; type?: string; tags?: string[]; completed?: boolean; updatedAt?: string };
 const apiOrigin = API_BASE_URL.replace(/\/api\/?$/, '');
@@ -27,8 +29,20 @@ function hydratePdfDocument(document: PdfDocument, media: Record<string, string>
     return { ...document, ...(media[`pdf:${document.id}`] ? { localUri: media[`pdf:${document.id}`] } : {}), ...(Object.keys(pageImageUris).length > 0 ? { pageImageUris } : {}) };
 }
 function pageImagePath(documentId: string, page: number): string | null { return FileSystem.documentDirectory ? `${FileSystem.documentDirectory}padhaikaro-offline/pdf-pages/${documentId}-${page}.png` : null; }
+function pdfSummaryInput(document: PdfDocument, maxCharacters = 18_000): string {
+    const pages = pagesOf(document).filter(Boolean);
+    if (pages.length === 0) return '';
+    const complete = pages.join('\n\n');
+    if (complete.length <= maxCharacters) return complete;
+    const sampleCount = Math.min(12, pages.length);
+    const perPage = Math.floor(maxCharacters / sampleCount) - 40;
+    return Array.from({ length: sampleCount }, (_, index) => {
+        const pageIndex = sampleCount === 1 ? 0 : Math.round(index * (pages.length - 1) / (sampleCount - 1));
+        return `[Page ${pageIndex + 1}]\n${pages[pageIndex].slice(0, perPage)}`;
+    }).join('\n\n');
+}
 
-export function LibraryScreen(): React.JSX.Element {
+export function LibraryScreen({ navigation }: MoreStackScreenProps<'Library'>): React.JSX.Element {
     const t = useTranslation();
     const { isOffline } = useOffline();
     const [documents, setDocuments] = useState<PdfDocument[]>([]);
@@ -37,17 +51,18 @@ export function LibraryScreen(): React.JSX.Element {
     const [page, setPage] = useState(1);
     const [pageImageUri, setPageImageUri] = useState<string | null>(null);
     const [pageImageLoading, setPageImageLoading] = useState(false);
+    const [nativePdfFailed, setNativePdfFailed] = useState(false);
+    const [pdfSummary, setPdfSummary] = useState<AiStudySummary | null>(null);
     const [continuousReading, setContinuousReading] = useState(false);
     const [readerQuery, setReaderQuery] = useState('');
-    const [note, setNote] = useState('');
-    const [quote, setQuote] = useState('');
-    const [editingAnnotation, setEditingAnnotation] = useState<PdfAnnotation | null>(null);
     const [busy, setBusy] = useState(false);
     const [message, setMessage] = useState<string | null>(null);
     const [query, setQuery] = useState('');
+    const [collection, setCollection] = useState<string | null>(null);
     const [resources, setResources] = useState<StudyResource[]>([]);
     const [resourceTitle, setResourceTitle] = useState('');
     const [resourceUrl, setResourceUrl] = useState('');
+    const [resourceTags, setResourceTags] = useState('');
     const [editingResource, setEditingResource] = useState<StudyResource | null>(null);
 
     const load = useCallback(async (search = ''): Promise<void> => {
@@ -87,7 +102,7 @@ export function LibraryScreen(): React.JSX.Element {
     };
 
     const selectDocument = async (document: PdfDocument): Promise<void> => {
-        setSelected(document); setPage(1); setPageImageUri(null); setEditingAnnotation(null); setReaderQuery(''); setContinuousReading(false);
+        setSelected(document); setPage(1); setPageImageUri(null); setNativePdfFailed(false); setPdfSummary(null); setReaderQuery(''); setContinuousReading(false);
         if (document.id.startsWith('offline-')) { setAnnotations((await readCachedJson<PdfAnnotation[]>('pdf-annotations:' + document.id))?.value ?? []); return; }
         try { const next = (await getPdfAnnotations(document.id)).annotations; setAnnotations(next); await cacheJson('pdf-annotations:' + document.id, next); }
         catch { setAnnotations((await readCachedJson<PdfAnnotation[]>('pdf-annotations:' + document.id))?.value ?? []); }
@@ -164,21 +179,25 @@ export function LibraryScreen(): React.JSX.Element {
         finally { setBusy(false); }
     };
 
-    const saveAnnotation = async (): Promise<void> => {
-        if (!selected || !note.trim()) return;
+    const summarizePdf = async (): Promise<void> => {
+        if (!selected) return;
+        const text = pdfSummaryInput(selected);
+        if (isOffline) { setMessage('Connect to the internet to create an AI PDF summary.'); return; }
         setBusy(true); setMessage(null);
         try {
-            const pageText = pagesOf(selected)[page - 1] ?? ''; const offset = quote.trim() ? pageText.indexOf(quote.trim()) : -1;
-            if (editingAnnotation) {
-                const updated = selected.id.startsWith('offline-') ? { ...editingAnnotation, page, quote: quote.trim() || null, note: note.trim(), selectionStart: offset >= 0 ? offset : null, selectionEnd: offset >= 0 ? offset + quote.trim().length : null, updatedAt: new Date().toISOString() } : (await updatePdfAnnotation(editingAnnotation.id, { page, quote: quote.trim() || null, note: note.trim(), selectionStart: offset >= 0 ? offset : null, selectionEnd: offset >= 0 ? offset + quote.trim().length : null, ...(editingAnnotation.updatedAt ? { baseUpdatedAt: editingAnnotation.updatedAt } : {}) })).annotation;
-                const next = annotations.map((item) => item.id === editingAnnotation.id ? updated : item); setAnnotations(next); await cacheJson('pdf-annotations:' + selected.id, next); setMessage('Annotation updated.');
+            let result: Awaited<ReturnType<typeof createOpenNote>>;
+            if (text) {
+                result = await createOpenNote({ inputType: 'TEXT', text, title: selected.title });
             } else {
-                const input = { documentId: selected.id, page, note: note.trim(), quote: quote.trim(), type: quote.trim() ? 'HIGHLIGHT' : 'NOTE', selectionStart: offset >= 0 ? offset : undefined, selectionEnd: offset >= 0 ? offset + quote.trim().length : undefined } as const;
-                const annotation = selected.id.startsWith('offline-') ? { id: 'local-' + Date.now(), ...input, color: '#facc15', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() } : (await createPdfAnnotation(input)).annotation;
-                const next = [...annotations, annotation]; setAnnotations(next); await cacheJson('pdf-annotations:' + selected.id, next); setMessage('Annotation saved.');
+                if (selected.id.startsWith('offline-')) throw new Error('Upload this scanned PDF before using page vision.');
+                const imageUri = await downloadPageImage(selected.id, page);
+                if (!imageUri) throw new Error('This PDF page could not be rendered for vision analysis.');
+                const imageData = await FileSystem.readAsStringAsync(imageUri, { encoding: FileSystem.EncodingType.Base64 });
+                result = await createOpenNote({ inputType: 'PHOTO', imageData, mimeType: 'image/png', title: `${selected.title} · page ${page}` });
             }
-            setEditingAnnotation(null); setNote(''); setQuote('');
-        } catch (error) { setMessage(error instanceof ApiError ? error.message : 'Could not save annotation.'); }
+            setPdfSummary(result.summary.summary);
+            setMessage(`${text ? 'PDF summary' : `Page ${page} vision summary`} created with ${result.source.replace('_', ' ').toLowerCase()}. ${result.remainingQuota} AI uses remain.`);
+        } catch (error) { setMessage(error instanceof ApiError || error instanceof Error ? error.message : 'Could not summarize this PDF.'); }
         finally { setBusy(false); }
     };
 
@@ -188,9 +207,26 @@ export function LibraryScreen(): React.JSX.Element {
         catch (error) { setMessage(error instanceof ApiError ? error.message : 'Could not delete annotation.'); }
     };
 
+    const addAnnotationToRevision = async (annotation: PdfAnnotation): Promise<void> => {
+        if (!selected) return;
+        const excerpt = (annotation.quote || annotation.note || '').trim();
+        if (!excerpt) { setMessage('Add a note or highlight before saving this to revision.'); return; }
+        setBusy(true);
+        try {
+            await createRevisionCard({
+                title: `${selected.title} · page ${annotation.page}`,
+                prompt: annotation.quote?.trim() || `Recall the key idea from ${selected.title}, page ${annotation.page}.`,
+                answer: annotation.note?.trim() || excerpt,
+                tags: ['library', 'pdf', ...selected.tags.slice(0, 3)],
+            });
+            setMessage('Annotation saved to your revision queue.');
+        } catch (error) { setMessage(error instanceof ApiError ? error.message : 'Could not save this annotation to revision.'); }
+        finally { setBusy(false); }
+    };
+
     const saveResource = async (): Promise<void> => {
         if (!resourceTitle.trim()) return;
-        const input = { title: resourceTitle.trim(), url: resourceUrl.trim() || undefined, type: 'LINK', tags: ['library'] };
+        const input = { title: resourceTitle.trim(), url: resourceUrl.trim() || undefined, type: 'LINK', tags: Array.from(new Set(['library', ...resourceTags.split(',').map((tag) => tag.trim()).filter(Boolean)])) };
         setBusy(true); setMessage(null);
         try {
             if (editingResource) {
@@ -201,7 +237,7 @@ export function LibraryScreen(): React.JSX.Element {
                 await queueMutation('RESOURCE_CREATE', { id: localId, title: input.title, url: input.url, resourceType: input.type, tags: input.tags });
                 setResources((items) => [{ id: localId, ...input }, ...items]); setMessage('Resource saved offline and queued for sync.');
             } else { const created = await createResource(input); setResources((items) => [created.resource as StudyResource, ...items]); setMessage('Resource saved.'); }
-            setEditingResource(null); setResourceTitle(''); setResourceUrl('');
+            setEditingResource(null); setResourceTitle(''); setResourceUrl(''); setResourceTags('');
         } catch (error) { setMessage(error instanceof ApiError ? error.message : 'Could not save resource.'); }
         finally { setBusy(false); }
     };
@@ -209,11 +245,21 @@ export function LibraryScreen(): React.JSX.Element {
     const readerPages = useMemo(() => selected ? pagesOf(selected) : [], [selected]);
     const currentPage = readerPages[page - 1] ?? '';
     const totalPages = selected?.pageCount ?? readerPages.length;
+    const nativePdfSource = useMemo(() => {
+        const uri = selected?.localUri ?? (selected?.fileUrl ? openableUrl(selected.fileUrl) : null);
+        if (!uri) return null;
+        const token = getAuthToken();
+        return { uri, cache: true, ...(token && !selected?.localUri ? { headers: { Authorization: `Bearer ${token}` } } : {}) };
+    }, [selected]);
     const matchingPages = useMemo(() => {
         const needle = readerQuery.trim().toLocaleLowerCase();
         if (!needle) return [];
         return readerPages.flatMap((pageText, index) => pageText.toLocaleLowerCase().includes(needle) ? [index + 1] : []);
     }, [readerPages, readerQuery]);
+    const collections = useMemo(() => Array.from(new Set([...documents.flatMap((document) => document.tags), ...resources.flatMap((resource) => resource.tags ?? [])]))
+        .filter((tag) => !['library', 'uploaded', 'offline-pending'].includes(tag.toLowerCase())).sort(), [documents, resources]);
+    const collectionDocuments = useMemo(() => collection ? documents.filter((document) => document.tags.includes(collection)) : documents, [collection, documents]);
+    const collectionResources = useMemo(() => collection ? resources.filter((resource) => resource.tags?.includes(collection)) : resources, [collection, resources]);
     const setReaderPage = (nextPage: number): void => {
         if (totalPages <= 0) return;
         setPage(Math.max(1, Math.min(totalPages, Math.floor(nextPage))));
@@ -222,21 +268,25 @@ export function LibraryScreen(): React.JSX.Element {
     return <Screen title={t('library.title')}><ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
         <TextInput style={styles.input} value={query} onChangeText={setQuery} onSubmitEditing={() => void load(query)} placeholder={t('library.searchPlaceholder')} returnKeyType="search" />
         <Pressable style={styles.button} onPress={() => void pickPdf()} disabled={busy}><Text style={styles.buttonText}>{busy ? t('common.working') : t('library.addPdf')}</Text></Pressable>
+        <Pressable style={styles.secondary} onPress={() => navigation.navigate('ConceptMapBuilder')}><Text style={styles.secondaryText}>Build a concept map</Text></Pressable>
         {message ? <Text style={styles.message}>{message}</Text> : null}
-        {documents.length === 0 ? <Text style={styles.muted}>{t('library.empty')}</Text> : documents.map((document) => <Pressable key={document.id} style={[styles.card, selected?.id === document.id && styles.selected]} onPress={() => void selectDocument(document)}><Text style={styles.heading}>{document.title}</Text><Text style={styles.muted}>{document.pageCount ? document.pageCount + ' ' + t('common.pages') : t('library.pdfDocument')} · {document.tags.join(', ')}</Text>{document.fileUrl || document.localUri ? <Text style={styles.link} onPress={() => void Linking.openURL(openableUrl(document.localUri ?? document.fileUrl ?? ''))}>{t('library.openFile')}</Text> : null}{document.fileUrl && !document.localUri && !isOffline ? <Text style={styles.link} onPress={() => void downloadPdfOffline(document)}>{t('common.saveOffline')}</Text> : null}</Pressable>)}
-        <View style={styles.card}><Text style={styles.heading}>{t('library.resources')}</Text><TextInput style={styles.input} value={resourceTitle} onChangeText={setResourceTitle} placeholder={t('library.resourceTitle')} /><TextInput style={styles.input} value={resourceUrl} onChangeText={setResourceUrl} placeholder={t('library.resourceUrl')} autoCapitalize="none" keyboardType="url" /><Pressable style={styles.secondary} onPress={() => void saveResource()} disabled={busy}><Text style={styles.secondaryText}>{editingResource ? t('library.updateResource') : t('library.addResource')}</Text></Pressable>{resources.slice(0, 30).map((resource) => <View key={resource.id} style={styles.resource}><Pressable onPress={() => resource.url ? void Linking.openURL(resource.url) : undefined}><Text style={styles.bold}>{resource.title}</Text><Text style={styles.muted}>{resource.type || t('library.resources')}{resource.tags?.length ? ' · ' + resource.tags.join(', ') : ''}</Text></Pressable><View style={styles.inline}><Text style={styles.link} onPress={() => { setEditingResource(resource); setResourceTitle(resource.title); setResourceUrl(resource.url ?? ''); }}>{t('common.edit')}</Text><Text style={styles.danger} onPress={() => void (async () => { try { if (isOffline) await queueMutation('RESOURCE_DELETE', { id: resource.id, ...(resource.updatedAt ? { baseUpdatedAt: resource.updatedAt } : {}) }); else await deleteResource(resource.id); setResources((items) => items.filter((item) => item.id !== resource.id)); } catch { setMessage('Could not delete resource.'); } })()}>{t('common.delete')}</Text></View></View>)}</View>
+        {collections.length > 0 ? <View style={styles.collections}><Text style={styles.collectionLabel}>Collections</Text><ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.collectionRow}><Pressable style={[styles.collectionChip, !collection && styles.collectionChipActive]} onPress={() => setCollection(null)}><Text style={[styles.collectionText, !collection && styles.collectionTextActive]}>All</Text></Pressable>{collections.map((tag) => <Pressable key={tag} style={[styles.collectionChip, collection === tag && styles.collectionChipActive]} onPress={() => setCollection(tag)}><Text style={[styles.collectionText, collection === tag && styles.collectionTextActive]}>{tag}</Text></Pressable>)}</ScrollView></View> : null}
+        {collectionDocuments.length === 0 ? <Text style={styles.muted}>{collection ? `No PDFs in ${collection} yet.` : t('library.empty')}</Text> : collectionDocuments.map((document) => <Pressable key={document.id} style={[styles.card, selected?.id === document.id && styles.selected]} onPress={() => void selectDocument(document)}><Text style={styles.heading}>{document.title}</Text><Text style={styles.muted}>{document.pageCount ? document.pageCount + ' ' + t('common.pages') : t('library.pdfDocument')} · {document.tags.join(', ')}</Text>{document.fileUrl || document.localUri ? <Text style={styles.link} onPress={() => void Linking.openURL(openableUrl(document.localUri ?? document.fileUrl ?? ''))}>{t('library.openFile')}</Text> : null}{document.fileUrl && !document.localUri && !isOffline ? <Text style={styles.link} onPress={() => void downloadPdfOffline(document)}>{t('common.saveOffline')}</Text> : null}</Pressable>)}
+        <View style={styles.card}><Text style={styles.heading}>{t('library.resources')}</Text><TextInput style={styles.input} value={resourceTitle} onChangeText={setResourceTitle} placeholder={t('library.resourceTitle')} /><TextInput style={styles.input} value={resourceUrl} onChangeText={setResourceUrl} placeholder={t('library.resourceUrl')} autoCapitalize="none" keyboardType="url" /><TextInput style={styles.input} value={resourceTags} onChangeText={setResourceTags} placeholder="Collections, comma separated (e.g. Polity, Ethics)" /><Pressable style={styles.secondary} onPress={() => void saveResource()} disabled={busy}><Text style={styles.secondaryText}>{editingResource ? t('library.updateResource') : t('library.addResource')}</Text></Pressable>{collectionResources.slice(0, 30).map((resource) => <View key={resource.id} style={styles.resource}><Pressable onPress={() => resource.url ? void Linking.openURL(resource.url) : undefined}><Text style={styles.bold}>{resource.title}</Text><Text style={styles.muted}>{resource.type || t('library.resources')}{resource.tags?.length ? ' · ' + resource.tags.join(', ') : ''}</Text></Pressable><View style={styles.inline}><Text style={styles.link} onPress={() => { setEditingResource(resource); setResourceTitle(resource.title); setResourceUrl(resource.url ?? ''); setResourceTags((resource.tags ?? []).filter((tag) => tag !== 'library').join(', ')); }}>{t('common.edit')}</Text><Text style={styles.danger} onPress={() => void (async () => { try { if (isOffline) await queueMutation('RESOURCE_DELETE', { id: resource.id, ...(resource.updatedAt ? { baseUpdatedAt: resource.updatedAt } : {}) }); else await deleteResource(resource.id); setResources((items) => items.filter((item) => item.id !== resource.id)); } catch { setMessage('Could not delete resource.'); } })()}>{t('common.delete')}</Text></View></View>)}</View>
         {selected ? <View style={styles.card}>
             <Text style={styles.heading}>{t('library.reader')} · {selected.title}</Text>
+            <Pressable style={styles.button} disabled={busy || isOffline || (pdfSummaryInput(selected).length === 0 && selected.id.startsWith('offline-'))} onPress={() => void summarizePdf()}><Text style={styles.buttonText}>{busy ? t('common.working') : pdfSummaryInput(selected).length > 0 ? 'Summarize PDF + create recall cards' : `Summarize page ${page} with vision`}</Text></Pressable>
+            {pdfSummary ? <View style={styles.summaryPanel}><Text style={styles.heading}>{pdfSummary.title || selected.title}</Text>{pdfSummary.keyPoints.map((point, index) => <Text key={`${index}-${point}`} style={styles.body}>• {point}</Text>)}</View> : null}
             {totalPages > 0 ? <>
                 <View style={styles.pageBar}><Pressable style={styles.readerControl} accessibilityRole="button" disabled={page <= 1} onPress={() => setReaderPage(page - 1)}><Text style={[styles.readerControlText, page <= 1 && styles.disabledText]}>{t('library.previousPage')}</Text></Pressable><Text style={styles.pageLabel}>{t('library.readerPage')} {page} {t('practice.of')} {totalPages}</Text><Pressable style={styles.readerControl} accessibilityRole="button" disabled={page >= totalPages} onPress={() => setReaderPage(page + 1)}><Text style={[styles.readerControlText, page >= totalPages && styles.disabledText]}>{t('library.nextPage')}</Text></Pressable></View>
                 <View style={styles.inline}><TextInput style={[styles.input, styles.pageInput]} value={String(page)} onChangeText={(value) => setReaderPage(Number(value.replace(/\D/g, '')) || 1)} keyboardType="number-pad" placeholder={t('library.readerPage')} /><Pressable style={styles.readerMode} accessibilityRole="button" onPress={() => setContinuousReading((value) => !value)}><Text style={styles.readerControlText}>{continuousReading ? t('library.singlePage') : t('library.continuousText')}</Text></Pressable></View>
                 <TextInput style={styles.input} value={readerQuery} onChangeText={setReaderQuery} placeholder={t('library.searchInside')} returnKeyType="search" />
                 {readerQuery.trim() ? <View style={styles.searchResults}><Text style={styles.muted}>{matchingPages.length ? `${t('library.readerPage')} ${matchingPages.join(', ')}` : t('library.noMatches')}</Text>{matchingPages.slice(0, 12).map((pageNumber) => <Pressable key={pageNumber} accessibilityRole="button" style={styles.searchPage} onPress={() => { setReaderPage(pageNumber); setContinuousReading(false); }}><Text style={styles.readerControlText}>{t('library.goToPage')} {pageNumber}</Text></Pressable>)}</View> : null}
-                {continuousReading ? <View style={styles.continuousReader}>{readerPages.length ? readerPages.map((pageText, index) => <Pressable key={index} accessibilityRole="button" style={[styles.textPage, page === index + 1 && styles.textPageActive]} onPress={() => setReaderPage(index + 1)}><Text style={styles.pageLabel}>{t('library.readerPage')} {index + 1}</Text><Text style={styles.readerText}>{pageText || t('library.noReadablePages')}</Text></Pressable>) : <Text style={styles.muted}>{t('library.noExtractedText')}</Text>}</View> : <View style={styles.visualPage}>{pageImageLoading ? <ActivityIndicator color="#2563eb" /> : pageImageUri ? <Image accessibilityLabel={`${t('library.reader')} ${t('library.readerPage')} ${page}`} source={{ uri: pageImageUri }} style={styles.pageImage} resizeMode="contain" /> : currentPage ? <Text style={styles.readerText}>{currentPage}</Text> : <Text style={styles.muted}>{t('library.visualNotCached')}</Text>}</View>}
+                {continuousReading ? <View style={styles.continuousReader}>{readerPages.length ? readerPages.map((pageText, index) => <Pressable key={index} accessibilityRole="button" style={[styles.textPage, page === index + 1 && styles.textPageActive]} onPress={() => setReaderPage(index + 1)}><Text style={styles.pageLabel}>{t('library.readerPage')} {index + 1}</Text><Text style={styles.readerText}>{pageText || t('library.noReadablePages')}</Text></Pressable>) : <Text style={styles.muted}>{t('library.noExtractedText')}</Text>}</View> : nativePdfSource && !nativePdfFailed ? <View style={styles.nativePdfFrame}><NativePdf source={nativePdfSource} page={page} horizontal enablePaging spacing={8} trustAllCerts={false} onPageChanged={(nextPage) => setPage(nextPage)} onLoadComplete={(pages) => { if (!selected.pageCount && pages > 0) setSelected((current) => current ? { ...current, pageCount: pages } : current); }} onError={() => setNativePdfFailed(true)} style={styles.nativePdf} /></View> : <View style={styles.visualPage}>{pageImageLoading ? <ActivityIndicator color="#2563eb" /> : pageImageUri ? <Image accessibilityLabel={`${t('library.reader')} ${t('library.readerPage')} ${page}`} source={{ uri: pageImageUri }} style={styles.pageImage} resizeMode="contain" /> : currentPage ? <Text style={styles.readerText}>{currentPage}</Text> : <Text style={styles.muted}>{t('library.visualNotCached')}</Text>}</View>}
             </> : <Text style={styles.muted}>{t('library.noReadablePages')}</Text>}
-            <Text style={styles.heading}>{t('library.annotations')}</Text><Text style={styles.muted}>{t('library.annotationHint')}</Text><TextInput style={styles.input} value={quote} onChangeText={setQuote} placeholder={t('library.quotePlaceholder')} /><TextInput style={[styles.input, styles.multiline]} value={note} onChangeText={setNote} multiline placeholder={t('library.notePlaceholder')} /><Pressable style={styles.secondary} onPress={() => void saveAnnotation()}><Text style={styles.secondaryText}>{editingAnnotation ? t('library.updateAnnotation') : t('library.saveAnnotation')}</Text></Pressable>{annotations.map((annotation) => <View key={annotation.id} style={styles.annotation}><Text style={styles.body}>{t('library.readerPage')} {annotation.page}: {annotation.note || annotation.quote || t('library.annotations')}</Text><View style={styles.inline}><Text style={styles.link} onPress={() => { setEditingAnnotation(annotation); setReaderPage(annotation.page); setQuote(annotation.quote ?? ''); setNote(annotation.note ?? ''); }}>{t('common.edit')}</Text><Text style={styles.danger} onPress={() => void removeAnnotation(annotation)}>{t('common.delete')}</Text></View></View>)}
+            <Text style={styles.heading}>{t('library.annotations')}</Text><Text style={styles.muted}>{t('library.annotationHint')}</Text><Pressable style={styles.secondary} onPress={() => navigation.navigate('PdfAnnotationEditor', { documentId: selected.id, documentTitle: selected.title, page, pageText: currentPage })}><Text style={styles.secondaryText}>Open full annotation editor</Text></Pressable>{annotations.map((annotation) => <View key={annotation.id} style={styles.annotation}><Text style={styles.body}>{t('library.readerPage')} {annotation.page}: {annotation.note || annotation.quote || t('library.annotations')}</Text><View style={styles.inline}><Text style={styles.link} onPress={() => navigation.navigate('PdfAnnotationEditor', { documentId: selected.id, documentTitle: selected.title, page: annotation.page, pageText: readerPages[annotation.page - 1] ?? '', annotationId: annotation.id, quote: annotation.quote ?? undefined, note: annotation.note ?? undefined, color: annotation.color, updatedAt: annotation.updatedAt })}>{t('common.edit')}</Text><Text style={styles.link} onPress={() => void addAnnotationToRevision(annotation)}>Save for recall</Text><Text style={styles.danger} onPress={() => void removeAnnotation(annotation)}>{t('common.delete')}</Text></View></View>)}
         </View> : null}
     </ScrollView></Screen>;
 }
 
-const styles = StyleSheet.create({ scroll: { paddingBottom: 32 }, button: { backgroundColor: '#2563eb', borderRadius: 8, padding: 12, alignItems: 'center', marginBottom: 10 }, buttonText: { color: '#fff', fontWeight: '700' }, secondary: { borderWidth: 1, borderColor: '#2563eb', borderRadius: 8, padding: 10, alignItems: 'center', marginTop: 8, marginRight: 8 }, secondaryText: { color: '#2563eb', fontWeight: '700' }, message: { color: '#15803d', marginBottom: 10 }, muted: { color: '#6b7280', lineHeight: 19 }, card: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, padding: 14, marginBottom: 10 }, selected: { borderColor: '#2563eb' }, heading: { color: '#111827', fontWeight: '800', marginBottom: 5 }, bold: { color: '#111827', fontWeight: '700' }, body: { color: '#374151', lineHeight: 20 }, resource: { borderTopWidth: 1, borderTopColor: '#f3f4f6', paddingTop: 9, marginTop: 9 }, link: { color: '#2563eb', marginTop: 5, marginRight: 14 }, danger: { color: '#b91c1c', marginTop: 5 }, inline: { flexDirection: 'row', alignItems: 'center', gap: 8 }, pageBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }, pageLabel: { color: '#374151', fontWeight: '700' }, readerControl: { borderWidth: 1, borderColor: '#bfdbfe', borderRadius: 7, paddingHorizontal: 9, paddingVertical: 7 }, readerMode: { borderWidth: 1, borderColor: '#bfdbfe', borderRadius: 7, paddingHorizontal: 9, paddingVertical: 10, marginTop: 8 }, readerControlText: { color: '#1d4ed8', fontWeight: '700', fontSize: 12 }, disabledText: { color: '#9ca3af' }, pageInput: { flex: 1 }, searchResults: { marginTop: 8, padding: 9, backgroundColor: '#f8fafc', borderRadius: 8 }, searchPage: { marginTop: 7, alignSelf: 'flex-start' }, visualPage: { minHeight: 260, backgroundColor: '#f8fafc', borderRadius: 8, alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: 14, marginTop: 10 }, continuousReader: { marginTop: 10 }, textPage: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, padding: 11, marginBottom: 9, backgroundColor: '#ffffff' }, textPageActive: { borderColor: '#60a5fa', backgroundColor: '#eff6ff' }, pageImage: { width: '100%', height: 520 }, readerText: { color: '#1f2937', lineHeight: 21, marginBottom: 14, marginTop: 6 }, input: { borderWidth: 1, borderColor: '#d1d5db', borderRadius: 8, padding: 10, marginTop: 8, color: '#111827' }, multiline: { minHeight: 70, textAlignVertical: 'top' }, annotation: { borderTopWidth: 1, borderTopColor: '#f3f4f6', paddingTop: 8, marginTop: 8 } });
+const styles = StyleSheet.create({ scroll: { paddingBottom: 32 }, button: { backgroundColor: '#2563eb', borderRadius: 8, padding: 12, alignItems: 'center', marginBottom: 10 }, buttonText: { color: '#fff', fontWeight: '700' }, secondary: { borderWidth: 1, borderColor: '#2563eb', borderRadius: 8, padding: 10, alignItems: 'center', marginTop: 8, marginRight: 8 }, secondaryText: { color: '#2563eb', fontWeight: '700' }, message: { color: '#15803d', marginBottom: 10 }, muted: { color: '#6b7280', lineHeight: 19 }, card: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 12, padding: 14, marginBottom: 10 }, selected: { borderColor: '#2563eb' }, heading: { color: '#111827', fontWeight: '800', marginBottom: 5 }, bold: { color: '#111827', fontWeight: '700' }, body: { color: '#374151', lineHeight: 20 }, summaryPanel: { backgroundColor: '#eff6ff', borderRadius: 10, padding: 12, marginBottom: 12 }, collections: { marginBottom: 12 }, collectionLabel: { color: '#475569', fontSize: 12, fontWeight: '800', marginBottom: 7 }, collectionRow: { paddingRight: 16 }, collectionChip: { borderWidth: 1, borderColor: '#bfdbfe', borderRadius: 999, paddingVertical: 7, paddingHorizontal: 11, marginRight: 7, backgroundColor: '#fff' }, collectionChipActive: { backgroundColor: '#2563eb', borderColor: '#2563eb' }, collectionText: { color: '#1d4ed8', fontSize: 12, fontWeight: '700' }, collectionTextActive: { color: '#fff' }, resource: { borderTopWidth: 1, borderTopColor: '#f3f4f6', paddingTop: 9, marginTop: 9 }, link: { color: '#2563eb', marginTop: 5, marginRight: 14 }, danger: { color: '#b91c1c', marginTop: 5 }, inline: { flexDirection: 'row', alignItems: 'center', gap: 8 }, pageBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }, pageLabel: { color: '#374151', fontWeight: '700' }, readerControl: { borderWidth: 1, borderColor: '#bfdbfe', borderRadius: 7, paddingHorizontal: 9, paddingVertical: 7 }, readerMode: { borderWidth: 1, borderColor: '#bfdbfe', borderRadius: 7, paddingHorizontal: 9, paddingVertical: 10, marginTop: 8 }, readerControlText: { color: '#1d4ed8', fontWeight: '700', fontSize: 12 }, disabledText: { color: '#9ca3af' }, pageInput: { flex: 1 }, searchResults: { marginTop: 8, padding: 9, backgroundColor: '#f8fafc', borderRadius: 8 }, searchPage: { marginTop: 7, alignSelf: 'flex-start' }, nativePdfFrame: { height: 520, backgroundColor: '#e5e7eb', borderRadius: 10, overflow: 'hidden', marginBottom: 14, marginTop: 10 }, nativePdf: { flex: 1, width: '100%', backgroundColor: '#e5e7eb' }, visualPage: { minHeight: 260, backgroundColor: '#f8fafc', borderRadius: 8, alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: 14, marginTop: 10 }, continuousReader: { marginTop: 10 }, textPage: { borderWidth: 1, borderColor: '#e5e7eb', borderRadius: 8, padding: 11, marginBottom: 9, backgroundColor: '#ffffff' }, textPageActive: { borderColor: '#60a5fa', backgroundColor: '#eff6ff' }, pageImage: { width: '100%', height: 520 }, readerText: { color: '#1f2937', lineHeight: 21, marginBottom: 14, marginTop: 6 }, input: { borderWidth: 1, borderColor: '#d1d5db', borderRadius: 8, padding: 10, marginTop: 8, color: '#111827' }, multiline: { minHeight: 70, textAlignVertical: 'top' }, annotation: { borderTopWidth: 1, borderTopColor: '#f3f4f6', paddingTop: 8, marginTop: 8 } });

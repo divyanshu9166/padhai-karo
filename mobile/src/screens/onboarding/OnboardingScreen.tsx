@@ -54,6 +54,13 @@ const PROGRAM_STAGES: Record<ExamProgramKey, readonly { value: ExamStage; labelK
     ],
 };
 
+const PREPARATION_PROFILES = [
+    { value: 'Full-time aspirant', label: 'Full-time aspirant' },
+    { value: 'Working professional', label: 'Working professional' },
+    { value: 'College student', label: 'College student' },
+    { value: 'Restarting preparation', label: 'Restarting preparation' },
+] as const;
+
 export function OnboardingScreen(): React.JSX.Element {
     const t = useTranslation();
     const { refresh } = useAuth();
@@ -64,11 +71,15 @@ export function OnboardingScreen(): React.JSX.Element {
     const [examStage, setExamStage] = useState<ExamStage>('PRELIMS');
     const [targetYearText, setTargetYearText] = useState(String(currentYear + 1));
     const [examDate, setExamDate] = useState(`${currentYear + 1}-06-01`);
-    const [currentClass, setCurrentClass] = useState('');
+    const [currentClass, setCurrentClass] = useState<(typeof PREPARATION_PROFILES)[number]['value']>('Full-time aspirant');
     const [peakWindows, setPeakWindows] = useState<PeakFocusWindow[]>([]);
     const [commitments, setCommitments] = useState<FixedCommitmentInput[]>([]);
     const [bedtime, setBedtime] = useState('23:00');
     const [wakeTime, setWakeTime] = useState('07:00');
+    const [showOptionalSetup, setShowOptionalSetup] = useState(false);
+    const [weekdayStudyHours, setWeekdayStudyHours] = useState('4');
+    const [weekendStudyHours, setWeekendStudyHours] = useState('6');
+    const [optionalSubject, setOptionalSubject] = useState('');
 
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -96,6 +107,10 @@ export function OnboardingScreen(): React.JSX.Element {
             targetYear: Number.isInteger(targetYear) ? targetYear : Number.NaN,
             examDate,
             currentClass,
+            preparationProfile: currentClass,
+            weekdayStudyMinutes: Math.round(Number(weekdayStudyHours) * 60),
+            weekendStudyMinutes: Math.round(Number(weekendStudyHours) * 60),
+            ...(examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? { optionalSubject } : {}),
             fixedCommitments: commitments,
             peakFocusWindows: peakWindows,
         };
@@ -169,47 +184,33 @@ export function OnboardingScreen(): React.JSX.Element {
                 </Section>
 
                 <Section title={t('onboarding.studyStatus')}>
-                    <TextInput
-                        style={styles.input}
-                        value={currentClass}
-                        onChangeText={setCurrentClass}
-                        placeholder={t('onboarding.studyStatusPlaceholder')}
-                        editable={!submitting}
-                    />
+                    <ChipRow>
+                        {PREPARATION_PROFILES.map((profile) => <Chip key={profile.value} label={profile.label} selected={currentClass === profile.value} onPress={() => setCurrentClass(profile.value)} disabled={submitting} />)}
+                    </ChipRow>
                 </Section>
 
-                <FixedCommitmentsEditor
-                    commitments={commitments}
-                    onAdd={addCommitment}
-                    onRemove={removeCommitment}
-                    disabled={submitting}
-                />
-
-                <Section title={t('onboarding.sleepSchedule')} caption={t('onboarding.sleepScheduleCaption')}>
-                    <TextInput style={styles.input} value={bedtime} onChangeText={setBedtime} placeholder={t('onboarding.bedtimePlaceholder')} editable={!submitting} />
-                    <TextInput style={styles.input} value={wakeTime} onChangeText={setWakeTime} placeholder={t('onboarding.wakeTimePlaceholder')} editable={!submitting} />
+                <Section title="Available study time" caption="Use realistic hours. Your timetable will adapt when real life changes.">
+                    <TextInput style={styles.input} value={weekdayStudyHours} onChangeText={setWeekdayStudyHours} placeholder="Weekdays (hours)" keyboardType="decimal-pad" editable={!submitting} />
+                    <TextInput style={styles.input} value={weekendStudyHours} onChangeText={setWeekendStudyHours} placeholder="Weekends (hours)" keyboardType="decimal-pad" editable={!submitting} />
                 </Section>
+
+                {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <Section title="UPSC Mains optional subject"><TextInput style={styles.input} value={optionalSubject} onChangeText={setOptionalSubject} placeholder="e.g. Sociology" editable={!submitting} /></Section> : null}
 
                 <Section title={t('onboarding.exactExamDate')} caption={t('onboarding.exactExamDateCaption')}>
                     <TextInput style={styles.input} value={examDate} onChangeText={setExamDate} placeholder={t('onboarding.examDatePlaceholder')} editable={!submitting} autoCapitalize="none" />
                 </Section>
 
-                <Section
-                    title={t('onboarding.peakFocusWindows')}
-                    caption={t('onboarding.peakFocusWindowsCaption')}
-                >
-                    <ChipRow>
-                        {PEAK_WINDOWS.map((w) => (
-                            <Chip
-                                key={w.value}
-                                label={t(w.labelKey)}
-                                selected={peakWindows.includes(w.value)}
-                                onPress={() => togglePeak(w.value)}
-                                disabled={submitting}
-                            />
-                        ))}
-                    </ChipRow>
-                </Section>
+                <Pressable style={styles.optionalToggle} onPress={() => setShowOptionalSetup((value) => !value)} disabled={submitting}><Text style={styles.optionalText}>{showOptionalSetup ? 'Hide optional setup' : 'Add sleep, commitments & peak-focus setup (optional)'}</Text></Pressable>
+                {showOptionalSetup ? <>
+                    <FixedCommitmentsEditor commitments={commitments} onAdd={addCommitment} onRemove={removeCommitment} disabled={submitting} />
+                    <Section title={t('onboarding.sleepSchedule')} caption={t('onboarding.sleepScheduleCaption')}>
+                        <TextInput style={styles.input} value={bedtime} onChangeText={setBedtime} placeholder={t('onboarding.bedtimePlaceholder')} editable={!submitting} />
+                        <TextInput style={styles.input} value={wakeTime} onChangeText={setWakeTime} placeholder={t('onboarding.wakeTimePlaceholder')} editable={!submitting} />
+                    </Section>
+                    <Section title={t('onboarding.peakFocusWindows')} caption={t('onboarding.peakFocusWindowsCaption')}>
+                        <ChipRow>{PEAK_WINDOWS.map((w) => <Chip key={w.value} label={t(w.labelKey)} selected={peakWindows.includes(w.value)} onPress={() => togglePeak(w.value)} disabled={submitting} />)}</ChipRow>
+                    </Section>
+                </> : null}
 
                 {error ? <Text style={styles.error}>{error}</Text> : null}
 
@@ -243,6 +244,8 @@ const styles = StyleSheet.create({
         marginTop: 4,
     },
     error: { color: '#b91c1c', fontSize: 14, marginTop: 16 },
+    optionalToggle: { alignSelf: 'flex-start', marginTop: 24, borderWidth: 1, borderColor: '#bfdbfe', borderRadius: 8, paddingHorizontal: 12, paddingVertical: 10, backgroundColor: '#eff6ff' },
+    optionalText: { color: '#1d4ed8', fontWeight: '700' },
     submit: {
         marginTop: 28,
         backgroundColor: '#2563eb',

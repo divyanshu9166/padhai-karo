@@ -118,7 +118,7 @@ export interface MaterializedBlock {
     energyLevel: EnergyLevel;
     /** True for a HARD task that could not be placed entirely in a peak window (Req 13.4). */
     scheduledOutsidePeak: boolean;
-    sessionType?: 'NEW_CHAPTER' | 'PRACTICE_PROBLEMS' | 'REVISION' | 'MOCK_ANALYSIS' | 'FORMULA_DRILL';
+    sessionType?: 'NEW_CHAPTER' | 'NOTES_MAKING' | 'PRACTICE_PROBLEMS' | 'REVISION' | 'ANSWER_WRITING' | 'MOCK_TEST' | 'MOCK_ANALYSIS' | 'CURRENT_AFFAIRS' | 'QUANT_PRACTICE' | 'REASONING_PRACTICE' | 'VOCABULARY' | 'FORMULA_DRILL';
     revisionNumber?: number | null;
     revisionLabel?: string | null;
 }
