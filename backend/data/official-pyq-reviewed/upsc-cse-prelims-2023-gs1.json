@@ -1,0 +1,1208 @@
+{
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2023,
+  "paperKey": "UPSC-CSE-PRELIMS-GS1-2023",
+  "durationMin": 120,
+  "sourceName": "UPSC official previous question papers",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/QP_CS_Pre_Exam_2023_280523.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-2023-Paper-I-090524.pdf",
+  "reviewedAt": "2026-09-26T08:33:16.404Z",
+  "questionPaperSha256": "14281f205282431f668c23ba0f79952b500255d81f7d4a9ea2b27c84cf99e7e2",
+  "answerKeySha256": "c4515179a3d07e2acc1aae96b908f2f07ba781bc067156bc65e04ccc60cf1a86",
+  "answerKey": {
+    "1": 0,
+    "2": 1,
+    "3": 1,
+    "4": 0,
+    "5": 3,
+    "6": 3,
+    "7": 2,
+    "8": 0,
+    "9": 3,
+    "10": 3,
+    "11": 2,
+    "12": 2,
+    "13": 0,
+    "14": 0,
+    "15": 2,
+    "16": 3,
+    "17": 1,
+    "18": 2,
+    "19": 1,
+    "20": 2,
+    "21": 3,
+    "22": 0,
+    "23": 1,
+    "24": 0,
+    "25": 1,
+    "26": 1,
+    "27": 2,
+    "28": 2,
+    "29": 1,
+    "30": 2,
+    "31": 0,
+    "32": 0,
+    "33": 2,
+    "35": 0,
+    "36": 3,
+    "37": 1,
+    "38": 1,
+    "39": 1,
+    "40": 2,
+    "41": 0,
+    "42": 1,
+    "43": 1,
+    "44": 3,
+    "45": 3,
+    "46": 1,
+    "47": 1,
+    "48": 0,
+    "49": 2,
+    "50": 3,
+    "51": 1,
+    "52": 2,
+    "53": 0,
+    "54": 2,
+    "55": 1,
+    "56": 0,
+    "57": 3,
+    "58": 3,
+    "59": 1,
+    "60": 2,
+    "61": 0,
+    "62": 2,
+    "63": 3,
+    "64": 3,
+    "65": 2,
+    "66": 3,
+    "67": 0,
+    "68": 2,
+    "69": 0,
+    "70": 0,
+    "71": 1,
+    "72": 2,
+    "73": 3,
+    "74": 1,
+    "75": 1,
+    "76": 2,
+    "77": 1,
+    "78": 3,
+    "79": 2,
+    "80": 0,
+    "81": 0,
+    "82": 1,
+    "83": 0,
+    "84": 3,
+    "85": 2,
+    "86": 2,
+    "87": 2,
+    "88": 3,
+    "89": 0,
+    "90": 3,
+    "91": 1,
+    "92": 1,
+    "93": 3,
+    "94": 2,
+    "95": 1,
+    "96": 1,
+    "97": 3,
+    "98": 3,
+    "99": 2,
+    "100": 2
+  },
+  "droppedQuestions": [
+    "34"
+  ],
+  "questions": [
+    {
+      "questionRef": "1",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. Jhelum River passes through Wular Lake.\n2. Krishna River directly feeds Kolleru Lake.\n3. Meandering of Gandak River formed Kanwar Lake.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "2",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following pairs :\n\nPort : Well known as\n1. Kamarajar Port : First major port in India registered as a company\n2. Mundra Port : Largest privately owned port in India\n3. Visakhapatnam Port : Largest container port in India\n\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one pair",
+        "Only two pairs",
+        "All three pairs",
+        "None of the pairs"
+      ]
+    },
+    {
+      "questionRef": "3",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Visakhapatnam Largest container port in Port India\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one pair",
+        "Only two pairs",
+        "All three pairs",
+        "None of the pairs"
+      ]
+    },
+    {
+      "questionRef": "4",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following trees:\n1. Jackfruit (Artocarpus heterophyllus)\n2. Mahua (Madhuca indica)\n3. Teak (Tectona grandis)\nHow many of the above are deciduous trees?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "5",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. India has more arable area than China.\n2. The proportion of irrigated area is more in India as compared to China.\n3. The average productivity per hectare in Indian agriculture is higher than that in China.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None Which one of the following is the best example of repeated falls in sea level, giving rise to present-day extensive marshland? (a) Bhitarkanika Mangroves (b) Marakkanam Salt Pans (c) Naupada Swamp (d) Rann of Kutch"
+      ]
+    },
+    {
+      "questionRef": "6",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Ilmenite and rutile, abundantly available in certain coastal tracts of India, are rich sources of which one of the following?",
+      "options": [
+        "Aluminium",
+        "Copper",
+        "Iron",
+        "Titanium"
+      ]
+    },
+    {
+      "questionRef": "7",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "About three-fourths of world's cobalt, a metal required for the manufacture of batteries for electric motor vehicles, is produced by",
+      "options": [
+        "Argentina",
+        "Botswana",
+        "the Democratic Republic of the Congo",
+        "Kazakhstan"
+      ]
+    },
+    {
+      "questionRef": "8",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "8. Which one of the following is a part of the Congo Basin?",
+      "options": [
+        "Cameroon",
+        "Nigeria",
+        "South Sudan",
+        "Uganda"
+      ]
+    },
+    {
+      "questionRef": "9",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. Amarkantak Hills are at the confluence of Vindhya and Sahyadri Ranges.\n2. Biligirirangan Hills constitute the easternmost part of Satpura Range.\n3. Seshachalam Hills constitute the southernmost part of Westem Ghats.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "10",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to India's projects on connectivity, consider the following statements:\n1. East-West Corridor under Golden Quadrilateral Project connects Dibrugarh and Surat.\n2. Trilateral Highway connects Moreh in Manipur and Chiang Mai in Thailand via Myanmar.\n3. Bangladesh - China - India - Myanmar Economic Corridor connects Varanasi. in Uttar Pradesh with Kunming in China.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "11",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: India, despite having uranium deposits, depends on coal for most of its electricity production. Statement—II: Uranium, enriched to the extent of at least 60%, is required for the production of electricity.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanaüon for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "12",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: Marsupials are not naturally found in India. Statement—II: Marsupials can thrive only in montane grasslands with no predators.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "13",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "13. qnvasive Species Specialist 'Group' (that develops Global Invasive Species Database) belongs to which one of the following organizations?",
+      "options": [
+        "The International Union for Conservation of Nature",
+        "The United Nations Environment Programme",
+        "The United Nations World Commission for Environment and Development",
+        "The World Wide Fund for Nature"
+      ]
+    },
+    {
+      "questionRef": "14",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following fauna:\n1. Lion-tailed Macaque\n2. Malabar Civet\n3. Sambar Deer\nHow many of the above are generally nocturnal or most active after sunset?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "15",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which of the following organisms perform waggle dance for others of their kin to indicate the direction and the distance to a source of their food?",
+      "options": [
+        "Butterflies",
+        "Dragonflies",
+        "Honeybees",
+        "Wasps"
+      ]
+    },
+    {
+      "questionRef": "16",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\nI. Some mushrooms have medicinal properties.\n2. Some mushrooms have psycho- active properties.\n3. Some mushrooms have insecticidal properties.\n4. Some mushrooms have biolumi- nescent properties.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "17",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements regarding the Indian squirrels:\n1. They build nests by making burrows in the ground.\n2. They store their food materials like nuts and seeds in the ground.\n3. They are omnivorous.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "18",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "(\n18. Consider the following •statements:\n1. Some microorganisms can grow in environments with temperature above the boiling point of water.\n2. Some microorganisms can grow in environments with temperature below the freezing point of water.\n3. Some microorganisms can grow in highly acidic environment with a pH below 3.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "19",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which one of the following makes a tool with a stick to scrape insects from a hole in a tree or a log of wood?",
+      "options": [
+        "Fishing cat",
+        "Orangutan",
+        "Otter",
+        "Sloth bear"
+      ]
+    },
+    {
+      "questionRef": "20",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following\n1. Aerosols\n2. Foam agents\n3. Fire retardants\n4. Lubricants In the making of how many of the above are hydrofluorocarbons used?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "21",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements. Statement—I: Interest income from the deposits in Infrastructure Investment Trusts (InvITs) distributed to their investors is exempted from tax, but the dividend is taxable. Statement—II: InvITs are recognized as borrowers under the 'Securitization and Recon- struction of Financial Assets and Enforcement of Security Interest Act, 2002'.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "22",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: In the post-pandemic recent past, many Central Banks worldwide had carried out interest rate hikes. Statement—II: Central Banks generally assume that they have the ability to counteract the rising consumer prices via monetary policy means.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "23",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: Carbon markets are likely to be one of the most widespread tools in the fight against climate change. Statement—II: Carbon markets transfer resources from the private sector to the State.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "24",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which one of the following activities of the Reserve Bank of India is considered to be part of 'sterilization'?",
+      "options": [
+        "Conducting 'Open Market Operations'",
+        "Oversight of settlement and payment systems",
+        "Debt and cash management for the Central and State Governments",
+        "Regulating the functions of Non- banking Financial Institutions"
+      ]
+    },
+    {
+      "questionRef": "25",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following markets:\n1. Government Bond Market\n2. Call Money Market\n3. Treasury Bill Market\n4. Stock Market\nHow many of the above are included in capital markets?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "26",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "XDTG-F-GST/62A\n26. Which one of the following best describes the concept of 'Small Farrner Large Field'?",
+      "options": [
+        "Resettlement of a large number of people, uprooted from their countries due to war, by giving them a large cultivable land which they cultivate collectively and share the produce",
+        "Many marginal farmers in an area organize themselves into groups and synchronize and harmonize selected agricultural operations",
+        "Many marginal farmers in an area together make a contract with a corporate body and surrender their land to the corporate body for a fixed term for which the corporate body makes. a payment of agreed amount to the farmers",
+        "A company extends loans, technical knowledge and material inputs to a number of small farmers in an area so that they produce the agricultural commodity required by the company for its manufacturing process and commercial production"
+      ]
+    },
+    {
+      "questionRef": "27",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. The Government of India provides Minimum Support Price for niger (Guizotia abyssinica) seeds.\n2. Niger is cultivated as a Kharif crop.\n3. Some tribal peop!e in India use niger seed oil for cooking.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "28",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the investments in the following assets •\n1. Brand recognition\n2. Inventory\n3. Intellectual property\n4. Mailing list of clients\nHow many of the above are considered intangible investments?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "29",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following\n1. Demographic performance\n2. Forest and ecology\n3. Governance reforms\n4. Stable government\n5. Tax and fiscal efforts For the horizontal tax devolution, the Fifteenth Finance Commission used how many of the above as criteria other than population area and income distance?",
+      "options": [
+        "Only two",
+        "Only three",
+        "Only four",
+        "All five"
+      ]
+    },
+    {
+      "questionRef": "30",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following infrastructure sectors:\n1. Affordable housing\n2. Mass rapid transport\n3. Health care\n4. Renewable enerv On how many of the above does UNOPS Sustainable Investments in Infrastructure and Innovation (S3i) initiative focus for its investments?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "31",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "In essence, what does Due Process of Law' mean?",
+      "options": [
+        "The principle of natural justice",
+        "The procedure established by law",
+        "Fair application of law",
+        "Equality before law"
+      ]
+    },
+    {
+      "questionRef": "32",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: In India, prisons are managed by State Governments with their own rules and regulations for the day-to-day administration of prisons. Statement—II In India, prisons are governed by the Prisons Act, 1894 which expressly kept the subject of prisons in the control of Provincial Governments.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "33",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which one of the following statements best reflects the Chief purpose of the Constitution' of a country?",
+      "options": [
+        "It determines the objective for the making of necessary laws.",
+        "It enables the creation of political offices and a government.",
+        "It defines and limits the powers of government.",
+        "It secures social justice, social equality and social security."
+      ]
+    },
+    {
+      "questionRef": "35",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following organizations/ bodies in India:\n1. The National Commission for Backward Classes\n2. The National Human Rights Commission\n3. The National Law Commission\n4. The National Consumer Disputes Redressal Commission\nHow many of the above are constitutional bodies?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "36",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. If the election of the President of India is declared void by the Supreme Court of India, all acts done by him/her in the performance of duties of his/her office of President before the date of decision become invalid.\n2. Election for the post of the President of India can be postponed on the ground that some Legislative Assemblies have been dissolved and elections are yet to take place.\n3. When a Bill is presented to the President of India, the Constitution prescribes time limits within which he/she has to declare his/her assent.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "37",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to Finance Bill and Money Bill in the Indian Parliament, consider the following statements:\n1. When the Lok Sabha transmits Finance Bill to the Rajya Sabha, it can amend or reject the Bill.\n2. When the Lok Sabha transmits Money Bill to the Rajya Sabha, it cannot amend or reject the Bill, it can only make recommendations.\n3. In the case of disagreement between the Lok Sabha and the Rajya Sabha, there is no joint sitting for Money Bill, but a joint sitting becomes necessary for Finance Bill.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "38",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements • Once the Central Government notifies an area as a Community Reserve'\n1. the Chief Wildlife Warden of the State becomes the governing authority of such forest\n2. hunting is not allowed in such area\n3. people of such area are allowed to collect non-timber forest produce\n4. people of such area are allowed traditional agricultural practices\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "39",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to 'Scheduled Areas' in India, consider the following statements:\n1. Within a State, the notification of an area as Scheduled Area takes place through an Order of the President.\n2. The largest administrative unit forming the Scheduled Area is the District and the lowest is the cluster of villages in the Block.\n3. The Chief Ministers of the concerned States are required to submit annual reports to the Union Home Ministry on the administration of Scheduled Areas in the States.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "40",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: The Supreme Court of India has held in some judgements that the reservation policies made under Article 16(4) of the Constitution of India would be limited by Article 335 for maintenance of emciency of administration. Statement—II • Article 335 of the Constitution of India defines the term 'efficiency of administration'.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I.is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "41",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "XDTG-F-GSTi62A\n41. In which one of the following regions was Dhanyakataka, which flourished as a prominent Buddhist centre under the Mahasanghikas, located?",
+      "options": [
+        "Andhra",
+        "Gandhara",
+        "Kalinga",
+        "Magadha"
+      ]
+    },
+    {
+      "questionRef": "42",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to ancient India, consider the following statements:\n1. The concept of Stupa is Buddhist in origin.\n2. Stupa was generally a repository of relics.\n3. Stupa was a votive and commemorative structure in Buddhist tradition.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "43",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to ancient South India, Korkai, Poompuhar and Muchiri were well known as",
+      "options": [
+        "capital cities",
+        "ports",
+        "centres of iron-and-steel making",
+        "shrines of Jain Tirthankaras"
+      ]
+    },
+    {
+      "questionRef": "44",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which one of the following explains the practice of Vattakirutal' as mentioned in Sangam poems?",
+      "options": [
+        "Kings employing women bodyguards",
+        "Learned persons assembling in royal courts to discuss religious and philosophical matters",
+        "Young girls keeping watch over agricultural fields and driving away birds and animals",
+        "A king defeated in a battle committing ritual suicide by starving himself to death"
+      ]
+    },
+    {
+      "questionRef": "45",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following dynasties:\n1. Hoysala\n2. Gahadavala\n3. Kakatiya\n4. Yadava\nHow many of the above dynasties established their kingdoms in early eighth century AD?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "46",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to ancient Indian History, consider the following pairs Literary work Author\n1. • Devichandragupta Bilhana\n2. Hammira-Mahakavya Nayachandra Suri\n3. Milinda-panha Nagarjuna\n4. Nitivakyamrita Somadeva Suri\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "47",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "\"Souls are not only the property • of animal and plant life, but also of rocks, running water and many other natural objects not looked on as living by other religious sects.\" The above statement reflects one of the core beliefs of which one of the following religious sects of ancient India?",
+      "options": [
+        "Buddhism",
+        "Janusm",
+        "Shaivism",
+        "Vaishnavism"
+      ]
+    },
+    {
+      "questionRef": "48",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Who among the following rulers of Vijayanagara Empire constructed a large dam across Tungabhadra River and a canal-cum-aqueduct several •kilometres long from the river to the capital city?",
+      "options": [
+        "Devaraya I",
+        "Mallikarjuna",
+        "Vira Vijaya",
+        "Virupaksha"
+      ]
+    },
+    {
+      "questionRef": "49",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Who among the following rulers of medieval Gujarat surrendered Diu to Portuguese?",
+      "options": [
+        "Ahmad Shah",
+        "Mahmud Begarha",
+        "Bahadur Shah",
+        "Muhammad Shah"
+      ]
+    },
+    {
+      "questionRef": "50",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "By which one of the following Acts was the Governor General of Bengal designated as the Governor General of India?",
+      "options": [
+        "The Regulating Act",
+        "The Pitt's India Act",
+        "The Charter Act of 1793",
+        "The Charter Act of 1833"
+      ]
+    },
+    {
+      "questionRef": "51",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements in relation to Janani Suraksha Yojana:\n1. It is a safe motherhood intervention of the State Health Departrnents.\n2. Its objective is to reduce maternal and neonatal mortality among poor pregnant women.\n3. It aims to promote institutional delivery among poor pregnant women.\n4. Its objective includes providing public health facilities to sick infants up to one year of age.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "52",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements in the context of interventions being undertaken under Anaemia Mukt Bharat Stratege •\n1. It provides prophylactic calcium supplementation for pre-school children, adolescents and pregnant women.\n2. It runs a campaign for delayed cord clamping at the time of child- birth.\n3. It provides for periodic deworming to children and adolescents.\n4. It addresses non-nutritional causes of anaemia in endemic pockets with special focus on malaria, hemoglobinopathies and fluorosis.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "53",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. Carbon fibres are used in the manufacture of components used in automobiles and aircrafts.\n2. Carbon fibres once used cannot be recycled.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "54",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following actions:\nI. Detection of car crash/collision which results in the deployment of airbags almost instantaneously\n2. Detection of accidental free fall of a laptop towards the ground which results in the immediate turning off of the hard drive\n3. Detection of the tilt of the smart- phone which results in the rotation of display between portrait and landscape mode In how many of the above actions is the function of accelerometer required?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "55",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to the role of biofilters in Recirculating Aquaculture System, consider the following statements:\n1. Biofilters provide waste treatment by removing uneaten fish feed.\n2. Biofilters convert ammonia present in fish waste to nitrate.\n3. Biofilters increase phosphorus as nutrient for fish in water.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "56",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following pairs: Objects in Description space\nI. Cepheids Giant clouds of dust and gas in space\n2. Nebulae Stars which brighten and dim periodically\n3. Pulsars Neutron stars that are formed when massive stars run out of fuel and collapse\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "57",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which one of the following countries has its own Satellite Navigation System?",
+      "options": [
+        "Australia",
+        "Canada",
+        "Israel",
+        "Japan"
+      ]
+    },
+    {
+      "questionRef": "58",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. Ballistic missiles are jet-propelled at subsonic speeds throughout their flights, while cruise missiles are rocket-powered only in the initial phase of flight.\n2. Agni-V is a medium-range supersonic cruise missile, while BrahMos is a solid-fuelled intercontinental ballistic missile.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "I only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "59",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements regarding mercury pollution:\n1. Gold mining activity is a source of mercury pollution in the world.\n2. Coal-based thermal power plants cause mercury pollution.\n3. There is no known safe level Of exposure to mercury.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "60",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to green hydrogen, consider the following statements:\n1. It can be used directly as a fuel for internal combustion.\n2. It can be blended with natural gas and used as fuel for heat or power generation.\n3. It can be used in the hydrogen fuel cell to run vehicles.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "61",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following countries •\nI. Bulgaria\n2. Czech Republic\n3. Hungary\n4. Latvia\n5. Lithuania\n6. Romania\nHow many of the above-mentioned countries share a land border with Ukraine?",
+      "options": [
+        "Only two",
+        "Only three",
+        "Only four",
+        "Only five"
+      ]
+    },
+    {
+      "questionRef": "62",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to the Earth's atmosphere, which one of the following statements is correct?",
+      "options": [
+        "The total amount of insolation received at the equator is roughly about • 10 times Of that received at the poles.",
+        "Infrared rays constitute roughly two-thirds of insolation.",
+        "Infrared waves are largely absorbed by water vapour that is concentrated in the lower atmosphere.",
+        "Infrared waves are a part of visible spectrum of electromagnetic waves of solar radiation."
+      ]
+    },
+    {
+      "questionRef": "63",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: The soil in tropical rain forests is rich in nutrients. Statement—II: The high temperature and moisture of tropical rain forests cause dead organic matter in the soil to decompose quickly.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "64",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: The temperature contrast between continents and oceans is greater during summer than in winter. Statement—II. The specific heat of water is more than that of land surface.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "65",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. In a seismograph, P waves are recorded earlier than S waves.\n2. In P waves, the individual particles vibrate to and fro in the direction of wave propagation whereas in S waves, the particles vibrate up and down at right angles to the direction of wave propagation.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both I and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "66",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to coal-based thermal power plants in India, consider the following statements:\n1. None of them uses seawater.\n2. None of them is set up in water-stressed district.\n3. None of them is privately owned.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "67",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Wolbachia method' is sometimes talked about with reference to which one of the following?",
+      "options": [
+        "Controlling the viral diseases spread by mosquitoes",
+        "Converting crop residues into packing material",
+        "Producing biodegradable plastics",
+        "Producing biochar from thermo- chemical conversion of biomass"
+      ]
+    },
+    {
+      "questionRef": "68",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following activities:\n1. Spreading finely ground basalt rock on farmlands extensively\n2. Increasing the alkalinity of oceans by adding Jime\n3. Capturing carbon dioxide released by various industries and pumping it into abandoned subterranean mines in the form of carbonated waters\nHow many of the above activities are often considered and discussed for carbon capture and sequestration?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "69",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "'Aerial metagenomics' best refers to which one of the following situations?",
+      "options": [
+        "Collecting DNA samples from air in a habitat at one go",
+        "Understanding the genetic makeup of avian species of a habitat",
+        "Using air-borne devices to collect blood samples from moving animals",
+        "Sending drones to inaccessible areas to collect plant and animal samples from land surfaces and water bodies"
+      ]
+    },
+    {
+      "questionRef": "70",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "'Microsatellite DNR is used in the case of which one of the following?",
+      "options": [
+        "Studying the evolutionary relationships among various species of fauna",
+        "Stimulating 'stem cells' to transform into diverse functional tissues",
+        "Promoting clonal propagation of horticultural plants",
+        "Assessing the effcacy of drugs by conducting series of drug trials in a population"
+      ]
+    },
+    {
+      "questionRef": "71",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements with reference to India •\n1. According to the 'Micro, Small and Medium Enterprises Development (MSMED) Act, 2006', the 'medium enterprises' are those with investments in plant and machinery between e 15 crore and 25 crore.\n2. All bank loans to the Micro, Small and Medium Enterprises quali& under the priority sector.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "72",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to Central Bank digital currencies, consider the following statements •\n1. It is possible to make payments in a digital currency without using US dollar or SWIrr system.\n2. A digital currency can be distributed with a condition programmed into it such as a time- frame for spending it.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "73",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "In the context of finance, the term Cbeta' refers to",
+      "options": [
+        "the process of simultaneous buying and selling of an asset from different platforms",
+        "an investment strateg.' of a portfolio manager to balance risk versus reward",
+        "a type of systemic risk that arises where perfect hedging is not possible",
+        "a numeric value that measures the fluctuations of a stock to changes in the overall stock market"
+      ]
+    },
+    {
+      "questionRef": "74",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. The Self-Help Group (SHG) programme was originally initiated by the State Bank of India by providing microcredit to the financially deprived.\n2. In an SHG, all members of a group take responsibility for a loan that an individual member takes.\n3. The Regional Rural Banks and Scheduled Commercial Banks support SHGs.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "75",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: India's public sector health care system largely focuses on curative care with limited preventive, promotive and rehabilitative care. Statement—II • Under India's decentralized approach to health care delivery, the States are primarily responsible for organizing health services.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—l• is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "76",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: According to the United Nations' World Water Development Report, 2022', India extracts more than a quarter of the world's groundwater withdrawal each year. Statement—II • India needs to extract more than a quarter of the world's groundwater each year to satis& the drinking water and sanitation needs of almost 18% of world's population living in its territory.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "77",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. According to the Constitution of India, the Central Govemment has a duty to protect States from internal disturbances.\n2. The Constitution of India exempts the States from providing legal counsel to a person being held for preventive detention.\n3. According to the Prevention of Terrorism Act, 2002, confession of the accused before the police cannot be used as evidence.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "78",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Which one of the following countries has been suffering from decades of civil strife and food shortages and was in news in the recent past for its very severe famine?",
+      "options": [
+        "Angola",
+        "Costa Rica",
+        "Ecuador",
+        "Somalia"
+      ]
+    },
+    {
+      "questionRef": "79",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\n1. In India, the Biodiversity Management Committees are key to the realization of the objectives of the Nagoya Protocol.\n2. The Biodiversity Management Committees have important functions in determining access and benefit sharing, including the power to levy collection fees on the access of biological resources within its jurisdiction.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither I nor 2"
+      ]
+    },
+    {
+      "questionRef": "80",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements in respect of election to the President of India •\n1. The members nominated to either House of the Parliament or the Legislative Assemblies of States are also eligible to be included in the Electoral College.\n2. Higher the number Of elective Assembly seats, higher is the value of vote of each MLA of that State.\n3. The value of vote of each MLA of Madhya Pradesh is greater than that of Kerala.\n4. The value of vote of each MLA of Puducherry is higher than that of Arunachal Pradesh because the ratio of total population to total number of elective seats in Puducherry is greater as compared to Arunachal Pradesh.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "81",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to the Indian History, Alexander Rea, A. H. Longhurst, Robert Sewell, James Burgess and Walter Elliot were associated with",
+      "options": [
+        "archaeological excavations",
+        "establishment of English Press in Colonial India",
+        "establishment of Churches in Princely States",
+        "construction of railways in Colonial India"
+      ]
+    },
+    {
+      "questionRef": "82",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following pairs Site Well known for\n1. Besnagar Shaivite cave shrine\n2. Bhaja Buddhist cave shrine\n3. Sittanavasal Jain cave shrine\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "83",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: 7th August is declared as the National Handloom Day. Statement—II: It was in 1905 that the Swadeshi Movement was launched on the same day.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "84",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements in respect of the National Flag of India according to the Flag Code of India, 2002: Statement—I: One of the standard sizes of the National Flag of India is 600 mm 400 mm. Statement—II: The ratio of the length to the height (width) of the Flag shall be 3:2.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "85",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "85. Consider the following statements in respect of the Constitution Day • Statement—I: The Constitution Day is celebrated on 26th November every year to promote constitutional values among citizens. Statement—II • On 26th November, 1949, the Constituent Assembly of India set up a Drafting Committee under the Chairmanship of Dr. B. R. Ambedkar to prepare a Draft Constitution of India.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "86",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: Switzerland is one of the leading exporters of gold in terms of value. Statement—II: Switzerland has the second largest gold reserves in the world.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "87",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: Recently, the United States of America (USA) and the European Union (EU) have launched the Trade and Techn010ß' Council'. Statement—II: The USA and the EU claim that through this they are trying to bring technological progress and physical productivity under their control.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "88",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: India accounts for of global export of goods. Statement—II: Many local companies and some foreign companies operating in India have taken advantage of India's 'Production-linked Incentive' scheme.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation. for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "89",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: The Stability and Growth Pact' of the European Union is a treaty that\n1. limits the levels of the budgetary deficit of the countries of the European Union\n2. makes the countries of the European Union to share their infrastructure facilities\n3. enables the countries of the European Union to share their technologies\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "90",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements:\nI. Recently, all the countries of the United Nations have adopted the first-ever compact for international migration, the Global Compact for Safe, Orderly and Regular Migration (GCM)'.\n2. The objectives and commitments stated in the GCM are binding on the UN member countries.\n3. The GCM addresses internal migration or internally displaced people also in its objectives and commitments.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "91",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to Home Guards, consider the following statements:\n1. Home Guards are raised under the Home Guards Act and Rules of the Central Government.\n2. The role of the Home Guards is to serve as an auxiliary force to the police in maintenance of internal security.\n3. To prevent infiltration on the international border/coastal areas, the Border Wing Home Guards Battalions have been raised in some States.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "92",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "With reference to India, consider the following pairs The Act under Action which it is covered\n1. Unau thorized wearing The Official Secrets of police or military Act, 1923 uniforms\n2. Knowingly misleading • The Indian Evi- or otherwise inter- dence Act, 1872 fering with a police officer or military officer when engaged in their duties\n3. Celebratory gunfire • The Arms (Amend- which can endanger ment) Act, 2019 the personal safety of others\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "93",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following pairs Regions often Reason for being mentioned in news in news\nI. North Kivu and Ituri • War between Armenia and Azerbaijan\n2. Nagorno-Karabakh Insurgency in Mozambique\n3. Kherson and Dispute between Zaporizhzhia Israel and Lebanon\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "94",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements: Statement—I: Israel has established diplomatic relations with some Arab States. Statement—II: The 'Arab Peace Initiative' mediated by Saudi Arabia was signed by Israel and Arab League.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ]
+    },
+    {
+      "questionRef": "95",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following pairs with regard to sports awards:\nI. Major Dhyan Chand: For the most }Q1el Ratna Award spectacular and outstanding per- formance by a sportsperson over period of last four years\n2. A$una Award • For the lifetime achievement by a sportsperson\n3. Dronacharya Award • To honour eminent coaches who have successfully trained sportspersons or teams\n4. Rashtriya }Q1el • To recogl.ize the Protsahan Puraskar contribution made by sportspersons even after their retirement\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "96",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements in respect of the 44th Chess Olympiad, 2022 •\n1. It was the first time that Chess Olympiad was held in India.\n2. The official mascot was named Thambi'.\n3. The trophy for the winning team in the open section is the Vera Menchik Cup.\n4. The trophy for the winning team in the women's section is the Hamilton-Russell Cup.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ]
+    },
+    {
+      "questionRef": "97",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following pairs: Area of conflict Country where mentioned in news it is located\n1. Donbas Syria\n2. Kachin Ethiopia\n3. Tigray North Yemen\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "98",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "In the recent years Chad, Guinea, Mali and Sudan caught the international attention for which one of the following reasons common to all of them?",
+      "options": [
+        "Discovery of rich deposits of rare earth elements",
+        "Establishment of Chinese military bases",
+        "Southward expansion of Sahara Desert",
+        "Successful coups"
+      ]
+    },
+    {
+      "questionRef": "99",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following heavy industries:\n1. Fertilizer plants\n2. Oil refineries\n3. Steel plants Green hydrogen is expected to play a significant role in decarbonizing how many of the above industries?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "100",
+      "subjectId": "UPSC-CSE-GS1",
+      "questionText": "Consider the following statements about G-20:\n1. The G-20 group was originally established as a platform for the Finance Ministers and Central Bank Governors to discuss the international economic and financial issues.\n2. Digital public infrastructure is one of India's G-20 priorities.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    }
+  ]
+}
