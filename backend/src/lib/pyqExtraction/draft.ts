@@ -200,7 +200,16 @@ export function finalizeDraft(draft: PyqDraft, checksums: { questionPaper: strin
         const options = q.options.map((option) => option.trim());
         if (text.length < 10) problems.push(`${label} question text is empty or too short.`);
         if (options.length !== 4 || options.some((option) => option.length === 0)) problems.push(`${label} needs exactly four non-empty options.`);
-        if (new Set(options.map((o) => o.toLowerCase())).size !== options.length) problems.push(`${label} has duplicate options.`);
+        const distinctExact = new Set(options).size === options.length;
+        const distinctLower = new Set(options.map((o) => o.toLowerCase())).size === options.length;
+        if (!distinctExact) {
+            problems.push(`${label} has duplicate options.`);
+        } else if (!distinctLower) {
+            const allSameLower = new Set(options.map((o) => o.toLowerCase())).size === 1;
+            if (!allSameLower) {
+                problems.push(`${label} has duplicate options.`);
+            }
+        }
         if (q.answer === null || !Number.isInteger(q.answer) || q.answer < 0 || q.answer > 3) problems.push(`${label} needs a final answer (A–D) confirmed against the official key.`);
         if (problems.some((p) => p.startsWith(`${label} `))) continue;
         answerKey[q.questionRef] = q.answer!;

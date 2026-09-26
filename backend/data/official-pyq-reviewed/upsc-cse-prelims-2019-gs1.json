@@ -1,3033 +1,1218 @@
 {
-  "draftVersion": 1,
-  "sourceId": "upsc-cse-prelims-2019-gs1",
   "program": "UPSC_CSE",
   "stage": "PRELIMS",
   "year": 2019,
   "paperKey": "UPSC-CSE-PRELIMS-GS1-2019",
-  "subjectId": "UPSC-CSE-GS1",
-  "series": "A",
   "durationMin": 120,
-  "expectedQuestions": 100,
   "sourceName": "UPSC official previous question papers",
   "sourceUrl": "https://www.upsc.gov.in/sites/default/files/csp-p1.pdf",
   "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKeyCSP-19-GS_I.pdf",
+  "reviewedAt": "2026-09-26T09:38:44.688Z",
   "questionPaperSha256": "a84ad287d4dff9c17eeb8e94636535bbf039dd5bb4c274d3658828384cfd6952",
   "answerKeySha256": "2e530aab9609904cff700cc0952196f16fb6a48982223ae1f381404af75b6bcc",
-  "extractedAt": "2026-09-26T05:55:44.696Z",
-  "pageImages": [
-    "pages/page-01.jpg",
-    "pages/page-02.jpg",
-    "pages/page-03.jpg",
-    "pages/page-04.jpg",
-    "pages/page-05.jpg",
-    "pages/page-06.jpg",
-    "pages/page-07.jpg",
-    "pages/page-08.jpg",
-    "pages/page-09.jpg",
-    "pages/page-10.jpg",
-    "pages/page-11.jpg",
-    "pages/page-12.jpg",
-    "pages/page-13.jpg",
-    "pages/page-14.jpg",
-    "pages/page-15.jpg",
-    "pages/page-16.jpg",
-    "pages/page-17.jpg",
-    "pages/page-18.jpg",
-    "pages/page-19.jpg",
-    "pages/page-20.jpg",
-    "pages/page-21.jpg",
-    "pages/page-22.jpg",
-    "pages/page-23.jpg",
-    "pages/page-24.jpg",
-    "pages/page-25.jpg",
-    "pages/page-26.jpg",
-    "pages/page-27.jpg",
-    "pages/page-28.jpg",
-    "pages/page-29.jpg",
-    "pages/page-30.jpg",
-    "pages/page-31.jpg",
-    "pages/page-32.jpg",
-    "pages/page-33.jpg",
-    "pages/page-34.jpg",
-    "pages/page-35.jpg",
-    "pages/page-36.jpg",
-    "pages/page-37.jpg",
-    "pages/page-38.jpg",
-    "pages/page-39.jpg",
-    "pages/page-40.jpg",
-    "pages/page-41.jpg",
-    "pages/page-42.jpg",
-    "pages/page-43.jpg",
-    "pages/page-44.jpg",
-    "pages/page-45.jpg",
-    "pages/page-46.jpg",
-    "pages/page-47.jpg",
-    "pages/page-48.jpg"
-  ],
-  "keyImage": "key/key-1.jpg",
+  "answerKey": {
+    "1": 3,
+    "2": 1,
+    "3": 2,
+    "4": 0,
+    "5": 2,
+    "6": 3,
+    "7": 2,
+    "8": 0,
+    "9": 3,
+    "10": 0,
+    "11": 3,
+    "12": 0,
+    "13": 3,
+    "14": 1,
+    "15": 3,
+    "16": 0,
+    "17": 2,
+    "18": 3,
+    "19": 2,
+    "20": 0,
+    "21": 0,
+    "22": 0,
+    "23": 0,
+    "24": 1,
+    "25": 3,
+    "26": 3,
+    "27": 0,
+    "28": 3,
+    "29": 2,
+    "30": 0,
+    "31": 3,
+    "32": 3,
+    "33": 2,
+    "34": 3,
+    "35": 3,
+    "36": 1,
+    "37": 1,
+    "38": 0,
+    "39": 0,
+    "40": 2,
+    "41": 3,
+    "42": 3,
+    "43": 1,
+    "44": 1,
+    "45": 1,
+    "46": 2,
+    "47": 0,
+    "48": 0,
+    "49": 0,
+    "50": 1,
+    "51": 2,
+    "52": 1,
+    "53": 2,
+    "54": 2,
+    "55": 1,
+    "56": 1,
+    "57": 2,
+    "58": 1,
+    "59": 2,
+    "60": 2,
+    "61": 1,
+    "62": 0,
+    "63": 3,
+    "64": 1,
+    "65": 1,
+    "66": 2,
+    "67": 3,
+    "68": 0,
+    "69": 0,
+    "70": 0,
+    "71": 0,
+    "72": 3,
+    "73": 0,
+    "74": 1,
+    "75": 3,
+    "76": 2,
+    "77": 0,
+    "78": 2,
+    "79": 2,
+    "80": 3,
+    "81": 3,
+    "82": 0,
+    "83": 0,
+    "84": 3,
+    "85": 3,
+    "86": 3,
+    "87": 0,
+    "88": 2,
+    "89": 1,
+    "90": 1,
+    "91": 1,
+    "92": 1,
+    "93": 0,
+    "94": 2,
+    "95": 3,
+    "96": 0,
+    "97": 1,
+    "98": 1,
+    "99": 0,
+    "100": 1
+  },
+  "droppedQuestions": [],
   "questions": [
     {
       "questionRef": "1",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to Mughal India, what is/ are the difference/ differences between Jagirdar and Zamindar?\n1. Jagirdars were holders of land assignments in lieu of judicial and police duties, whereas Zamindars were holders of revenue rights without obligation to perform any duty other than revenue collecüon.\n2. Land assiB1ments to Jaördars were hereditary and revenue rights of Zamindars were not hereditary.\nSelect the correct answer using the code given below.",
       "options": [
         "only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 2,
-          "x": 208,
-          "y": 184,
-          "w": 651,
-          "h": 977
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 246,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "2",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to land reforms in independent India, which one of the following statements is correct?",
       "options": [
         "The ceiling laws were aimed at family holdings and not individual holdings.",
         "The major aim of land reforms was providing agricultural land to all the landless.",
         "It resulted in cultivation of cash crops as a predominant form of cultivation.",
         "Land reforms permitted no exemptions to the ceiling limits."
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 2,
-          "x": 208,
-          "y": 1161,
-          "w": 651,
-          "h": 649
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 278,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "3",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "The Global Competitiveness Report is published by the",
       "options": [
         "International Monetary Fund",
         "United Nations Conference on Trade and Development",
         "World Economic Forum",
         "World Bank"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 2,
-          "x": 869,
-          "y": 171,
-          "w": 828,
-          "h": 570
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 312,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "4",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements about the Charter Act of 1813':\n1. It ended the &ade monopoly of the East India Company in India except for trade in tea and t•ade with China.\n2. It asserted the sovereiY'1ty of the Briäsh Crown over the Indian territories held by the Company.\n3. The revenues of India were now controlled by the Briüsh Parliament.\nWhich of the statements given above are correct?",
       "options": [
         "1 and 2 only",
         "2 and 3 only",
         "1 and 3 only",
         "1, 2 and 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 2,
-          "x": 869,
-          "y": 741,
-          "w": 828,
-          "h": 1176
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 345,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "5",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to Swadeshi Movement, consider the following statements\n1. It confributed to the revival of the indigenous artisan crafts and industries.\n2. The National Council of Education was established as a part of Swadeshi Movement.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 4,
-          "x": 198,
-          "y": 185,
-          "w": 661,
-          "h": 622
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 378,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "6",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following pairs Movement/ Leader Organization\n1. All India Anti- Mahatma Gandhi Untouchability League\n2. All India Kisan Swami Sahajanand Sabha Saraswati\n3. Self-Respect E. V. Ramaswami Movement Naicker\nWhich of the pairs éven above is/are correctly matched?",
       "options": [
         "1 only",
         "1 and 2 only",
         "2 and 3 only",
         "1, 2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 4,
-          "x": 198,
-          "y": 807,
-          "w": 661,
-          "h": 749
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 410,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "7",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which one of the following is not a Harappan site?",
       "options": [
         "Chanhudaro",
         "Kot Diji",
         "Sohgaura",
         "Desalpur"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 4,
-          "x": 198,
-          "y": 1556,
-          "w": 661,
-          "h": 256
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 444,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "8",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In which of the following relief sculpture inscriptions is 'Ranyo Ashoka' (King Ashoka) mentioned along with the stone portrait of Ashoka?",
       "options": [
         "Kanganahalll",
         "Sanchi",
         "Shahbazgarhi",
         "Sohgaura"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 4,
-          "x": 869,
-          "y": 187,
-          "w": 811,
-          "h": 434
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 476,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "9",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following:\n1. Deification of the Buddha\n2. Treading the path of Bodhisattvas\n3. Image worship and rituals\nWhich of the above is/are the feature/ features of Mahayana Buddhism?",
       "options": [
         "1 only",
         "1 and 2 only",
         "2 and 3 only",
         "1, 2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 4,
-          "x": 869,
-          "y": 621,
-          "w": 811,
-          "h": 593
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 509,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "10",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to forced labour (Vishti) in India during the Gupta period, which one of the following statements is correct?",
       "options": [
         "It was considered a source of income for the State, a sort of tax paid by the people.",
         "It was totally absent in the Madhya Pradesh and Kathiawar regions of the Gupta Empire.",
         "The forced labourer was entitled to weekly wages.",
         "The eldest son of the labourer was sent as the forced labourer."
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 4,
-          "x": 869,
-          "y": 1214,
-          "w": 811,
-          "h": 671
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 542,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "11",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "S\n11. Building 'Kalyaana Mandapas' was a notable feature in the temple construction in the kingdom of",
       "options": [
         "Chalukya",
         "Chandela",
         "Rashtrakuta",
         "Vijayanagara"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 4,
-          "x": 869,
-          "y": 1885,
-          "w": 811,
-          "h": 45
-        },
-        {
-          "page": 6,
-          "x": 182,
-          "y": 192,
-          "w": 677,
-          "h": 353
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 575,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "12",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements :\n1. In the revenue administration of Delhi Sultanate, the in-charge of revenue collection was known as 'Amil'.\n2. The Iqta system of Sultans of Delhi was an ancient indigenous institution.\n3. The office of 'Mir Bakshi' came into existence during the reign of Khalji Sultans of Delhi.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "1 and 2 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 6,
-          "x": 182,
-          "y": 545,
-          "w": 677,
-          "h": 772
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 607,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "13",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. Saint Nimbarka was a contem- porary of Akbar.\n2. Saint Kabir was greatly influenced by Shaikh Ahmad Sirhindi.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 6,
-          "x": 182,
-          "y": 1317,
-          "w": 677,
-          "h": 578
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 641,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "14",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to the British colonial rule in India, consider the following statements :\n1. Mahatma Gandhi was instrumental in the abolition of the system of 'indentured labour'.\n2. In Lord Chelmsford's War Conference', Mahatma Gandhi did not support the resolution on recruiting Indians for World War.\n3. Consequent upon the breaking of Salt Law by Indian people, the Indian National Congress was declared illegal by the colonial rulers.\nWhich of the statements given above are correct?",
       "options": [
         "1 and 2 only",
         "1 and 3 only",
         "2 and 3 only",
         "1, 2 and 3"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 6,
-          "x": 182,
-          "y": 1895,
-          "w": 677,
-          "h": 40
-        },
-        {
-          "page": 6,
-          "x": 869,
-          "y": 182,
-          "w": 811,
-          "h": 1631
-        }
-      ],
-      "keyCell": {
-        "x": 152,
-        "y": 674,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "15",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to Indian National Movement, consider the following pairs :\n    Person : Position held\n1. Sir Tej Bahadur Sapru : President, All India Liberal Federation\n2. K. C. Neogy : Member, The Constituent Assembly\n3. P. C. Joshi : General Secretary, Communist Party of India\nWhich of the pairs given above is/are correctly matched?",
       "options": [
         "1 only",
         "1 and 2 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [],
-      "keyCell": {
-        "x": 152,
-        "y": 706,
-        "w": 83,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "16",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to Mian Tansen, which one of the following statements is not correct?",
       "options": [
         "Tansen was the title given to him by Emperor Akbar.",
         "Tansen composed Dhrupads on Hindu gods and goddesses. Tansen composed songs on his patrons.",
         "Tansen composed songs on his",
         "Tansen invented many Ragas."
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 8,
-          "x": 166,
-          "y": 183,
-          "w": 693,
-          "h": 636
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 246,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "17",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Who among the following Mughal Emperors shifted emphasis from illustrated manuscripts to album and individual portrait?",
       "options": [
         "Humayun",
         "Akbar",
         "Jahangir",
         "Shah Jahan"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 8,
-          "x": 166,
-          "y": 819,
-          "w": 693,
-          "h": 562
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 278,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "18",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which one of the following National Parks lies completely in the temperate alpine zone?",
       "options": [
         "Manas Naüonal Park",
         "Namdapha National Park",
         "Neora Valley National Park",
         "Valley of Flowers National Park"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 8,
-          "x": 166,
-          "y": 1381,
-          "w": 693,
-          "h": 429
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 311,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "19",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Atal Innovation Missiön is set up under the",
       "options": [
         "of Science and Techn010U",
         "Ministry of Labour and Employment",
         "NITI Aayog",
         "Ministry of Skill • Development and Entrepreneurship"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 8,
-          "x": 869,
-          "y": 176,
-          "w": 798,
-          "h": 887
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 344,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "20",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "On 21st June, the Sun",
       "options": [
         "does not set below the horizon at the Arctic Cir&",
         "does not set below the horizon at Antarcüc Circle",
         "shines vertically overhead at noon on the Equator",
         "shines overhead at the Tropic of Capricorn"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 8,
-          "x": 869,
-          "y": 1063,
-          "w": 798,
-          "h": 741
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 377,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "21",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which one of the following groups of plants was domesticated in the 'New World' and introduced into the 'Old World'?",
       "options": [
         "Tobacco, cocoa and rubber",
         "Tobacco, cotton and rubber",
         "Cotton, coffee and sugarcane",
         "Rubber, coffee and wheat"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 10,
-          "x": 144,
-          "y": 174,
-          "w": 715,
-          "h": 401
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 409,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "22",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. Asiatic lion is naturally found in India only.\n2. Double-humped camel is naturally found in India only.\n3. One-horned rhinocems is naturally found in India only.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "1 and 3 only",
         "1, 2 and 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 10,
-          "x": 144,
-          "y": 575,
-          "w": 715,
-          "h": 643
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 443,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "23",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following pairs: Famous place River\n1. Pandharpur Chandrabhaga\n2. Tiruchirappalli Cauvery\n3. Hampi\nWhich of the pairs $ven above are correctly matChed?",
       "options": [
         "1 and 2 only",
         "2 and 3 only",
         "1 and 3 only",
         "1, 2 end 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 10,
-          "x": 144,
-          "y": 1218,
-          "w": 715,
-          "h": 649
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 476,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "24",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "BKL-F-GHP/54A 11\n24. In a $ven year in India, omcial poverty lines are higher in some States than in others because",
       "options": [
         "poverty rates vary from State to State",
         "price levels vary from State to State",
         "Gross State Product varies from State to State",
         "quality of public distribuöon varies from State to State"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 10,
-          "x": 144,
-          "y": 1867,
-          "w": 715,
-          "h": 46
-        },
-        {
-          "page": 10,
-          "x": 869,
-          "y": 165,
-          "w": 803,
-          "h": 577
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 508,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "25",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In the context of which of the following do some scienHsts suggest the use of cirrus cloud thinning technique and the injection of sulphate aerosol into stratosphere?",
       "options": [
         "Creating the arüficial rains in some reøons",
         "Reducing the frequency and intensity of tropical cyclones",
         "Reducing the adverse effects of solar wind on the Earth",
         "Reducing the global warming"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 10,
-          "x": 869,
-          "y": 742,
-          "w": 803,
-          "h": 653
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 541,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "26",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In the context of which one of the following are the terms 'pyrolysis and plasma gasification' mentioned?",
       "options": [
         "Extraction of rare earth elements",
         "Natural ex&action technoloØes",
         "Hydrogen fuel-based automobiles",
         "Waste-to-energ technologies"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 10,
-          "x": 869,
-          "y": 1395,
-          "w": 803,
-          "h": 396
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 574,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "27",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which of the f0110'Ving are in Agasthyamala Biosphere Reserve?",
       "options": [
         "Neyyar, Peppara and Shendurney Wildlife Sanctuaries; and Kalakad Mundanthurai Tiger Reserve",
         "Mudumalai, Sathyamangalam and Wayanad Wildlife Sanctuaries; and Silent Valley National Park",
         "Kaundinya, Gundla Brahme- swaram and Papikonda Wildlife Sanctuaries; and Mukurthi National Park",
         "Kawal and Sri Venkateswara Wildlife Sanctuaries; and Nagarjunasagar-Srisai1am Tiger Reserve"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 12,
-          "x": 156,
-          "y": 193,
-          "w": 703,
-          "h": 814
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 607,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "28",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. Some species of turtles are herbivores.\n2. Some species of fish are herbivores.\n3. Some species of marine mammals are herbivores.\n4. Some species of snakes are viviparous.\nWhich of the statements given above are correct?",
       "options": [
         "1 and 3 only",
         "2, 3 and 4 only",
         "2 and 4 only",
         "1, 2, 3 and 4"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 12,
-          "x": 156,
-          "y": 1007,
-          "w": 703,
-          "h": 880
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 640,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "29",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following pairs :\n    Wildlife : Naturally found in\n1. Blue-finned Mahseer : Cauvery River\n2. Irrawaddy Dolphin : Chambal River\n3. Rusty-spotted Cat : Eastern Ghats\nWhich of the pairs given above are correctly matched?",
       "options": [
         "1 and 2 only",
         "2 and 3 only",
         "1 and 3 only",
         "1, 2 and 3"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 12,
-          "x": 156,
-          "y": 1887,
-          "w": 703,
-          "h": 46
-        },
-        {
-          "page": 12,
-          "x": 869,
-          "y": 186,
-          "w": 811,
-          "h": 993
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 673,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "30",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Why is there a great concem about the 'microbeads' that are released into environment?",
       "options": [
         "They are considered harmful to marine ecosystems.",
         "They are consi&red to cause skin cancer in children.",
         "They are small enough to be absorbed by crop plants in fields.",
         "They are often found to be used as food adulterants."
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 12,
-          "x": 869,
-          "y": 1179,
-          "w": 811,
-          "h": 625
-        }
-      ],
-      "keyCell": {
-        "x": 313,
-        "y": 705,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "31",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Recently, •there was a gowing awareness in our countO' about the importance of Himalayan nettle (Girardinia diversifolia) because it is found to be sustainable source of",
       "options": [
         "anti-malarial drug",
         "biodiesel",
         "pulp for paper industry",
         "textile fibre"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 14,
-          "x": 165,
-          "y": 180,
-          "w": 694,
-          "h": 391
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 245,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "32",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "For the measurement/estimation of which of the following are satellite images/remote sensing data used?\n1. Chlorophyll content in the vegetation of a specific location\n2. Greenhouse gas emissions from rice paddies of a specific location\n3. Land surface temperatures of a specific location\nSelect the correct answer using the code given below.",
       "options": [
         "1 only",
         "2 and 3 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 14,
-          "x": 165,
-          "y": 571,
-          "w": 694,
-          "h": 648
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 278,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "33",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following States :\n1. Chhattisgarh\n2. Madhya Pradesh\n3. Maharashtra\n4. Odisha\nWith reference to the States mentioned above, in terms of percentage of forest cover to the total area of State, which one of the following is the correct ascending order?",
       "options": [
         "2-3-1-4",
         "2-3-4-1",
         "3-2-4-1",
         "3-2-1-4"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 14,
-          "x": 165,
-          "y": 1219,
-          "w": 694,
-          "h": 700
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 311,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "34",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which of the following statements are correct about the deposits of 'methane 1, Global warming might trigger the release of methane from these deposits.\n2. Large deposits of 'methane hydrate' are found in Arctic Tundra and under the seafloor.\n3. Methane in atmosphere to carbon dioxide after a decade or two.\nSelect the correct answer using the code given below.",
       "options": [
         "1 and 2 only",
         "2 and 3 only",
         "1 and 3 only",
         "1, 2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 14,
-          "x": 869,
-          "y": 168,
-          "w": 817,
-          "h": 948
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 344,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "35",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following:\n1. Carbon monoxide\n2. Methane\n3. Ozone\n4. Sulphur dioxide\nWhich of the above are released into atmosphere due to the burning of crop/ biomass residue?",
       "options": [
         "1 and 2 only",
         "2, 3 and 4 only",
         "1 and 4 only",
         "1, 2, 3 and 4"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 14,
-          "x": 869,
-          "y": 1116,
-          "w": 817,
-          "h": 678
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 377,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "36",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following pairs: Sea Bordering counfry\n1. Adriatic Sea Albania\n2. Black Sea Croatia\n3. Caspian Sea Kazakhstan\n4. Mediterranean Sea Morocco\n5. Red Sea Syria\nWhich of the pairs given above are correctly matched?",
       "options": [
         "1, 2 and 4 only",
         "1, 3 and 4 only",
         "2 and 5 only",
         "1, 2, 3, 4 and 5"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 16,
-          "x": 171,
-          "y": 192,
-          "w": 688,
-          "h": 657
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 409,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "37",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Among the following, which one is the largest exporter of rice in the world in the last five years?",
       "options": [
         "China",
         "India",
         "Myanmar",
         "Vietnam"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 16,
-          "x": 171,
-          "y": 849,
-          "w": 688,
-          "h": 330
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 443,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "38",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following pairs :\n    Glacier : River\n1. Bandarpunch : Yamuna\n2. Bara Shigri : Chenab\n3. Milam : Mandakini\n4. Siachen : Nubra\n5. Zemu : Manas\nWhich of the pairs given above are correctly matched?",
       "options": [
         "1, 2 and 4",
         "1, 3 and 4",
         "2 and 5",
         "3 and 5"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 16,
-          "x": 171,
-          "y": 1179,
-          "w": 688,
-          "h": 594
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 475,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "39",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In India, the use of carbofuran, methyl parathion, phorate and triazophos is viewed with apprehension. These chemicals are used as",
       "options": [
         "pesticides in agriculture",
         "preservatives in processed foods",
         "fruit-ripening agents",
         "moisturising agents in cosmetics"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 16,
-          "x": 869,
-          "y": 197,
-          "w": 828,
-          "h": 525
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 508,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "40",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. Under Ramsar Convention, it is mandatory on the part of the Government of India to protect and conserve all the wetlands in the territory of India.\n2. The Wetlands (Conservation and Management) Rules, 2010 were framed by the Govemment of India based on the recommendations of Ramsar Convention.\n3. The Wetlands (Conservation and Management) Rules, 2010 also encompass the drainage area or catchment regions of the wetlands as determined by the authority.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 and 2 only",
         "2 and 3 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 16,
-          "x": 869,
-          "y": 722,
-          "w": 828,
-          "h": 1215
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 541,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "41",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements\n1. Agricultural soils release nitrogen oxides into environment.\n2. Cattle release ammonia into environment.\n3. Poultry industy releases reactive nitrogen compounds into environment.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 and 3 only",
         "2 and 3 only",
         "2 only",
         "1, 2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 18,
-          "x": 144,
-          "y": 196,
-          "w": 715,
-          "h": 673
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 574,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "42",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "What is common to the places known as Aliyar, Isapur and Kangsabati?",
       "options": [
         "Recently discovered uranium deposits",
         "Tropical rain forests",
         "Underground cave systems",
         "Water reservoirs"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 18,
-          "x": 144,
-          "y": 869,
-          "w": 715,
-          "h": 357
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 607,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "43",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In the context of proposals to the use of hydrogen-enriched CNG (H-CNG) as fuel for buses in public transport, consider the following statements:\n1. The main advantage of the use of H-CNG is the elimination of carbon monoxide emissions.\n2. H-CNG as fuel reduces carbon dioxide and hydrocarbon emissions.\n3. Hydrogen up to one-fifth by volume can be blended with CNG as fuel for buses.\n4. H-CNG makes the fuel less expensive than CNG. BK1—F-GHP/S4A 19\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 and 3 only",
         "4 only",
         "1, 2, 3 and 4"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 18,
-          "x": 144,
-          "y": 1226,
-          "w": 715,
-          "h": 711
-        },
-        {
-          "page": 18,
-          "x": 869,
-          "y": 199,
-          "w": 806,
-          "h": 353
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 640,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "44",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Why are dewdrops not formed on a cloudy night?",
       "options": [
         "Clouds absorb the radiation released from the Earth's surface.",
         "Clouds reflect back the Earth's radiation.",
         "The Earth's surface would have low temperature on cloudy nights.",
         "Clouds deflect the blowing wind to ground level."
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "answerGuess": "B",
-      "issues": [],
-      "regions": [
-        {
-          "page": 18,
-          "x": 869,
-          "y": 552,
-          "w": 806,
-          "h": 583
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 673,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "45",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements :\n1. The 44th Amendment to the Constitution of India introduced an Article placing the election of the Prime Minister beyond judicial review.\n2. The Supreme Court of India struck down the 99th Amendment to the Constitution of India as being violative of the independence of judiciary.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "answerGuess": "B",
-      "issues": [],
-      "regions": [
-        {
-          "page": 18,
-          "x": 869,
-          "y": 1135,
-          "w": 806,
-          "h": 807
-        }
-      ],
-      "keyCell": {
-        "x": 450,
-        "y": 705,
-        "w": 62,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "46",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements • l. The motion to impeach a Judge of the Supreme Court of India cannot be rejected by the Speaker of the Lok Sabha as per the Judges (Inquiry) Act, 1968.\n2. The Constitution of India defines and gives details of what constitutes 'incapacity and proved misbehaviour' of the Judges of the Supreme Court of India.\n3. The details of the process of impeachment of the Judges of the Supreme Court of India are given in the Judges (Inquiry) Act, 1968.\n4. If the motion for the impeachment of a Judge is taken up for voting, the law requires the motion to be backed by each House of the Parliament and supported by a mqjority of total membership of that House and by not less than two-thirds of total members of that House present and voting.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 and 2",
         "3 only",
         "3 and 4 only",
         "1, 3 and 4"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 20,
-          "x": 174,
-          "y": 179,
-          "w": 685,
-          "h": 1302
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 245,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "47",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "The Ninth Schedule was introduced in the Constitution of India during the prime ministership of",
       "options": [
         "Jawaharlal Nehru",
         "Lal Bahadur Shastri",
         "Indira Gandhi",
         "Morarji Desai"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 20,
-          "x": 174,
-          "y": 1481,
-          "w": 685,
-          "h": 323
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 278,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "48",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. Coal sector was nationaliæd by the Government of India under Indira Gandhi.\n2. Now, coal blocks are allocated on lottery basis.\n3. Till recently, India imported coal to meet the shortages of domestic supply, but now India is self- sufficient in coal producüon.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 and 3 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 20,
-          "x": 869,
-          "y": 187,
-          "w": 806,
-          "h": 666
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 310,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "49",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. The Parliament (Prevention of Disqualification) Act, 1959 exempts several posts from disqualification on the grounds of 'Office of Profit'.\n2. The above-mentioned Act was amended five times.\n3. The term 'Offce of Profit' is well- defined in the Constitution of India.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 and 2 only",
         "3 only",
         "2 and 3 only",
         "1, 2 and 3 SO. Under which Schedule of the Constitution of India can the transfer of tribal land to private parties for mining be declared null and void? (a) Third Schedule (b) Fifth Schedule (c) Ninth Schedule (d) Twelfth Schedule"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 20,
-          "x": 869,
-          "y": 853,
-          "w": 806,
-          "h": 1074
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 344,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "50",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements about Particularly Vulnerable Tribal Groups (PvTGs) in India.\nI. PVTGs reside in 18 States and one Union Territory.\n2. A stagnant or declining population is one of the criteria for determining PVTG status.\n3. There are 95 PVTGs officially notified in the country so far.\n4. Irular and Konda Reddi tribes are included in the list of\nWhich of the statements given above are correct?",
       "options": [
         "1, 2 and 3",
         "2, 3 and 4",
         "1, 2 and 4",
         "and 4"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 22,
-          "x": 177,
-          "y": 206,
-          "w": 682,
-          "h": 1163
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 376,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "51",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements about Particularly Vulnerable Tribal Groups (PVTGs) in India :\n1. PVTGs reside in 18 States and one Union Territory.\n2. A stagnant or declining population is one of the criteria for determining PVTG status.\n3. There are 95 PVTGs officially notified in the country so far.\n4. Irular and Konda Reddi tribes are included in the list of PVTGs.\nWhich of the statements given above are correct?",
       "options": [
         "1, 2 and 3",
         "2, 3 and 4",
         "1, 2 and 4",
         "1, 3 and 4"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [],
-      "keyCell": {
-        "x": 587,
-        "y": 409,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "52",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to the Constitution of India, prohibitions or limitations or provisions contained in ordinary laws cannot act as prohibitions or limitations on the constitutional powers under Article 142. It could mean which one of the following?",
       "options": [
         "The decisions taken by the Election Commission of India while discharging its duties cannot be challenged in any court of law. BKL-F-GHP/54A",
         "The Supreme Court of India is not constrained in the exercise of its powers by laws made by the Parliament.",
         "In the event of grave financial crisis in the country, the hesident of India can declare Financial Emergency without the counsel from the Cabinet.",
         "State Leéslatures cannot make laws on certain matters without the concurrence of Union Legislature."
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 22,
-          "x": 177,
-          "y": 1369,
-          "w": 682,
-          "h": 581
-        },
-        {
-          "page": 22,
-          "x": 869,
-          "y": 192,
-          "w": 809,
-          "h": 649
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 442,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "53",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to the Legislative Assembly of a State in India, consider the following statements: The Governor makes a customary address to Member* of the House at the commencement of the first session of the year.\n2. When a State Legislature does not have a rule on a particular matter, it follows the Lok Sabha rule on that matter.\nWhich of the statements Öven above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 22,
-          "x": 869,
-          "y": 841,
-          "w": 809,
-          "h": 984
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 475,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "54",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements\n1. The United Nations Convention against Corruption (UNCAC) has a 'Protocol against the Smuggling of Miyants by Land, Sea and Air'.\n2. The UNCAC is the ever-first legally binding global anti-corruption instrument,\n3. A highlight of the United Nations Convention against Transnational Organized Crime (UNTOC) is the inclusion of a specific chapter aimed at returning assets to their rightful owners from whom they had been taken illicitly.\n4. The United Nations OMce on Drugs and Crime (UNODC) is mandated by its member States to assist in the implementation of both UNCAC and UNTOC.\nWhich of the statements given above are correct?",
       "options": [
         "1 and 3 only",
         "2, 3 and 4 only",
         "2 and 4 only",
         "1, 2, 3 and 4"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 24,
-          "x": 159,
-          "y": 187,
-          "w": 700,
-          "h": 1408
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 508,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "55",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "SS. Consider the following statements:\n1. As per recent amendment to the Indian Forest Act, 1927, forest dwellers have the right to fell the bamboos grown on forest areas. BK1rF-GHP/54A 25\n2. As per the Scheduled Tribes and Other Traditional Forest Dwellers (Recognition of Forest Rights) Act, 2006, bamboo is a minor forest produee.\n3. The Scheduled Tribes and Other Traditional Forest Dwellers (Recoglit.ion of Forest Rights) Act, 2006 allows ownership of minor forest produce to forest dwellers.\nWhich of the statements éven above is/ are correct?",
       "options": [
         "1 and 2 only",
         "2 and 3 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 24,
-          "x": 159,
-          "y": 1595,
-          "w": 700,
-          "h": 332
-        },
-        {
-          "page": 24,
-          "x": 869,
-          "y": 187,
-          "w": 817,
-          "h": 1122
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 541,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "56",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which Article of the Constitution of India safeguards one's right to marry the person of one's choice?",
       "options": [
         "Article 19",
         "Article 21",
         "Article 25",
         "Article 29"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 24,
-          "x": 869,
-          "y": 1309,
-          "w": 817,
-          "h": 619
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 574,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "57",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. According to the Indian Patents Act, a biological process to create a seed can be patented in India.\n2. In India, there is no Intellectual Property Appellate Board.\n3. Plant varieties are not eligible to be patented in India.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 and 3 only",
         "2 and 3 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 26,
-          "x": 211,
-          "y": 199,
-          "w": 648,
-          "h": 747
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 606,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "58",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements: The Environment Protection Act, 1986 empowers the Government of India to\n1. state the requirement of public participation in the process of environmental protection, and the procedure and manner in which it is sought\n2. lay down the standards for emission or discharge of environmental pollutants from various sources\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 26,
-          "x": 211,
-          "y": 946,
-          "w": 648,
-          "h": 877
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 639,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "59",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "As per the Solid Waste Management Rules, 2016 in India, which one of the following statements is correct?",
       "options": [
         "Waste generator has to segregate waste into five categories.",
         "The Rules are applicable to notified urban local bodies, notified towns and all industrial townships only.",
         "The Rules provide for æct and elaborate criteria for the identification of sites for landfills and waste processing facilities.",
         "It is mandatory on the part of waste generator that the waste generated in one district cannot be moved to another district."
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 26,
-          "x": 869,
-          "y": 200,
-          "w": 842,
-          "h": 748
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 672,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "60",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements: As per the Indus&ia.l Employment (Standing Orders) Cent•al (Amendment) Rules, 2018\n1. if rules for fixed-term employment are implemented, it becomes easier for the firms/ companies to lay off workers\n2. no notice of termination of employment be necessa.ry in the case of temporary workman\nWhich of the statements •ven above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Botl 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 26,
-          "x": 869,
-          "y": 948,
-          "w": 842,
-          "h": 991
-        }
-      ],
-      "keyCell": {
-        "x": 587,
-        "y": 705,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "61",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "The Service Area Approach was implemented under the purview of",
       "options": [
         "Integrated Rural Development Proyamme",
         "Lead Bank Scheme",
         "Mahatna Gandhi National Rural Employment Guarantee Scheme",
         "Naüonal Skill Development Mission"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 28,
-          "x": 192,
-          "y": 189,
-          "w": 667,
-          "h": 557
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 244,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "62",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to the management of minor minerals in India, consider the following statements:\nI. Sand is a 'minor mineral' according to the prevailing law in the country.\n2. State Governments have the power to grant mining leases of minor minerals, but the powers regarding the formation of rules related to the grant of minor minerals lie with the Central Government.\n3. State Governments have the power to frame rules to prevent illegal mining of minor minerals.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 and 3 only",
         "2 and 3 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 28,
-          "x": 192,
-          "y": 746,
-          "w": 667,
-          "h": 1073
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 277,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "63",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. Most of India's external debt is owed by governmental endties.\n2. All of India's external debt is denominated in US dollars.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither I nor 2"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 28,
-          "x": 869,
-          "y": 175,
-          "w": 831,
-          "h": 568
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 310,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "64",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which of the following is not included in the assets of a commercial bank in India?",
       "options": [
         "Advances",
         "Deposits",
         "Investments",
         "Money at call and short nodce"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 28,
-          "x": 869,
-          "y": 743,
-          "w": 831,
-          "h": 365
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 343,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "65",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In the context of India, which of the following factors is/are contributor/contributors to reducing the risk of a currency crisis?\n1. The foreign currency earnings of India's IT sector\n2. Increasing the government expenditure\n3. Remittances from Indians abroad\nSelect the correct answer using the code given below.",
       "options": [
         "1 only",
         "1 and 3 only",
         "2 only",
         "1, 2 and 3"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [],
-      "keyCell": {
-        "x": 725,
-        "y": 376,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "66",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In the context of India, which of the following factors is/ are contributor/ contributors to reducing the risk of a currency crisis?\n1. The foreign currency earnings of India's IT sector\n2. Increasing the government expenditure\n3. Remittances from Indians abroad\nSelect the correct answer using the code Öven below.",
       "options": [
         "1 only",
         "1 and 3 only",
         "2 only",
         "1, 2 and 3"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 28,
-          "x": 869,
-          "y": 1108,
-          "w": 831,
-          "h": 811
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 408,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "67",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which one of the following suggested that the Governor should be an eminent person from outside the State and should be a detached figure without intense political links or should not have taken part in politics in the recent past?",
       "options": [
         "First Administrative Reforms Commission (1966)",
         "Rajamannar Committee (1969)",
         "Sarkaria Commission (1983)",
         "National Commission to Review the Working of the Constituöon (2000)"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 30,
-          "x": 169,
-          "y": 210,
-          "w": 690,
-          "h": 553
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 442,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "68",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which of the following is issued by reöstered foreign portfolio investors to overseas investors who want to be part of the Indian stock market without reöstering themselves directly?",
       "options": [
         "Certificate of Deposit",
         "Commercial Paper",
         "Promissory Note",
         "Participatory Note"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 30,
-          "x": 169,
-          "y": 763,
-          "w": 690,
-          "h": 411
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 475,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "69",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. As per law, the Compensatory Afforestation Fund Management and Planning Authority exists at both National and State levels.\n2. People's participation is mandatory in the compensatory afforestaüon programmes carried out under the Compensatory Fund Act, 2016.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 30,
-          "x": 169,
-          "y": 1174,
-          "w": 690,
-          "h": 669
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 507,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "70",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Parliament\n2. Parliamentary Department Related Standing Committees\n3. Finance Commission\n4. Financial Sector Legislative Reforms Commission\n5. NITI Aayog\nSelect the correct answer using the code given below.",
       "options": [
         "1 and 2",
         "1, 3 and 4",
         "3, 4 and 5",
         "2 and 5"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 30,
-          "x": 869,
-          "y": 392,
-          "w": 820,
-          "h": 562
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 541,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "71",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to India's Five-Year Plans, which of the following statements is/ are correct?\nI. From the Second Five-Year Plan, there was a determined thrust towards substitution of basic and capital good iridus&ies.\n2. The Fourth Five-Year Plan adopted the objective of correcting the earlier trend of increased concentration of wealth and economic power.\n3. In the Fifth Five-Year Plan, for the first time, the financial sector was included as an integral part of the Plan.\nSelect the correct answer using the code given below.",
       "options": [
         "1 and 2 only",
         "2 only",
         "3 only",
         "1,2 and 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 30,
-          "x": 869,
-          "y": 954,
-          "w": 820,
-          "h": 990
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 573,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "72",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to Asian Infrastructure Investment Bank (AIIB), consider the following statements:\n1. AIIB has more than 80 member nations.\n2. India is the largest shareholder in NIB.\n3. AilB does not have any members from outside Asia.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 and 3 only",
         "1 and 3 only",
         "1,2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 32,
-          "x": 178,
-          "y": 180,
-          "w": 681,
-          "h": 682
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 605,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "73",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "What was the purpose of Inter-Creditor Ageement signed by Indian banks and financial institutions recently?",
       "options": [
         "To lessen the Government of India's perennial burden of fiscal deficit and current account deficit",
         "To support the infrastructure projects of Central and State Governments",
         "To act as independent regulator in case of applications for loans of e 50 crore or more",
         "To aim at faster - resolution of stressed assets of e 50 crore or more which are under consortium lending"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 32,
-          "x": 178,
-          "y": 862,
-          "w": 681,
-          "h": 675
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 639,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "74",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "The Chairmen of public sector banks are selected by the",
       "options": [
         "Banks Board Bureau",
         "Reserve Bank of India",
         "Union Ministry of Finance",
         "Management of concerned bank"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 32,
-          "x": 178,
-          "y": 1537,
-          "w": 681,
-          "h": 271
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 672,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "75",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. Petroleum and Natural Gas Regulatory Board (PNGRB) is the first regulatory-body set up by the Government of India.\n2. One of the tasks of PNGRB is to ensui•e competitive markets for gas.\n3. Appeals against the decisions of PNGRB go before the Appellate Tribunals for Electricity.\nWhich of the statements given above are correct?",
       "options": [
         "1 and 2 only",
         "2 and 3 only",
         "1 and 3 only",
         "1, 2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 32,
-          "x": 869,
-          "y": 167,
-          "w": 825,
-          "h": 846
-        }
-      ],
-      "keyCell": {
-        "x": 725,
-        "y": 704,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "76",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to communication technologies, what is/ are the difference/ differences between LTE (Long-Term Evolution) and VoLTE (Voice over Long-Term Evolution)?\n1. LTE is commonly marketed as 3G and VoLTE is commonly marketed as advanced 30.\n2. LTE is data-only techn010U and VoLTE is voice-only technology.\nSelect the correct answer using the code given below.",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither nor 2"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 32,
-          "x": 869,
-          "y": 1013,
-          "w": 825,
-          "h": 897
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 244,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "77",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which of the following statements is/are correct regarding the Maternity Benefit (Amendment) Act, 2017?\n1. Pregmant women are entitled for three months pre-delivery and three months post-delivety paid leave.\n2. Enterprises with creches must allow the mother minimum six creche visits daily.\n3. Women with two children get reduced entitlements.\nSelect the correct answer using the code given below.",
       "options": [
         "1 and 2 only",
         "2 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 34,
-          "x": 160,
-          "y": 176,
-          "w": 699,
-          "h": 1165
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 277,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "78",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which one of the following is not a sub-index of the World Bank's 'Ease of Doing Business Index?",
       "options": [
         "Maintenance of law and order",
         "Paying taxes",
         "property",
         "Dealing with construction pennits"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 34,
-          "x": 160,
-          "y": 1341,
-          "w": 699,
-          "h": 527
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 310,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "79",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "BK1rF-GHP/S4A 35\n78. In India, 'extended producer responsibility' was introduced as an important feature in which of the following?",
       "options": [
         "The Bio-medical Waste (Management and Handling) Rules, 1998",
         "The Recycled Plastic (Manufacturing and Usage) Rules, 1999",
         "The e-Waste (Management and Handling) Rules, 2011 The Food Safety and Standard Regulations, 2011 79. The economic cost of food gains to the Food Corporaüon of India is Minimum Support Price and bonus (if any) paid to the farmers plus (a) transportation cost only (b) interest cost only (c) procurement incidentals and distribution cost",
         "procurement incidentals and charges for godowns"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 34,
-          "x": 160,
-          "y": 1868,
-          "w": 699,
-          "h": 51
-        },
-        {
-          "page": 34,
-          "x": 869,
-          "y": 160,
-          "w": 823,
-          "h": 1140
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 343,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "80",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In üle Context of any country, which one of the following would be considered as part of its social capital?",
       "options": [
         "The proportion of literates in the population",
         "The stock of its buildings, other infrastructure and machines",
         "The size of population in the working age group",
         "The level of mutual must and harmony in the society"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 34,
-          "x": 869,
-          "y": 1300,
-          "w": 823,
-          "h": 487
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 376,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "81",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to the Constitution of India, consider the following statements\nI. No High Court shall have the jurisdiction to declare any central law to be constitutionally invalid.\n2. An amendment to the Constitution of India cannot be called into quesüon by the Supreme Court of India.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 36,
-          "x": 171,
-          "y": 191,
-          "w": 688,
-          "h": 894
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 408,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "82",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements:\n1. Purchasing Power Parity (PPP) exchange rates are calculated by comparing the prices of the same basket of goods and services in different countries.\n2. In terms of PPP dollars, India is the sixth largest economy in the world.\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 36,
-          "x": 171,
-          "y": 1085,
-          "w": 688,
-          "h": 809
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 442,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "83",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "BKL-F-GHP/54A\n83. With reference to the cultivation of Kharif crops in India in the last five years, consider the following statements\nI. Area under rice cultivation is the highest.\n2. Area under the cultivation of jowar is more than that of oilseeds.\n3. Area of cotton culti\"tion is more than that of\n4. Area under sugarcane cultivaüon has steadily decreased.\nWhich of the statements given above are correct?",
       "options": [
         "1 and 3 only",
         "2, 3 and 4 only",
         "2 and 4 only",
         "1, 2, 3 and 4"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 36,
-          "x": 171,
-          "y": 1894,
-          "w": 688,
-          "h": 41
-        },
-        {
-          "page": 36,
-          "x": 869,
-          "y": 176,
-          "w": 831,
-          "h": 799
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 475,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "84",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Among the agricultural commodities imported by India, which one of the following accounts for the highest imports in terms of value in the last five years?",
       "options": [
         "Spices",
         "Fresh fruits",
         "Pulses",
         "Vegeteble oils"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 36,
-          "x": 869,
-          "y": 975,
-          "w": 831,
-          "h": 434
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 507,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "85",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "SS. In the context of polity, which one of the following would you accept as the most appropriate definition of liberty?",
       "options": [
         "Protection against the tyranny of political rulers",
         "Absence of restraint",
         "Opportunity to do whatever one likes",
         "Opportunity to develop oneself fully"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 36,
-          "x": 869,
-          "y": 1409,
-          "w": 831,
-          "h": 513
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 539,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "86",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which ene of the following is not the most likely measure the Government/ RBI takes to stop the slide of Indian rupee? Curbing imports of non-essential goods and promoting exports",
       "options": [
         "Curbing imports of non-essential",
         "Encouraging Indian borrowers to issue rupee denominated Masala Bonds",
         "Easing conditions relating to external commercial borrowing",
         "Following an expansionary monetary' policy"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 38,
-          "x": 168,
-          "y": 172,
-          "w": 691,
-          "h": 584
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 573,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "87",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements: The Reserve Bailk of India's recent directives relating to 'Storage of Payment System Data', popularly known as data diktAt, command the payment system providers that\n1. they shall ensure that entire data relating to payment systems operated by them are stored in a system only in India\n2. they shall ensure that the systems are owned and operated by public sector enterprises\n3. they shall submit the consolidated system audit report to the CompYoller and Auditor General of India by the end of the calendar year\nWhich of the statements given above is/ are correct?",
       "options": [
         "1 only",
         "1 and 2 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 38,
-          "x": 168,
-          "y": 756,
-          "w": 691,
-          "h": 1115
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 605,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "88",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "BK1—F-GHP/S4A\n88. Which of the following adopted a law on data pr0tection and privacy for- its citizens known as 'General Data Protection Regulation' in April 2016 and started implementation of it from 25th May, 2018?",
       "options": [
         "Australia",
         "Canada",
         "The European Union",
         "The United States-of America"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 38,
-          "x": 168,
-          "y": 1871,
-          "w": 691,
-          "h": 41
-        },
-        {
-          "page": 38,
-          "x": 869,
-          "y": 165,
-          "w": 817,
-          "h": 580
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 639,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "89",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Recently, India signed a deal known as 'Action Plan for Prioritization and Implementation of Cooperation Areas in the Nuclear Field' with which of the following countries?",
       "options": [
         "Japan",
         "Russia",
         "The United Kingdom",
         "The United States of America"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 38,
-          "x": 869,
-          "y": 745,
-          "w": 817,
-          "h": 543
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 672,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "90",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "The money multiplier in an economy increases with which one of the following?",
       "options": [
         "Increase in the cash reserve ratio",
         "Increase in the banking habit of the population",
         "Increase in the. statutory liquidity ratio Increase in the population of the country",
         "Increase in the population of the"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 38,
-          "x": 869,
-          "y": 1288,
-          "w": 817,
-          "h": 501
-        }
-      ],
-      "keyCell": {
-        "x": 862,
-        "y": 704,
-        "w": 61,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "91",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In the context of digital for entertainment, consider the following statements:\n1. In Augnented Reality (AR), a simulated environment is created and the physical world is completely shut out.\n2. In Virtual Reality (VR), images generated from a computer are projected onto real-life objects or surroundings.\n3. AR allows individuals to be present in the world and improves the experience using the camera of smart-phone or PC.\n4. VR closes the world, and transposes an individual, providing complete immersion experience.\nWhich of the statements given above is/ are correct?",
       "options": [
         "1 and 2 only",
         "3 and 4",
         "1, 2 and 3",
         "4 only"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 40,
-          "x": 146,
-          "y": 190,
-          "w": 713,
-          "h": 948
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 243,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "92",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "The word 'Denisovan' is sometimes menüoned in media in reference to",
       "options": [
         "fossils of a kind of dinosaurs",
         "an early human species",
         "a cave system found in North-East India",
         "a geological period in the history of Indian subcontinent"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 40,
-          "x": 146,
-          "y": 1138,
-          "w": 713,
-          "h": 329
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 276,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "93",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "With reference to the recent developments in science, which one of the following statements is not correct?",
       "options": [
         "Functional chromosomes can be created by joining segrnents of DNA taken from cells of different species.",
         "Pieces of artificial functional DNA can be created in laboratories.",
         "A piece of DNA taken out from an animal cell can be made to replicate outside a living cell in a laboratory.",
         "Cells taken out from •plants and animals can be made to undergo cell division in laboratory petri dishes."
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 40,
-          "x": 146,
-          "y": 1467,
-          "w": 713,
-          "h": 343
-        },
-        {
-          "page": 40,
-          "x": 869,
-          "y": 184,
-          "w": 817,
-          "h": 312
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 309,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "94",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Consider the following statements :\nA digital signature is\n1. an electronic record that identifies the certifying authority issuing it\n2. used to serve as a proof of identity of an individual to access information or server on Internet\n3. an electronic method of signing an electronic document and ensuring that the original content is unchanged\nWhich of the statements given above is/are correct?",
       "options": [
         "1 only",
         "2 and 3 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 2,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 40,
-          "x": 869,
-          "y": 496,
-          "w": 817,
-          "h": 758
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 342,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "95",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "In the context of wearable which of the following tasks is/ are accomplished by wearable devices?\n1. Location identification of a person\n2. Sleep monitoring of a person\n3. Assisting the hearing impaired person\nSelect the correct answer using the code given below.",
       "options": [
         "1 only",
         "2 and 3 only",
         "3 only",
         "1, 2 and 3"
-      ],
-      "answer": 3,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 40,
-          "x": 869,
-          "y": 1254,
-          "w": 817,
-          "h": 558
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 375,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "96",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "'RNA interference (RNAi)' technolog has gained populariV in the last few years. Why?\n1. It is used in developing gene silencing therapies.\n2. It can be used in developing therapies for the treatment of cancer.\n3. It can be used to develop hormone replacement therapies.\n4. It can be used to produce crop plants that are resistant to viral pathogens.\nSelect the correct answer using the code given below.",
       "options": [
         "1, 2 and 4",
         "2 and 3",
         "1 and 3",
         "1 and 4 only"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 42,
-          "x": 141,
-          "y": 218,
-          "w": 718,
-          "h": 826
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 408,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "97",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Recently, scientists observed the merger of giant 'blackholes' billions of light- years away from the Euth. What is the siglificance of this observation?",
       "options": [
         "'Higgs boson particles' were detected.",
         "'Gravitational waves' were detected.",
         "Possibility of inter-galactic space travel through 'wormhole' was confirmed.",
         "It enabled the scientists to understand 'singularity'."
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 42,
-          "x": 141,
-          "y": 1044,
-          "w": 718,
-          "h": 519
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 441,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "98",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which of the following are the reasons for the occurrence of multi-drug resistance in microbial pathogens in India?\n1. Genetic predisposition of some people\n2. Taking incorrect doses of antibiotics to cure diseases\n3. Using antibiotics in livestock farming\n4. Multiple chronic diseases in some people\nSelect the correct answer using the code given below.",
       "options": [
         "1 and 2",
         "2 and 3 only",
         "1, 3 and 4",
         "2, 3 and 4"
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 42,
-          "x": 141,
-          "y": 1563,
-          "w": 718,
-          "h": 272
-        },
-        {
-          "page": 42,
-          "x": 869,
-          "y": 215,
-          "w": 814,
-          "h": 546
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 474,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "99",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "What is Cas9 protein that is often mentioned in news?",
       "options": [
         "A molecular scissors used in targeted gene editing",
         "A biosensor used in the accurate detection of pathogens in patients",
         "A gene that makes plants pest- resistant",
         "A herbicidal substance synthesized in genetically modified crops"
-      ],
-      "answer": 0,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 42,
-          "x": 869,
-          "y": 761,
-          "w": 814,
-          "h": 491
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 507,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     },
     {
       "questionRef": "100",
+      "subjectId": "UPSC-CSE-GS1",
       "questionText": "Which one of the following statements is not correct?",
       "options": [
         "Hepatitis B virus is transmitted much like HIV.",
         "Hepatitis B, unlike Hepatitis C, does not have a vaccine.",
         "Globally, the number of people infected with Hepatitis B and C viruses are several times more than those infected with HIV.",
         "Some of those infected with Hepatitis B and C viruses do not show the symptoms for many years."
-      ],
-      "answer": 1,
-      "answerStatus": "VERIFIED",
-      "issues": [],
-      "regions": [
-        {
-          "page": 42,
-          "x": 869,
-          "y": 1252,
-          "w": 814,
-          "h": 588
-        }
-      ],
-      "keyCell": {
-        "x": 1009,
-        "y": 539,
-        "w": 64,
-        "h": 49
-      },
-      "reviewStatus": "APPROVED"
+      ]
     }
   ]
 }

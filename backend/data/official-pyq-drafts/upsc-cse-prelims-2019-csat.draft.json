@@ -78,10 +78,8 @@
         "It is diffcult,• if not impossible, to repair every manifestation of historical injustice."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 2,
@@ -97,7 +95,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "2",
@@ -110,10 +108,8 @@
         "Neither 1 nor 2"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "LIST_ITEM_MISSING"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 2,
@@ -129,23 +125,21 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "3",
       "preamble": "Passage — 2 Education plays a great transformatory role in life, particularly so in this rapidly changing and globalizing world. Universities are the custodians of the intellectual capital and promoters of culture and specialized knowledge, Culture is an activity of thought,. and receptiveness to beauty and human feelings. A merely well informed man is only a bore on God's earth. What we should aim at is producing men who possess both culture and expert knowledge. Their expert knowledge will give them a firm ground to start from and their culture will lead them as deep as philosophy and as high as art. Together it will impart meaning t\" human existence",
       "questionText": "On the basis of the above passage, the following assumptions have been made:\n1. A society without wen educated people cannot be transformed into a modern society.\n2. Without acquiring culture, a person's education is not compléte.\nWhich of the above assumptions is/are valid?",
       "options": [
-        "",
+        "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 2,
@@ -161,7 +155,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "4",
@@ -174,10 +168,8 @@
         "1, 2 and 3"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "LIST_ITEM_MISSING"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 4,
@@ -193,7 +185,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "5",
@@ -206,7 +198,7 @@
         "1, 2 and 3"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "VERIFIED",
       "issues": [],
       "regions": [
         {
@@ -223,7 +215,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "6",
@@ -236,7 +228,7 @@
         "Climate change is the most important factor affecting the agricultural economy in the future."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "VERIFIED",
       "issues": [],
       "regions": [
         {
@@ -253,22 +245,20 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "7",
-      "questionText": "",
+      "questionText": "Which one of the following is the most logical, scientific and rational inference that can be made from the above passage ?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "Different species having similar structure of hands is an example of biodiversity.",
+        "Limbs being used by different species for different kinds of work is an example of biodiversity.",
+        "Man and the aforementioned animals having similar structure of limbs is an example of coincidence in evolution.",
+        "Man and the aforementioned animals have a shared evolutionary history."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 166,
@@ -276,7 +266,8 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED",
+      "preamble": "Passage — 6\nA bat's wings may look like sheets of skin. But underneath, a bat has the same five fingers as an orangutan or a human, as well as a wrist connected to the same cluster of wrist bones connected to the same long bones of the arm. What can be more curious than that the hand of a man, formed for grasping, that of a mole for digging, the leg of the horse, the paddle of the porpoise, and the wing of the bat, should all be constructed on the same pattern ?"
     },
     {
       "questionRef": "8",
@@ -289,10 +280,8 @@
         "2 and 4"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_SKIPPED_BEFORE"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 8,
@@ -308,7 +297,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "9",
@@ -321,7 +310,7 @@
         "302"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "VERIFIED",
       "issues": [],
       "regions": [
         {
@@ -338,22 +327,20 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "10",
-      "questionText": "A solid cube is painted yellow, blue and black such that opposite faces are of same colour. The cube is then cut into 36 cubes of two different sizes such that 32 cubes are small and the other four cubes are big. None of the faces of the bigger cubes is painted blue. How many cubes have only one face painted?",
+      "questionText": "A solid cube is painted yellow, blue and black such that opposite faces are of same colour. The cube is then cut into 36 cubes of two different sizes such that 32 cubes are small and the other four cubes are big. None of the faces of the bigger cubes is painted blue. How many cubes have only one face painted ?",
       "options": [
-        "",
-        "",
-        "",
+        "4",
+        "6",
+        "8",
         "10"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 8,
@@ -369,23 +356,20 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "11",
-      "questionText": "A and B are two heavy steel blocks. If B is placed on thé top of A, the weight increases by 60%. How much weight will. reduce with respect to the total weight of A and B, if B is removed from the top of A?",
+      "questionText": "A and B are two heavy steel blocks. If B is placed on the top of A, the weight increases by 60%. How much weight will reduce with respect to the total weight of A and B, if B is removed from the top of A ?",
       "options": [
-        "",
-        "455%",
-        "",
-        ""
+        "60%",
+        "45.5%",
+        "40%",
+        "37.5%"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 8,
@@ -401,7 +385,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "12",
@@ -413,7 +397,7 @@
         "Sunday"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "VERIFIED",
       "issues": [],
       "regions": [
         {
@@ -430,7 +414,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "13",
@@ -442,7 +426,7 @@
         "only 11 and 111"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "VERIFIED",
       "issues": [],
       "regions": [
         {
@@ -459,23 +443,21 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "14",
-      "questionText": "The number of parallelograms that can be formed from a set of four parallel lines intersecting another set of four parallel lilies, is",
+      "questionText": "The number of parallelograms that can be formed from a set of four parallel lines intersecting another set of four parallel lines is",
       "options": [
-        "18 24 32",
-        "",
-        "",
-        "36 (II-A)"
+        "18",
+        "24",
+        "32",
+        "36"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "VERIFIED",
       "answerGuess": "D",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 10,
@@ -491,7 +473,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "15",
@@ -503,10 +485,8 @@
         "12"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 10,
@@ -522,7 +502,7 @@
         "w": 83,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "16",
@@ -534,10 +514,8 @@
         "16-5"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 10,
@@ -553,7 +531,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "17",
@@ -565,10 +543,8 @@
         "Raju has enough amount to buy the handset and he will have 1000 with him after buying the handset."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 10,
@@ -584,7 +560,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "18",
@@ -596,10 +572,8 @@
         "1998"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 12,
@@ -615,22 +589,20 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "19",
       "questionText": "Rakesh and Rajesh together bought 10 balls and 10 rackets. Rakesh spent 1300 and Rajesh spent 1500. If each racket costs three times a ball does, then what is the price of a racket?",
       "options": [
-        "",
-        "",
-        "210",
-        "240"
+        "₹ 70",
+        "₹ 90",
+        "₹ 210",
+        "₹ 240"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 12,
@@ -646,7 +618,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "20",
@@ -658,7 +630,7 @@
         "Neither 1 nor 2 (13-A)"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "VERIFIED",
       "issues": [],
       "regions": [
         {
@@ -675,7 +647,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "21",
@@ -687,12 +659,10 @@
         "Life becomes more comfortable with the development of cheap low-end IoT devices.",
         "As we go digital, we must recognise the huge threat to Internet security from some IoT devices."
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "VERIFIED",
       "answerGuess": "D",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 12,
@@ -708,7 +678,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "22",
@@ -721,11 +691,8 @@
         "The loss of Big Data from India is proportional to the degree/value of its foreign trade."
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 14,
@@ -741,7 +708,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "23",
@@ -754,10 +721,8 @@
         "Access to and possession of Big Data is a characteristic of developed countries. (15-A)"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 14,
@@ -773,22 +738,20 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "24",
-      "questionText": "",
+      "questionText": "What is the most logical and rational corollary to the above passage ?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "Supporting small farmers is an important part of any agenda regarding environmentally sustainable development.",
+        "Poor countries have little role to play in the mitigation of global warming.",
+        "Due to a large number of farmer households, India will not have food security problem in the foreseeable future.",
+        "Only small-holder farmers in India can ensure food security."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 328,
@@ -796,7 +759,8 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED",
+      "preamble": "Passage — 3\nThe rural poor across the world, including India, have contributed little to human-induced climate change, yet they are on the frontline in coping with its effects. Farmers can no longer rely on historical averages for rainfall and temperature, and the more frequent and extreme weather events, such as droughts and floods, can spell disaster. And there are new threats, such as sea level rise and the impact of melting glaciers on water supply. How significant are small farms ? As many as two billion people worldwide depend on them for their food and livelihood. Small-holder farmers in India produce 41 percent of the country's food grains, and other food items that contribute to local and national food security."
     },
     {
       "questionRef": "25",
@@ -809,11 +773,8 @@
         "Neither 1 nor 2"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "NUMBER_SKIPPED_BEFORE"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 14,
@@ -829,7 +790,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "26",
@@ -842,10 +803,8 @@
         "1, 2 and 3 (17 -A)"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 16,
@@ -861,22 +820,20 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "27",
-      "questionText": "",
+      "questionText": "With reference to the above passage, the following assumptions have been made :\n1. Making equality of opportunity a reality is the fundamental goal of the Indian education system.\n2. The present Indian school system is unable to provide egalitarian education.\n3. Abolition of private schools and establishment of more government schools is the only way to ensure egalitarian education.\nWhich of the above assumptions is/are valid ?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "1 and 2 only",
+        "2 only",
+        "2 and 3 only",
+        "3 only"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 328,
@@ -884,7 +841,8 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED",
+      "preamble": "Passage — 5\nAccess to schooling for those coming of school age is close to universal, but access to quality exhibits a sharp gradient with socio-economic status. Quotas for the weaker sections in private schools is a provision introduced by the Right of Children to Free and Compulsory Education Act, 2009. The quotas have imposed a debate on issues of social integration and equity in education that private actors had escaped by and large. The idea of egalitarian education system with equality of opportunity as its primary goal appears to be outside the space that private school principals inhabit. Therefore, the imposition of the quotas has led to resistance, sometimes justified."
     },
     {
       "questionRef": "28",
@@ -897,11 +855,8 @@
         "India will be free from diseases like TB only when its poverty alleviation programmes are effectively and successfully implemented. BKLYS-HJU"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "NUMBER_SKIPPED_BEFORE"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -917,25 +872,22 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "29",
       "preamble": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.",
       "questionText": "A five-storeyed building with floors from 1 to V is painted using four different colours and only one colour is used to paint a floor.\nConsider the following statements:\n1. The middle three floors are painted in different colours.\n2. The second (II)' and the fourth (IV) floors are painted in different colours.\n3. The first (I) and the fifth (V) floors are painted red. To ensure that any two consecutive floors have different colours",
       "options": [
-        "Only statement 2 is suffcient",
-        "Only statement 3 is suffcient",
-        "Statement-I is -not suffcient, but statement 1 along with statement 2 is suffcient Statement 3 is not suffcient, but statement 3 along with statement 2 is suffcient",
-        ""
+        "Only statement 2 is sufficient",
+        "Only statement 3 is sufficient",
+        "Statement 1 is not sufficient, but statement 1 along with statement 2 is sufficient",
+        "Statement 3 is not sufficient, but statement 3 along with statement 2 is sufficient"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "VERIFIED",
       "answerGuess": "B",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -951,7 +903,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "30",
@@ -964,10 +916,8 @@
         "100 krn"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -983,7 +933,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "31",
@@ -996,11 +946,8 @@
         "Neither 1 nor 2"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -1016,7 +963,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "32",
@@ -1029,11 +976,8 @@
         "1, 2 and 3"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1049,7 +993,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "33",
@@ -1061,13 +1005,10 @@
         "3",
         "2"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "VERIFIED",
       "answerGuess": "B",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1083,7 +1024,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "34",
@@ -1096,11 +1037,8 @@
         "420 (21 -A)"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1116,7 +1054,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "35",
@@ -1129,11 +1067,8 @@
         "13th January"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1149,7 +1084,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "36",
@@ -1158,15 +1093,12 @@
       "options": [
         "20",
         "25",
-        "30 35",
-        ""
+        "30",
+        "35"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1182,7 +1114,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "37",
@@ -1195,11 +1127,8 @@
         "(x + y) is greater than or equal to 65"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1215,24 +1144,21 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "38",
       "preamble": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.",
       "questionText": "Ena was born 4 years. after her parents' Directions for-the following 7 (seven) items: marriage. Her mother is three years younger than her father and 24 years older than Ena, who is 13 years old. At what age did Ena's father get married?",
       "options": [
-        "22 years 23 years",
-        "",
+        "22 years",
+        "23 years",
         "24 years",
         "25 years"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 22,
@@ -1248,7 +1174,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "39",
@@ -1257,16 +1183,12 @@
       "options": [
         "15%",
         "20%",
-        "",
-        ""
+        "25%",
+        "30%"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 22,
@@ -1282,7 +1204,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "40",
@@ -1295,11 +1217,8 @@
         "40•3"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 22,
@@ -1315,7 +1234,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "41",
@@ -1328,10 +1247,8 @@
         "Present Indian circumstances do not favour the cultivation of genetically modified crops."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 24,
@@ -1347,25 +1264,21 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "42",
       "preamble": "Passage — 1 What stands in the way of the widespread and careful adoption of 'Genetic Modification (GM)' technology is an 'Intellectual Property Rights' regime that seeks to create private monopolies for such technologies. If GM technolow is largely corporate driven, it seeks to maximize profits and that too in the short run. That is why corporations make major investments for herbicide-tolerant and pest-resistant crops: Such properties have only a short window, as soon enough, pests and weeds will evolve to overcome such resistance. This suits the corporations. The National Farmers Commission pointed out that priority must be given in genetic modification to the incorporation of genes that can help impart resistance to drought, salinity and other stresses.",
       "questionText": "On the basis of the above passage, the following assumptions have been made:\n1. The issue of effects of natural calamities on ag•iculture is not given due consideration by GM technology companies.\n2. In the long run, GM technology will not bé able to solve agricultural problems arising due to global warming,\nWhich of the above assumptions is/are valid?",
       "options": [
-        "",
+        "1 only",
         "2 only",
         "Both 1 and 2",
         "Neither 1 nor 2"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 24,
@@ -1381,7 +1294,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "43",
@@ -1394,10 +1307,8 @@
         "Foreign plants should be used to increase the biodiversity of a country."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 24,
@@ -1413,7 +1324,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "44",
@@ -1426,11 +1337,8 @@
         "1, 2 and 3"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 26,
@@ -1446,7 +1354,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "45",
@@ -1455,15 +1363,12 @@
       "options": [
         "against the monopoly of builders and the interests of elite groups.",
         "against the need for global and smart cities.",
-        "in favour of planmng cities mainly for working class and poor people. in favour of participation of peoples' groups in city planning. Passage — 5 A vast majority of Indians are poor, with barely _ 10 percent employed in the organised sector. We are being convinced that vigorous economic growth is generating substantial employment. But this is not so. When our economy was growing at 3 percent per year, employment in the organised sector was growing at 2 percent per year, As the economy began to grow at 7 — 8 percent per year,-the rate of growth of employment in the organised sector actually declined to 1 percent per year.",
-        ""
+        "in favour of planning cities mainly for working class and poor people.",
+        "in favour of participation of peoples' groups in city planning."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 26,
@@ -1486,7 +1391,7 @@
         "w": 64,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "46",
@@ -1499,10 +1404,8 @@
         "1, 2, 3 and 4"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 28,
@@ -1518,7 +1421,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "47",
@@ -1531,11 +1434,8 @@
         "Better banking outreach would be impossible unless each banking correspondent is allowed to serve a number of banks."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 28,
@@ -1551,24 +1451,21 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "48",
       "preamble": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.",
-      "questionText": "What is X in the sequence 132, 129, 124, 117, 106, 93, X?",
+      "questionText": "What is X in the sequence 132, 129, 124, 117, 106, 93, X ?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "74",
+        "75",
+        "76",
+        "77"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1584,7 +1481,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "49",
@@ -1597,11 +1494,8 @@
         "5:18 p.m."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1617,7 +1511,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "50",
@@ -1626,15 +1520,12 @@
       "options": [
         "always less than the original fraction",
         "always greater than the original fraction",
-        "always equal to the original fraction such that nothing can be claimed definitely",
-        ""
+        "always equal to the original fraction",
+        "such that nothing can be claimed definitely"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1650,7 +1541,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "51",
@@ -1658,16 +1549,13 @@
       "questionText": "What is X in the sequence 4, 196, 16, 144, 36, 100, 64, x?",
       "options": [
         "48",
-        "",
+        "64",
         "125",
         "256"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1683,7 +1571,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "52",
@@ -1691,17 +1579,14 @@
       "questionText": "In a group of 15 people; 7 can read French, 8 can read English while 3 of them can read neither of these two languages. The number of people who can read exactly one language is",
       "options": [
         "10",
-        "",
-        "",
-        ""
+        "9",
+        "5",
+        "4"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "VERIFIED",
       "answerGuess": "B",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1717,24 +1602,21 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "53",
       "preamble": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.",
       "questionText": "A printer numbers the pages of a book starting with 1 and uses 3089 digits ih all. How many pages does the book have?",
       "options": [
-        "1040 1048",
-        "",
+        "1040",
+        "1048",
         "1049",
         "1050"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1750,7 +1632,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "54",
@@ -1759,15 +1641,12 @@
       "options": [
         "abba",
         "cbbb",
-        "bbbb cccc",
-        ""
+        "bbbb",
+        "cccc"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1783,7 +1662,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "55",
@@ -1796,11 +1675,8 @@
         "54 kg"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1816,7 +1692,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "56",
@@ -1826,14 +1702,11 @@
         "16",
         "17",
         "18",
-        ""
+        "19"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1849,7 +1722,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "57",
@@ -1862,10 +1735,8 @@
         "20 m"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1881,25 +1752,21 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "58",
       "preamble": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.",
       "questionText": "Consider two statements Sl and S2 followed by a question: Sl: p and q both are prime numbers. S2: p + q is an Odd integer. Question: Is pq an odd integer?\nWhich one of the following is correct?",
       "options": [
-        "Sl alone is suffcient to answer the question S2 - alone is suffcient to answer the question",
-        "",
-        "Both Sl and S2 taken together are not suffcient to answer the question",
-        "Both•S1 and S2 are necessary to answer the question"
+        "S1 alone is sufficient to answer the question",
+        "S2 alone is sufficient to answer the question",
+        "Both S1 and S2 taken together are not sufficient to answer the question",
+        "Both S1 and S2 are necessary to answer the question"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1915,7 +1782,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "59",
@@ -1928,10 +1795,8 @@
         "2015"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1947,24 +1812,21 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "60",
       "preamble": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.",
       "questionText": "Number 136 is added to 5B7 and the sum obtained is 7A3, where A and B are integers. It is given that 7A3 is exactly divisible by 3. The only possible value of B is",
       "options": [
-        "",
-        "",
-        "7 Direcüons for the following 7 (seven) items: Read-the foZZowing five passages and answer the items that follow each passage. Your answers to these items should be based on the passages only. Passage — 1 India's economic footprint, given its population, still remains small compared to the US, the European Union or China. It has much to learn from other economies, yet must implement solutions that fit its unique circumstances, India especially needs an effective long-term- regulatory system based on collaboration rather than the current top-down approach. Regulations seek desirable outcomes yet are repeatedly used as political tools to push one agenda or another. Often, regulations fail to consider impacts on jobs and economic growth — or less restrictive alternatives. Regulations may be used to protect local markets at the expense of more widely shared prosperity in the future. Additionally, regulations inevitably result in numerous unintended consequences. In todays hyper competitive global economy, regulations need to be viewed as \"weapons\" that seek cost-justified social and environmental benefits while improving the economic well-being of most citizens.",
-        ""
+        "2",
+        "5",
+        "7",
+        "8"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1987,7 +1849,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "61",
@@ -2000,10 +1862,8 @@
         "Job creation and economic 'growth should be dominant considerations in developing India's regulatory system."
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -2019,7 +1879,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "62",
@@ -2032,10 +1892,8 @@
         "Neither 1 nor 2"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -2051,7 +1909,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "63",
@@ -2060,15 +1918,12 @@
       "options": [
         "If malnourished condition in children is caused by gut bacteria, it cannot be treated.",
         "The guts of malnourished babies should be inoculated with mature microbiomes.",
-        "Babies of malnourished mothers should be fed with dairy milk fortified with sialylatéd oligosaccharidés instead of mother's milk. Research on benign effects of gut bacteria on nutrition has policy implications.",
-        ""
+        "Babies of malnourished mothers should be fed with dairy milk fortified with sialylated oligosaccharides instead of mother's milk.",
+        "Research on benign effects of gut bacteria on nutrition has policy implications."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 36,
@@ -2084,7 +1939,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "64",
@@ -2096,13 +1951,10 @@
         "Both 1 and 2",
         "Neither 1 nor 2"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "VERIFIED",
       "answerGuess": "B",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "LIST_ITEM_MISSING"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 36,
@@ -2118,7 +1970,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "65",
@@ -2131,10 +1983,8 @@
         "1, 2 and 3"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 36,
@@ -2150,7 +2000,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "66",
@@ -2163,10 +2013,8 @@
         "1, 2 and 3 (39 -A)"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2182,7 +2030,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "67",
@@ -2194,12 +2042,10 @@
         "2 and 3",
         "1 and 4"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "VERIFIED",
       "answerGuess": "B",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2215,23 +2061,21 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "68",
       "preamble": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.",
-      "questionText": "If every alternative letter of the English 71. alphabet from B onwards (including B) is written in lower case (small letters). and the remaining letters are capitalized, then how is the first month of the second half of the year written?",
+      "questionText": "If every alternative letter of the English alphabet from B onwards (including B) is written in lower case (small letters) and the remaining letters are capitalized, then how is the first month of the second half of the year written ?",
       "options": [
         "JuLY",
-        "j ULY",
+        "jULy",
         "jUly",
         "jUlY"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2247,7 +2091,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "69",
@@ -2256,15 +2100,12 @@
       "options": [
         "13 units",
         "15 units",
-        "16 units 30 units",
-        ""
+        "16 units",
+        "30 units"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2280,7 +2121,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "70",
@@ -2288,16 +2129,13 @@
       "questionText": "In the sequence 1, 5, 7, 3, 5, 7, 4, 3, 5, 7, how 73. many such 5s are there which are not immediately preceded by 3 but are immediately followed by 7?",
       "options": [
         "1",
-        "",
-        "",
+        "2",
+        "3",
         "None"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2313,7 +2151,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "71",
@@ -2326,11 +2164,8 @@
         "1, 2 and 3"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2346,25 +2181,21 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "72",
       "preamble": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.",
       "questionText": "Each face of a cube can be painted in black or white colours. In how many different ways can the cube be painted?",
       "options": [
-        "",
+        "9",
         "10",
-        "11 12 How many triplets (x, y, zy satisfr the equation x + y + z = 6, where x, y and z are natural numbers?",
-        ""
+        "11",
+        "12"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2380,22 +2211,20 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "73",
-      "questionText": "",
+      "questionText": "How many triplets (x, y, z) satisfy the equation x + y + z = 6, where x, y and z are natural numbers ?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "4",
+        "5",
+        "9",
+        "10"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 742,
@@ -2403,26 +2232,21 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "74",
       "preamble": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.",
       "questionText": "If $ means 'divided bf•, @ means 'multiplied 77. b)?; # means 'minus', then the value of is",
       "options": [
-        "",
+        "0",
         "1",
-        "2 78.",
+        "2",
         "9"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "NUMBER_SKIPPED_BEFORE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2438,7 +2262,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "75",
@@ -2451,10 +2275,8 @@
         "6"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2470,7 +2292,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "76",
@@ -2483,7 +2305,7 @@
         "Sixth (43"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "VERIFIED",
       "issues": [],
       "regions": [
         {
@@ -2500,24 +2322,21 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "77",
       "preamble": "Read the following information and answer the three items that follow: Six students A, B, C, D, E and F appeared in several tests. Either C or F scores the highest. 79. Whenever C scores the highest, then E scores the least. Whenever F scores the highest, B scores the least. In all the tests they got different marks; D scores higher than A, but they are close competitors; A scores higher than B; C scores higher than A.\n80.",
       "questionText": "If B scores the least, the rank of C will be",
       "options": [
-        "Second mrd",
-        "",
+        "Second",
+        "Third",
         "Fourth",
         "Second or third"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2533,7 +2352,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "78",
@@ -2546,10 +2365,8 @@
         "D is ranked fifth"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2565,7 +2382,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "79",
@@ -2577,10 +2394,8 @@
         "Whose weight is greatest' cannot be determined"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2596,7 +2411,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "80",
@@ -2608,10 +2423,8 @@
         "'Whose weight is least' cannot be determined"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "VERIFIED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2627,7 +2440,7 @@
         "w": 65,
         "h": 50
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     }
   ]
 }

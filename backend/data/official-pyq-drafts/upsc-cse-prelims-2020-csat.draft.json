@@ -77,8 +77,8 @@
         "Service sector has been reducing the problem of unemployment.",
         "Increased social sector spending is imperative for large-scale job creation."
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
       "issues": [],
       "regions": [
@@ -96,7 +96,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "2",
@@ -109,11 +109,8 @@
         "2 only"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ",
-        "LIST_ITEM_MISSING"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 2,
@@ -136,7 +133,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "3",
@@ -149,7 +146,7 @@
         "Water supply should not be free of cost so as to prevent its misuse or overuse."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -166,7 +163,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "4",
@@ -179,7 +176,7 @@
         "You should know that investing your money is a risky business."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -196,23 +193,21 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "5",
       "preamble": "Passage—4 Asset allocation is the most important investment decision we will ever make, and sadly, most of us do not give that decision the importance it deserves. We are adamant about seeking predictability with our future. We tend to think of investing in risky assets as extremely volatile and value eroding. We also dislike fluctuating returns and the loss of control of investment. We think our money is best left idle, unproductive but safe. There is no asset that is risk-free. We could lose our jobs, our homes can lose value, our banks can go bankrupt, our bonds can default, the government can collapse and companies we chose fondly may cease to exist. But we cannot live life assuming that all these extreme events are waiting to happen, and all at the same tirne. All these extreme forms of risks we know will not manifest at the same time.",
       "questionText": "Passage—5 Although most of the Genetically Modified (GM) crops cultivated now are genetically engineered for a single trait, in future, crops genetically engineered for more than one trait will be the norm. Thus, biotechn010U's role in agriculture and the regulation of the same cannot be understood solely in the context of the current generation of GM crops. Instead, there is a need to take a comprehensive look, taking into account various aspects, including socio-economic impacts, so that the potential of the techn010O' can be harnessed while minimizing negative impacts. Given the importance of biotechn010ß,r in developing varieties that can help in climate change mitigation and adaptation, not using as a part of the climate change action plan cannot be an option. Domestic regulation of biotechn010U cannot be viewed in isolation of trade policy and obligations under various international treaties and conventions.\n5. With reference to the above passage, the following assumptions have been made:\n1. Biotechn010ß1 regulation is an evolving process.\n2. Participation of people is needed in policy decisions regarding biotechnology regulation.\n3. Biotechn010U regulation should take into account socio-economic aspects in decision-making.\n4. Wider involvement of political executive in biotechn010U regulation improves its effectiveness in dealing with the country's trade policies and international obligations.\nWhich of the above assumptions are valid? 2 and 4 only and 3 only 3 and 4 only",
       "options": [
-        "",
-        "",
-        "",
+        "1, 2 and 4 only",
+        "1 and 3 only",
+        "2, 3 and 4 only",
         "1, 2, 3 and 4"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 4,
@@ -235,7 +230,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "6",
@@ -248,12 +243,8 @@
         "The negative impacts of biotechn010U are not properly understood. 70 How many zeroes are there at the end of the following product? (a) 10 (b) 12 (c) 14 (d) 15 Let XYZ be a three-digit number, where (X + Y + Z) is not a multiple of 3. Then (XYZ + WX + ZXY) is not divisible by (c) 37 (d) (X+Y+Z)"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ",
-        "LIST_ITEM_MISSING",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 6,
@@ -276,22 +267,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "7",
-      "questionText": "",
+      "questionText": "How many zeroes are there at the end of the following product?\n1 x 5 x 10 x 15 x 20 x 25 x 30 x 35 x 40 x 45 x 50 x 55 x 60",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "10",
+        "12",
+        "14",
+        "15"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 269,
@@ -299,22 +288,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "8",
-      "questionText": "",
+      "questionText": "Let XYZ be a three-digit number, where (X + Y + Z) is not a multiple of 3. Then (XYZ + YZX + ZXY) is not divisible by",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "3",
+        "9",
+        "37",
+        "(X + Y + Z)"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 269,
@@ -322,23 +309,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "9",
       "questionText": "Let p, q, r and s be natural numbers such that\nWhich one of the following is the largest natural number?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "p",
+        "q",
+        "r",
+        "s"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_SKIPPED_BEFORE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 6,
@@ -354,7 +338,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "10",
@@ -366,7 +350,7 @@
         "Ten"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -383,7 +367,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "11",
@@ -395,7 +379,7 @@
         "5"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -412,7 +396,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "12",
@@ -424,10 +408,8 @@
         "305 feet"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 8,
@@ -443,7 +425,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "13",
@@ -455,7 +437,7 @@
         "40"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -472,24 +454,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "14",
       "questionText": "HGY-D-LKUV/59A 140 One page is torn from a booklet whose pages are numbered in the usual manner starting from the first page as 1. The sum of the numbers on the remaining pages is 195. The torn page contains which of the following numbers?",
       "options": [
-        "",
-        "",
-        "9, IO",
+        "5, 6",
+        "7, 8",
+        "9, 10",
         "11, 12"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_NOT_READ",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 8,
@@ -512,24 +490,21 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "15",
       "questionText": "The missing letters which complete the arrangement are",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "a, b, c, d",
+        "a, b, d, e",
+        "a, c, c, e",
+        "b, c, d, e"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 2,
+      "answerStatus": "RESOLVED",
       "answerGuess": "A",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_NOT_READ"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 8,
@@ -545,23 +520,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "16",
       "questionText": "Let A3BC and DE2F be four-digit numbers where each letter represents a different digit greater than 3. If the sum of the numbers is 15902, then what is the difference between the values of A and D?",
       "options": [
-        "1 2",
-        "",
+        "1",
+        "2",
         "3",
-        ""
+        "4"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 8,
@@ -577,7 +549,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "17",
@@ -589,10 +561,8 @@
         "S2 alone is sufficient to answer the Question."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_FIGURE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 10,
@@ -608,22 +578,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "18",
-      "questionText": "Consider the following data A verage A verage marks in marks in English Hindi Girls 9 8 Boys 8 7 Overall average marks x What is the value of x in the above table?",
+      "questionText": "Consider the following data :\n\n| | Average marks in English | Average marks in Hindi |\n|---|---|---|\n| Girls | 9 | 8 |\n| Boys | 8 | 7 |\n| Overall average marks | 8.8 | x |\n\nWhat is the value of x in the above table?",
       "options": [
-        "",
-        "",
-        "",
-        "70"
+        "7.8",
+        "7.6",
+        "7.4",
+        "7.2"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 10,
@@ -639,7 +607,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "19",
@@ -651,10 +619,8 @@
         "None of the above"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 10,
@@ -677,7 +643,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "20",
@@ -689,7 +655,7 @@
         "12th July is not a Sunday if the year is a leap year."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -706,7 +672,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "21",
@@ -719,7 +685,7 @@
         "3 only"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -743,7 +709,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "22",
@@ -755,12 +721,10 @@
         "1, 3 and 4",
         "2, 3 and 5"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 0,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 14,
@@ -776,7 +740,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "23",
@@ -789,7 +753,7 @@
         "1, 2 and 3"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -806,7 +770,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "24",
@@ -819,7 +783,7 @@
         "In view of the water crisis in our cities, there is an urgent need to limit the population of cities by adopting an upper limit of population size."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -836,7 +800,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "25",
@@ -849,7 +813,7 @@
         "Neither 1 nor 2"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -866,7 +830,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "26",
@@ -876,13 +840,11 @@
         "1 and 3",
         "2 and 4",
         "2 and 3",
-        "3 and 4 (a) India should create large-scale off-farm rural employment to reduce poverty in the near future. (b) India should create a large number of farmer producer companies. (c) Private investment in agriculture should be given priority over public investment. (d) Inclusive agricultural growth is key to reduce poverty in the near future."
+        "3 and 4"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "LIST_ITEM_MISSING"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 16,
@@ -905,22 +867,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "27",
-      "questionText": "",
+      "questionText": "Which one of the following statements best reflects the critical message of the passage?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "India should create large-scale off-farm rural employment to reduce poverty in the near future.",
+        "India should create a large number of farmer producer companies.",
+        "Private investment in agriculture should be given priority over public investment.",
+        "Inclusive agricultural growth is key to reduce poverty in the near future."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 269,
@@ -928,7 +888,8 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED",
+      "preamble": "Passage—5 In India, agriculture still engages about half of its workforce, and about 85 per cent of its farms are small and marginal. Compared to China and Vietnam, which have experienced fast structural and rural transformation, India's story is of slow transformation. As a result, poverty reduction in India was at a much slower pace during 1988—2014, compared to China and Vietnam. India's poverty reduction was slow during 1988—2005, but during 2005—2012, it accelerated dramatically—almost three times faster than during the earlier period. What did India do during this period? Research reveals that the relative price scenario changed significantly (by more than 50%) in favour of agriculture in the wake of rising global prices. This boosted private investments in agriculture by more than 50%. As a result, agri-GDP growth touched +1% during 2007—2012 as against during 2002—2007. The net surplus. of agri-trade touched $25 billion in 2013—2014; real farm wages rose by 7% per annum. All this led to unprecedented fall in poverty."
     },
     {
       "questionRef": "28",
@@ -941,10 +902,8 @@
         "Sl and S2 together are not sufficient to answer the Question."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_SKIPPED_BEFORE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -960,7 +919,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "29",
@@ -971,12 +930,10 @@
         "Sl and S2 together are sufficient to answer the Question, but neither Sl alone nor S2 alone is sufficient to answer the Question.",
         "Sl and S2 together are not sufficient to answer the Question."
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "X",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -999,7 +956,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "30",
@@ -1010,12 +967,10 @@
         "Sl and S2 together are sufficient to answer the Question, but neither Sl alone nor S2 alone is sufficient to answer the Question. Sl and S2 together are not sufficient to answer the Question.house straight 25 metres, then turns to the right and walks 50 metres again; then he turns towards left and again walks 25 metres. If his house faces to the East, what is his direction from the starting point? (a) South-East (b) South-West (c) North-East",
         "North-West"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 2,
+      "answerStatus": "RESOLVED",
       "answerGuess": "X",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -1038,23 +993,21 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "31",
-      "questionText": "",
+      "questionText": "A man walks down the backside of his house straight 25 metres, then turns to the right and walks 50 metres again; then he turns towards left and again walks 25 metres. If his house faces to the East, what is his direction from the starting point?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "South-East",
+        "South-West",
+        "North-East",
+        "North-West"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "A",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 659,
@@ -1062,7 +1015,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "32",
@@ -1074,10 +1027,8 @@
         "Both Conclusion—I and Conclusion—II"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_SKIPPED_BEFORE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1093,7 +1044,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "33",
@@ -1104,12 +1055,10 @@
         "Neither Conclusion—I nor Conclusion—II",
         "Both Conclusion—I and Conclusion—II"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 2,
+      "answerStatus": "RESOLVED",
       "answerGuess": "C",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1132,22 +1081,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "34",
       "questionText": "Consider the following sequence of numbers 51473985726315 863852243496\nHow many odd numbers are followed by the odd number in the above sequence?",
       "options": [
         "5",
-        "",
+        "6",
         "7",
-        ""
+        "8"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1163,7 +1110,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "35",
@@ -1175,10 +1122,8 @@
         "Cannot be determined due to insufficient data"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_TABLE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 22,
@@ -1194,7 +1139,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "36",
@@ -1206,10 +1151,8 @@
         "Sl and S3 together are sufficient to answer the Question."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 22,
@@ -1225,22 +1168,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "37",
       "questionText": "How many integers are there between 1 and 100 which have 4 as a digit but are not divisible by 4?",
       "options": [
-        "",
+        "5",
         "11",
-        "12 13 HGY-D-LKUV/59A",
-        ""
+        "12",
+        "13"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 22,
@@ -1256,7 +1197,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "38",
@@ -1268,10 +1209,8 @@
         "(b) 30 years (d) 45 years"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 22,
@@ -1287,22 +1226,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "39",
-      "questionText": "",
+      "questionText": "The average age of a teacher and three students is 20 years. If all the three students are of same age and the difference between the age of the teacher and each student is 20 years, then what is the age of the teacher?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "25 years",
+        "30 years",
+        "35 years",
+        "45 years"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 659,
@@ -1310,24 +1247,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "40",
       "questionText": "A person bought a car and sold it for e If he incurred a loss of 20%, then how much did he spend to buy the car?",
       "options": [
-        "",
-        "'(c)",
-        "",
-        ""
+        "₹ 3,60,000",
+        "₹ 3,65,000",
+        "₹ 3,70,000",
+        "₹ 3,75,000"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_SKIPPED_BEFORE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 22,
@@ -1343,7 +1276,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "41",
@@ -1356,7 +1289,7 @@
         "Relying on a homogeneous food source is not desirable."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1373,25 +1306,21 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "42",
       "preamble": "Passage—I Spanish ships in the late 16th century first brought the potato tuber from South America to Europe whereby in the early 19th century, it had become a reliable backup to cereal crops, particularly in the cold, rain-soaked soils of Ireland. The Irish were soon almost wholly dependent on the potato as their staple food. And they were planting primarily one prodigious variety, the 'Lumper' potato, whose genetic frailty would be cruelly exposed by the fungus 'Phytophthora infestans'. In 1845, spores of the deadly fungus began spreading across the country, destroying nearly all the Lumpers in its path. The resulting famine killed or displaced millions.",
       "questionText": "HGY-D-LKUV/59A Passage—2 India is at once among the fastest growing global economies and home to the largest number of malnourished children in the world. There are regions where malnutrition is not the exception but the norm. And across the country, malnutrition is the cause of death for roughly half the 1 •3 million children who die before their fifth birthday each year. Even those children who survive suffer permanently from the damage that has already been done to their bodies and minds from not getting enough of the right foods and nutrients. Around",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "1, 2, 3 and 4",
+        "2, 3, 4 and 5",
+        "1 only",
+        "3 and 5 only"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_NOT_READ",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 24,
@@ -1414,22 +1343,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "43",
-      "questionText": "",
+      "questionText": "Which of the following are the most rational inferences that can be made from the passage?\n1. Farmers' income will be higher with pulse cultivation than with paddy cultivation.\n2. Pulse cultivation causes less pollution as compared to paddy cultivation.\n3. Pulse straw can be used to improve soil quality.\n4. In the context of northern Indian agriculture, paddy straw has no usefulness.\n5. Mechanized agriculture is the main cause for stubble burning.\nSelect the correct answer using the code given below :",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "2, 3 and 5",
+        "1, 4 and 5",
+        "2 and 3 only",
+        "1 and 4 only"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 659,
@@ -1437,7 +1364,8 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED",
+      "preamble": "The pulse variety 'Pusa Arhar 16' has the potential to be grown in the paddy-growing regions of Punjab, Haryana and Uttar Pradesh and eventually in all of India. Its yield (about 2000 kg/hectare) will be significantly greater than those of the existing varieties and because its size will be uniform, it will be amenable to mechanical harvesting, an attractive feature for farmers in northern India who currently use this technology for paddy. Most important, Arhar straw, unlike paddy straw, is green and can be ploughed back into the soil. In paddy straw, the problem is the high silica content, which does not allow for easy decomposition. In the case of Arhar, the farmer, even after combine harvesting, just needs to run a rotovator to cut the leftover straw into pieces, which can be ploughed back and will decompose very fast. All this is difficult with leftover paddy stalks that cannot be easily salvaged or ploughed back. Farmers, therefore, choose the easiest option of simply burning it."
     },
     {
       "questionRef": "44",
@@ -1450,10 +1378,8 @@
         "3 and 5 only"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_SKIPPED_BEFORE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 24,
@@ -1469,7 +1395,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "45",
@@ -1482,10 +1408,8 @@
         "1 and 4 only"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_OCR_CORRECTED"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 24,
@@ -1515,7 +1439,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "46",
@@ -1528,7 +1452,7 @@
         "Neither 1 nor 2"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1545,7 +1469,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "47",
@@ -1557,12 +1481,10 @@
         "3 only is the best option for the customer.",
         "All the options are equally good for the customer."
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "A",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1578,7 +1500,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "48",
@@ -1590,10 +1512,8 @@
         "246"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1609,7 +1529,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "49",
@@ -1621,10 +1541,8 @@
         "NPJM"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1647,7 +1565,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "50",
@@ -1659,7 +1577,7 @@
         "6 (a) IL m (b) (c) IL m (d) 13 m"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1683,22 +1601,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "51",
-      "questionText": "",
+      "questionText": "What is the greatest length x such that 3 1/2 m and 8 3/4 m are integral multiples of x?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "1 1/2 m",
+        "1 1/3 m",
+        "1 1/4 m",
+        "1 3/4 m"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 659,
@@ -1706,7 +1622,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "52",
@@ -1718,12 +1634,8 @@
         "1971-1981"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OCR_NOISE",
-        "NUMBER_SKIPPED_BEFORE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1739,7 +1651,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "53",
@@ -1751,11 +1663,8 @@
         "137/99"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1778,7 +1687,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "54",
@@ -1790,7 +1699,7 @@
         "1222"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1807,23 +1716,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "55",
       "questionText": "In adult population of a city, 40% men and 30% women are married. What is the percentage of married adult population if no man marries more than one woman and no woman marries more than one man; and there are no widows and widowers?",
       "options": [
-        "33 J 0/0",
-        "",
-        "34",
+        "33 1/7 %",
+        "34%",
+        "34 2/7 %",
         "35%"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 32,
@@ -1839,7 +1745,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "56",
@@ -1847,14 +1753,12 @@
       "options": [
         "50",
         "25",
-        "",
+        "5",
         "1"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1870,23 +1774,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "57",
       "questionText": "A sum of 2,500 is distributed among X, Y and Z in the ratio L 5 What is the difference between the maximum share and the minimum share?",
       "options": [
-        "e 300",
-        "e 350",
-        "",
-        "450"
+        "₹ 300",
+        "₹ 350",
+        "₹ 400",
+        "₹ 450"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1902,7 +1803,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "58",
@@ -1914,10 +1815,8 @@
         "For any real number n"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1933,7 +1832,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "59",
@@ -1945,10 +1844,8 @@
         "No conclusion can be drawn due to insufficient data."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1971,7 +1868,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "60",
@@ -1982,8 +1879,8 @@
         "14",
         "10"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 0,
+      "answerStatus": "RESOLVED",
       "answerGuess": "A",
       "issues": [],
       "regions": [
@@ -2001,7 +1898,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "61",
@@ -2014,7 +1911,7 @@
         "Encouraging the foreign investments in our industrial sector is a good alternative to this sector's dependence on banks for credit."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -2031,7 +1928,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "62",
@@ -2044,10 +1941,8 @@
         "India should put in more efforts in the exploration of natural gas."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 36,
@@ -2063,7 +1958,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "63",
@@ -2076,10 +1971,8 @@
         "Neither 1 nor 2"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 36,
@@ -2095,7 +1988,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "64",
@@ -2108,7 +2001,7 @@
         "Neither 1 nor 2"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -2125,7 +2018,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "65",
@@ -2138,7 +2031,7 @@
         "Bad management of solid waste and sewerage systems by our municipalities is the reason for drinking water shortages in our cities."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -2155,7 +2048,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "66",
@@ -2168,7 +2061,7 @@
         "Religious practices of any community are immune to State laws."
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -2185,23 +2078,21 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "67",
       "questionText": "How many different 5-letter words (with or without meaning) can be constructed using all the letters of the word 'DELHI' so that each word has to start with D and end with I?",
       "options": [
-        "",
+        "24",
         "18",
         "12",
         "6"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2217,24 +2108,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "68",
       "questionText": "HGY-D-LKUV/59A 680 A bottle contains 20 litres of liquid A. 4 litres of liquid A is taken out of it and replaced by same quantity of liquid B. Again 4 litres of the mixture is taken out and replaced by same quantity of liquid B. What is the ratio of quantity of liquid A to that of liquid B in the final mixture?",
       "options": [
-        "",
-        "5:1",
-        "16: 9",
-        "17: 8"
+        "4 : 1",
+        "5 : 1",
+        "16 : 9",
+        "17 : 8"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_NOT_READ",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2257,7 +2144,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "69",
@@ -2269,10 +2156,8 @@
         "49"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2288,7 +2173,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "70",
@@ -2300,10 +2185,8 @@
         "60"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2319,25 +2202,21 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "71",
       "questionText": "710 A person X can complete 20% of work in 8 days and another person Y can complete 25% of the same work in 6 days. If they work together, in how many days will 40% of the work be completed?",
       "options": [
-        "",
-        "",
+        "6",
+        "8",
         "10",
         "12"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 0,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_OCR_CORRECTED",
-        "MAY_HAVE_MATH"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2360,7 +2239,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "72",
@@ -2372,7 +2251,7 @@
         "lies between 3v and 4v km/hr 730 Consider the following statements: 1. The minimum number of points of intersection of a square and a circle is 2. 2. The maximum number of points of intersection of a square and a circle is 8. Which of the above statements is/ are correct? (a) 1 only (b) 2 only (c) Both 1 and 2 (d) Neither 1 nor 2"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -2389,23 +2268,21 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "73",
-      "questionText": "",
+      "questionText": "Consider the following statements :\n1. The minimum number of points of intersection of a square and a circle is 2.\n2. The maximum number of points of intersection of a square and a circle is 8.\nWhich of the above statements is/are correct?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 1045,
@@ -2413,25 +2290,21 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "74",
       "questionText": "A man takes half time in rowing a certain distance downstream than upstream. What is the ratio of the speed in still water to the speed of current? HGY-D-LKUV/59A 750 How many pairs of natural numbers are there such that the difference of whose squares 'is 63?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "1 : 2",
+        "2 : 1",
+        "1 : 3",
+        "3 : 1"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_SKIPPED_BEFORE",
-        "MAY_HAVE_MATH"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2454,22 +2327,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "75",
-      "questionText": "",
+      "questionText": "How many pairs of natural numbers are there such that the difference of whose squares is 63?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "3",
+        "4",
+        "5",
+        "2"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 1045,
@@ -2477,7 +2348,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "76",
@@ -2489,11 +2360,8 @@
         "5/6"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_SKIPPED_BEFORE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2509,7 +2377,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "77",
@@ -2520,12 +2388,10 @@
         "100",
         "371+1 780 If 1 litre of water weighs 1 kg, then how many cubic millimetres of water will weigh gm? (b) 10 (d) 1000"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2541,22 +2407,20 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "78",
-      "questionText": "",
+      "questionText": "If 1 litre of water weighs 1 kg, then how many cubic millimetres of water will weigh 0.1 gm?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "1",
+        "10",
+        "100",
+        "1000"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NOT_FOUND_IN_SCAN"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [],
       "keyCell": {
         "x": 1045,
@@ -2564,7 +2428,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "79",
@@ -2575,12 +2439,10 @@
         "20 kg",
         "25 kg"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 0,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
-      "issues": [
-        "NUMBER_SKIPPED_BEFORE"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2596,7 +2458,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "80",
@@ -2607,8 +2469,8 @@
         "30",
         "31"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
       "issues": [],
       "regions": [
@@ -2626,7 +2488,7 @@
         "w": 135,
         "h": 74
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     }
   ]
 }

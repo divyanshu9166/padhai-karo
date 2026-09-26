@@ -1,0 +1,978 @@
+{
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2020,
+  "paperKey": "UPSC-CSE-PRELIMS-CSAT-2020",
+  "durationMin": 120,
+  "sourceName": "UPSC official previous question papers",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/CSP_2020_GS_Paper-2.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-20-Paper-II-091121_0.pdf",
+  "reviewedAt": "2026-09-26T09:32:50.814Z",
+  "questionPaperSha256": "81fd97b06e01dae24c6f376bb9ca5593fd4347c0c5ddafedaef1aae91a572840",
+  "answerKeySha256": "c3caeb68315b9cf52ab72f69af300d72b9403dc133e5528764ef291da4161967",
+  "answerKey": {
+    "1": 3,
+    "2": 0,
+    "3": 2,
+    "4": 0,
+    "5": 1,
+    "6": 2,
+    "7": 0,
+    "8": 1,
+    "9": 2,
+    "10": 0,
+    "11": 1,
+    "12": 1,
+    "13": 2,
+    "14": 1,
+    "15": 2,
+    "16": 2,
+    "17": 2,
+    "18": 0,
+    "19": 1,
+    "20": 2,
+    "21": 1,
+    "22": 0,
+    "23": 2,
+    "24": 0,
+    "25": 1,
+    "26": 2,
+    "27": 3,
+    "28": 2,
+    "29": 3,
+    "30": 2,
+    "31": 3,
+    "32": 0,
+    "33": 2,
+    "34": 1,
+    "35": 1,
+    "36": 3,
+    "37": 2,
+    "38": 0,
+    "39": 2,
+    "40": 3,
+    "41": 3,
+    "42": 1,
+    "43": 2,
+    "44": 3,
+    "45": 2,
+    "46": 3,
+    "47": 3,
+    "48": 3,
+    "49": 3,
+    "50": 2,
+    "51": 3,
+    "52": 3,
+    "53": 1,
+    "54": 1,
+    "55": 2,
+    "56": 0,
+    "57": 2,
+    "58": 1,
+    "59": 2,
+    "60": 0,
+    "61": 2,
+    "62": 2,
+    "63": 0,
+    "64": 2,
+    "65": 2,
+    "66": 1,
+    "67": 3,
+    "68": 2,
+    "69": 2,
+    "70": 1,
+    "71": 0,
+    "72": 1,
+    "73": 1,
+    "74": 3,
+    "75": 0,
+    "76": 3,
+    "77": 3,
+    "78": 2,
+    "79": 0,
+    "80": 1
+  },
+  "droppedQuestions": [],
+  "questions": [
+    {
+      "questionRef": "1",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—I In India, over the last decade or so, labour has been departing agriculture, but is only going to construction and unregistered manufacturing which are not markedly better jobs. Services, where labour tends to be most productive, are not generating the additional jobs the country needs. India will need 24 million or so jobs over the next decade. The new sector, e-commerce, can at best close only half the jobs gap. Only those sectors that drive domestic demand such as health and education can comfortably fill the other half.\n\nWhich one of the following is best implied in the passage?",
+      "options": [
+        "Strong measures need to be taken to reduce the rural to urban migration of labour.",
+        "The working condition in construction and unregistered manufacturing needs to be improved.",
+        "Service sector has been reducing the problem of unemployment.",
+        "Increased social sector spending is imperative for large-scale job creation."
+      ]
+    },
+    {
+      "questionRef": "2",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—I In India, over the last decade or so, labour has been departing agriculture, but is only going to construction and unregistered manufacturing which are not markedly better jobs. Services, where labour tends to be most productive, are not generating the additional jobs the country needs. India will need 24 million or so jobs over the next decade. The new sector, e-commerce, can at best close only half the jobs gap. Only those sectors that drive domestic demand such as health and education can comfortably fill the other half.\n\nHGY-D-LKUV/59A 3 Passage—2 In India, the current focus on the right to privacy is based on some new realities of the digital age. A right is a substantive right only if it works in all situations, and for evervone. A right to free expression for an individual about her exploitation, for instance, is meaningless without actual availability of security that guarantees that private force cannot be used to thwart this right. The role of the State, therefore, is not just to abstain from preventing rightful free expression, but also to actively ensure that private parties are not able to block it.\n2. On the basis of the above passage, the following assumptions have been made:\n1. State should have some institutions to ensure its appropriate role in a digital society.\n2. State should ensure that private parties do not violate the citizens' right to privacy. 3, Digital economy is not compatible with the idea of not violating the citizens' privacy.\nWhich of the above assumptions is/ are valid?",
+      "options": [
+        "1 and 2",
+        "3 only",
+        "1 and 3",
+        "2 only"
+      ]
+    },
+    {
+      "questionRef": "3",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—3 One of the biggest ironies around water is that it comes from rivers and other wetlands. Yet it is seen as divorced from them. While water is used as a resource, public policy does not always grasp that it is a part of the natural ecosystem. Efforts at engineering water systems are thus efforts at augmenting water supply rather than strengthening the capacities of ecological systems.\n\nWhich one of the following is the most ZogicaZ and rationaZ inference that can be made from the above passage?",
+      "options": [
+        "Rivers and other wetlands should be protected under Ramsar Convention.",
+        "Engineering water systems should be modernized and further augmented.",
+        "Wetlands need to be reinforced as more than just open sources of water.",
+        "Water supply should not be free of cost so as to prevent its misuse or overuse."
+      ]
+    },
+    {
+      "questionRef": "4",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—4 Asset allocation is the most important investment decision we will ever make, and sadly, most of us do not give that decision the importance it deserves. We are adamant about seeking predictability with our future. We tend to think of investing in risky assets as extremely volatile and value eroding. We also dislike fluctuating returns and the loss of control of investment. We think our money is best left idle, unproductive but safe. There is no asset that is risk-free. We could lose our jobs, our homes can lose value, our banks can go bankrupt, our bonds can default, the government can collapse and companies we chose fondly may cease to exist. But we cannot live life assuming that all these extreme events are waiting to happen, and all at the same tirne. All these extreme forms of risks we know will not manifest at the same time.\n\nWhich one of the following statements best implies the suggestion given by the author of the passage?",
+      "options": [
+        "Distribute your wealth across different kinds of assets so that your risks would be minimized.",
+        "Risk-taking behaviour should be a necessary component of your personality if you want to generate wealth.",
+        "While making investments, find a trustworthy asset management organization which would manage your wealth for you.",
+        "You should know that investing your money is a risky business."
+      ]
+    },
+    {
+      "questionRef": "5",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—4 Asset allocation is the most important investment decision we will ever make, and sadly, most of us do not give that decision the importance it deserves. We are adamant about seeking predictability with our future. We tend to think of investing in risky assets as extremely volatile and value eroding. We also dislike fluctuating returns and the loss of control of investment. We think our money is best left idle, unproductive but safe. There is no asset that is risk-free. We could lose our jobs, our homes can lose value, our banks can go bankrupt, our bonds can default, the government can collapse and companies we chose fondly may cease to exist. But we cannot live life assuming that all these extreme events are waiting to happen, and all at the same tirne. All these extreme forms of risks we know will not manifest at the same time.\n\nPassage—5 Although most of the Genetically Modified (GM) crops cultivated now are genetically engineered for a single trait, in future, crops genetically engineered for more than one trait will be the norm. Thus, biotechn010U's role in agriculture and the regulation of the same cannot be understood solely in the context of the current generation of GM crops. Instead, there is a need to take a comprehensive look, taking into account various aspects, including socio-economic impacts, so that the potential of the techn010O' can be harnessed while minimizing negative impacts. Given the importance of biotechn010ß,r in developing varieties that can help in climate change mitigation and adaptation, not using as a part of the climate change action plan cannot be an option. Domestic regulation of biotechn010U cannot be viewed in isolation of trade policy and obligations under various international treaties and conventions.\n5. With reference to the above passage, the following assumptions have been made:\n1. Biotechn010ß1 regulation is an evolving process.\n2. Participation of people is needed in policy decisions regarding biotechnology regulation.\n3. Biotechn010U regulation should take into account socio-economic aspects in decision-making.\n4. Wider involvement of political executive in biotechn010U regulation improves its effectiveness in dealing with the country's trade policies and international obligations.\nWhich of the above assumptions are valid? 2 and 4 only and 3 only 3 and 4 only",
+      "options": [
+        "1, 2 and 4 only",
+        "1 and 3 only",
+        "2, 3 and 4 only",
+        "1, 2, 3 and 4"
+      ]
+    },
+    {
+      "questionRef": "6",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—4 Asset allocation is the most important investment decision we will ever make, and sadly, most of us do not give that decision the importance it deserves. We are adamant about seeking predictability with our future. We tend to think of investing in risky assets as extremely volatile and value eroding. We also dislike fluctuating returns and the loss of control of investment. We think our money is best left idle, unproductive but safe. There is no asset that is risk-free. We could lose our jobs, our homes can lose value, our banks can go bankrupt, our bonds can default, the government can collapse and companies we chose fondly may cease to exist. But we cannot live life assuming that all these extreme events are waiting to happen, and all at the same tirne. All these extreme forms of risks we know will not manifest at the same time.\n\nHGY-D-LKUV/59A\n6. Which one of the following statements best implies the crux of the passage?",
+      "options": [
+        "Precautionary principle is not given importance in current debate on developing GM crops.",
+        "Biotechn010U is not currently used in climate change mitigation and adaptation mechanisms.",
+        "Biotechn010U's role is not confined to the current priorities of developing GM crops.",
+        "The negative impacts of biotechn010U are not properly understood. 70 How many zeroes are there at the end of the following product? (a) 10 (b) 12 (c) 14 (d) 15 Let XYZ be a three-digit number, where (X + Y + Z) is not a multiple of 3. Then (XYZ + WX + ZXY) is not divisible by (c) 37 (d) (X+Y+Z)"
+      ]
+    },
+    {
+      "questionRef": "7",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "How many zeroes are there at the end of the following product?\n1 x 5 x 10 x 15 x 20 x 25 x 30 x 35 x 40 x 45 x 50 x 55 x 60",
+      "options": [
+        "10",
+        "12",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "questionRef": "8",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Let XYZ be a three-digit number, where (X + Y + Z) is not a multiple of 3. Then (XYZ + YZX + ZXY) is not divisible by",
+      "options": [
+        "3",
+        "9",
+        "37",
+        "(X + Y + Z)"
+      ]
+    },
+    {
+      "questionRef": "9",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Let p, q, r and s be natural numbers such that\nWhich one of the following is the largest natural number?",
+      "options": [
+        "p",
+        "q",
+        "r",
+        "s"
+      ]
+    },
+    {
+      "questionRef": "10",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "How many five-digit prime numbers can be obtained by using all the digits 1, 2, , 3, 4 and 5 without repetition of digits?",
+      "options": [
+        "Zero",
+        "One",
+        "Nine",
+        "Ten"
+      ]
+    },
+    {
+      "questionRef": "11",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "In the sum for which digit does the symbol @ stand?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "questionRef": "12",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "If you have two straight sticks of length 7 •5 feet and 305 feet, what is the minimum length can you measure?",
+      "options": [
+        "0•05 foot",
+        "005 foot",
+        "1 foot",
+        "305 feet"
+      ]
+    },
+    {
+      "questionRef": "13",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A simple mathematical operation in each number of the sequence 14, 18, 20, 24, 30, 32, results in a sequence with respect to prime numbers. Which one of the following is the next number in the sequence?",
+      "options": [
+        "34",
+        "36",
+        "38",
+        "40"
+      ]
+    },
+    {
+      "questionRef": "14",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "HGY-D-LKUV/59A 140 One page is torn from a booklet whose pages are numbered in the usual manner starting from the first page as 1. The sum of the numbers on the remaining pages is 195. The torn page contains which of the following numbers?",
+      "options": [
+        "5, 6",
+        "7, 8",
+        "9, 10",
+        "11, 12"
+      ]
+    },
+    {
+      "questionRef": "15",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "The missing letters which complete the arrangement are",
+      "options": [
+        "a, b, c, d",
+        "a, b, d, e",
+        "a, c, c, e",
+        "b, c, d, e"
+      ]
+    },
+    {
+      "questionRef": "16",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Let A3BC and DE2F be four-digit numbers where each letter represents a different digit greater than 3. If the sum of the numbers is 15902, then what is the difference between the values of A and D?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "questionRef": "17",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Two Statements Sl and S2 are given below followed by a Question. Sl: There are not more than two figures on any page of a 51-page book. S2: There is at least one figure on every P age. Question. Are there more than 100 figures in that book?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        "Both Sl and S2 are sufficient to answer the Question, but neither Sl alone nor S2 alone is sufficient to answer the Question.",
+        "Sl alone is sufficient to answer the Question.",
+        "Sl and S2 together are not sufficient to answer the Question.",
+        "S2 alone is sufficient to answer the Question."
+      ]
+    },
+    {
+      "questionRef": "18",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Consider the following data :\n\n| | Average marks in English | Average marks in Hindi |\n|---|---|---|\n| Girls | 9 | 8 |\n| Boys | 8 | 7 |\n| Overall average marks | 8.8 | x |\n\nWhat is the value of x in the above table?",
+      "options": [
+        "7.8",
+        "7.6",
+        "7.4",
+        "7.2"
+      ]
+    },
+    {
+      "questionRef": "19",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "HGY-D-LKUV/59A 11 190 A family of two generations consisting of six members P, Q, R, S, T and U has three males and three females. There are two married couples and two unmarried siblings. Ü is P's daughter and Q is Rs mother-in-law. T is an unmarried male and S is a male. Which one of the following is correct?",
+      "options": [
+        "R is U's husband.",
+        "R is S's wife.",
+        "S is unmarried.",
+        "None of the above"
+      ]
+    },
+    {
+      "questionRef": "20",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "If in a particular year 12th January is a Sunday, then which one of the following is correct?",
+      "options": [
+        "15th July is a Sunday if the year is a leap year.",
+        "15th July is a Sunday if the year is not a leap year.",
+        "12th July is a Sunday if the year is a leap year.",
+        "12th July is not a Sunday if the year is a leap year."
+      ]
+    },
+    {
+      "questionRef": "21",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—I Private investment in general is volatile. Foreign private investment is more volatile because the available investment avenues are significantly greater (i.e., the entire world). Therefore, the responsibility of providing employment cannot be left to Foreign Direct Investment (EDI). The current FDI inflows are volatile over time and. across sectors and regions, which is a necessary consequence of their search for the highest returns. The adverse consequences are unstable employment and an accentuation of income and regional inequalities. A probable positive consequence of foreign investment is the inflow of new technology and its subsequent diffusiOn. However, the diffusion is not at all certain because the existing state of physical and human capital in India may prove inadequate for the diffusion.\n\nWith reference to the above passage, the following assumptions have been made:\n1. Relying on foreign investment in the long run is not an economically sound policy. HGY-D-LKUV/59A\n2. Policies must be undertaken to reduce volatility in foreign private investment.\n3. Policies must be undertaken to strengthen domestic private investment.\n4. Public investment should be given priority over private investment.\n5. Substantial public investment in education and health should be undertaken,\nWhich of the above assumptions is/ are valid?",
+      "options": [
+        "1, 2 and 4",
+        "1, 3 and 5",
+        "2, 4 and 5",
+        "3 only"
+      ]
+    },
+    {
+      "questionRef": "22",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—2 Many opportunities to harness the highly skewed, seasonal and spatial distribution of monsoon flows, which occur in a four-month period from June to September annually, have been lost. Since these few months account for most of the rainfall and consequent freshwater availability, the need for holding rainwater in reservoirs, for subsequently releasing it for use over the year, is a necessity nobody can afford to overlook. Climate change will continue to affect weather conditions and create water shortages and excesses. While millions suffer from droughts and floods, waters in the country's many rivers flow unutilized, and are discharged into the sea every year.\n\nWith reference to the above passage, which of the following could be the most rationaZ and practical implications for India?\n1. Inter-linking of rivers should be undertaken.\n2. A network of dams• and canals should be built across the country for proper distribution of water.\n3. Farmers should be provided easy loans for digging borewells.\n4. Usage of water for agriculture should be regulated by law.\n5. Distribution of river water among regions should be regulated by the Union Government.\nSelect the correct answer using the code given below.",
+      "options": [
+        "1 and 2",
+        "2, 4 and 5",
+        "1, 3 and 4",
+        "2, 3 and 5"
+      ]
+    },
+    {
+      "questionRef": "23",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—3 People will invest in education whenever they are granted the economic freedom to fully enjoy its benefits. Again, this is for the obvious reason that the return on education increases as the level of economic freedom rises. When people, thanks to lower tax rates, are allowed to retain most of the higher income that they gain from each incremental level of education, it makes eminent sense to invest in education. On the HGY-D-LKUV/59A other hand, when the government decides to tax the higher income of educated individuals at even higher rates, it makes very little sense to invest in educating oneself further. The same incentives apply to parents who decide on whether to invest in their children's education.\n\nWith reference to the above passage, the following assumptions have been made:\n1. Lower tax rates in a country invariably translate into greater investments in higher education.\n2. Investment in the education of children ensures their economic freedom.\n3. Economic freedom has a positive impact on building up human capital.\nWhich of the above assumptions is/ are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "3 only",
+        "1, 2 and 3"
+      ]
+    },
+    {
+      "questionRef": "24",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—4 Our urban bodies cannot possibly ensure sustainable delivery of water in our cities unless financing mechanisms are put in place. Water delivery requires heavy investment in collecting it from a natural source, treating it to make it potable, and laying a distribution network of pipes for delivery to the users. It also requires investments in sewerage infrastructure and sewage treatment plants so that the sewers can carry the wastewater to these plants to ensure that no untreated sewage is discharged back into natural water bodies. If our cities were rich enough to meet the entire cost, water could be delivered free. They are not.\n\nWhat is the most ZogicaZ and crucial message conveyed by the passage?",
+      "options": [
+        "Urban local bodies must recover costs through user charges.",
+        "Urban local bodies are not efficient enough to meet the water requirements of our cities.",
+        "Water shortage in our cities is a perennial problem that cannot be solved.",
+        "In view of the water crisis in our cities, there is an urgent need to limit the population of cities by adopting an upper limit of population size."
+      ]
+    },
+    {
+      "questionRef": "25",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—4 Our urban bodies cannot possibly ensure sustainable delivery of water in our cities unless financing mechanisms are put in place. Water delivery requires heavy investment in collecting it from a natural source, treating it to make it potable, and laying a distribution network of pipes for delivery to the users. It also requires investments in sewerage infrastructure and sewage treatment plants so that the sewers can carry the wastewater to these plants to ensure that no untreated sewage is discharged back into natural water bodies. If our cities were rich enough to meet the entire cost, water could be delivered free. They are not.\n\nWith reference to the above passage, the following assumptions have been made:\n1. Rich cities only can ensure sustainable delivery of water.\n2. Sustainable delivery of water in cities means much more than supplying water to households.\nWhich of the above assumptions is/ are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "26",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—5 In India, agriculture still engages about half of its workforce, and about 85 per cent of its farms are small and marginal. Compared to China and Vietnam, which have experienced fast structural and rural transformation, India's story is of slow transformation. As a result, poverty reduction in India was at a much slower pace during 1988—2014, compared to China and Vietnam. India's poverty reduction was slow during 1988—2005, but during 2005—2012, it accelerated dramatically—almost three times faster than during the earlier period. What did India do during this period? Research reveals that the relative price scenario changed significantly (by more than 50%) in favour of agriculture in the wake of rising global prices. This boosted private investments in agriculture by more than 50%. As a result, agri-GDP growth touched +1% during 2007—2012 as against during 2002—2007. The net surplus. of agri-trade touched $25 billion in 2013—2014; real farm wages rose by 7% per annum. All this led to unprecedented fall in poverty.\n\nWith, reference to the above passage, the following assumptions have been made:\n1. Structural and rural transforma- tion is impossible when farms are mainly small and marginal.\n2. A good price incentive can trigger investments in agriculture.\n3. India needs to build value chains for high-value agri-products like livestock and horticulture. 4, Higher global prices of agricultural commodities are essential for India's poverty reduction.\nWhich of the above assumptions are valid?",
+      "options": [
+        "1 and 3",
+        "2 and 4",
+        "2 and 3",
+        "3 and 4"
+      ]
+    },
+    {
+      "questionRef": "27",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—5 In India, agriculture still engages about half of its workforce, and about 85 per cent of its farms are small and marginal. Compared to China and Vietnam, which have experienced fast structural and rural transformation, India's story is of slow transformation. As a result, poverty reduction in India was at a much slower pace during 1988—2014, compared to China and Vietnam. India's poverty reduction was slow during 1988—2005, but during 2005—2012, it accelerated dramatically—almost three times faster than during the earlier period. What did India do during this period? Research reveals that the relative price scenario changed significantly (by more than 50%) in favour of agriculture in the wake of rising global prices. This boosted private investments in agriculture by more than 50%. As a result, agri-GDP growth touched +1% during 2007—2012 as against during 2002—2007. The net surplus. of agri-trade touched $25 billion in 2013—2014; real farm wages rose by 7% per annum. All this led to unprecedented fall in poverty.\n\nWhich one of the following statements best reflects the critical message of the passage?",
+      "options": [
+        "India should create large-scale off-farm rural employment to reduce poverty in the near future.",
+        "India should create a large number of farmer producer companies.",
+        "Private investment in agriculture should be given priority over public investment.",
+        "Inclusive agricultural growth is key to reduce poverty in the near future."
+      ]
+    },
+    {
+      "questionRef": "28",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—5 In India, agriculture still engages about half of its workforce, and about 85 per cent of its farms are small and marginal. Compared to China and Vietnam, which have experienced fast structural and rural transformation, India's story is of slow transformation. As a result, poverty reduction in India was at a much slower pace during 1988—2014, compared to China and Vietnam. India's poverty reduction was slow during 1988—2005, but during 2005—2012, it accelerated dramatically—almost three times faster than during the earlier period. What did India do during this period? Research reveals that the relative price scenario changed significantly (by more than 50%) in favour of agriculture in the wake of rising global prices. This boosted private investments in agriculture by more than 50%. As a result, agri-GDP growth touched +1% during 2007—2012 as against during 2002—2007. The net surplus. of agri-trade touched $25 billion in 2013—2014; real farm wages rose by 7% per annum. All this led to unprecedented fall in poverty.\n\nTwo Statements Sl and S2 are given below with regard to four numbers P, Q, R and S followed by a Question: Sl: R is greater than P as well as Q. S2: S is not the largest one. Question Among four numbers P, Q, R and S, which one is the largest?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        "Sl alone is sufficient to answer the Question.",
+        "S2 alone is sufficient to answer the Question.",
+        "Sl and S2 together are sufficient to answer the Question, but neither Sl alone nor S2 alone is sufficient to answer the Question.",
+        "Sl and S2 together are not sufficient to answer the Question."
+      ]
+    },
+    {
+      "questionRef": "29",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "HGY-D-LKUV/59A below followed by a Question: Sl: n is a prime number. S2: n leaves a remainder of 1 when divided by 4. Question: If n is a unique natural number between IO and 20, then what is n?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        "Sl alone is sufficient to answer the Question.",
+        "S2 alone is sufficient to answer the Question.",
+        "Sl and S2 together are sufficient to answer the Question, but neither Sl alone nor S2 alone is sufficient to answer the Question.",
+        "Sl and S2 together are not sufficient to answer the Question."
+      ]
+    },
+    {
+      "questionRef": "30",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Sl: Their product is 21, S2: Their sum is 10. Question. What are the two numbers?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        "Sl alone is sufficient to answer the Question.",
+        "S2 alone is sufficient to answer the Question.",
+        "Sl and S2 together are sufficient to answer the Question, but neither Sl alone nor S2 alone is sufficient to answer the Question. Sl and S2 together are not sufficient to answer the Question.house straight 25 metres, then turns to the right and walks 50 metres again; then he turns towards left and again walks 25 metres. If his house faces to the East, what is his direction from the starting point? (a) South-East (b) South-West (c) North-East",
+        "North-West"
+      ]
+    },
+    {
+      "questionRef": "31",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A man walks down the backside of his house straight 25 metres, then turns to the right and walks 50 metres again; then he turns towards left and again walks 25 metres. If his house faces to the East, what is his direction from the starting point?",
+      "options": [
+        "South-East",
+        "South-West",
+        "North-East",
+        "North-West"
+      ]
+    },
+    {
+      "questionRef": "32",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Two Statements are given followed by two Conclusions. Statements. All numbers are divisible by 2 All numbers are divisible by 3 Conclusion—I All numbers are divisible by 6 Conclusion—II All numbers are divisible by 4\nWhich of the above Conclusions logically follows/ follow from the two given Statements?",
+      "options": [
+        "Only Conclusion—I",
+        "Only Conclusion—II",
+        "Neither Conclusion—I nor Conclusion—II",
+        "Both Conclusion—I and Conclusion—II"
+      ]
+    },
+    {
+      "questionRef": "33",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "HGY-D-LKUV/59A Conclusions. Statements. All cats are dogs. All cats are black. Conclusion—I. All dogs are black. Conclusion—II: Some dogs are not black.\nWhich of the above Conclusions logically follows/ follow from the two given Statements, disregarding commonly known facts?",
+      "options": [
+        "Only Conclusion—I",
+        "Only Conclusion—II",
+        "Neither Conclusion—I nor Conclusion—II",
+        "Both Conclusion—I and Conclusion—II"
+      ]
+    },
+    {
+      "questionRef": "34",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Consider the following sequence of numbers 51473985726315 863852243496\nHow many odd numbers are followed by the odd number in the above sequence?",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "questionRef": "35",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A is 16th from the left end in a row of boys and V is 18th from the right end. G is 1 lth from A towards the right and 3rd from V towards the right end. How many boys are there in the row?",
+      "options": [
+        "40",
+        "41",
+        "42",
+        "Cannot be determined due to insufficient data"
+      ]
+    },
+    {
+      "questionRef": "36",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Three Statements S 1, S2 and S3 are given below followed by a Question • Sl: Cis younger than D, but older than A and B. S2: D is the oldest. S3: A is older than B. Question: Who among A, B, C and D is the youngest?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        "Sl alone is sufficient to answer the Question.",
+        "Sl and S2 together are sufficient to answer the Question.",
+        "S2 and S3 together are sufficient to answer the Question.",
+        "Sl and S3 together are sufficient to answer the Question."
+      ]
+    },
+    {
+      "questionRef": "37",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "How many integers are there between 1 and 100 which have 4 as a digit but are not divisible by 4?",
+      "options": [
+        "5",
+        "11",
+        "12",
+        "13"
+      ]
+    },
+    {
+      "questionRef": "38",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Let x, y be the volumes; m, n be the masses of two metallic cubes P and Q respectively. Each side of Q is two times that of P and mass of Q is two times that of P. Let u = m/ x and v = n/ y. Which one of the following is correct?",
+      "options": [
+        "25 years",
+        "u = 2v",
+        "35 years",
+        "(b) 30 years (d) 45 years"
+      ]
+    },
+    {
+      "questionRef": "39",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "The average age of a teacher and three students is 20 years. If all the three students are of same age and the difference between the age of the teacher and each student is 20 years, then what is the age of the teacher?",
+      "options": [
+        "25 years",
+        "30 years",
+        "35 years",
+        "45 years"
+      ]
+    },
+    {
+      "questionRef": "40",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A person bought a car and sold it for e If he incurred a loss of 20%, then how much did he spend to buy the car?",
+      "options": [
+        "₹ 3,60,000",
+        "₹ 3,65,000",
+        "₹ 3,70,000",
+        "₹ 3,75,000"
+      ]
+    },
+    {
+      "questionRef": "41",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—I Spanish ships in the late 16th century first brought the potato tuber from South America to Europe whereby in the early 19th century, it had become a reliable backup to cereal crops, particularly in the cold, rain-soaked soils of Ireland. The Irish were soon almost wholly dependent on the potato as their staple food. And they were planting primarily one prodigious variety, the 'Lumper' potato, whose genetic frailty would be cruelly exposed by the fungus 'Phytophthora infestans'. In 1845, spores of the deadly fungus began spreading across the country, destroying nearly all the Lumpers in its path. The resulting famine killed or displaced millions.\n\nWhich one of the following statements best reflects the critical message of the passage?",
+      "options": [
+        "For introducing any foreign plant into a country, the soil and climate conditions of that country should be suitable.",
+        "As a staple food of a country, tuber crops like potato cannot replace cereal crops.",
+        "Some of the fungal infections of plants cannot be prevented or stopped from spreading across large areas.",
+        "Relying on a homogeneous food source is not desirable."
+      ]
+    },
+    {
+      "questionRef": "42",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—I Spanish ships in the late 16th century first brought the potato tuber from South America to Europe whereby in the early 19th century, it had become a reliable backup to cereal crops, particularly in the cold, rain-soaked soils of Ireland. The Irish were soon almost wholly dependent on the potato as their staple food. And they were planting primarily one prodigious variety, the 'Lumper' potato, whose genetic frailty would be cruelly exposed by the fungus 'Phytophthora infestans'. In 1845, spores of the deadly fungus began spreading across the country, destroying nearly all the Lumpers in its path. The resulting famine killed or displaced millions.\n\nHGY-D-LKUV/59A Passage—2 India is at once among the fastest growing global economies and home to the largest number of malnourished children in the world. There are regions where malnutrition is not the exception but the norm. And across the country, malnutrition is the cause of death for roughly half the 1 •3 million children who die before their fifth birthday each year. Even those children who survive suffer permanently from the damage that has already been done to their bodies and minds from not getting enough of the right foods and nutrients. Around",
+      "options": [
+        "1, 2, 3 and 4",
+        "2, 3, 4 and 5",
+        "1 only",
+        "3 and 5 only"
+      ]
+    },
+    {
+      "questionRef": "43",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "The pulse variety 'Pusa Arhar 16' has the potential to be grown in the paddy-growing regions of Punjab, Haryana and Uttar Pradesh and eventually in all of India. Its yield (about 2000 kg/hectare) will be significantly greater than those of the existing varieties and because its size will be uniform, it will be amenable to mechanical harvesting, an attractive feature for farmers in northern India who currently use this technology for paddy. Most important, Arhar straw, unlike paddy straw, is green and can be ploughed back into the soil. In paddy straw, the problem is the high silica content, which does not allow for easy decomposition. In the case of Arhar, the farmer, even after combine harvesting, just needs to run a rotovator to cut the leftover straw into pieces, which can be ploughed back and will decompose very fast. All this is difficult with leftover paddy stalks that cannot be easily salvaged or ploughed back. Farmers, therefore, choose the easiest option of simply burning it.\n\nWhich of the following are the most rational inferences that can be made from the passage?\n1. Farmers' income will be higher with pulse cultivation than with paddy cultivation.\n2. Pulse cultivation causes less pollution as compared to paddy cultivation.\n3. Pulse straw can be used to improve soil quality.\n4. In the context of northern Indian agriculture, paddy straw has no usefulness.\n5. Mechanized agriculture is the main cause for stubble burning.\nSelect the correct answer using the code given below :",
+      "options": [
+        "2, 3 and 5",
+        "1, 4 and 5",
+        "2 and 3 only",
+        "1 and 4 only"
+      ]
+    },
+    {
+      "questionRef": "44",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—I Spanish ships in the late 16th century first brought the potato tuber from South America to Europe whereby in the early 19th century, it had become a reliable backup to cereal crops, particularly in the cold, rain-soaked soils of Ireland. The Irish were soon almost wholly dependent on the potato as their staple food. And they were planting primarily one prodigious variety, the 'Lumper' potato, whose genetic frailty would be cruelly exposed by the fungus 'Phytophthora infestans'. In 1845, spores of the deadly fungus began spreading across the country, destroying nearly all the Lumpers in its path. The resulting famine killed or displaced millions.\n\nmillion children under 5 are stunted. That makes it harder for them to learn in school and subsequently earn a living as adults. Their lifetime earnings potential is almost a quarter less than that of their healthy peers.\n42. With reference to the above passage, which of the following is/are the most rational and practical implication/ implications?\n1. India's Public Distribution System should be monitored by the Union Government.\n2. Girls should be encouraged to delay marriage and first pregnancy.\n3. Mothers should be encouraged to breastfeed their children immediately after birth.\n4. The supply of safe drinking water and proper sanitation facilities to all should be ensured.\n5. Authorities should ensure the vaccination as prescribed.\nSelect the correct answer using the code given below.",
+      "options": [
+        "1, 2, 3 and 4",
+        "2, 3, 4 and 5",
+        "1 only",
+        "3 and 5 only"
+      ]
+    },
+    {
+      "questionRef": "45",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—I Spanish ships in the late 16th century first brought the potato tuber from South America to Europe whereby in the early 19th century, it had become a reliable backup to cereal crops, particularly in the cold, rain-soaked soils of Ireland. The Irish were soon almost wholly dependent on the potato as their staple food. And they were planting primarily one prodigious variety, the 'Lumper' potato, whose genetic frailty would be cruelly exposed by the fungus 'Phytophthora infestans'. In 1845, spores of the deadly fungus began spreading across the country, destroying nearly all the Lumpers in its path. The resulting famine killed or displaced millions.\n\nThe pulse variety 'Pusa Arhar 16' has the potential to be grown in the paddy-growing regions of Punjab, Haryana and Uttar Pradesh and eventually in all of India. Its yield (about 2000 kg/hectare) will be significantly greater than those of the existing varieties and because its size will be uniform, it will be amenable to mechanical harvesting, an attractive feature for farmers in northern India who currently use this technology for paddy. Most important, Arhar straw, unlike paddy straw, is green and can be ploughed back into the soil. In paddy straw, the problem is the high silica content, which does not allow for easy decomposition, In the case of Arhar, the farmer, even after combine harvesting, just needs to run a rotovator to cut the leftover straw into pieces, which can be ploughed back and will decompose very fast. All this is difficult with leftover paddy stalks that cannot be easily salvaged or ploughed back. Farmers, therefore, choose the easiest option of simply burning it.\n43. Which of the following are the most rational inferences that can be made from the passage?\n1. Farmers' income will be higher with pulse cultivation than with paddy cultivation.\n2. Pulse cultivation causes less pollution as compared to paddy cultivation.\n3. Pulse straw can be used to improve soil quality.\n4. In the context of northern Indian agriculture, paddy straw has no usefulness.\n5. Mechanized agriculture is the main cause for stubble burning. HGY-D-LKUV/S9A",
+      "options": [
+        "2, 3 and 5",
+        "1, 4 and 5",
+        "2 and 3 only",
+        "1 and 4 only"
+      ]
+    },
+    {
+      "questionRef": "46",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "passage?\n1. It is essential to rethink and redefine the economic role of the State in the quest for development.\n2. India has not made effective implementation of its policies in social sectors nor made sufficient investments in them. HGY-D-LKUV/59A given below. (a) 1 only (b) 2 only (c) Both 1 and 2 (d) Neither 1 nor 2\n\nWith reference to the above passage, the following assumptions have been made:\n1. India's economy needs to be greatly integrated with global economy so as to create large number of jobs and to sustain its growth momentum.\n2. Economic liberalization would cause large economic growth which would reduce poverty and create sufficient employment in the long run.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "47",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "passage?\n1. It is essential to rethink and redefine the economic role of the State in the quest for development.\n2. India has not made effective implementation of its policies in social sectors nor made sufficient investments in them. HGY-D-LKUV/59A given below. (a) 1 only (b) 2 only (c) Both 1 and 2 (d) Neither 1 nor 2\n\nA shop owner offers the following discount options on an article to a customer:\n1. Successive discounts of 10% and 20%, and then pay a service tax of\n2. Successive discounts of 20% and 10%, and then pay a service tax of 10%\n3. Pay a service tax of 10% first, then successive discounts of 20% and\nWhich one of the following is correct?",
+      "options": [
+        "1 only is the best option for the customer.",
+        "2 only is the best option for the customer.",
+        "3 only is the best option for the customer.",
+        "All the options are equally good for the customer."
+      ]
+    },
+    {
+      "questionRef": "48",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "The letters from A to Z are numbered from 1 to 26 respectively. If GHI = 1578 and DEP = 912, then what is ABC equal to?",
+      "options": [
+        "492",
+        "468",
+        "262",
+        "246"
+      ]
+    },
+    {
+      "questionRef": "49",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "HGY-D-LKUV/59A 31\n49. What is the missing term @ in the following? ACPQ: BESU MNGI @",
+      "options": [
+        "NPJL",
+        "NOJM",
+        "NPIL",
+        "NPJM"
+      ]
+    },
+    {
+      "questionRef": "50",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "What is the largest number among the following? 1 —6",
+      "options": [
+        "2 1 -3",
+        "4 1 —4",
+        "3 1 -2",
+        "6 (a) IL m (b) (c) IL m (d) 13 m"
+      ]
+    },
+    {
+      "questionRef": "51",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "What is the greatest length x such that 3 1/2 m and 8 3/4 m are integral multiples of x?",
+      "options": [
+        "1 1/2 m",
+        "1 1/3 m",
+        "1 1/4 m",
+        "1 3/4 m"
+      ]
+    },
+    {
+      "questionRef": "52",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Consider the following data: Year Birthrate Death rate 1911-1921 48•1 35 •5 1921-1931 36•3 1931-1941 450 310 1941-1951 39•9 27-4 1951-1961 41 •7 22•8 1961-1971 41•1 18•9 1971-1981 37•1 1+8 For which period was the natural growth rate maximum?",
+      "options": [
+        "1911-1921",
+        "1941-1951",
+        "1961-1971",
+        "1971-1981"
+      ]
+    },
+    {
+      "questionRef": "53",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "HGY-D-LKUV/59A 530 The recurring decimal representation 1072727... is equivalent to",
+      "options": [
+        "13/11",
+        "14/11",
+        "127/99",
+        "137/99"
+      ]
+    },
+    {
+      "questionRef": "54",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "What is the least four-digit number when divided by 3, 4, 5 and 6 leaves a remainder 2 in each case?",
+      "options": [
+        "1012",
+        "1022",
+        "1122",
+        "1222"
+      ]
+    },
+    {
+      "questionRef": "55",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "In adult population of a city, 40% men and 30% women are married. What is the percentage of married adult population if no man marries more than one woman and no woman marries more than one man; and there are no widows and widowers?",
+      "options": [
+        "33 1/7 %",
+        "34%",
+        "34 2/7 %",
+        "35%"
+      ]
+    },
+    {
+      "questionRef": "56",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "What is the remainder when 51 x 35 x 62 x 75 is divided by 100?",
+      "options": [
+        "50",
+        "25",
+        "5",
+        "1"
+      ]
+    },
+    {
+      "questionRef": "57",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A sum of 2,500 is distributed among X, Y and Z in the ratio L 5 What is the difference between the maximum share and the minimum share?",
+      "options": [
+        "₹ 300",
+        "₹ 350",
+        "₹ 400",
+        "₹ 450"
+      ]
+    },
+    {
+      "questionRef": "58",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "For what value of n, the sum of digits in the number (Ion + 1) is 2?",
+      "options": [
+        "For n = O only",
+        "For any whole number n",
+        "For any positive integer n only",
+        "For any real number n"
+      ]
+    },
+    {
+      "questionRef": "59",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "HGY-D-LKUV/59A\n59. In a class, there are three groups A, B and C. If one student from group A and two students from group B are shifted to group C, then what happens to the average weight of the students of the class?",
+      "options": [
+        "It increases.",
+        "It decreases.",
+        "It remains the same.",
+        "No conclusion can be drawn due to insufficient data."
+      ]
+    },
+    {
+      "questionRef": "60",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "How many different sums can be formed with the denominations e 50, e 100, e 200, 500 and e 2,000 taking at least three denominations at a time?",
+      "options": [
+        "16",
+        "15",
+        "14",
+        "10"
+      ]
+    },
+    {
+      "questionRef": "61",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—I Bank credit to the industrial sector has started shrinking. Its decline has been a serious concern as credit growth is essential to revive investment. The problem's origins lie in the incomplete reforms of the last 25 years. An institutional change that should have followed the 1991 reforms should have been setting up of a resolution corporation for banks. In a market economy with booms and busts, banks should be allowed to be set up and to fail. Today, we cannot shut down banks because there is no proper system to shut them down. Weak loss-making banks continue to need more capital.\n\nWhich one of the following is the moet ZogicaZ and rational inference that can be made from the above passage?",
+      "options": [
+        "Indian banking system is not able to help the country in its economic growth.",
+        "Economic reforms that started in 1991 have not helped in improving the economy to expected levels.",
+        "India lacks the institutional mechanism to deal with the failure of banks.",
+        "Encouraging the foreign investments in our industrial sector is a good alternative to this sector's dependence on banks for credit."
+      ]
+    },
+    {
+      "questionRef": "62",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—2 India has tremendous potential for solar eneru. We all realize that we have to stop burning fossil fuels to meet our enerU needs. HGY-D-LKUV/59A But certain renewable resources are still going through their cost curves and learning curves to get the required amount of output. The Indian Government has strongly committed to its targets of reducing emissions by 33 per cent by 2030, and towards this it has initiated a strong push towards a gas-based economy and has also invested heavily in renewable enerU. However, business houses are wary of investing too heavily in renewable enerU at a time when the techn010U is not yet ready.\n\nWhich one of the following is the most ZogicaZ and rational iMerence that can be made from the above passage?",
+      "options": [
+        "India's commitment to reduce emissions by 33% is unlikely to be achieved.",
+        "India should import gas rather than invest in renewable resources.",
+        "Getting renewable resources to market too soon may be costly.",
+        "India should put in more efforts in the exploration of natural gas."
+      ]
+    },
+    {
+      "questionRef": "63",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—2 India has tremendous potential for solar eneru. We all realize that we have to stop burning fossil fuels to meet our enerU needs. HGY-D-LKUV/59A But certain renewable resources are still going through their cost curves and learning curves to get the required amount of output. The Indian Government has strongly committed to its targets of reducing emissions by 33 per cent by 2030, and towards this it has initiated a strong push towards a gas-based economy and has also invested heavily in renewable enerU. However, business houses are wary of investing too heavily in renewable enerU at a time when the techn010U is not yet ready.\n\nWith reference to the above passage, the following assumptions have been made:\n1. Governments often provide inefficient and costly subsidies for technologies that may not be ready in the near future.\n2. India's commitment of reducing emissions by 33% by 2030 shall be on the basis of gas-based economy.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "64",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—3 Genome editing is different from genome modification. Genome editing typically involves finding the part of a plant genome that could be changed to render it less vulnerable to disease, or resistant to certain herbicides, or to increase yields. Researchers use tnolecular scissors' to dissect the genome and repair it, which is a process that occurs naturally when plants are under attack from diseases and can throw up new mutations that enable the plant to survive future attacks. This evolutionary process can effectively be speeded up now that it is possible to examine plant genomes in detail in laboratories, and create mechanisms through which the relevant genes can be altered very precisely.\n\nWith reference to the above passage, the following assumptions have been made:\n1. Genome editing does not require the transfer of genes from one plant to another.\n2. Through genome editing, the chosen genes can be altered precisely in a manner akin to the natural process that helps plants to adapt to the environmental factors.\nWhich of the above assumptions is/ are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "65",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—4 Many people understand the connection between solid waste management and health in terms of the consequences of unattended heaps of dry garbage which become home for flies and other vermin. However, there is another HGY-D-LKUV/59A aspect that is not well-understood, that is, what happens when unscientific solid waste management combines with poor drainage and dumping of untreated sewage into drains which are meant to carry storm water during rains. The result is choked drains which are full of stagnant water breeding mosquitoes, resulting in the spread of water-borne diseases.\n\nIn the context of India, which one of the following statements best reflects the critical message of the passage?",
+      "options": [
+        "In India, the drainage networks are not separate for sewerage and storm water.",
+        "Urban local bodies do not have enough resources and legislative authority to deal with the problems of waste management.",
+        "Solid waste management should be integrated with the maintenance of drainage and sewerage networks.",
+        "Bad management of solid waste and sewerage systems by our municipalities is the reason for drinking water shortages in our cities."
+      ]
+    },
+    {
+      "questionRef": "66",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage—5 In Part III of the Constitution, which assures people certain fundamental rights, Article 25 proclaims that \"all persons are equally entitled to freedom of conscience and the right freely to profess, practise and propagate religion\". What people fail to notice is that this proclamation is prefixed with the words \"subject to public order, morality, health and to the other provisions of this Part\", which set conditions precedent for the legal protection of religious practices of any community. The closing words of this prefatory rider in Article 25 virtually constitute a subordination clause placing other fundamental rights mentioned in Part III over and above the right to religious freedom. Among those other fundamental rights is the right to equality before law and equal protection of laws—assured at the outset and elaborated in later articles to mean, inter alia, that the State shall not deny equal protection of laws to any person or group of persons on the basis of religion alone.\n\nWhat is the most ZogicaZ inference from the above passage?",
+      "options": [
+        "State shall not interfere with the religious affairs of the citizens.",
+        "Religious freedom under the Constitution is open to State intervention.",
+        "Religious freedom of the citizens is not covered under fundamental rights.",
+        "Religious practices of any community are immune to State laws."
+      ]
+    },
+    {
+      "questionRef": "67",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "How many different 5-letter words (with or without meaning) can be constructed using all the letters of the word 'DELHI' so that each word has to start with D and end with I?",
+      "options": [
+        "24",
+        "18",
+        "12",
+        "6"
+      ]
+    },
+    {
+      "questionRef": "68",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "HGY-D-LKUV/59A 680 A bottle contains 20 litres of liquid A. 4 litres of liquid A is taken out of it and replaced by same quantity of liquid B. Again 4 litres of the mixture is taken out and replaced by same quantity of liquid B. What is the ratio of quantity of liquid A to that of liquid B in the final mixture?",
+      "options": [
+        "4 : 1",
+        "5 : 1",
+        "16 : 9",
+        "17 : 8"
+      ]
+    },
+    {
+      "questionRef": "69",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "The average score of a batsman after his 50th innings was 46•4. After 60th innings, his average score increases by 2•6. What was his average score in the last ten innings?",
+      "options": [
+        "122",
+        "91",
+        "62",
+        "49"
+      ]
+    },
+    {
+      "questionRef": "70",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "As a result of 25% hike in the price of rice per kg, a person is able to purchase 6 kg less rice for 1,200. What was the original price of rice per kg?",
+      "options": [
+        "30",
+        "40",
+        "e 50",
+        "60"
+      ]
+    },
+    {
+      "questionRef": "71",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "710 A person X can complete 20% of work in 8 days and another person Y can complete 25% of the same work in 6 days. If they work together, in how many days will 40% of the work be completed?",
+      "options": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "questionRef": "72",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A car travels from a place X to place Y at an average speed of v km/hr, from Y to X at an average speed of 2v km/hr, again from X to Y at an average speed of 3v km/hr and again from Y to X at an average speed of 4v km/hr. Then the average speed of the car for the entire journey",
+      "options": [
+        "is less than v km/hr",
+        "lies between v and 2v km/hr",
+        "lies between 2v and 3v km/hr",
+        "lies between 3v and 4v km/hr 730 Consider the following statements: 1. The minimum number of points of intersection of a square and a circle is 2. 2. The maximum number of points of intersection of a square and a circle is 8. Which of the above statements is/ are correct? (a) 1 only (b) 2 only (c) Both 1 and 2 (d) Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "73",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Consider the following statements :\n1. The minimum number of points of intersection of a square and a circle is 2.\n2. The maximum number of points of intersection of a square and a circle is 8.\nWhich of the above statements is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "74",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A man takes half time in rowing a certain distance downstream than upstream. What is the ratio of the speed in still water to the speed of current? HGY-D-LKUV/59A 750 How many pairs of natural numbers are there such that the difference of whose squares 'is 63?",
+      "options": [
+        "1 : 2",
+        "2 : 1",
+        "1 : 3",
+        "3 : 1"
+      ]
+    },
+    {
+      "questionRef": "75",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "How many pairs of natural numbers are there such that the difference of whose squares is 63?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ]
+    },
+    {
+      "questionRef": "76",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Which one of the following will have minimum change in its value if 5 is added to both numerator and the denominator of the fractions 2/3, 3/4, 4/5 and 5/6?",
+      "options": [
+        "2/3",
+        "3/4",
+        "4/5",
+        "5/6"
+      ]
+    },
+    {
+      "questionRef": "77",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A digit n > 3 is divisible by 3 but not divisible by 6. Which one of the following is divisible by 4?",
+      "options": [
+        "2n",
+        "3n",
+        "100",
+        "371+1 780 If 1 litre of water weighs 1 kg, then how many cubic millimetres of water will weigh gm? (b) 10 (d) 1000"
+      ]
+    },
+    {
+      "questionRef": "78",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "If 1 litre of water weighs 1 kg, then how many cubic millimetres of water will weigh 0.1 gm?",
+      "options": [
+        "1",
+        "10",
+        "100",
+        "1000"
+      ]
+    },
+    {
+      "questionRef": "79",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A vessel full of water weighs 40 kg. If it is one-third filled, its weight becomes 20 kg. What is the weight of the empty vessel?",
+      "options": [
+        "10 kg",
+        "15 kg",
+        "20 kg",
+        "25 kg"
+      ]
+    },
+    {
+      "questionRef": "80",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A frog tries to come out of a dried well m deep with slippery walls. Every time the frog jumps 30 cm, slides down 15 cm. What is the number of jumps required for the frog to come out of the well?",
+      "options": [
+        "28",
+        "29",
+        "30",
+        "31"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,978 @@
+{
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2019,
+  "paperKey": "UPSC-CSE-PRELIMS-CSAT-2019",
+  "durationMin": 120,
+  "sourceName": "UPSC official previous question papers",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/csp-p2.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKeyCSP-19-GS_II.pdf",
+  "reviewedAt": "2026-09-26T09:52:14.395Z",
+  "questionPaperSha256": "9a7e2a77a8eaf4a4ea380af166b0adf9e5b866f6eb422e10fdbd9494533bc5ec",
+  "answerKeySha256": "d14a7cd718f8bf0bf5866307ec31bab32a448fbf7be1e01635a6d5ce4c582095",
+  "answerKey": {
+    "1": 3,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0,
+    "7": 3,
+    "8": 2,
+    "9": 2,
+    "10": 2,
+    "11": 3,
+    "12": 1,
+    "13": 2,
+    "14": 3,
+    "15": 1,
+    "16": 1,
+    "17": 0,
+    "18": 1,
+    "19": 2,
+    "20": 2,
+    "21": 3,
+    "22": 1,
+    "23": 0,
+    "24": 0,
+    "25": 2,
+    "26": 2,
+    "27": 1,
+    "28": 1,
+    "29": 1,
+    "30": 3,
+    "31": 0,
+    "32": 3,
+    "33": 1,
+    "34": 1,
+    "35": 3,
+    "36": 1,
+    "37": 2,
+    "38": 1,
+    "39": 1,
+    "40": 1,
+    "41": 0,
+    "42": 0,
+    "43": 2,
+    "44": 0,
+    "45": 3,
+    "46": 2,
+    "47": 2,
+    "48": 2,
+    "49": 0,
+    "50": 1,
+    "51": 1,
+    "52": 1,
+    "53": 2,
+    "54": 1,
+    "55": 3,
+    "56": 2,
+    "57": 1,
+    "58": 1,
+    "59": 3,
+    "60": 3,
+    "61": 1,
+    "62": 3,
+    "63": 3,
+    "64": 1,
+    "65": 2,
+    "66": 1,
+    "67": 1,
+    "68": 3,
+    "69": 3,
+    "70": 0,
+    "71": 3,
+    "72": 1,
+    "73": 3,
+    "74": 3,
+    "75": 2,
+    "76": 2,
+    "77": 3,
+    "78": 1,
+    "79": 3,
+    "80": 1
+  },
+  "droppedQuestions": [],
+  "questions": [
+    {
+      "questionRef": "1",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 1 Political theorists no doubt have to take history of injustice, for example, untouchability, seriously. The concept of historical injustice takes note of a variety of historical wrongS •thdt continue into the present in some form or the other and tend to resist repaire Two reasons might account for resistance to repair. One, not only are the roots of injustice buried deep in history, injustice itself constitutes economic structures of exploitation, ideologies of discrimination •and modes of representation. Two, the category -of historical injustice generally extends acrosS a number of wrongs such as economic deprivation, social discrimination and lack of recognition: This category is complex, not only because of the overlap between a number of wrongs, but because one or the other wrong, generally iscrimination, tends to acquire partial autonomy from others. This is borne out by the history of repair in India.\n\nWhat is the main idea that we can infer from the passage?",
+      "options": [
+        "Untouchability in India has not been taken seriously by political theorists.",
+        "Historical injustice is inevitable in any society and is always beyond repair.",
+        "Social discrimination and deprivation have their roots in bad economies.",
+        "It is diffcult,• if not impossible, to repair every manifestation of historical injustice."
+      ]
+    },
+    {
+      "questionRef": "2",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 1 Political theorists no doubt have to take history of injustice, for example, untouchability, seriously. The concept of historical injustice takes note of a variety of historical wrongS •thdt continue into the present in some form or the other and tend to resist repaire Two reasons might account for resistance to repair. One, not only are the roots of injustice buried deep in history, injustice itself constitutes economic structures of exploitation, ideologies of discrimination •and modes of representation. Two, the category -of historical injustice generally extends acrosS a number of wrongs such as economic deprivation, social discrimination and lack of recognition: This category is complex, not only because of the overlap between a number of wrongs, but because one or the other wrong, generally iscrimination, tends to acquire partial autonomy from others. This is borne out by the history of repair in India.\n\nOn the basis of the above passage, the following assumptions have been made:\n1. Removal of economic discrimination leads to removal of social diécrimination. 2: Democratic polity is the best way to repair histdrical wrongs.\nWhich of the.above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "3",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 2 Education plays a great transformatory role in life, particularly so in this rapidly changing and globalizing world. Universities are the custodians of the intellectual capital and promoters of culture and specialized knowledge, Culture is an activity of thought,. and receptiveness to beauty and human feelings. A merely well informed man is only a bore on God's earth. What we should aim at is producing men who possess both culture and expert knowledge. Their expert knowledge will give them a firm ground to start from and their culture will lead them as deep as philosophy and as high as art. Together it will impart meaning t\" human existence\n\nOn the basis of the above passage, the following assumptions have been made:\n1. A society without wen educated people cannot be transformed into a modern society.\n2. Without acquiring culture, a person's education is not compléte.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "4",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 3 Soil, in which nearly all our food grows, is a living resource that takes years to form. Yet it can vanish in minutes. Each year 75 billion tonnes of fertile soil is lost to erosion. That is alarming — and not just for food producers. Soil can trap huge quantities of carbon dioxide in the form of organic carbon and prevent it from escaping into the atmosphere.\n\nOn the basis of the above passage, the following assumptions have been made: l. Large scale soil erosion is a major reason for widespread food insecurity in the world.\n2. Soil erosion is mainly anthropogenic.\n3. Sustainable management of soils helps in combating climate change.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ]
+    },
+    {
+      "questionRef": "5",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 4 Inequality is visible, even statistically measurable in many instances, but the economic power that drives it is invisible and not measurable. Like the force of gravity, power is the organising principle of inequality, be it of income, or wealth, gender, race, religion and region. Its effects are seen in a pervasive manner in all spheres, but the ways in which economic power pulls and tilts visible economic variables remain invisibly obscure.\n\nOn the basis of the above passage, the following assumptions have been made:\n1. Economic is the only reason for the existence of inequality in a society.\n2. Inequality of different kinds, income, wealth, etc. reinforces power.\n3. Economic power can be analysed more through its effects than by direct empirical methods.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ]
+    },
+    {
+      "questionRef": "6",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Climate change may actually benefit some plants by lengthening growing seasons and increasing carbon Yet other effects of a warmer world, such as more pests, droughts, and flooding, will •be less benign. How will the world adapt? Researchers project that by 2050, suitable croplands for four commodities — maize, potatoes, rice and wheat — will shift, in some cases pushing farmers to plant new crops. Some farmlands may benefit from warming, but others won't. Climate alone does not dictate yields; political shifts, global demand, and agricultural practices will influence how farms fare in the ålture.\n\nWhich one of the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        "Farmers who modernize their methods and diversify their fields will be in an advantageous position in future.",
+        "Climate change will adversely affect the crop diversity.",
+        "Shifting major crops to new croplands will lead to a great increase in the total area under cultivation and thus an increase in overall agricultural production.",
+        "Climate change is the most important factor affecting the agricultural economy in the future."
+      ]
+    },
+    {
+      "questionRef": "7",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6\nA bat's wings may look like sheets of skin. But underneath, a bat has the same five fingers as an orangutan or a human, as well as a wrist connected to the same cluster of wrist bones connected to the same long bones of the arm. What can be more curious than that the hand of a man, formed for grasping, that of a mole for digging, the leg of the horse, the paddle of the porpoise, and the wing of the bat, should all be constructed on the same pattern ?\n\nWhich one of the following is the most logical, scientific and rational inference that can be made from the above passage ?",
+      "options": [
+        "Different species having similar structure of hands is an example of biodiversity.",
+        "Limbs being used by different species for different kinds of work is an example of biodiversity.",
+        "Man and the aforementioned animals having similar structure of limbs is an example of coincidence in evolution.",
+        "Man and the aforementioned animals have a shared evolutionary history."
+      ]
+    },
+    {
+      "questionRef": "8",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 7 Around 56 million years ago, the Atlantic Ocean had not fully opened and animals, perhaps including our primate ancestors, could walk from Asia to North America through Europe and across Greenland. Earth was warmer than ii is today, but as the Palaeocene epoch gave way to Eocene, it was about to get much warmer still — rapidly and radically. The cause was massive geologically sudden release of carbon. During this period called Palaeocene — Eocene Thermal Maximum or PETM, the carbon injected into the atmospheré was roughly the amount that would be injected today if humans burned all the Earth's reserves of coal, oil and natural gas. The PETM lasted for about years, until the excess carbon was reabsorbed. It brought on drought, floods, insect plagues and a few extinctions. Life •on Earth survived — indeed, it prospered — but it was drastically different.\n\nBased on the above passage, the following assumptions have been made:\n1. Global warming has a bearing on the planet's biological evolution.\n2. Separation of land masses causes the . release of huge quantities of carbon into the atmosphere.\n3. Increased warming of Earth's atmosphere can change the composition of its flora and fauna.\n4. The present man-made global -warming will finally lead to conditions similar to those which happened 56 million years ago.\nWhich of the assumptions given above are valid?",
+      "options": [
+        "1 and 2",
+        "3 and 4",
+        "1 and 3",
+        "2 and 4"
+      ]
+    },
+    {
+      "questionRef": "9",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 7 Around 56 million years ago, the Atlantic Ocean had not fully opened and animals, perhaps including our primate ancestors, could walk from Asia to North America through Europe and across Greenland. Earth was warmer than ii is today, but as the Palaeocene epoch gave way to Eocene, it was about to get much warmer still — rapidly and radically. The cause was massive geologically sudden release of carbon. During this period called Palaeocene — Eocene Thermal Maximum or PETM, the carbon injected into the atmospheré was roughly the amount that would be injected today if humans burned all the Earth's reserves of coal, oil and natural gas. The PETM lasted for about years, until the excess carbon was reabsorbed. It brought on drought, floods, insect plagues and a few extinctions. Life •on Earth survived — indeed, it prospered — but it was drastically different.\n\nThe number of times the digit 5 will appear while writing théintegers from 1 to 1000 is",
+      "options": [
+        "269",
+        "271",
+        "300",
+        "302"
+      ]
+    },
+    {
+      "questionRef": "10",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A solid cube is painted yellow, blue and black such that opposite faces are of same colour. The cube is then cut into 36 cubes of two different sizes such that 32 cubes are small and the other four cubes are big. None of the faces of the bigger cubes is painted blue. How many cubes have only one face painted ?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ]
+    },
+    {
+      "questionRef": "11",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "A and B are two heavy steel blocks. If B is placed on the top of A, the weight increases by 60%. How much weight will reduce with respect to the total weight of A and B, if B is removed from the top of A ?",
+      "options": [
+        "60%",
+        "45.5%",
+        "40%",
+        "37.5%"
+      ]
+    },
+    {
+      "questionRef": "12",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Mr 'X' has three children. The birthday of the 15. first child falls on the 5th Monday of April, that of the second one falls on the 5th Thursday of November. On which day is the birthday of his third child, which falls on 20th December?",
+      "options": [
+        "Monday",
+        "Thursday",
+        "Saturday",
+        "Sunday"
+      ]
+    },
+    {
+      "questionRef": "13",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Consider the following Statements and Conclusions: Statements.\n1. Some rats are cats.\n2. Some cats are dogs.\n3. No dog is a cow. Conclusions:\nI. No cow is a cat.\nII. No dog is a rat.\nIII. Some cats are rats.\nWhich of the above conclusions is/are drawn from the statements?",
+      "options": [
+        "1, 11 and 111",
+        "Only I and II",
+        "only 111",
+        "only 11 and 111"
+      ]
+    },
+    {
+      "questionRef": "14",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "The number of parallelograms that can be formed from a set of four parallel lines intersecting another set of four parallel lines is",
+      "options": [
+        "18",
+        "24",
+        "32",
+        "36"
+      ]
+    },
+    {
+      "questionRef": "15",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "In a school every student is assigned a unique identification number. A student is a football player if and only if the identification number is divisible by 4, whereas a student is a cricketer if and only if the identification number is divisible by 6. If every number from 1 to 100 is assigned to a student, then how many of them play cricket as well as football?",
+      "options": [
+        "4",
+        "8",
+        "10",
+        "12"
+      ]
+    },
+    {
+      "questionRef": "16",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "When a runner was crossing the 12 km mark, she was informed that sheehad completed only 80% of the race. How many kilometres was the runner supposed to run in this event?",
+      "options": [
+        "14",
+        "15",
+        "16",
+        "16-5"
+      ]
+    },
+    {
+      "questionRef": "17",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Raju has 9000 with him and he wants to buy a mobile handset; but he finds that he has only 75% of the amount required to buy the handset. Therefore, he borrows 2000 from a friend. 'Hlen",
+      "options": [
+        "Raju still does not have enough amount to buy the handset.",
+        "Raju has exactly the same amount as required to buy the handset.",
+        "Raju has enough amount to buy the handset and he will have 500 with him after buying handset.",
+        "Raju has enough amount to buy the handset and he will have 1000 with him after buying the handset."
+      ]
+    },
+    {
+      "questionRef": "18",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "In 2002, Meenu's age was one-third of the •age Directions for the following 8 (eight) items: of Meera, whereas in 2010, Meenu's age was Read the following six passages and answer the half the age of Meera. What is Meenu's year Of -items that follow each passage. Your answers to birth?",
+      "options": [
+        "1992",
+        "1994",
+        "1996",
+        "1998"
+      ]
+    },
+    {
+      "questionRef": "19",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Rakesh and Rajesh together bought 10 balls and 10 rackets. Rakesh spent 1300 and Rajesh spent 1500. If each racket costs three times a ball does, then what is the price of a racket?",
+      "options": [
+        "₹ 70",
+        "₹ 90",
+        "₹ 210",
+        "₹ 240"
+      ]
+    },
+    {
+      "questionRef": "20",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "In a conference, out of a total 100 participants, 70 are Indians. If 60 of the total participants are vegetarian, then which of the following statements Ware correct?\n1. At least 30 Indian participants are vegetarian.\n2. At least 10 Indian participants are non-vegetarian.\nSelect the correct answer using the codes given below:",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2 (13-A)"
+      ]
+    },
+    {
+      "questionRef": "21",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 1 Low-end IoT (Internet of Things) devices are cheap commodity items: addressing security would add to the cost. This class of items is proliferating with new applications; many home appliances, thermosta$s, security and monitoring devices and personal convenience devices are part of the IoT. So are fitness trackers, certain medical implants and computer-like devices in automobiles. The IoT is expected to expand exponentially but new security challenges are daunting.\n\nWhich one of the following statements is the most logical and rational inference that can be made from the above passage",
+      "options": [
+        "Development of enabling technologies in India can be a big boost to its manufacturing sector.",
+        "India is not yet fully ready to adopt IoT in view of the imminent security challenges.",
+        "Life becomes more comfortable with the development of cheap low-end IoT devices.",
+        "As we go digital, we must recognise the huge threat to Internet security from some IoT devices."
+      ]
+    },
+    {
+      "questionRef": "22",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 2 With the digital phenomenon restructuring most social sectors, it is little surprise that global trade negotiations are now eyeing the digital area in an attempt to pre-emptively colonise it. Big Data is freely collected or mined from developing countries, and converted into digital intelligence in developed countries. This intelligence begins to control different sectors and extract monopoly rents. A ' large foreign company providing cab service, for instance, is not a network of cars and drivers; it is digital intelligence about commuting; public transport, roads, traffc, city. events, personal behavioural characteristics of commuters and drivers and so on.\n\nWhich one of the following is the most logical 24 and rational corollary to the above passage?",
+      "options": [
+        "Globalization is not in the interests of india as •it undermines its socio-economic *tructures.",
+        "India should be careful to protect its digital sovereignty in global trade talks.",
+        "India should charge monopoly rents from multinational companies in exchange for Big Data.",
+        "The loss of Big Data from India is proportional to the degree/value of its foreign trade."
+      ]
+    },
+    {
+      "questionRef": "23",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 2 With the digital phenomenon restructuring most social sectors, it is little surprise that global trade negotiations are now eyeing the digital area in an attempt to pre-emptively colonise it. Big Data is freely collected or mined from developing countries, and converted into digital intelligence in developed countries. This intelligence begins to control different sectors and extract monopoly rents. A ' large foreign company providing cab service, for instance, is not a network of cars and drivers; it is digital intelligence about commuting; public transport, roads, traffc, city. events, personal behavioural characteristics of commuters and drivers and so on.\n\nWhich of the following is most definitively implied by the above passage?",
+      "options": [
+        "Big Data is the key resource in the digital space.",
+        "Big economies create Big Data.",
+        "Access to Big Data is the prerogative of developed countries.",
+        "Access to and possession of Big Data is a characteristic of developed countries. (15-A)"
+      ]
+    },
+    {
+      "questionRef": "24",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 3\nThe rural poor across the world, including India, have contributed little to human-induced climate change, yet they are on the frontline in coping with its effects. Farmers can no longer rely on historical averages for rainfall and temperature, and the more frequent and extreme weather events, such as droughts and floods, can spell disaster. And there are new threats, such as sea level rise and the impact of melting glaciers on water supply. How significant are small farms ? As many as two billion people worldwide depend on them for their food and livelihood. Small-holder farmers in India produce 41 percent of the country's food grains, and other food items that contribute to local and national food security.\n\nWhat is the most logical and rational corollary to the above passage ?",
+      "options": [
+        "Supporting small farmers is an important part of any agenda regarding environmentally sustainable development.",
+        "Poor countries have little role to play in the mitigation of global warming.",
+        "Due to a large number of farmer households, India will not have food security problem in the foreseeable future.",
+        "Only small-holder farmers in India can ensure food security."
+      ]
+    },
+    {
+      "questionRef": "25",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 3 The rural poor across the world, inÅu4ing India, have contributed little to humqp-induced climate change, yet they are on th9 frontline ih coping with its effects. FarmerS can no longer rely on historical averages for rainfall and temperature, and the-more frequent and extreme weather events, such as droughts and floods, can spell disaster. And there are new threats, 'such as sea level rise and the impact of melting glaciers on water supply. How significant are small farms? As many as two billion people worldwide depend on them for their food and livelihood. Small-holder farmers in India produce 41 percent of the country's food grains, and other food items that contribute to local and national food security. What is the most logical and rational corollary to the above passage? (a) Supporting small farmers is an important part of any agenda regarding environmentally sustainable development. (b) Poor, countries have little role to play in the mitigation of global warming. (c) Due to a large number of farmer households, India will not have food security problem in the foreseeable future. (d) Only small-holder farmers in India can ensure food security.\n\nThe above passage implies that\n1. There is a potential problem of food insecurity in India.\n2. India will have to strengthen its disaster management capabilities.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "26",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 4 A changing climate, and the eventual efforts of governments (however reluctant) to deal with it, could have a big impact on investors' returns. Companies that produce or use large amounts of fossil fuels will face higher taxes and regulatory burdens. Some energy producers may find it impossible to exploit their known reserves, and be left with \"stranded assets\" — deposits of oil and coal that have to be,'left in •the ground. Other industries could be affected by the economic damage caused by more extreme weather — storms, floods, heat waves and droughts.\n\nOn the basis of the above passage, the 27. With reference to the above passage, the following assumptions have been made:\n1. Governments and companies need to be adequately prepared to face the climate change.\n2. Extreme weather events will reduce the economic growth of governments and companies in future.\n3. Ignoring climate change is a huge risk for investors.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "1 and 3 only",
+        "1, 2 and 3 (17 -A)"
+      ]
+    },
+    {
+      "questionRef": "27",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 5\nAccess to schooling for those coming of school age is close to universal, but access to quality exhibits a sharp gradient with socio-economic status. Quotas for the weaker sections in private schools is a provision introduced by the Right of Children to Free and Compulsory Education Act, 2009. The quotas have imposed a debate on issues of social integration and equity in education that private actors had escaped by and large. The idea of egalitarian education system with equality of opportunity as its primary goal appears to be outside the space that private school principals inhabit. Therefore, the imposition of the quotas has led to resistance, sometimes justified.\n\nWith reference to the above passage, the following assumptions have been made :\n1. Making equality of opportunity a reality is the fundamental goal of the Indian education system.\n2. The present Indian school system is unable to provide egalitarian education.\n3. Abolition of private schools and establishment of more government schools is the only way to ensure egalitarian education.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        "1 and 2 only",
+        "2 only",
+        "2 and 3 only",
+        "3 only"
+      ]
+    },
+    {
+      "questionRef": "28",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nWhich- one of the following is the most logical, rational and crucial message conveyed by the above passage?",
+      "options": [
+        "TB is not a curable disease in Indian circumstances.",
+        "Curing TB requires more than diagnosis and medical treatment.",
+        "Government's surveillance mechanism is deficient; and poor people have no access to treatment.",
+        "India will be free from diseases like TB only when its poverty alleviation programmes are effectively and successfully implemented. BKLYS-HJU"
+      ]
+    },
+    {
+      "questionRef": "29",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nA five-storeyed building with floors from 1 to V is painted using four different colours and only one colour is used to paint a floor.\nConsider the following statements:\n1. The middle three floors are painted in different colours.\n2. The second (II)' and the fourth (IV) floors are painted in different colours.\n3. The first (I) and the fifth (V) floors are painted red. To ensure that any two consecutive floors have different colours",
+      "options": [
+        "Only statement 2 is sufficient",
+        "Only statement 3 is sufficient",
+        "Statement 1 is not sufficient, but statement 1 along with statement 2 is sufficient",
+        "Statement 3 is not sufficient, but statement 3 along with statement 2 is sufficient"
+      ]
+    },
+    {
+      "questionRef": "30",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nP, Q and R are three towns. 'Ihe distance between P and Q is 60, km, whereas the distance between P and R is 80 km. Q is in the West of P and R is in the South of P. What is the distance between Q and R?",
+      "options": [
+        "140 km",
+        "130 km",
+        "110 km",
+        "100 krn"
+      ]
+    },
+    {
+      "questionRef": "31",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nAll members of a club went to Mumbai and stayed in a hotel. On the first day, 80% went for shopping and 50% went for. sightseeing, whereas 10% took rest in the hotel. Which of the following conclusion(s) can be drawn from the above data?\n1. 40% members went for shopping as well as sightseeing.\n2. 20% members went for only shopping.\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "32",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nIn a school, 60% students play cricket. A 35. student who does not play cricket, plays football. Every. football player has got a two-wheeler. Which of the following conclusions cannot be drawn from the above data?\n1. 60% of the students do not have two-wheelers.\n2. No cricketer has a two-wheeler.\n3. Cricket players do not play football.\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ]
+    },
+    {
+      "questionRef": "33",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nThe ratio of a two-digit natural number to a number formed by reversing its digits is 4: 7. Thc number of such pairs is",
+      "options": [
+        "5",
+        "4",
+        "3",
+        "2"
+      ]
+    },
+    {
+      "questionRef": "34",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nIn an, examination, A has scored 20 marks more than B. If B has scored 5% less marks than A, how much has B scored?",
+      "options": [
+        "360",
+        "380",
+        "400",
+        "420 (21 -A)"
+      ]
+    },
+    {
+      "questionRef": "35",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nSeeta and Geeta go for a swim after a gap of every 2 dÅyé and eveiy 3 days respectively. If on ISt January both bf them went for a swim together, when will they go together next?",
+      "options": [
+        "7th January",
+        "8th January",
+        "12th January",
+        "13th January"
+      ]
+    },
+    {
+      "questionRef": "36",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nX, Y and Z are three contestants in a race of 1000 m. Assume that all run with different uniform speeds. X gives Y a start of 40 m and X gives Z a start of 64 m. If Y and Z were to compete in a race of 1000 m, how many metres start will Y give to Z?",
+      "options": [
+        "20",
+        "25",
+        "30",
+        "35"
+      ]
+    },
+    {
+      "questionRef": "37",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nIf x is greater than or equal to 25 and y is less than or equal Co 40, then which one of the following is always correct?",
+      "options": [
+        "x is greater than y",
+        "(y -e x) is greater than 15",
+        "(y — x) is less than or equal to 15",
+        "(x + y) is greater than or equal to 65"
+      ]
+    },
+    {
+      "questionRef": "38",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nEna was born 4 years. after her parents' Directions for-the following 7 (seven) items: marriage. Her mother is three years younger than her father and 24 years older than Ena, who is 13 years old. At what age did Ena's father get married?",
+      "options": [
+        "22 years",
+        "23 years",
+        "24 years",
+        "25 years"
+      ]
+    },
+    {
+      "questionRef": "39",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nRakesh had money to buy 8 mobile handsets of a specific company. But the retailer offered very good discount on that particular handset. Rakesh could buy 10 mobile handsets with the amount he had. What was the discount the retailer offered?",
+      "options": [
+        "15%",
+        "20%",
+        "25%",
+        "30%"
+      ]
+    },
+    {
+      "questionRef": "40",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 A of the TB infected in India are poor and lack sumcient nutrition, suitable housing and have little understanding of prevention. TB then devastates families, makes the poor poorer, particularly affects women and children, and leads to ostracisation and loss of employment. The truth is that even if TB does not kill them, hunger and poverty will. Another truth is that deep-seated stigma, lack of counselling, expensive treatment and lack of adequate support from providers and family, coupled with torturous side-effects demotivate patients to continue treatment with disastrous health consequences.\n\nThe average marks of 100 students are given to be 40. It was found later that marks of one student were 53 which were misread as 83. The corrected mean marks are",
+      "options": [
+        "39",
+        "39-7",
+        "40",
+        "40•3"
+      ]
+    },
+    {
+      "questionRef": "41",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 1 What stands in the way of the widespread and careful adoption of 'Genetic Modification (GM)' technology is an 'Intellectual Property Rights' regime that seeks to create private monopolies for such technologies. If GM technolow is largely corporate driven, it seeks to maximize profits and that too in the short run. That is why corporations make major investments for herbicide-tolerant and pest-resistant crops: Such properties have only a short window, as soon enough, pests and weeds will evolve to overcome such resistance. This suits the corporations. The National Farmers Commission pointed out that priority must be given in genetic modification to the incorporation of genes that can help impart resistance to drought, salinity and other stresses.\n\nWhich one of the following is the most logical, rational and crucial message conveyed by the above passage?",
+      "options": [
+        "Public research institutions should take the lead in GM technology and prioritise the technology agenda.",
+        "Developing countries should- raise this issue in WTO and ensure the abolition of Intellectual Property Rights.",
+        "Private corporations should not be allowed to do agribusiness in India, particularly the seed business.",
+        "Present Indian circumstances do not favour the cultivation of genetically modified crops."
+      ]
+    },
+    {
+      "questionRef": "42",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 1 What stands in the way of the widespread and careful adoption of 'Genetic Modification (GM)' technology is an 'Intellectual Property Rights' regime that seeks to create private monopolies for such technologies. If GM technolow is largely corporate driven, it seeks to maximize profits and that too in the short run. That is why corporations make major investments for herbicide-tolerant and pest-resistant crops: Such properties have only a short window, as soon enough, pests and weeds will evolve to overcome such resistance. This suits the corporations. The National Farmers Commission pointed out that priority must be given in genetic modification to the incorporation of genes that can help impart resistance to drought, salinity and other stresses.\n\nOn the basis of the above passage, the following assumptions have been made:\n1. The issue of effects of natural calamities on ag•iculture is not given due consideration by GM technology companies.\n2. In the long run, GM technology will not bé able to solve agricultural problems arising due to global warming,\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "43",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 2 Most invasive species are neither terribly successful nor very harmful. Britain's invasive plants are not widespread, not spreading especially quickly, and often less of a nuisance than vigorous natives such as bracken. The arrival of new species almost always increases biological diversity in a region; in many cases, a flood of newcomers drives no native species to extinction. One reason is that invaders tend to colonise disturbed habitats like polluted lakes and post-industrial wasteland, where little else lives. They are nature's opportunists.\n\nWhich one of the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        "Invasive species should be used to rehabilitate desert areas and wastelands of a country.",
+        "Laws against the introduction of foreign plants are unnecessary.",
+        "Sometimes, the campaigns against foreign plants are pointless.",
+        "Foreign plants should be used to increase the biodiversity of a country."
+      ]
+    },
+    {
+      "questionRef": "44",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 3 Diarrhoeal deaths - among Indian children. are mostly due to food and water contamination. Use of contaminated groundwater and unsafe chemicals in- agriculture, poor hygiene in storage and - handling of food items- to food cooked and distributed in unhygienic surroundings; there are myriad factors that need regulation and monitoring. People need to have awareness of adulteration and ways of complaining to the relevant authorities. Surveillance - of food-borne diseases involves a number of government agencies and entails a good training of inspection staff. Considering the proportion of the urban population that-• depends on street food for its daily meals, investing in training and education of street vendors is of great significance.\n\nOn the basis of the above passage, the following assumptions have been made:\n1. Food safety is a complex issüe that calls for a multipronged solution.\n2. Great investments need to be made in developing the manpower for surveillance and training.\n3. India needs to make •sumcient legislation for governing food processing industry.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 and 2' only",
+        "3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ]
+    },
+    {
+      "questionRef": "45",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 4 The -interests of working and poor people have historically been neglected ili' the planning of our cities. Our cities are increasingly intolerant, unsafe and unlivable places for large numbers of citizens and yet we continue to plan via the old ways — the static Development Plan. — that draws exclusively from technical expertise, distanced from people's live expériences and needs, and actively excluding large number of people, places, activities and practices that are an integral part of the city.\n\nThe passage seems to argue",
+      "options": [
+        "against the monopoly of builders and the interests of elite groups.",
+        "against the need for global and smart cities.",
+        "in favour of planning cities mainly for working class and poor people.",
+        "in favour of participation of peoples' groups in city planning."
+      ]
+    },
+    {
+      "questionRef": "46",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 4 The -interests of working and poor people have historically been neglected ili' the planning of our cities. Our cities are increasingly intolerant, unsafe and unlivable places for large numbers of citizens and yet we continue to plan via the old ways — the static Development Plan. — that draws exclusively from technical expertise, distanced from people's live expériences and needs, and actively excluding large number of people, places, activities and practices that are an integral part of the city.\n\nThe above passage seems to imply that\n1. most of modern economic growth is . based on technological progress.\n2. much of modern Indian economy does not nurture suffcient symbiotic relationship with labour-intensive, natural resource-based livelihoods.\n3. service sector in India is not very labour-intensive.\n4. literate rural population is not willing to enter organised sector.\nWhich of the statements given above are correct?",
+      "options": [
+        "1 and 2 only",
+        "3 and 4 only",
+        "1, 2 and 3 only",
+        "1, 2, 3 and 4"
+      ]
+    },
+    {
+      "questionRef": "47",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nWhich one of the following is the most logical, rational and crucial - inference that can be derived from the above passage?",
+      "options": [
+        "Efforts to bring people in India's hintei•land into the banking system are not successful.",
+        "For meaningful financial inclusion, India's banking system needs more number of banking correspondents and other such last-mile workers.",
+        "Meaningful financial inclusion in India requires that banking correspondents have diverse skills.",
+        "Better banking outreach would be impossible unless each banking correspondent is allowed to serve a number of banks."
+      ]
+    },
+    {
+      "questionRef": "48",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nWhat is X in the sequence 132, 129, 124, 117, 106, 93, X ?",
+      "options": [
+        "74",
+        "75",
+        "76",
+        "77"
+      ]
+    },
+    {
+      "questionRef": "49",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nA wall' clock moves 10 minutes fast in every 24 hours. The' clock was set right to show the correct time at 8:00 a.m. on Monday. When the clock shows the time 6:00 p.m. on Wednesday, what is the correct time?",
+      "options": [
+        "5:36 p.m.",
+        "5:30 p.m.",
+        "5:24 p.m.",
+        "5:18 p.m."
+      ]
+    },
+    {
+      "questionRef": "50",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nIf the numerator and denominator of a proper fraction are increased by the same positive quantity which is greater than zero, the resulting fraction is",
+      "options": [
+        "always less than the original fraction",
+        "always greater than the original fraction",
+        "always equal to the original fraction",
+        "such that nothing can be claimed definitely"
+      ]
+    },
+    {
+      "questionRef": "51",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nWhat is X in the sequence 4, 196, 16, 144, 36, 100, 64, x?",
+      "options": [
+        "48",
+        "64",
+        "125",
+        "256"
+      ]
+    },
+    {
+      "questionRef": "52",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nIn a group of 15 people; 7 can read French, 8 can read English while 3 of them can read neither of these two languages. The number of people who can read exactly one language is",
+      "options": [
+        "10",
+        "9",
+        "5",
+        "4"
+      ]
+    },
+    {
+      "questionRef": "53",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nA printer numbers the pages of a book starting with 1 and uses 3089 digits ih all. How many pages does the book have?",
+      "options": [
+        "1040",
+        "1048",
+        "1049",
+        "1050"
+      ]
+    },
+    {
+      "questionRef": "54",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nConsider the following sequence that follows some arrangement: c_accaa_aa_bc_b The letters that appear in the gaps are",
+      "options": [
+        "abba",
+        "cbbb",
+        "bbbb",
+        "cccc"
+      ]
+    },
+    {
+      "questionRef": "55",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nA family has two children along with their parents. The average of the •weights of the children and their mother -is 50 kg. 'Ihe average of the weights of the children and their father is 52 kg. If the weight of the father is 60 kg, then what is the weight of -the mother?",
+      "options": [
+        "48 kg",
+        "50 kg",
+        "52 kg",
+        "54 kg"
+      ]
+    },
+    {
+      "questionRef": "56",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nSuppose you have sumcient amount of rupee currency in three denominations: 1, 10 and 50. In how many different ways can you pay a bill of 107?",
+      "options": [
+        "16",
+        "17",
+        "18",
+        "19"
+      ]
+    },
+    {
+      "questionRef": "57",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\n'A' started from his house and walked 20 m towards East, where his friend 'B' joined him. They together walked IO m - in the same direction. 'Ihen 'A' turned left while 'B' turned right and. travelled 2 m and 8 m respectively. Again 'B' turned' left -to fravel 4 m followed by 5 m 'to his right to reach his offce. 'A' turned right and travelled 12 m to reach his offce. What is the shortest distance between the two offces?",
+      "options": [
+        "15 m",
+        "17 m",
+        "19 m",
+        "20 m"
+      ]
+    },
+    {
+      "questionRef": "58",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nConsider two statements Sl and S2 followed by a question: Sl: p and q both are prime numbers. S2: p + q is an Odd integer. Question: Is pq an odd integer?\nWhich one of the following is correct?",
+      "options": [
+        "S1 alone is sufficient to answer the question",
+        "S2 alone is sufficient to answer the question",
+        "Both S1 and S2 taken together are not sufficient to answer the question",
+        "Both S1 and S2 are necessary to answer the question"
+      ]
+    },
+    {
+      "questionRef": "59",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nWhich year has the same calendar as that of 2009?",
+      "options": [
+        "2018",
+        "2017",
+        "2016",
+        "2015"
+      ]
+    },
+    {
+      "questionRef": "60",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nNumber 136 is added to 5B7 and the sum obtained is 7A3, where A and B are integers. It is given that 7A3 is exactly divisible by 3. The only possible value of B is",
+      "options": [
+        "2",
+        "5",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "questionRef": "61",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nWhich one of the following is -the -most logical, rational and crucial inference that can be derived from the above passage?",
+      "options": [
+        "A better regulatory system will help India achieve the size of economy appropriate to its population.",
+        "In a competitive global economy, India must use regulations strategically.",
+        "Regulations in 'India do not favour its integration with today's hyper competitive global economy.",
+        "Job creation and economic 'growth should be dominant considerations in developing India's regulatory system."
+      ]
+    },
+    {
+      "questionRef": "62",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 6 India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and -literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not: just basic bank accounts but also products such as accident and life insurance and micro pension schemes.\n\nOn the basis of the above passage, the following assumptions have been made: In today's global economy,\n1. regulations are not effectively used to protect local markets.\n2. social and environmental concerns are generally ignored by the governments across the world while implementing the regulations.\nWhich of the above assumptions is/are valid-?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "63",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 2 In a study, scientists compared • the microbiomes of poorly nourished and well nourished infants and young children. Gut microbes were isolated from faecal samples of malnourished and healthy children. The microbiome was \"immature\" and less diverse in malnourished children compared to the better developed \"mature\" microbiome found in healthy children of the same age. According to some studies, the chemical composition of mother's milk has shown the presence of a modified sugar (sialylated oligosaccharides). This is not utilized by the baby for its own nutrition. However, the bacteria constituting the infant's microbiome thrive on this sugar which serves as their food. Malnourished mothers have low levels of this sugar in their milk. Consequently, the microbiomes of their infants fail to mature. That in turn, leads to malnourished babies.\n\nWhich one of the following is the most logical, rational and crucial inference that can be derived from the above passage?",
+      "options": [
+        "If malnourished condition in children is caused by gut bacteria, it cannot be treated.",
+        "The guts of malnourished babies should be inoculated with mature microbiomes.",
+        "Babies of malnourished mothers should be fed with dairy milk fortified with sialylated oligosaccharides instead of mother's milk.",
+        "Research on benign effects of gut bacteria on nutrition has policy implications."
+      ]
+    },
+    {
+      "questionRef": "64",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 2 In a study, scientists compared • the microbiomes of poorly nourished and well nourished infants and young children. Gut microbes were isolated from faecal samples of malnourished and healthy children. The microbiome was \"immature\" and less diverse in malnourished children compared to the better developed \"mature\" microbiome found in healthy children of the same age. According to some studies, the chemical composition of mother's milk has shown the presence of a modified sugar (sialylated oligosaccharides). This is not utilized by the baby for its own nutrition. However, the bacteria constituting the infant's microbiome thrive on this sugar which serves as their food. Malnourished mothers have low levels of this sugar in their milk. Consequently, the microbiomes of their infants fail to mature. That in turn, leads to malnourished babies.\n\nOn the basis of' the above passage, the following assumptions have been made: 1, Processed probiotic foods are a solution to treat the children suffering from malnutrition due to immature gut bacteria composition.\n2. The babies of malnourished mothers generally tend to be malnourished.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ]
+    },
+    {
+      "questionRef": "65",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 3 Temperatures have riSen nearly five times as rapidly on the Western Antarctic Peninsula than the global average over the past five decades. Researchers have now found that melting glaciers are causing a loss of species diversity among benthos in the coastal waters off the Antarctic Peninsula, impacting an entire seafloor ecosystem. Elhey believe increased levels of suspended sediment in water to be the cause of the dwindling biodiversity in the coastal region.\n\nOn the basis of the above passage, the following assumptions have been made:\n1. Regions of glaciers warm faster than other regions due to global warming.\n2. Global warming can lead to seafloor sedimentation in some areas.\n3. Melting glaciers can reduce marine biodiversity in,some areas.\nWhich of the above assumptions Ware valid?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ]
+    },
+    {
+      "questionRef": "66",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage — 4 A research team examined a long-term owl roost, Owls prey one small mammals and the excreted remains. of those • meals that accumulated over the time, provide us an insight into the composition and structure of small mammals over the past millennia. The research suggested that when the Earth went through a period of, rapid warming about 13,000. years ago, the small mammal community was stable and resilient. But, from the last quarter- of the nineteenth century, human-made changés to the environment had caused an enormous drop in biomass and' energy flow. ms dramatic decline, in energy flow means modern ecösystems are not adapting as easily as they did in the past.\n\nOn 'the- basis of the above passage, the following assumptions have been made:\n1. Global warming is a frequently occurring natural phenomenon.\n2. The impending global warming will not adversely affect small mammals.\n3. Hur„ans are responsible for the loss of the Earth's natural resilience.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "2 and 3 only",
+        "1, 2 and 3 (39 -A)"
+      ]
+    },
+    {
+      "questionRef": "67",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.\n\nOn the basis of, the above passage, the following assumptions have been made:\n1. Humans have been the main reason for the large scale exGnction of plant species.\n2. Consumption -of food mainly from locally cultivated crops ensures crop diversity.\n3. The present style of production and distribution of food will. finally lead to the problem of food scarcity in the near future.\n4. Our food security may depend on. our ability to preserve the locally cultivated varieties of crops.\nWhich of the above assumptions are valid?",
+      "options": [
+        "1 and 3",
+        "2 and 4",
+        "2 and 3",
+        "1 and 4"
+      ]
+    },
+    {
+      "questionRef": "68",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.\n\nIf every alternative letter of the English alphabet from B onwards (including B) is written in lower case (small letters) and the remaining letters are capitalized, then how is the first month of the second half of the year written ?",
+      "options": [
+        "JuLY",
+        "jULy",
+        "jUly",
+        "jUlY"
+      ]
+    },
+    {
+      "questionRef": "69",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.\n\nSunita cuts a sheet of paper into three pieces. Length of first piece is equal to the average of the three single digit odd prime numbers. Length of the second piece is equal to that of the first plus one-third the length of the third. The third piece is as long as the other two pieces together. The length Of - the original sheet of paper is",
+      "options": [
+        "13 units",
+        "15 units",
+        "16 units",
+        "30 units"
+      ]
+    },
+    {
+      "questionRef": "70",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.\n\nIn the sequence 1, 5, 7, 3, 5, 7, 4, 3, 5, 7, how 73. many such 5s are there which are not immediately preceded by 3 but are immediately followed by 7?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "None"
+      ]
+    },
+    {
+      "questionRef": "71",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.\n\nA joint family consists of seven members A, B, C, D, E, F and G with three females. G is a widow and sister-in-law of D's father F. B and D are siblings and A is daughter of B. C is cousin 0fB. is E?\n1. Wife 0fF\n2. Grandmother of A\n3. Aunt of C\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ]
+    },
+    {
+      "questionRef": "72",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.\n\nEach face of a cube can be painted in black or white colours. In how many different ways can the cube be painted?",
+      "options": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "questionRef": "73",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "How many triplets (x, y, z) satisfy the equation x + y + z = 6, where x, y and z are natural numbers ?",
+      "options": [
+        "4",
+        "5",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "questionRef": "74",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.\n\nIf $ means 'divided bf•, @ means 'multiplied 77. b)?; # means 'minus', then the value of is",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "9"
+      ]
+    },
+    {
+      "questionRef": "75",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Passage 5 Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth céntury, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a -century ago have disappeared. Farmers -in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. Iri the recent past, our heavy dependence on a few high yielding varieties and technol(W-driven production and distribution of food is causing the dwindlinÅ of diversity in food crops. ff some mutating cfop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.\n\nAn 8-digit number 4252746B leaves remainder O when divided by 3. How many values of B are possible?",
+      "options": [
+        "2",
+        "3 Directiong for the following 2 (two) items: Read the following statements Sl and S2 and",
+        "4 answer the two items that follow:",
+        "6"
+      ]
+    },
+    {
+      "questionRef": "76",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Read the following information and answer the three items that follow: Six students A, B, C, D, E and F appeared in several tests. Either C or F scores the highest. 79. Whenever C scores the highest, then E scores the least. Whenever F scores the highest, B scores the least. In all the tests they got different marks; D scores higher than A, but they are close competitors; A scores higher than B; C scores higher than A.\n80.\n\nIf F stands second in the ranking, thén the position of B is",
+      "options": [
+        "Third",
+        "Fourth",
+        "Fifth",
+        "Sixth (43"
+      ]
+    },
+    {
+      "questionRef": "77",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Read the following information and answer the three items that follow: Six students A, B, C, D, E and F appeared in several tests. Either C or F scores the highest. 79. Whenever C scores the highest, then E scores the least. Whenever F scores the highest, B scores the least. In all the tests they got different marks; D scores higher than A, but they are close competitors; A scores higher than B; C scores higher than A.\n80.\n\nIf B scores the least, the rank of C will be",
+      "options": [
+        "Second",
+        "Third",
+        "Fourth",
+        "Second or third"
+      ]
+    },
+    {
+      "questionRef": "78",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Read the following information and answer the three items that follow: Six students A, B, C, D, E and F appeared in several tests. Either C or F scores the highest. 79. Whenever C scores the highest, then E scores the least. Whenever F scores the highest, B scores the least. In all the tests they got different marks; D scores higher than A, but they are close competitors; A scores higher than B; C scores higher than A.\n80.\n\nIf E is ranked third, then which one of the following is correct?",
+      "options": [
+        "E gets more marks than C",
+        "C gets more marks than E",
+        "A is ranked fourth",
+        "D is ranked fifth"
+      ]
+    },
+    {
+      "questionRef": "79",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Sl: Twice the weight of Sohan is less than the weight of Mohan or that of Rohan. S2: Twice the weight of Rohan is greater 'than the weight of Mohan or that of Sohan.\nWhich one of the following statements is correct?",
+      "options": [
+        "Weight of Mohan is greatest",
+        "Weight of Sohan is greatest",
+        "Weight of Rohan is greatest",
+        "Whose weight is greatest' cannot be determined"
+      ]
+    },
+    {
+      "questionRef": "80",
+      "subjectId": "UPSC-CSE-CSAT",
+      "questionText": "Which one of the following statements is correct?",
+      "options": [
+        "Weight of Mohan is least",
+        "Weight of Sohan is least",
+        "Weight of Rohan is least",
+        "'Whose weight is least' cannot be determined"
+      ]
+    }
+  ]
+}

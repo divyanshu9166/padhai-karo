@@ -77,8 +77,8 @@
         "White light is better for the flowering of plants as compared to the light of other colours.",
         "Proper intensity of light in an ecosystem is important not only for plants but for animals too."
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "RESOLVED",
       "answerGuess": "B",
       "issues": [],
       "regions": [
@@ -96,7 +96,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "2",
@@ -109,7 +109,7 @@
         "3 and 4 only"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -126,7 +126,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "3",
@@ -139,7 +139,7 @@
         "Climate changes cause the farmers to adopt unsustainable livelihoods and risky coping strategies."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -156,7 +156,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "4",
@@ -169,7 +169,7 @@
         "1, 2 and 3"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -186,7 +186,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "5",
@@ -198,7 +198,7 @@
         "9"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -215,7 +215,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "6",
@@ -227,7 +227,7 @@
         "9"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -244,7 +244,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "7",
@@ -255,12 +255,10 @@
         "19th May",
         "18th May"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 1,
+      "answerStatus": "RESOLVED",
       "answerGuess": "B",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 6,
@@ -276,7 +274,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "8",
@@ -288,10 +286,8 @@
         "P = 50 (2)n/12"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 6,
@@ -307,24 +303,20 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "9",
       "questionText": "9. In a class, 60% of students are from India and 50% of the students are girls. If 30% of the Indian students are girls, then what percentage of foreign students are boys?",
       "options": [
         "45%",
-        "",
+        "40%",
         "30%",
-        ""
+        "20%"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "NUMBER_OCR_CORRECTED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 6,
@@ -340,7 +332,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "10",
@@ -352,7 +344,7 @@
         "Neither Conclusion-I nor Conclusion-II"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -369,7 +361,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "11",
@@ -382,7 +374,7 @@
         "1, 3 and 4 only"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -399,7 +391,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "12",
@@ -412,7 +404,7 @@
         "4 and 6 only"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -429,7 +421,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "13",
@@ -442,7 +434,7 @@
         "The present trend of communication technologies will affect our lives in future. (11"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -459,7 +451,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "14",
@@ -472,7 +464,7 @@
         "1, 2 and 4 only"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -489,7 +481,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "15",
@@ -501,7 +493,7 @@
         "Neither Conclusion-I nor Conclusion-II"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -518,7 +510,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "16",
@@ -530,10 +522,8 @@
         "7"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 12,
@@ -549,7 +539,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "17",
@@ -561,7 +551,7 @@
         "16"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -578,7 +568,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "18",
@@ -590,10 +580,8 @@
         "35 km"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 12,
@@ -609,23 +597,20 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "19",
       "questionText": "Integers are listed from 700 to 1000. In how many integers is the sum of the digits 10?",
       "options": [
-        "6 7",
-        "",
+        "6",
+        "7",
         "8",
         "9"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 12,
@@ -641,7 +626,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "20",
@@ -653,10 +638,8 @@
         "An angle more than 450 North of East"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 12,
@@ -672,7 +655,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "21",
@@ -684,8 +667,8 @@
         "India's energy and climate actions are not compatible with its broader social, economic and environmental goals.",
         "India's energy decision-making process is straightforward supply-oriented and ignores the demand side."
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 0,
+      "answerStatus": "RESOLVED",
       "answerGuess": "X",
       "issues": [],
       "regions": [
@@ -703,7 +686,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "22",
@@ -715,8 +698,8 @@
         "Using antibiotics on animals should be banned.",
         "Antibiotics should only be used to treat diseases."
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
       "issues": [],
       "regions": [
@@ -734,7 +717,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "23",
@@ -747,7 +730,7 @@
         "Neither 1 nor 2"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -764,7 +747,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "24",
@@ -777,7 +760,7 @@
         "Neither 1 nor 2"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -794,7 +777,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "25",
@@ -806,7 +789,7 @@
         "T and U"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -823,22 +806,20 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "26",
       "questionText": "Replace the incorrect term by the correct term in the given sequence 3, 2, 7, 4, 13, 10, 21, 18, 31, 28, 43, 40 where odd terms and even terms follow the same pattern.",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "0",
+        "1",
+        "3",
+        "6"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -854,23 +835,20 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "27",
-      "questionText": "Following is a matrix of certain entries. The entries follow a certain trend row-wise. Choose the missing entry (?) accordingly. 7B IOA 9B IOA 13C",
+      "questionText": "Following is a matrix of certain entries. The entries follow a certain trend row-wise. Choose the missing entry (?) accordingly.\n\n| 7B | 10A | 3C |\n|---|---|---|\n| 3C | 9B | 6A |\n| 10A | 13C | ? |",
       "options": [
         "9B",
         "3A",
         "3B",
-        ""
+        "3C"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "MAY_HAVE_TABLE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -886,25 +864,20 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "28",
-      "questionText": "You are given two identical sequences in two rows: Sequence-I: 8 4 6 15 52•5 236•25 Sequence-II: 5 A What is the entry in the place of C for the Sequence-II?",
+      "questionText": "You are given two identical sequences in two rows:\n\n| Sequence-I: | 8 | 4 | 6 | 15 | 52.5 | 236.25 |\n|---|---|---|---|---|---|---|\n| Sequence-II: | 5 | A | B | C | D | E |\n\nWhat is the entry in the place of C for the Sequence-II?",
       "options": [
-        "",
+        "2.5",
         "5",
-        "9•375",
-        "32•8125"
+        "9.375",
+        "32.8125"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "OCR_NOISE",
-        "MAY_HAVE_TABLE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -920,7 +893,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "29",
@@ -932,11 +905,8 @@
         "Neither 1 nor 2"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -952,7 +922,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "30",
@@ -964,10 +934,8 @@
         "5"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 18,
@@ -983,7 +951,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "31",
@@ -996,7 +964,7 @@
         "Men do not understand their own religious denomination."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1013,7 +981,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "32",
@@ -1026,10 +994,8 @@
         "It is impossible for men to establish a good dominion."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 20,
@@ -1052,7 +1018,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "33",
@@ -1065,7 +1031,7 @@
         "3 and 4 only"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1082,7 +1048,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "34",
@@ -1095,7 +1061,7 @@
         "Having a government is a necessary evil because tyranny is inherent in any form of government."
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1112,7 +1078,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "35",
@@ -1124,7 +1090,7 @@
         "30 or more"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1141,7 +1107,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "36",
@@ -1153,7 +1119,7 @@
         "Neither 1 nor 2"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1170,7 +1136,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "37",
@@ -1182,7 +1148,7 @@
         "Neither 1 nor 2"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1199,7 +1165,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "38",
@@ -1211,7 +1177,7 @@
         "Both Statement-I and Statement-2 are required to answer the Question"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1228,7 +1194,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "39",
@@ -1239,8 +1205,8 @@
         "Both Statement-I and Statement-2 are required to answer the Question",
         "Neither Statement-I alone nor Statement-2 alone is suffcient to answer the Question"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 2,
+      "answerStatus": "RESOLVED",
       "answerGuess": "C",
       "issues": [],
       "regions": [
@@ -1258,22 +1224,20 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "40",
       "questionText": "In the English alphabet, the first 4 letters are written in opposite order; and the next 4 letters are written in opposite order and so on; and at the end Y and Z are interchanged.\nWhich will be the fourth letter to the right of the 13th letter?",
       "options": [
-        "",
-        "",
-        "",
-        "1"
+        "N",
+        "T",
+        "H",
+        "I"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 24,
@@ -1289,7 +1253,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "41",
@@ -1302,7 +1266,7 @@
         "The idea of what is right or wrong is necessary for the survival of human species."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1319,7 +1283,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "42",
@@ -1332,7 +1296,7 @@
         "1, 2, 3, 4 and 5"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1349,7 +1313,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "43",
@@ -1362,7 +1326,7 @@
         "Indian banking system requires structural reforms as a long-term solution for bad loans problem."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1379,7 +1343,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "44",
@@ -1392,7 +1356,7 @@
         "Financial sector reforms are required for enhancing the economic welfare of the people."
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1409,22 +1373,20 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "45",
-      "questionText": "Consider the following Table: Runs Balls Runs Balls faced scored in faced in scored in in the layer the First the First e Secon Second Innin Innin Innin Innin 61 99 14 76 B 05 12 50 85 c 15 75 20 50 D 13 55 12 50 Who is the fastest run scorer in the Test Match?",
+      "questionText": "Consider the following Table:\n\n| Player | Runs scored in the First Innings | Balls faced in the First Innings | Runs scored in the Second Innings | Balls faced in the Second Innings |\n|---|---|---|---|---|\n| A | 61 | 99 | 14 | 76 |\n| B | 05 | 12 | 50 | 85 |\n| C | 15 | 75 | 20 | 50 |\n| D | 13 | 55 | 12 | 50 |\n\nWho is the fastest run scorer in the Test Match?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "A",
+        "B",
+        "C",
+        "D"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 30,
@@ -1440,7 +1402,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "46",
@@ -1452,7 +1414,7 @@
         "No villager under 25 years of age has his own house."
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1469,7 +1431,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "47",
@@ -1481,7 +1443,7 @@
         "Neither Statement-I alone nor Statement-2 alone is suffcient to answer the Question (31 _"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1498,7 +1460,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "48",
@@ -1510,7 +1472,7 @@
         "Saturday"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1527,7 +1489,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "49",
@@ -1539,7 +1501,7 @@
         "Neither Conclusion 1 nor 2 nor 3 nor 4"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1556,7 +1518,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "50",
@@ -1568,7 +1530,7 @@
         "608 A)"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1585,7 +1547,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "51",
@@ -1598,7 +1560,7 @@
         "Private sector institutions in higher education as well as coaching institutes can take advantage of this opportunity and thrive well."
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1615,7 +1577,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "52",
@@ -1628,7 +1590,7 @@
         "Public-Private Partnership mode of development is the viable long-term solution for the infrastructure and sustainability problems of India."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1645,7 +1607,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "53",
@@ -1657,7 +1619,7 @@
         "The price of a pen is three times the price of a pencil"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1674,7 +1636,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "54",
@@ -1686,10 +1648,8 @@
         "420"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1705,7 +1665,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "55",
@@ -1717,7 +1677,7 @@
         "270"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1734,7 +1694,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "56",
@@ -1746,7 +1706,7 @@
         "DGFLIRUQZ"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -1763,7 +1723,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "57",
@@ -1775,11 +1735,8 @@
         "Between 7:05 hours and 7:10 hours"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1795,22 +1752,20 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "58",
       "questionText": "In an objective type test of 90 questions, 5 marks are allotted for every correct answer and 2 marks are deducted for every wrong answer. After attempting all the 90 questions, a student got a total of 387 marks. What is the number of incorrect responses?",
       "options": [
-        "",
+        "9",
         "13",
         "27",
         "43"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1826,7 +1781,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "59",
@@ -1838,10 +1793,8 @@
         "220"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1857,7 +1810,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "60",
@@ -1869,10 +1822,8 @@
         "Cannot be determined due to insuffcient data"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 34,
@@ -1888,7 +1839,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "61",
@@ -1901,10 +1852,8 @@
         "1, 2 and 3"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 36,
@@ -1920,7 +1869,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "62",
@@ -1933,10 +1882,8 @@
         "To be a better citizen, the present world order demands societal and life-coping skills in addition to academic content."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 36,
@@ -1952,25 +1899,21 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "63",
       "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
       "questionText": "There are three points P, Q and R on a 68. straight line such that PQ: QR = 3: 5. Ifn is the number of possible values of PQ: PR, then what is n equal to?",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "1",
+        "2",
+        "3",
+        "4"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -1986,24 +1929,21 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "64",
       "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
       "questionText": "On a chess board, in how many different ways can 6 consecutive squares be chosen on the diagonals along a straight path? 12",
       "options": [
-        "",
-        "",
-        "",
-        ""
+        "4",
+        "6",
+        "8",
+        "12"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2019,7 +1959,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "65",
@@ -2032,10 +1972,8 @@
         "ababab"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2051,24 +1989,21 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "66",
       "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
       "questionText": "Using 2, 2, 3, 3, 3 as digits, how many distinct numbers greater than 30000 can be formed?",
       "options": [
-        "",
-        "",
-        "",
+        "3",
+        "6",
+        "9",
         "12"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "OPTIONS_INCOMPLETE",
-        "PASSAGE_ATTACHMENT_UNVERIFIED"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2084,7 +2019,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "67",
@@ -2097,11 +2032,8 @@
         "Neither 1 nor 2"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2117,7 +2049,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "68",
@@ -2130,11 +2062,8 @@
         "1000000"
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2150,7 +2079,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "69",
@@ -2163,11 +2092,8 @@
         "6"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_TABLE"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2183,7 +2109,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "70",
@@ -2196,11 +2122,8 @@
         "Neither 1 nor 2"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "PASSAGE_ATTACHMENT_UNVERIFIED",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 38,
@@ -2216,7 +2139,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "71",
@@ -2229,7 +2152,7 @@
         "Wealth generation is based on the risk-taking behaviour of some men."
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -2246,7 +2169,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "72",
@@ -2259,10 +2182,8 @@
         "disagreement about the harm in telling the truth."
       ],
       "answer": 3,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2285,7 +2206,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "73",
@@ -2298,10 +2219,8 @@
         "Complete concealment of truth"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "NUMBER_NOT_READ"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 40,
@@ -2317,7 +2236,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "74",
@@ -2329,11 +2248,8 @@
         "1200"
       ],
       "answer": 2,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_FIGURE",
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2349,7 +2265,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "75",
@@ -2361,7 +2277,7 @@
         "Sunday"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -2378,7 +2294,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "76",
@@ -2390,10 +2306,8 @@
         "Neither 1 nor 2 (43 — A)"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2409,7 +2323,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "77",
@@ -2421,7 +2335,7 @@
         "Neither 1 nor 2"
       ],
       "answer": 1,
-      "answerStatus": "AUTO",
+      "answerStatus": "RESOLVED",
       "issues": [],
       "regions": [
         {
@@ -2438,7 +2352,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "78",
@@ -2450,10 +2364,8 @@
         "Cannot be determined due to insufficient data"
       ],
       "answer": 0,
-      "answerStatus": "AUTO",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "answerStatus": "RESOLVED",
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2469,7 +2381,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "79",
@@ -2480,8 +2392,8 @@
         "15783",
         "15873"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
       "issues": [],
       "regions": [
@@ -2499,7 +2411,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     },
     {
       "questionRef": "80",
@@ -2510,12 +2422,10 @@
         "18",
         "15"
       ],
-      "answer": null,
-      "answerStatus": "NEEDS_REVIEW",
+      "answer": 3,
+      "answerStatus": "RESOLVED",
       "answerGuess": "D",
-      "issues": [
-        "MAY_HAVE_MATH"
-      ],
+      "issues": [],
       "regions": [
         {
           "page": 42,
@@ -2531,7 +2441,7 @@
         "w": 105,
         "h": 96
       },
-      "reviewStatus": "PENDING"
+      "reviewStatus": "APPROVED"
     }
   ]
 }
