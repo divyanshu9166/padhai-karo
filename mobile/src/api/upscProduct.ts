@@ -56,7 +56,7 @@ export function bookmarkCurrentAffairs(itemId: string, read = true, addToRevisio
 type OpenNoteInput =
     | { inputType: 'TEXT'; text: string; title?: string }
     | { inputType: 'PHOTO'; imageData: string; mimeType: string; title?: string }
-    | { inputType: 'VOICE'; audioData: string; mimeType: string; audioUri?: string; voiceNoteId?: string; title?: string };
+    | { inputType: 'VOICE'; voiceNoteId?: string; transcript?: string; audioData?: string; mimeType?: string; audioUri?: string; title?: string };
 export function createOpenNote(input: OpenNoteInput): Promise<{ summary: { id: string; summary: AiStudySummary }; remainingQuota: number; source: string; message: string }> { return request('/ai/notes', { method: 'POST', body: input }); }
 export function getResources(): Promise<{ resources: unknown[] }> { return request('/resources'); }
 export function createResource(input: { title: string; url?: string; type?: string; tags?: string[] }): Promise<{ resource: unknown }> { return request('/resources', { method: 'POST', body: input }); }
@@ -84,6 +84,7 @@ export function createConceptMap(input: { title: string; nodes: unknown[]; edges
 export function getConceptMaps(): Promise<{ maps: ConceptMap[] }> { return request('/concept-maps'); }
 export function createConceptClarification(input: { concept: string; confusion?: string; level: string; mode: ConceptMode }): Promise<ConceptClarification> { return request('/learning/concept-clarification', { method: 'POST', body: input }); }
 export function createCapsule(input: { title: string; points: string[]; chapterId?: string }): Promise<{ capsule: unknown }> { return request('/revision-capsules', { method: 'POST', body: input }); }
+export function generateChapterCapsule(chapterId: string): Promise<{ capsule: { id: string; title: string; points: string[] }; source: 'AI' | 'GUIDED_TEMPLATE' }> { return request('/revision-capsules/generate', { method: 'POST', body: { chapterId } }); }
 export function getWellbeingInsights(): Promise<WellbeingInsights> { return request('/wellbeing/insights'); }
 export function createRecoveryPlan(reason?: string): Promise<{ plan: unknown }> { return request('/wellbeing/recovery', { method: 'POST', body: { reason } }); }
 export function logAnxietyProtocol(protocol: string, durationSec: number): Promise<{ log: unknown; steps: string[] }> { return request('/wellbeing/protocol', { method: 'POST', body: { protocol, durationSec } }); }
@@ -166,7 +167,7 @@ export interface AnswerWritingAttempt {
         source: 'RUBRIC' | 'AI';
     };
 }
-export interface AiStudySummary { title?: string; keyPoints: string[]; revisionCapsule?: string[]; flashcards?: Array<{ question: string; answer: string }> }
+export interface AiStudySummary { title?: string; keyPoints: string[]; revisionCapsule?: string[]; flashcards?: Array<{ question: string; answer: string }>; generationSource?: string }
 export interface WellbeingInsights { risk: 'LOW' | 'WATCH' | 'HIGH'; signals: { averageStress: number; averageEnergy: number; heavyStudyDays: number; missedPlanDays: number; abandonedSessions?: number }; recoveryPlan: unknown[] | null; }
 export interface Milestone { id: string; label: string; targetValue: number; currentValue: number; achievedAt: string | null; }
 export interface ChecklistItem { id: string; label: string; category: string; completed: boolean; dueAt?: string | null; }
@@ -190,6 +191,6 @@ export interface ExternalPaperAnalysis { scorePercent: number; previousScorePerc
 export interface ExternalPaperReview { id: string; title: string; sourceName: string | null; testDate: string; obtainedScore: number; maxScore: number; breakdown: ExternalPaperBreakdown[]; mistakeTags: ExternalPaperMistakeTag[]; selfNotes: string | null; documentId: string | null; analysis: ExternalPaperAnalysis; createdAt: string; }
 export interface Counselling { roles: Array<{ name: string; fit: string; next: string }>; disclaimer: string; }
 export interface VoiceNote { id: string; title: string; audioUri?: string | null; transcription?: string | null; durationSec?: number | null; tags: string[]; }
-export interface PdfDocument { id: string; title: string; fileUrl: string | null; fileName?: string | null; fileMimeType?: string | null; fileChecksum?: string | null; localUri?: string; pageImageUris?: Record<string, string>; extractedText?: string | null; pageText?: unknown; pageCount: number | null; tags: string[]; }
+export interface PdfDocument { id: string; title: string; fileUrl: string | null; fileName?: string | null; fileMimeType?: string | null; fileChecksum?: string | null; updatedAt?: string; localUri?: string; pageImageUris?: Record<string, string>; extractedText?: string | null; pageText?: unknown; pageCount: number | null; tags: string[]; }
 export interface PdfAnnotation { id: string; documentId: string; page: number; type: string; quote: string | null; note: string | null; color?: string; selectionStart?: number | null; selectionEnd?: number | null; rect?: { x: number; y: number; width: number; height: number } | null; updatedAt?: string; }
 export interface AmbientMode { id: string; label: string; url: string | null; loop: boolean; }

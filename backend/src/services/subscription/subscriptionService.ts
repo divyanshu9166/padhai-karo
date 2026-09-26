@@ -29,6 +29,7 @@ import type { AuthContext } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { ErrorCode, errorResponse } from '@/lib/errors';
 
+import { ENTITLEMENT_PROFILE_SELECT, resolveAiAllowance, serializeAllowance } from './entitlements';
 import { getPlan } from './plans';
 import { RazorpayHttpGateway } from './razorpayGateway';
 import { runBillingReconcile, type ReconcilePrisma } from './reconcile';
@@ -174,7 +175,7 @@ export async function getSubscriptionHandler(
 
     const profile = await prisma.profile.findUnique({
         where: { userId },
-        select: { subscriptionTier: true, aiQuota: true },
+        select: ENTITLEMENT_PROFILE_SELECT,
     });
     if (profile === null) {
         return errorResponse(
@@ -188,10 +189,14 @@ export async function getSubscriptionHandler(
         where: { userId },
         orderBy: { createdAt: 'desc' },
     });
+    const allowance = await resolveAiAllowance(prisma, userId, profile);
 
     return Response.json({
         tier: profile.subscriptionTier,
         aiQuota: profile.aiQuota,
+        aiAllowance: serializeAllowance(allowance),
+        trialEndsAt: profile.trialEndsAt?.toISOString() ?? null,
+        trialAvailable: profile.subscriptionTier !== 'PAID' && profile.trialStartedAt === null,
         payments,
     });
 }

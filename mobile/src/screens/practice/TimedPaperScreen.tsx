@@ -94,7 +94,7 @@ export function TimedPaperScreen({
         async (paperId: string): Promise<void> => {
             const id = paperId.trim();
             if (id === '') {
-                setFormError('Enter a paper id to begin.');
+                setFormError(t('timedPaper.enterId'));
                 return;
             }
             setFormError(null);
@@ -121,7 +121,7 @@ export function TimedPaperScreen({
                     setPhase({
                         kind: 'error',
                         message:
-                            "You're offline and this paper isn't downloaded. Download it while online to take it offline.",
+                            t('timedPaper.offlineNotDownloaded'),
                     });
                 }
                 return;
@@ -140,7 +140,7 @@ export function TimedPaperScreen({
                     return;
                 }
                 const message =
-                    err instanceof ApiError ? err.message : 'Could not load the paper. Try again.';
+                    err instanceof ApiError ? err.message : t('timedPaper.loadError');
                 setPhase({ kind: 'error', message });
             }
         },
@@ -150,18 +150,18 @@ export function TimedPaperScreen({
     const onDownload = useCallback(async (): Promise<void> => {
         const id = paperIdText.trim();
         if (id === '') {
-            setFormError('Enter a paper id to download.');
+            setFormError(t('timedPaper.enterIdToDownload'));
             return;
         }
         setFormError(null);
-        setDownloadMsg('Downloading…');
+        setDownloadMsg(t('timedPaper.downloading'));
         try {
             await downloadPaper(id);
-            setDownloadMsg('Downloaded — available offline.');
+            setDownloadMsg(t('timedPaper.downloaded'));
         } catch (err) {
             setDownloadMsg(null);
             setFormError(
-                err instanceof ApiError ? err.message : 'Could not download this paper. Try again.',
+                err instanceof ApiError ? err.message : t('timedPaper.downloadError'),
             );
         }
     }, [paperIdText, downloadPaper]);
@@ -231,7 +231,7 @@ export function TimedPaperScreen({
                 setPhase({ kind: 'results', paper, result });
             } catch (err) {
                 const message =
-                    err instanceof ApiError ? err.message : 'Could not submit the paper. Try again.';
+                    err instanceof ApiError ? err.message : t('timedPaper.submitError');
                 submittedRef.current = false;
                 setFormError(message);
                 setPhase({ kind: 'running', paper });
@@ -279,13 +279,13 @@ export function TimedPaperScreen({
                 </Centered>
             ) : phase.kind === 'enterId' ? (
                 <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-                    <OfflineBanner note="Only downloaded papers can be taken offline." />
-                    <Text style={styles.label}>Paper id</Text>
+                    <OfflineBanner note={t('timedPaper.offlineOnlyDownloaded')} />
+                    <Text style={styles.label}>{t('timedPaper.paperId')}</Text>
                     <TextInput
                         style={styles.input}
                         value={paperIdText}
                         onChangeText={setPaperIdText}
-                        placeholder="Enter a paper id"
+                        placeholder={t('timedPaper.enterIdPlaceholder')}
                         autoCapitalize="none"
                         autoCorrect={false}
                     />
@@ -293,7 +293,7 @@ export function TimedPaperScreen({
                     {downloadMsg ? <Text style={styles.muted}>{downloadMsg}</Text> : null}
                     <PrimaryButton label={t('focus.start')} onPress={() => void startPaper(paperIdText)} />
                     <SecondaryButton
-                        label={isOffline ? 'Download (needs connection)' : 'Download for offline'}
+                        label={isOffline ? t('timedPaper.downloadNeedsConnection') : t('timedPaper.downloadOffline')}
                         onPress={() => void onDownload()}
                         disabled={isOffline}
                     />
@@ -305,7 +305,7 @@ export function TimedPaperScreen({
                         questionsById={questionsById}
                         sourceType="TIMED"
                     />
-                    <PrimaryButton label="Take another paper" onPress={resetToEntry} />
+                    <PrimaryButton label={t('timedPaper.takeAnother')} onPress={resetToEntry} />
                 </ScrollView>
             ) : (
                 // running | submitting
@@ -316,7 +316,7 @@ export function TimedPaperScreen({
                             remainingSec <= 60 ? styles.timerBarUrgent : undefined,
                         ]}
                     >
-                        <Text style={styles.timerLabel}>Time left</Text>
+                        <Text style={styles.timerLabel}>{t('timedPaper.timeLeft')}</Text>
                         <Text
                             style={[
                                 styles.timerText,
@@ -332,7 +332,7 @@ export function TimedPaperScreen({
                         keyboardShouldPersistTaps="handled"
                     >
                         {phase.paper.questions.length === 0 ? (
-                            <Text style={styles.muted}>This paper has no questions.</Text>
+                            <Text style={styles.muted}>{t('timedPaper.noQuestions')}</Text>
                         ) : (
                             phase.paper.questions.map((q, i) => (
                                 <QuestionCard

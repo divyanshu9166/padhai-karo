@@ -1,0 +1,21 @@
+{
+  "id": "upsc-cse-prelims-2019-gs1",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2019,
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers/archives",
+  "series": "A",
+  "requiresFinalKeyReview": true,
+  "paperKey": "UPSC-CSE-PRELIMS-GS1-2019",
+  "subjectId": "UPSC-CSE-GS1",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/csp-p1.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKeyCSP-19-GS_I.pdf",
+  "bytes": 1198474,
+  "sha256": "a84ad287d4dff9c17eeb8e94636535bbf039dd5bb4c274d3658828384cfd6952",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2019-gs1-answer-key.pdf",
+  "answerKeyBytes": 464478,
+  "answerKeySha256": "2e530aab9609904cff700cc0952196f16fb6a48982223ae1f381404af75b6bcc",
+  "downloadedAt": "2026-09-26T05:15:58.316Z",
+  "finalKeyReviewed": false
+}

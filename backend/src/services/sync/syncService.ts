@@ -86,7 +86,7 @@ async function loadPaperAnswerSources(paperId: string): Promise<PaperAnswerSourc
     return prisma.pYQ.findMany({
         where: { paperId, flaggedForReview: false },
         select: { id: true, correctOption: true },
-        orderBy: { id: 'asc' },
+        orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
     });
 }
 

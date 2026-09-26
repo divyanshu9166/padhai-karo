@@ -424,11 +424,20 @@ export async function generateTimetableHandler(
         });
         const completedKeys = new Set(completed.map((task) => `${task.scheduledDate?.toISOString().slice(0, 10)}:${task.chapterId ?? ''}:${task.subjectId ?? ''}:${task.taskType}`));
         const taskType = (sessionType: string) => {
-            if (sessionType === 'REVISION') return 'REVISION' as const;
-            if (sessionType === 'PRACTICE_PROBLEMS') return 'PYQ_PRACTICE' as const;
-            if (sessionType === 'MOCK_ANALYSIS') return 'MOCK_ANALYSIS' as const;
-            if (sessionType === 'FORMULA_DRILL') return 'FORMULA_REVISION' as const;
-            return 'READING' as const;
+            switch (sessionType) {
+                case 'NOTES_MAKING': return 'NOTES_MAKING' as const;
+                case 'REVISION': return 'REVISION' as const;
+                case 'PRACTICE_PROBLEMS': return 'PYQ_PRACTICE' as const;
+                case 'ANSWER_WRITING': return 'ANSWER_WRITING' as const;
+                case 'MOCK_TEST': return 'MOCK_TEST' as const;
+                case 'MOCK_ANALYSIS': return 'MOCK_ANALYSIS' as const;
+                case 'CURRENT_AFFAIRS': return 'CURRENT_AFFAIRS' as const;
+                case 'QUANT_PRACTICE': return 'QUANT_PRACTICE' as const;
+                case 'REASONING_PRACTICE': return 'REASONING_PRACTICE' as const;
+                case 'VOCABULARY': return 'VOCABULARY' as const;
+                case 'FORMULA_DRILL': return 'FORMULA_REVISION' as const;
+                default: return 'READING' as const;
+            }
         };
         const generatedTasks = stored.filter((block) => !block.isBuffer).flatMap((block) => {
             const type = taskType(block.sessionType);

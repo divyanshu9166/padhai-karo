@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { Platform } from 'react-native';
 
 import { registerPushDevice } from '@/api/upscProduct';
+import { openNotificationRoute } from '@/navigation/navigationRef';
 import { useAuth } from '@/state';
 
 Notifications.setNotificationHandler({
@@ -12,6 +13,15 @@ Notifications.setNotificationHandler({
 
 export function PushRegistration(): React.JSX.Element | null {
     const { status } = useAuth();
+
+    // Open the screen a reminder points at (revision queue or daily quiz) when it is tapped,
+    // including the tap that cold-started the app.
+    useEffect(() => {
+        void Notifications.getLastNotificationResponseAsync().then((response) => openNotificationRoute(response?.notification.request.content.data?.route)).catch(() => undefined);
+        const subscription = Notifications.addNotificationResponseReceivedListener((response) => openNotificationRoute(response.notification.request.content.data?.route));
+        return () => subscription.remove();
+    }, []);
+
     useEffect(() => {
         if (status !== 'authenticated') return;
         void (async () => {

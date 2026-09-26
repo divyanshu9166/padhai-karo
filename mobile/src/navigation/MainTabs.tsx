@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 
 import { FocusTimerScreen, TodayScreen } from '@/screens';
+import { useTranslation } from '@/localization';
 
 import { MoreStack } from './MoreStack';
 import { PlanStack } from './PlanStack';
@@ -16,17 +17,18 @@ import type { MainTabParamList } from './types';
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 export function MainTabs(): React.JSX.Element {
+    const t = useTranslation();
     return (
         <Tab.Navigator initialRouteName="Dashboard" screenOptions={{ headerShown: false }}>
-            <Tab.Screen name="Dashboard" component={TodayScreen} options={{ title: 'Today' }} />
-            <Tab.Screen name="Plan" component={PlanStack} options={{ title: 'Plan', headerShown: false }} />
-            <Tab.Screen name="Focus" component={FocusTimerScreen} options={{ title: 'Focus' }} />
+            <Tab.Screen name="Dashboard" component={TodayScreen} options={{ title: t('nav.today') }} />
+            <Tab.Screen name="Plan" component={PlanStack} options={{ title: t('nav.plan'), headerShown: false }} />
+            <Tab.Screen name="Focus" component={FocusTimerScreen} options={{ title: t('nav.focus') }} />
             <Tab.Screen
                 name="Practice"
                 component={PracticeStack}
-                options={{ title: 'Practice', headerShown: false }}
+                options={{ title: t('nav.practice'), headerShown: false }}
             />
-            <Tab.Screen name="More" component={MoreStack} options={{ title: 'More' }} />
+            <Tab.Screen name="More" component={MoreStack} options={{ title: t('nav.more') }} />
         </Tab.Navigator>
     );
 }

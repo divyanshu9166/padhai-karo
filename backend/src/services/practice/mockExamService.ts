@@ -14,7 +14,7 @@ async function questionSet(userId: string, paperId?: string, program?: ExamProgr
     if (!paperId) return [];
     return prisma.pYQ.findMany({
         where: { paperId, examTrack: program === 'UPSC_CSE' ? 'UPSC' : 'SSC', examProgram: program, examStage: stage, flaggedForReview: false },
-        orderBy: { year: 'desc' },
+        orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
         take: Math.max(1, Math.min(200, limit)),
         select: { id: true, questionText: true, options: true, correctOption: true, subjectId: true, year: true },
     });
@@ -51,8 +51,10 @@ async function questionSetByIds(ids: readonly string[], paperId: string, program
     return ids.flatMap((id) => { const row = byId.get(id); return row ? [row] : []; });
 }
 
-function marksPerQuestion(paper: PaperDefinition | undefined, questionCount: number): number {
-    if (paper?.maxMarks && paper.questionCount) return paper.maxMarks / paper.questionCount;
+function marksPerQuestion(paper: PaperDefinition | undefined, questionCount: number, droppedQuestionCount = 0): number {
+    // UPSC spreads the paper's maximum marks over the questions left after official drops.
+    const scored = paper?.questionCount ? paper.questionCount - droppedQuestionCount : 0;
+    if (paper?.maxMarks && scored > 0) return paper.maxMarks / scored;
     return paper?.maxMarks && questionCount > 0 ? paper.maxMarks / questionCount : 1;
 }
 
@@ -76,25 +78,36 @@ export async function startMockExamHandler(request: Request, auth: AuthContext):
     const program = profile?.examProgram as ExamProgramKey | null | undefined;
     const stage = profile?.examStage as ExamStage | null | undefined;
     if (!program || !stage) return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'Complete UPSC/SSC onboarding before starting a full mock.');
-    const selectedPaper = paperId
-        ? await prisma.pYQPaper.findFirst({ where: { id: paperId, examProgram: program, examStage: stage, verifiedAt: { not: null }, answerKey: { isNot: null } }, select: { id: true, paperKey: true, durationMin: true, year: true } })
-        : await prisma.pYQPaper.findFirst({ where: { examProgram: program, examStage: stage, verifiedAt: { not: null }, answerKey: { isNot: null } }, orderBy: { year: 'desc' }, select: { id: true, paperKey: true, durationMin: true, year: true } });
+    const candidates = await prisma.pYQPaper.findMany({
+        where: { ...(paperId ? { id: paperId } : {}), examProgram: program, examStage: stage, verifiedAt: { not: null }, answerKey: { isNot: null } },
+        orderBy: [{ year: 'desc' }, { updatedAt: 'desc' }],
+        take: paperId ? 1 : 20,
+        select: { id: true, paperKey: true, durationMin: true, year: true, droppedQuestionCount: true, _count: { select: { questions: { where: { flaggedForReview: false } } } } },
+    });
+    // Without an explicit paper, prefer the newest paper that is complete (so a small reviewed
+    // starter batch of the same year never shadows the full paper), else the newest one.
+    const isComplete = (paper: (typeof candidates)[number]): boolean => {
+        const definition = findPaperDefinition(program, stage, paper.paperKey);
+        return Boolean(definition?.questionCount) && paper._count.questions >= definition!.questionCount! - paper.droppedQuestionCount;
+    };
+    const selectedPaper = candidates.find(isComplete) ?? candidates[0] ?? null;
+    const droppedQuestionCount = selectedPaper?.droppedQuestionCount ?? 0;
     const effectivePaperId = selectedPaper?.id;
     const paperDefinition = findPaperDefinition(program, stage, selectedPaper?.paperKey);
     if (!paperDefinition || paperDefinition.questionFormat !== 'MCQ' || !paperDefinition.questionCount) {
         return errorResponse(409, ErrorCode.CONFLICT, 'This paper is not mapped to a known UPSC/SSC scoring structure yet.', { paperId: selectedPaper?.id ?? null });
     }
-    const questionLimit = paperDefinition.questionCount;
+    const questionLimit = paperDefinition.questionCount - droppedQuestionCount;
     const questions = await questionSet(auth.user.id, effectivePaperId, program, stage, questionLimit);
     if (questions.length === 0) return errorResponse(404, ErrorCode.NOT_FOUND, 'No verified questions are available for this mock yet.');
-    if (paperDefinition?.questionCount && questions.length < paperDefinition.questionCount) {
-        return errorResponse(409, ErrorCode.CONFLICT, `This verified paper is incomplete for full-mock mode (${questions.length}/${paperDefinition.questionCount} questions imported).`, { available: questions.length, expected: paperDefinition.questionCount, paperId: effectivePaperId });
+    if (questions.length < questionLimit) {
+        return errorResponse(409, ErrorCode.CONFLICT, `This verified paper is incomplete for full-mock mode (${questions.length}/${questionLimit} questions imported).`, { available: questions.length, expected: questionLimit, paperId: effectivePaperId });
     }
     const requestedDurationSec = typeof input.durationSec === 'number' && input.durationSec > 0 ? Math.floor(input.durationSec) : (selectedPaper?.durationMin ?? paperDefinition?.durationMin ?? 120) * 60;
     const sectionCount = new Set(questions.map((question) => question.subjectId)).size;
     const durationSec = Math.max(requestedDurationSec, sectionCount * 60);
     const answers = Object.fromEntries(questions.map((question) => [question.id, null]));
-    const marks = marksPerQuestion(paperDefinition, questions.length);
+    const marks = marksPerQuestion(paperDefinition, questions.length, droppedQuestionCount);
     const sectionData = sectionTimings(questions, durationSec);
     const metadata = { paperId: effectivePaperId, paperKey: paperDefinition?.key ?? selectedPaper?.paperKey ?? null, program, stage, questionIds: questions.map((question) => question.id), sectionOrder: Object.keys(sectionData), marksPerQuestion: marks, negativeMarking: negativeMarking(paperDefinition), maximumScore: questions.length * marks };
     const attempt = await prisma.mockExamAttempt.create({ data: { userId: auth.user.id, paperId: effectivePaperId, title: text(input.title) || `${program} ${stage} full mock`, durationSec, answers: answers as Prisma.InputJsonValue, markedForReview: [] as unknown as Prisma.InputJsonValue, sectionTimings: { ...sectionData, __meta: metadata } as Prisma.InputJsonValue, maxScore: Math.round(questions.length * marks), maximumScore: questions.length * marks } });
@@ -132,7 +145,10 @@ export async function submitMockExamHandler(request: Request, auth: AuthContext,
     if (!paperId || !program || !stage || storedQuestionIds.length === 0) return errorResponse(409, ErrorCode.CONFLICT, 'This mock attempt is missing its fixed question set and cannot be scored safely.');
     const questions = await questionSetByIds(storedQuestionIds, paperId, program, stage);
     if (questions.length !== storedQuestionIds.length) return errorResponse(409, ErrorCode.CONFLICT, 'Some questions in this mock are no longer practice-eligible; start a new mock.');
-    const answers = safeAnswers(input.answers ?? existing.answers, new Set(storedQuestionIds));
+    const timedOut = Date.now() >= mockDeadline(existing);
+    // Once the server-side deadline passes, only the last persisted progress is authoritative.
+    // Otherwise a modified client could submit newly selected answers after time expired.
+    const answers = safeAnswers(timedOut ? existing.answers : input.answers ?? existing.answers, new Set(storedQuestionIds));
     const perQuestion = questions.map((question) => {
         const selected = answers[question.id];
         const outcome = selected === null || selected === undefined ? 'UNANSWERED' : Number(selected) === question.correctOption ? 'CORRECT' : 'INCORRECT';
@@ -143,7 +159,7 @@ export async function submitMockExamHandler(request: Request, auth: AuthContext,
     const marking = storedMeta.negativeMarking && typeof storedMeta.negativeMarking === 'object' ? storedMeta.negativeMarking as PaperDefinition['negativeMarking'] : { kind: 'NONE' as const };
     const score = scoreMockQuestions(questions, answers, marks, marking);
     const attempt = await prisma.mockExamAttempt.update({ where: { id }, data: { answers: answers as Prisma.InputJsonValue, status: 'SUBMITTED', submittedAt: new Date(), totalScore, maxScore: Math.round(score.maximumScore), obtainedScore: score.obtainedScore, maximumScore: score.maximumScore, correctCount: score.correctCount, incorrectCount: score.incorrectCount, unansweredCount: score.unansweredCount, negativeMarks: score.negativeMarks } });
-    return Response.json({ attempt, timedOut: Date.now() >= mockDeadline(existing), perQuestion, scorePercent: score.maximumScore === 0 ? 0 : Math.round(Math.max(0, score.obtainedScore) / score.maximumScore * 100), score });
+    return Response.json({ attempt, timedOut, perQuestion, scorePercent: score.maximumScore === 0 ? 0 : Math.round(Math.max(0, score.obtainedScore) / score.maximumScore * 100), score });
 }
 
 export async function getMockHistoryHandler(_request: Request, auth: AuthContext): Promise<Response> {

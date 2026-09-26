@@ -15,10 +15,17 @@ describe('resolveString', () => {
         expect(resolveString('EN', 'onboarding.title')).toBe('Welcome');
     });
 
-    it('falls back to English for HI when the Hindi value is missing (Req 10.3)', () => {
-        expect('hi' in stringCatalog['common.retry']).toBe(false);
-        expect(resolveString('HI', 'common.retry')).toBe('Retry');
-        expect(resolveString('HI', 'paywall.restorePurchase')).toBe('Restore purchase');
+    it('falls back to English when the selected language value is missing (Req 10.3)', () => {
+        const partial: StringCatalog = { 'x.retry': { en: 'Retry' }, 'x.save': { en: 'Save', hi: 'सहेजें' } };
+        expect(resolveString('HI', 'x.retry', partial)).toBe('Retry');
+        expect(resolveString('TA', 'x.save', partial)).toBe('Save');
+        expect(resolveString('HI', 'x.save', partial)).toBe('सहेजें');
+    });
+
+    it('ships every catalog key in all six languages', () => {
+        const missing = Object.entries(stringCatalog).flatMap(([key, value]) =>
+            (['en', 'hi', 'ta', 'bn', 'te', 'mr'] as const).filter((lang) => !(value as Record<string, string>)[lang]).map((lang) => `${key}:${lang}`));
+        expect(missing).toEqual([]);
     });
 
     it('returns the key itself when it is absent from the catalog', () => {
@@ -31,7 +38,8 @@ describe('createResolver', () => {
     it('binds a language once and resolves many keys against it', () => {
         const hi = createResolver('HI');
         expect(hi('common.save')).toBe('सहेजें');
-        expect(hi('common.retry')).toBe('Retry');
+        expect(hi('common.retry')).toBe('फिर प्रयास करें');
+        expect(createResolver('HI', { 'x.only': { en: 'Only English' } })('x.only')).toBe('Only English');
 
         const en = createResolver('EN');
         expect(en('common.save')).toBe('Save');

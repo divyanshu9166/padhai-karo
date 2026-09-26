@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import type { AuthContext } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { ErrorCode, errorResponse } from '@/lib/errors';
-import { transcribeAudio, transcriptionProviderConfigured } from '@/services/ai/liveProvider';
+import { AiInputError, transcribeAudio, transcriptionProviderConfigured } from '@/services/ai/liveProvider';
 import { sendUserPushNotification } from '@/services/notifications';
 import { broadcastCommunityMessage } from '@/realtime/communitySocket';
 import { CommunityContentStatus, Prisma } from '@prisma/client';
@@ -135,12 +135,16 @@ export async function uploadVoiceNoteHandler(request: Request, auth: AuthContext
     let form: FormData;
     try { form = await request.formData(); } catch { return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'A multipart audio upload is required.'); }
     const file = form.get('file');
-    if (!(file instanceof File) || !file.type.startsWith('audio/')) return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'An audio file is required.');
+    const allowedAudioTypes = new Set(['audio/mp4', 'audio/m4a', 'audio/x-m4a', 'audio/mpeg', 'audio/mp3', 'audio/mpga', 'audio/wav', 'audio/x-wav', 'audio/webm', 'audio/ogg', 'audio/flac', 'audio/x-flac']);
+    if (!(file instanceof File) || !allowedAudioTypes.has(file.type.toLowerCase())) return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'Upload M4A/MP4, MP3, WAV, WEBM, OGG or FLAC audio.');
     if (file.size > 25 * 1024 * 1024) return errorResponse(413, ErrorCode.VALIDATION_ERROR, 'Audio files must be 25 MB or smaller.');
     const title = text(form.get('title')) || file.name.replace(/\.[^.]+$/, '') || 'Voice note';
     const bytes = Buffer.from(await file.arrayBuffer());
     const checksum = createHash('sha256').update(bytes).digest('hex');
-    const note = await prisma.voiceNote.create({ data: { userId: auth.user.id, title, audioFileName: file.name, audioMimeType: file.type || 'audio/mp4', audioData: bytes, audioUri: `/api/voice-notes/${encodeURIComponent(checksum)}/file`, durationSec: Number(form.get('durationSec')) || undefined, tags: stringList(form.get('tags') ? String(form.get('tags')).split(',') : ['voice-note']), searchText: title } });
+    const note = await prisma.voiceNote.create({
+        data: { userId: auth.user.id, title, audioFileName: file.name, audioMimeType: file.type || 'audio/mp4', audioData: bytes, audioUri: `/api/voice-notes/${encodeURIComponent(checksum)}/file`, durationSec: Number(form.get('durationSec')) || undefined, tags: stringList(form.get('tags') ? String(form.get('tags')).split(',') : ['voice-note']), searchText: title },
+        select: { id: true, title: true, audioUri: true, transcription: true, durationSec: true, tags: true },
+    });
     return Response.json({ note, transcription: null, transcriptionAvailable: transcriptionProviderConfigured() }, { status: 201 });
 }
 
@@ -160,7 +164,10 @@ export async function transcribeVoiceNoteHandler(_request: Request, auth: AuthCo
         const transcription = await transcribeAudio('data:' + (note.audioMimeType || 'audio/mp4') + ';base64,' + Buffer.from(note.audioData).toString('base64'), note.audioMimeType || 'audio/mp4');
         const updated = await prisma.voiceNote.update({ where: { id: note.id }, data: { transcription, searchText: `${note.title} ${transcription}`.trim() } });
         return Response.json({ note: updated });
-    } catch { return errorResponse(503, ErrorCode.AI_PROVIDER_UNAVAILABLE, 'Voice transcription provider is not configured or unavailable.'); }
+    } catch (error) {
+        if (error instanceof AiInputError) return errorResponse(422, ErrorCode.VALIDATION_ERROR, error.message);
+        return errorResponse(503, ErrorCode.AI_PROVIDER_UNAVAILABLE, 'Voice transcription provider is not configured or unavailable.');
+    }
 }
 
 export async function listCommunityPostsHandler(_request: Request, auth: AuthContext): Promise<Response> {

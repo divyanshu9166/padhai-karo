@@ -1,0 +1,21 @@
+{
+  "id": "upsc-cse-prelims-2021-csat",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2021,
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers/archives",
+  "series": "A",
+  "requiresFinalKeyReview": true,
+  "paperKey": "UPSC-CSE-PRELIMS-CSAT-2021",
+  "subjectId": "UPSC-CSE-CSAT",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-21-GeneralStudiesPaper-II-121021.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/Anskey-CSP-21-GS-II-300522.pdf",
+  "bytes": 34664394,
+  "sha256": "a6994347123ec86243ef7786c220bfd9e21831a2a028bd49b400d8b1aeeaed53",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2021-csat-answer-key.pdf",
+  "answerKeyBytes": 2187493,
+  "answerKeySha256": "38aa04ba8c210a6a4ccf81fd4809ace1a6b812c8b7a365637bb7b912a08dfe28",
+  "downloadedAt": "2026-09-26T05:09:28.772Z",
+  "finalKeyReviewed": false
+}

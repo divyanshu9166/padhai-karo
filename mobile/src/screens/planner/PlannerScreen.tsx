@@ -3,7 +3,7 @@ import { ActivityIndicator, Linking, Pressable, ScrollView, StyleSheet, Text, Te
 
 import { ApiError } from '@/api';
 import { Screen } from '@/components';
-import { useTranslation } from '@/localization';
+import { interpolate, useTranslation } from '@/localization';
 import type { PlanStackScreenProps } from '@/navigation/types';
 import { cacheJson, readCachedJson } from '@/offline/cache';
 import { listStudyTasks, updateStudyTask, type StudyTask } from '@/screens/dashboard/todayApi';
@@ -20,9 +20,12 @@ export function PlannerScreen({ navigation }: PlanStackScreenProps<'Plan'>): Rea
     const [calendarConnected, setCalendarConnected] = useState(false);
     const [calendarLastImported, setCalendarLastImported] = useState<string | null>(null);
     const [revisionSequences, setRevisionSequences] = useState<RevisionSequence[]>([]);
-    const [examLabel, setExamLabel] = useState('Main exam');
+    const [examLabel, setExamLabel] = useState(t('planner.mainExam'));
     const [examDate, setExamDate] = useState('');
     const [planTasks, setPlanTasks] = useState<StudyTask[]>([]);
+    const briefingActions = briefing?.insights.source === 'AI' && briefing.insights.ai?.keyPoints?.length
+        ? briefing.insights.ai.keyPoints
+        : briefing?.insights.actions ?? [];
 
     const load = useCallback(async (): Promise<void> => {
         setError(null);
@@ -62,7 +65,7 @@ export function PlannerScreen({ navigation }: PlanStackScreenProps<'Plan'>): Rea
     useEffect(() => { void load(); }, [load]);
     useEffect(() => {
         const subscription = Linking.addEventListener('url', ({ url }) => {
-            if (url.includes('calendar/google/callback')) setCalendarMessage(url.includes('connected=1') ? 'Google Calendar connected. Tap Import events.' : 'Google Calendar authorization returned.');
+            if (url.includes('calendar/google/callback')) setCalendarMessage(url.includes('connected=1') ? t('planner.googleConnected') : t('planner.googleReturned'));
         });
         return () => subscription.remove();
     }, []);
@@ -76,26 +79,26 @@ export function PlannerScreen({ navigation }: PlanStackScreenProps<'Plan'>): Rea
         try {
             const { authorizationUrl } = await getGoogleCalendarConnectUrl();
             await Linking.openURL(authorizationUrl);
-            setCalendarMessage('Google Calendar authorization opened. Return here after allowing access.');
-        } catch (err) { setCalendarMessage(err instanceof ApiError ? err.message : 'Google Calendar is not configured yet.'); }
+            setCalendarMessage(t('planner.googleOpened'));
+        } catch (err) { setCalendarMessage(err instanceof ApiError ? err.message : t('planner.googleNotConfigured')); }
     };
 
     const syncCalendar = async (): Promise<void> => {
-        try { const result = await importGoogleCalendar(); setCalendarConnected(true); setCalendarLastImported(new Date().toISOString()); setCalendarMessage(`${result.imported} calendar events imported.`); } catch (err) { setCalendarMessage(err instanceof ApiError ? err.message : 'Could not import Google Calendar events.'); }
+        try { const result = await importGoogleCalendar(); setCalendarConnected(true); setCalendarLastImported(new Date().toISOString()); setCalendarMessage(interpolate(t('planner.eventsImported'), { count: result.imported })); } catch (err) { setCalendarMessage(err instanceof ApiError ? err.message : t('planner.importError')); }
     };
 
-    const disconnectCalendar = async (): Promise<void> => { try { await disconnectGoogleCalendar(); setCalendarConnected(false); setCalendarLastImported(null); setCalendarMessage('Google Calendar disconnected and imported events removed.'); } catch (err) { setCalendarMessage(err instanceof ApiError ? err.message : 'Could not disconnect Google Calendar.'); } };
+    const disconnectCalendar = async (): Promise<void> => { try { await disconnectGoogleCalendar(); setCalendarConnected(false); setCalendarLastImported(null); setCalendarMessage(t('planner.googleDisconnected')); } catch (err) { setCalendarMessage(err instanceof ApiError ? err.message : t('planner.disconnectError')); } };
 
     const addExamDate = async (): Promise<void> => {
-        if (!examLabel.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(examDate)) { setCalendarMessage('Enter a label and a valid exam date as YYYY-MM-DD.'); return; }
-        try { await createExamDate({ label: examLabel.trim(), examDate, priority: 5, examProgram: overview?.exam.program ?? undefined, examStage: overview?.exam.stage ?? undefined }); setCalendarMessage('Exam date saved. Reverse countdown and revision phases are now active.'); setExamDate(''); await load(); } catch (err) { setCalendarMessage(err instanceof ApiError ? err.message : 'Could not save the exam date.'); }
+        if (!examLabel.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(examDate)) { setCalendarMessage(t('planner.examDateInvalid')); return; }
+        try { await createExamDate({ label: examLabel.trim(), examDate, priority: 5, examProgram: overview?.exam.program ?? undefined, examStage: overview?.exam.stage ?? undefined }); setCalendarMessage(t('planner.examDateSaved')); setExamDate(''); await load(); } catch (err) { setCalendarMessage(err instanceof ApiError ? err.message : t('planner.examDateError')); }
     };
     const scheduleInboxTask = async (task: StudyTask, daysFromNow: number): Promise<void> => {
         const date = new Date(Date.now() + daysFromNow * 86_400_000).toISOString().slice(0, 10);
         try { const result = await updateStudyTask(task.id, { scheduledDate: date, status: 'PENDING' }); setPlanTasks((items) => items.map((item) => item.id === task.id ? result.task : item)); }
-        catch (caught) { setError(caught instanceof ApiError ? caught.message : 'Could not schedule this task.'); }
+        catch (caught) { setError(caught instanceof ApiError ? caught.message : t('planner.scheduleError')); }
     };
-    const dateLabel = (value: string | null): string => !value ? 'Inbox' : value.slice(0, 10) === new Date().toISOString().slice(0, 10) ? 'Today' : value.slice(0, 10) === new Date(Date.now() + 86_400_000).toISOString().slice(0, 10) ? 'Tomorrow' : new Date(value).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+    const dateLabel = (value: string | null): string => !value ? t('planner.inbox') : value.slice(0, 10) === new Date().toISOString().slice(0, 10) ? t('planner.today') : value.slice(0, 10) === new Date(Date.now() + 86_400_000).toISOString().slice(0, 10) ? t('planner.tomorrow') : new Date(value).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
 
     return (
         <Screen title={t('planner.title')}>
@@ -112,16 +115,16 @@ export function PlannerScreen({ navigation }: PlanStackScreenProps<'Plan'>): Rea
                         <Stat label={t('planner.efficiency')} value={`${overview.time.averageEfficiencyPercent}%`} />
                         <Stat label={t('planner.dailyTarget')} value={`${overview.time.recommendedDailyMin}m`} />
                     </View>
-                    <View style={styles.card}><Text style={styles.heading}>Your action plan</Text><Text style={styles.body}>Schedule Inbox items, then work from Today. This week stays visible without turning planning into a second task manager.</Text>{planTasks.length === 0 ? <Text style={styles.muted}>No tasks for this week yet. Generate your calendar or capture one from Today.</Text> : planTasks.slice(0, 14).map((task) => <View key={task.id} style={styles.taskRow}><View style={styles.taskCopy}><Text style={styles.priorityName}>{task.title}</Text><Text style={styles.muted}>{dateLabel(task.scheduledDate)} · {task.plannedMinutes} min · {task.taskType.replaceAll('_', ' ')}</Text></View>{task.scheduledDate ? null : <View style={styles.taskActions}><Pressable style={styles.smallAction} onPress={() => void scheduleInboxTask(task, 0)}><Text style={styles.smallActionText}>Today</Text></Pressable><Pressable style={styles.smallAction} onPress={() => void scheduleInboxTask(task, 1)}><Text style={styles.smallActionText}>Tomorrow</Text></Pressable></View>}</View>)}</View>
-                    <View style={styles.card}><Text style={styles.heading}>Your preparation plan</Text><Text style={styles.body}>Today shows the next actions. Open the weekly calendar when you want to inspect or edit study blocks.</Text><Pressable style={styles.secondary} onPress={() => navigation.navigate('Timetable')}><Text style={styles.secondaryText}>Open weekly calendar</Text></Pressable></View>
+                    <View style={styles.card}><Text style={styles.heading}>{t('planner.actionPlan')}</Text><Text style={styles.body}>{t('planner.actionPlanText')}</Text>{planTasks.length === 0 ? <Text style={styles.muted}>{t('planner.noTasks')}</Text> : planTasks.slice(0, 14).map((task) => <View key={task.id} style={styles.taskRow}><View style={styles.taskCopy}><Text style={styles.priorityName}>{task.title}</Text><Text style={styles.muted}>{dateLabel(task.scheduledDate)} · {interpolate(t('today.minutes'), { m: task.plannedMinutes })} · {t(`taskType.${task.taskType}`)}</Text></View>{task.scheduledDate ? null : <View style={styles.taskActions}><Pressable style={styles.smallAction} onPress={() => void scheduleInboxTask(task, 0)}><Text style={styles.smallActionText}>{t('planner.today')}</Text></Pressable><Pressable style={styles.smallAction} onPress={() => void scheduleInboxTask(task, 1)}><Text style={styles.smallActionText}>{t('planner.tomorrow')}</Text></Pressable></View>}</View>)}</View>
+                    <View style={styles.card}><Text style={styles.heading}>{t('planner.prepPlan')}</Text><Text style={styles.body}>{t('planner.prepPlanText')}</Text><Pressable style={styles.secondary} onPress={() => navigation.navigate('Timetable')}><Text style={styles.secondaryText}>{t('planner.openCalendar')}</Text></Pressable></View>
                     <View style={styles.card}><Text style={styles.heading}>{t('planner.revisionCycle')}</Text><Text style={styles.body}>{overview.revision?.dueCount ?? 0} {t('planner.revisionBody')}</Text>{revisionSequences.slice(0, 5).map((sequence) => <View key={sequence.chapterId} style={styles.revisionSequence}><Text style={styles.priorityName}>{sequence.chapterName}</Text>{sequence.phases.map((phase) => <Text key={phase.phase} style={styles.muted}>{phase.label}: {phase.dueAt ? new Date(phase.dueAt).toLocaleDateString() : t('common.pending')}</Text>)}</View>)}{revisionSequences.length === 0 ? <Text style={styles.muted}>{t('planner.noRevisionSequence')}</Text> : null}</View>
                     <View style={styles.card}><Text style={styles.heading}>{t('planner.examCountdown')}</Text><Text style={styles.body}>{t('planner.examCountdownBody')}</Text><TextInput style={styles.input} value={examLabel} onChangeText={setExamLabel} placeholder={t('planner.examLabel')} /><TextInput style={styles.input} value={examDate} onChangeText={setExamDate} placeholder="YYYY-MM-DD" autoCapitalize="none" /><Pressable style={styles.secondary} onPress={() => void addExamDate()}><Text style={styles.secondaryText}>{t('planner.saveExamDate')}</Text></Pressable>{overview.exam.dates.slice(0, 5).map((date) => <Text key={date.id} style={styles.muted}>{date.label}: {date.examDate.slice(0, 10)}</Text>)}</View>
                     <View style={styles.card}>
-                        <Text style={styles.heading}>{t('planner.priorityTopics')}</Text><Text style={styles.muted}>These are planning signals from your syllabus progress, revision timing and available study time—not a judgment of your ability.</Text>
-                        {overview.priorities.length === 0 ? <Text style={styles.muted}>{t('planner.syllabusClear')}</Text> : overview.priorities.slice(0, 5).map((priority, index) => <View key={priority.id} style={[styles.priorityCard, index === 0 && styles.priorityCardLead]}><View style={styles.priorityTop}><Text style={styles.priorityName}>{priority.name}</Text><Text style={styles.priorityBadge}>{index === 0 ? 'START HERE' : `PRIORITY ${index + 1}`}</Text></View><Text style={styles.priorityReason}>{priority.reason.replaceAll('_', ' ').toLowerCase()}</Text><Text style={styles.priorityHint}>{index === 0 ? 'Begin with one focused block, then check it off in your timetable.' : 'Keep this in the next available study block.'}</Text></View>)}
+                        <Text style={styles.heading}>{t('planner.priorityTopics')}</Text><Text style={styles.muted}>{t('planner.signalsNote')}</Text>
+                        {overview.priorities.length === 0 ? <Text style={styles.muted}>{t('planner.syllabusClear')}</Text> : overview.priorities.slice(0, 5).map((priority, index) => <View key={priority.id} style={[styles.priorityCard, index === 0 && styles.priorityCardLead]}><View style={styles.priorityTop}><Text style={styles.priorityName}>{priority.name}</Text><Text style={styles.priorityBadge}>{index === 0 ? t('planner.startHere') : interpolate(t('today.priority'), { n: index + 1 })}</Text></View><Text style={styles.priorityReason}>{priority.reason.replaceAll('_', ' ').toLowerCase()}</Text><Text style={styles.priorityHint}>{index === 0 ? t('planner.beginFocused') : t('planner.keepNext')}</Text></View>)}
                     </View>
-                    {briefing ? <View style={styles.card}><Text style={styles.heading}>{t('planner.dailyBriefing')}</Text><Text style={styles.badge}>{briefing.insights.source === 'AI' || briefing.insights.ai ? t('planner.aiBriefing') : t('planner.ruleBriefing')}</Text><Text style={styles.body}>{briefing.insights.greeting}</Text>{briefing.insights.actions.map((action) => <Text key={action} style={styles.bullet}>• {action}</Text>)}{briefing.insights.ai?.keyPoints?.map((point) => <Text key={point} style={styles.bullet}>• AI coach: {point}</Text>)}<Pressable style={styles.button} onPress={() => void refreshBriefing()} disabled={busy}><Text style={styles.buttonText}>{busy ? t('planner.refreshing') : t('planner.refreshBriefing')}</Text></Pressable></View> : null}
-                    <View style={styles.card}><Text style={styles.heading}>{t('planner.calendarCommitments')}</Text><Text style={styles.body}>{t('planner.calendarBody')}</Text><Text style={styles.muted}>{calendarConnected ? `${t('planner.connected')}${calendarLastImported ? ` · last import ${new Date(calendarLastImported).toLocaleString()}` : ''}` : t('planner.notConnected')}</Text><View style={styles.buttonRow}>{calendarConnected ? <Pressable style={styles.secondary} onPress={() => void disconnectCalendar()}><Text style={styles.secondaryText}>{t('planner.disconnect')}</Text></Pressable> : <Pressable style={styles.secondary} onPress={() => void connectCalendar()}><Text style={styles.secondaryText}>{t('planner.connectGoogle')}</Text></Pressable>}<Pressable style={styles.secondary} onPress={() => void syncCalendar()}><Text style={styles.secondaryText}>{t('planner.importEvents')}</Text></Pressable></View>{calendarMessage ? <Text style={styles.muted}>{calendarMessage}</Text> : null}</View>
+                    {briefing ? <View style={styles.card}><Text style={styles.heading}>{briefing.insights.ai?.title ?? t('planner.dailyBriefing')}</Text><Text style={styles.badge}>{briefing.insights.source === 'AI' && briefing.insights.ai?.keyPoints?.length ? t('planner.aiBriefing') : t('planner.ruleBriefing')}</Text><Text style={styles.body}>{briefing.insights.greeting}</Text>{briefingActions.map((action, index) => <Text key={`${index}-${action}`} style={styles.bullet}>• {action}</Text>)}<Pressable style={styles.button} onPress={() => void refreshBriefing()} disabled={busy}><Text style={styles.buttonText}>{busy ? t('planner.refreshing') : t('planner.refreshBriefing')}</Text></Pressable></View> : null}
+                    <View style={styles.card}><Text style={styles.heading}>{t('planner.calendarCommitments')}</Text><Text style={styles.body}>{t('planner.calendarBody')}</Text><Text style={styles.muted}>{calendarConnected ? `${t('planner.connected')}${calendarLastImported ? ` · ${interpolate(t('planner.lastImport'), { date: new Date(calendarLastImported).toLocaleString() })}` : ''}` : t('planner.notConnected')}</Text><View style={styles.buttonRow}>{calendarConnected ? <Pressable style={styles.secondary} onPress={() => void disconnectCalendar()}><Text style={styles.secondaryText}>{t('planner.disconnect')}</Text></Pressable> : <Pressable style={styles.secondary} onPress={() => void connectCalendar()}><Text style={styles.secondaryText}>{t('planner.connectGoogle')}</Text></Pressable>}<Pressable style={styles.secondary} onPress={() => void syncCalendar()}><Text style={styles.secondaryText}>{t('planner.importEvents')}</Text></Pressable></View>{calendarMessage ? <Text style={styles.muted}>{calendarMessage}</Text> : null}</View>
                 </ScrollView>
             )}
         </Screen>

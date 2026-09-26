@@ -65,20 +65,22 @@ PDF page images are rendered by the native Poppler `pdftoppm` binary through
 `PDF_RENDERER_BIN` to its absolute executable path. The route is authenticated and removes its
 short-lived temporary files after every render.
 
-For the zero-cost development AI setup, use Groq server-side:
+For a Groq-backed development setup, configure these server-side (availability, pricing and
+free-tier limits can change, so confirm the current terms in your provider console):
 
 ```env
 AI_PROVIDER=GROQ
 AI_PROVIDER_API_KEY=<your Groq key>
 AI_PROVIDER_MODEL=openai/gpt-oss-20b
-AI_PROVIDER_VISION_MODEL=qwen/qwen3.6-27b
+AI_PROVIDER_VISION_MODEL=qwen/qwen3.8-27b
 TRANSCRIPTION_PROVIDER_MODEL=whisper-large-v3-turbo
+# Optional; omit for automatic language detection.
+TRANSCRIPTION_LANGUAGE=
 ```
 
 The text model powers PDF/note summaries, briefings, concept coaching and answer feedback.
-The separate vision model handles photographed notes and image extraction. Free-plan limits
-are organization-wide, so local/rule-based fallbacks remain enabled and the API key stays out
-of the mobile bundle.
+The separate vision model handles photographed notes and image extraction. Provider failures
+are surfaced or fall back with an explicit source label; the API key stays out of the mobile bundle.
 
 The included `Dockerfile` installs `poppler-utils` in both the build and runtime images and runs
 the HTTP + WebSocket server. Use `npm run check:pdf-renderer` before a non-container deployment;

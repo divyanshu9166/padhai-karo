@@ -23,18 +23,20 @@ import React, {
     useState,
 } from 'react';
 
-import { fetchMe, logoutUser, setAuthToken } from '@/api';
+import { ApiError, fetchMe, getAuthToken, logoutUser, setAuthToken } from '@/api';
 import type { PublicUser } from '@/api';
 
 import { clearToken, getToken, setToken } from './tokenStorage';
 
-export type AuthStatus = 'loading' | 'unauthenticated' | 'authenticated';
+export type AuthStatus = 'loading' | 'unauthenticated' | 'authenticated' | 'session-unavailable';
 
 interface AuthState {
     status: AuthStatus;
     user: PublicUser | null;
     /** Whether the authenticated user has finished onboarding (Req 2.6). */
     profileComplete: boolean;
+    /** A recoverable session-validation problem; never used to silently discard a token. */
+    sessionError: string | null;
 }
 
 interface AuthContextValue extends AuthState {
@@ -61,6 +63,7 @@ export function AuthProvider({ children }: AuthProviderProps): React.JSX.Element
         status: 'loading',
         user: null,
         profileComplete: false,
+        sessionError: null,
     });
 
     /** Validate the currently-registered token by loading the session. */
@@ -71,12 +74,27 @@ export function AuthProvider({ children }: AuthProviderProps): React.JSX.Element
                 status: 'authenticated',
                 user: me.user,
                 profileComplete: me.profileComplete,
+                sessionError: null,
             });
-        } catch {
-            // Invalid/expired token: drop it and fall back to unauthenticated.
-            setAuthToken(null);
-            await clearToken();
-            setState({ status: 'unauthenticated', user: null, profileComplete: false });
+        } catch (error) {
+            if (error instanceof ApiError && error.status === 401) {
+                // Only an explicit authentication rejection makes a persisted token invalid.
+                setAuthToken(null);
+                await clearToken().catch(() => undefined);
+                setState({ status: 'unauthenticated', user: null, profileComplete: false, sessionError: null });
+                return;
+            }
+
+            // A timeout/offline server/5xx is not proof that the credentials expired. Keep
+            // the token so a temporary outage cannot lock the learner out of their account.
+            setState((previous) => previous.status === 'authenticated'
+                ? { ...previous, sessionError: 'Could not refresh your session. Your saved login is still available.' }
+                : {
+                    status: 'session-unavailable',
+                    user: null,
+                    profileComplete: false,
+                    sessionError: 'Could not connect to verify your saved login. Check your connection and try again.',
+                });
         }
     }, []);
 
@@ -84,26 +102,53 @@ export function AuthProvider({ children }: AuthProviderProps): React.JSX.Element
     useEffect(() => {
         let cancelled = false;
         (async () => {
-            const stored = await getToken();
-            if (cancelled) {
-                return;
+            try {
+                const stored = await getToken();
+                if (cancelled) return;
+                if (!stored) {
+                    setState({ status: 'unauthenticated', user: null, profileComplete: false, sessionError: null });
+                    return;
+                }
+                setAuthToken(stored);
+                await loadSession();
+            } catch {
+                if (!cancelled) setState({
+                    status: 'session-unavailable',
+                    user: null,
+                    profileComplete: false,
+                    sessionError: 'Could not read your saved login. Try again or sign in again.',
+                });
             }
-            if (!stored) {
-                setState({ status: 'unauthenticated', user: null, profileComplete: false });
-                return;
-            }
-            setAuthToken(stored);
-            await loadSession();
         })();
         return () => {
             cancelled = true;
         };
     }, [loadSession]);
 
+    const refreshSession = useCallback(async () => {
+        try {
+            let token = getAuthToken();
+            if (!token) token = await getToken();
+            if (!token) {
+                setState({ status: 'unauthenticated', user: null, profileComplete: false, sessionError: null });
+                return;
+            }
+            setAuthToken(token);
+            await loadSession();
+        } catch {
+            setState({
+                status: 'session-unavailable',
+                user: null,
+                profileComplete: false,
+                sessionError: 'Could not read your saved login. Try again or sign in again.',
+            });
+        }
+    }, [loadSession]);
+
     const signIn = useCallback(
         async (token: string) => {
-            setAuthToken(token);
             await setToken(token);
+            setAuthToken(token);
             // Resolve onboarding completeness from the server (a new account → false, Req 2.6).
             await loadSession();
         },
@@ -111,19 +156,18 @@ export function AuthProvider({ children }: AuthProviderProps): React.JSX.Element
     );
 
     const signOut = useCallback(async () => {
-        try {
-            await logoutUser();
-        } catch {
-            // Best-effort server logout; clear local state regardless.
-        }
+        // Capture the authenticated request before clearing the in-memory token, then make
+        // local sign-out immediate even if the server cannot be reached.
+        const remoteLogout = logoutUser().catch(() => undefined);
         setAuthToken(null);
-        await clearToken();
-        setState({ status: 'unauthenticated', user: null, profileComplete: false });
+        await clearToken().catch(() => undefined);
+        setState({ status: 'unauthenticated', user: null, profileComplete: false, sessionError: null });
+        void remoteLogout;
     }, []);
 
     const value = useMemo<AuthContextValue>(
-        () => ({ ...state, signIn, signOut, refresh: loadSession }),
-        [state, signIn, signOut, loadSession],
+        () => ({ ...state, signIn, signOut, refresh: refreshSession }),
+        [state, signIn, signOut, refreshSession],
     );
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

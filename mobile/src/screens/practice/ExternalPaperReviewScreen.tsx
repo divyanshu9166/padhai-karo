@@ -4,7 +4,7 @@ import { ActivityIndicator, Alert, Pressable, ScrollView, StyleSheet, Text, Text
 
 import { ApiError } from '@/api';
 import { Screen } from '@/components';
-import { useTranslation } from '@/localization';
+import { useTranslation, type StringKey } from '@/localization';
 import {
     createExternalPaperReview,
     deleteExternalPaperReview,
@@ -18,12 +18,12 @@ import {
 
 type DraftSection = { id: string; label: string; obtainedScore: string; maxScore: string };
 
-const TAGS: Array<{ value: ExternalPaperMistakeTag; label: string }> = [
-    { value: 'CONCEPT_GAP', label: 'Concept gap' },
-    { value: 'SILLY_MISTAKE', label: 'Silly mistake' },
-    { value: 'TIME_PRESSURE', label: 'Time pressure' },
-    { value: 'REVISION_GAP', label: 'Revision gap' },
-    { value: 'UNATTEMPTED', label: 'Unattempted' },
+const TAGS: Array<{ value: ExternalPaperMistakeTag; label: StringKey }> = [
+    { value: 'CONCEPT_GAP', label: 'mistakes.category.conceptGap' },
+    { value: 'SILLY_MISTAKE', label: 'mistakes.category.silly' },
+    { value: 'TIME_PRESSURE', label: 'mistakes.category.timePressure' },
+    { value: 'REVISION_GAP', label: 'paperReview.tagRevisionGap' },
+    { value: 'UNATTEMPTED', label: 'paperReview.tagUnattempted' },
 ];
 
 function today(): string { return new Date().toISOString().slice(0, 10); }
@@ -32,6 +32,7 @@ function userMessage(error: unknown, fallback: string): string { return error in
 
 /** A supportive review flow for papers attempted outside the app, without outcome predictions. */
 export function ExternalPaperReviewScreen(): React.JSX.Element {
+    const t = useTranslation();
     const [title, setTitle] = useState('');
     const [sourceName, setSourceName] = useState('');
     const [testDate, setTestDate] = useState(today());
@@ -52,7 +53,7 @@ export function ExternalPaperReviewScreen(): React.JSX.Element {
     const load = useCallback(async (): Promise<void> => {
         setLoading(true);
         try { setReviews((await getExternalPaperReviews()).reviews); }
-        catch (error) { setMessage(userMessage(error, 'Could not load previous paper reviews.')); }
+        catch (error) { setMessage(userMessage(error, t('paperReview.loadError'))); }
         finally { setLoading(false); }
     }, []);
     useEffect(() => { void load(); }, [load]);
@@ -71,20 +72,20 @@ export function ExternalPaperReviewScreen(): React.JSX.Element {
             const asset = picked.assets[0];
             const uploaded = await uploadPdfDocument(asset.uri, asset.name, ['external-paper-review']);
             setDocumentId(uploaded.document.id); setDocumentName(asset.name);
-            setMessage(uploaded.searchable ? 'Paper attached. Its text is searchable in Library too.' : 'Paper attached for reference.');
-        } catch (error) { setMessage(userMessage(error, 'Could not attach this PDF.')); }
+            setMessage(uploaded.searchable ? t('paperReview.attachedSearchable') : t('paperReview.attachedReference'));
+        } catch (error) { setMessage(userMessage(error, t('paperReview.attachError'))); }
         finally { setUploading(false); }
     };
     const save = async (): Promise<void> => {
         const score = Number(obtainedScore); const maximum = Number(maxScore);
         if (!title.trim() || !Number.isFinite(score) || !Number.isFinite(maximum)) {
-            setMessage('Add a title, your score, and the maximum score.'); return;
+            setMessage(t('paperReview.needScore')); return;
         }
         const breakdown: ExternalPaperBreakdown[] = [];
         for (const section of sections) {
             const sectionScore = Number(section.obtainedScore); const sectionMaximum = Number(section.maxScore);
             if (!section.label.trim() || !Number.isFinite(sectionScore) || !Number.isFinite(sectionMaximum)) {
-                setMessage('Complete each section row, or remove the unfinished row.'); return;
+                setMessage(t('paperReview.completeSections')); return;
             }
             breakdown.push({ label: section.label.trim(), obtainedScore: sectionScore, maxScore: sectionMaximum });
         }
@@ -96,42 +97,42 @@ export function ExternalPaperReviewScreen(): React.JSX.Element {
                 ...(notes.trim() ? { selfNotes: notes.trim() } : {}), ...(documentId ? { documentId } : {}),
             });
             setAnalysis(created.review.analysis); setReviews((items) => [created.review, ...items]);
-            setMessage('Review saved. Use the action plan for your next few study blocks.');
-        } catch (error) { setMessage(userMessage(error, 'Could not save this paper review.')); }
+            setMessage(t('paperReview.saved'));
+        } catch (error) { setMessage(userMessage(error, t('paperReview.saveError'))); }
         finally { setSaving(false); }
     };
     const remove = (review: ExternalPaperReview): void => {
-        Alert.alert('Delete paper review?', 'This removes its linked self-reported analytics point too.', [
-            { text: 'Cancel', style: 'cancel' },
-            { text: 'Delete', style: 'destructive', onPress: () => void (async () => {
+        Alert.alert(t('paperReview.deleteTitle'), t('paperReview.deleteText'), [
+            { text: t('common.cancel'), style: 'cancel' },
+            { text: t('common.delete'), style: 'destructive', onPress: () => void (async () => {
                 try { await deleteExternalPaperReview(review.id); setReviews((items) => items.filter((item) => item.id !== review.id)); if (analysis === review.analysis) setAnalysis(null); }
-                catch (error) { setMessage(userMessage(error, 'Could not delete this review.')); }
+                catch (error) { setMessage(userMessage(error, t('paperReview.deleteError'))); }
             })() },
         ]);
     };
 
     return (
-        <Screen title="Review external paper">
+        <Screen title={t('paperReview.screenTitle')}>
             <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-                <View style={styles.intro}><Text style={styles.introTitle}>Turn a paper into the next right study steps</Text><Text style={styles.introText}>Add marks from any coaching or self-test. This is a study review, not a rank or selection prediction.</Text></View>
-                <Text style={styles.label}>Paper title</Text><TextInput style={styles.input} value={title} onChangeText={setTitle} placeholder="e.g. UPSC GS Paper 1 mock" maxLength={140} />
-                <Text style={styles.label}>Source (optional)</Text><TextInput style={styles.input} value={sourceName} onChangeText={setSourceName} placeholder="Coaching or self-test" maxLength={120} />
-                <Text style={styles.label}>Test date</Text><TextInput style={styles.input} value={testDate} onChangeText={setTestDate} placeholder="YYYY-MM-DD" autoCapitalize="none" />
-                <View style={styles.row}><View style={styles.scoreField}><Text style={styles.label}>Your score</Text><TextInput style={styles.input} value={obtainedScore} onChangeText={setObtainedScore} placeholder="0" keyboardType="decimal-pad" /></View><View style={styles.scoreField}><Text style={styles.label}>Out of</Text><TextInput style={styles.input} value={maxScore} onChangeText={setMaxScore} placeholder="100" keyboardType="decimal-pad" /></View></View>
+                <View style={styles.intro}><Text style={styles.introTitle}>{t('paperReview.heroTitle')}</Text><Text style={styles.introText}>{t('paperReview.heroText')}</Text></View>
+                <Text style={styles.label}>{t('paperReview.paperTitle')}</Text><TextInput style={styles.input} value={title} onChangeText={setTitle} placeholder={t('paperReview.titlePlaceholder')} maxLength={140} />
+                <Text style={styles.label}>{t('paperReview.source')}</Text><TextInput style={styles.input} value={sourceName} onChangeText={setSourceName} placeholder={t('paperReview.sourcePlaceholder')} maxLength={120} />
+                <Text style={styles.label}>{t('paperReview.testDate')}</Text><TextInput style={styles.input} value={testDate} onChangeText={setTestDate} placeholder="YYYY-MM-DD" autoCapitalize="none" />
+                <View style={styles.row}><View style={styles.scoreField}><Text style={styles.label}>{t('paperReview.yourScore')}</Text><TextInput style={styles.input} value={obtainedScore} onChangeText={setObtainedScore} placeholder="0" keyboardType="decimal-pad" /></View><View style={styles.scoreField}><Text style={styles.label}>{t('paperReview.outOf')}</Text><TextInput style={styles.input} value={maxScore} onChangeText={setMaxScore} placeholder="100" keyboardType="decimal-pad" /></View></View>
 
-                <Text style={styles.sectionTitle}>Section-wise marks (optional)</Text>
-                {sections.map((section) => <View key={section.id} style={styles.sectionRow}><TextInput style={[styles.input, styles.sectionLabel]} value={section.label} onChangeText={(value) => updateSection(section.id, { label: value })} placeholder="Section, e.g. Quant" /><TextInput style={[styles.input, styles.sectionScore]} value={section.obtainedScore} onChangeText={(value) => updateSection(section.id, { obtainedScore: value })} placeholder="Score" keyboardType="decimal-pad" /><TextInput style={[styles.input, styles.sectionScore]} value={section.maxScore} onChangeText={(value) => updateSection(section.id, { maxScore: value })} placeholder="Out of" keyboardType="decimal-pad" /><Pressable accessibilityRole="button" onPress={() => setSections((items) => items.filter((item) => item.id !== section.id))}><Text style={styles.remove}>Remove</Text></Pressable></View>)}
-                <Pressable style={styles.outlineButton} accessibilityRole="button" onPress={() => setSections((items) => [...items, { id: sectionId(), label: '', obtainedScore: '', maxScore: '' }])}><Text style={styles.outlineText}>+ Add section</Text></Pressable>
+                <Text style={styles.sectionTitle}>{t('paperReview.sectionMarks')}</Text>
+                {sections.map((section) => <View key={section.id} style={styles.sectionRow}><TextInput style={[styles.input, styles.sectionLabel]} value={section.label} onChangeText={(value) => updateSection(section.id, { label: value })} placeholder={t('paperReview.sectionPlaceholder')} /><TextInput style={[styles.input, styles.sectionScore]} value={section.obtainedScore} onChangeText={(value) => updateSection(section.id, { obtainedScore: value })} placeholder={t('paperReview.score')} keyboardType="decimal-pad" /><TextInput style={[styles.input, styles.sectionScore]} value={section.maxScore} onChangeText={(value) => updateSection(section.id, { maxScore: value })} placeholder={t('paperReview.outOf')} keyboardType="decimal-pad" /><Pressable accessibilityRole="button" onPress={() => setSections((items) => items.filter((item) => item.id !== section.id))}><Text style={styles.remove}>{t('onboarding.remove')}</Text></Pressable></View>)}
+                <Pressable style={styles.outlineButton} accessibilityRole="button" onPress={() => setSections((items) => [...items, { id: sectionId(), label: '', obtainedScore: '', maxScore: '' }])}><Text style={styles.outlineText}>{t('paperReview.addSection')}</Text></Pressable>
 
-                <Text style={styles.sectionTitle}>What affected this paper?</Text><View style={styles.chips}>{TAGS.map((tag) => <Pressable key={tag.value} accessibilityRole="checkbox" accessibilityState={{ checked: tags.includes(tag.value) }} style={[styles.chip, tags.includes(tag.value) && styles.chipSelected]} onPress={() => toggleTag(tag.value)}><Text style={[styles.chipText, tags.includes(tag.value) && styles.chipTextSelected]}>{tag.label}</Text></Pressable>)}</View>
-                <Text style={styles.label}>Reflection (optional)</Text><TextInput style={[styles.input, styles.notes]} value={notes} onChangeText={setNotes} placeholder="What felt difficult? What will you change next time?" multiline maxLength={3000} textAlignVertical="top" />
-                <Pressable style={styles.outlineButton} accessibilityRole="button" disabled={uploading} onPress={() => void attachPdf()}>{uploading ? <ActivityIndicator color="#1d4ed8" /> : <Text style={styles.outlineText}>{documentName ? `Attached: ${documentName}` : 'Attach paper PDF (optional)'}</Text>}</Pressable>
-                <Pressable style={[styles.primaryButton, saving && styles.disabled]} accessibilityRole="button" disabled={saving} onPress={() => void save()}>{saving ? <ActivityIndicator color="#ffffff" /> : <Text style={styles.primaryText}>Create action plan</Text>}</Pressable>
+                <Text style={styles.sectionTitle}>{t('paperReview.whatAffected')}</Text><View style={styles.chips}>{TAGS.map((tag) => <Pressable key={tag.value} accessibilityRole="checkbox" accessibilityState={{ checked: tags.includes(tag.value) }} style={[styles.chip, tags.includes(tag.value) && styles.chipSelected]} onPress={() => toggleTag(tag.value)}><Text style={[styles.chipText, tags.includes(tag.value) && styles.chipTextSelected]}>{t(tag.label)}</Text></Pressable>)}</View>
+                <Text style={styles.label}>{t('paperReview.reflection')}</Text><TextInput style={[styles.input, styles.notes]} value={notes} onChangeText={setNotes} placeholder={t('paperReview.reflectionPlaceholder')} multiline maxLength={3000} textAlignVertical="top" />
+                <Pressable style={styles.outlineButton} accessibilityRole="button" disabled={uploading} onPress={() => void attachPdf()}>{uploading ? <ActivityIndicator color="#1d4ed8" /> : <Text style={styles.outlineText}>{documentName ? `${t('paperReview.attached')}: ${documentName}` : t('paperReview.attachPdf')}</Text>}</Pressable>
+                <Pressable style={[styles.primaryButton, saving && styles.disabled]} accessibilityRole="button" disabled={saving} onPress={() => void save()}>{saving ? <ActivityIndicator color="#ffffff" /> : <Text style={styles.primaryText}>{t('paperReview.createPlan')}</Text>}</Pressable>
                 {message ? <Text style={styles.message}>{message}</Text> : null}
                 {analysis ? <AnalysisCard analysis={analysis} /> : null}
 
-                <Text style={styles.historyTitle}>Past reviews</Text>
-                {loading ? <ActivityIndicator color="#2563eb" /> : reviews.length === 0 ? <Text style={styles.muted}>No saved paper reviews yet.</Text> : reviews.map((review) => <View key={review.id} style={styles.historyCard}><Pressable accessibilityRole="button" onPress={() => setAnalysis(review.analysis)}><Text style={styles.historyName}>{review.title}</Text><Text style={styles.historyMeta}>{new Date(review.testDate).toLocaleDateString()} · {review.obtainedScore}/{review.maxScore} · {review.analysis.scorePercent}%</Text></Pressable><Pressable accessibilityRole="button" onPress={() => remove(review)}><Text style={styles.remove}>Delete</Text></Pressable></View>)}
+                <Text style={styles.historyTitle}>{t('paperReview.pastReviews')}</Text>
+                {loading ? <ActivityIndicator color="#2563eb" /> : reviews.length === 0 ? <Text style={styles.muted}>{t('paperReview.noReviews')}</Text> : reviews.map((review) => <View key={review.id} style={styles.historyCard}><Pressable accessibilityRole="button" onPress={() => setAnalysis(review.analysis)}><Text style={styles.historyName}>{review.title}</Text><Text style={styles.historyMeta}>{new Date(review.testDate).toLocaleDateString()} · {review.obtainedScore}/{review.maxScore} · {review.analysis.scorePercent}%</Text></Pressable><Pressable accessibilityRole="button" onPress={() => remove(review)}><Text style={styles.remove}>{t('common.delete')}</Text></Pressable></View>)}
             </ScrollView>
         </Screen>
     );
@@ -141,7 +142,7 @@ function AnalysisCard({ analysis }: { analysis: ExternalPaperAnalysis }): React.
     const t = useTranslation();
     const forecast = analysis.forecast;
     return <View style={styles.analysis}>
-        <View style={styles.analysisHero}><Text style={styles.analysisEyebrow}>PAPER REVIEW · {analysis.confidence.level.replace('_', ' ')}</Text><Text style={styles.analysisScore}>{analysis.scorePercent}%</Text><Text style={styles.analysisText}>{analysis.encouragement}</Text>{analysis.scoreChangePoints !== null ? <Text style={styles.analysisText}>{t('paperReview.comparedLast')}: {analysis.scoreChangePoints > 0 ? '+' : ''}{analysis.scoreChangePoints} {t('paperReview.percentagePoints')}.</Text> : null}</View>
+        <View style={styles.analysisHero}><Text style={styles.analysisEyebrow}>{t('paperReview.eyebrow')} · {analysis.confidence.level.replace('_', ' ')}</Text><Text style={styles.analysisScore}>{analysis.scorePercent}%</Text><Text style={styles.analysisText}>{analysis.encouragement}</Text>{analysis.scoreChangePoints !== null ? <Text style={styles.analysisText}>{t('paperReview.comparedLast')}: {analysis.scoreChangePoints > 0 ? '+' : ''}{analysis.scoreChangePoints} {t('paperReview.percentagePoints')}.</Text> : null}</View>
         {analysis.documentInsights ? <View style={styles.surfacePanel}><Text style={styles.analysisHeading}>{t('paperReview.contentDetected')}</Text><Text style={styles.analysisText}>{analysis.documentInsights.message}</Text>{analysis.documentInsights.detectedTopics.slice(0, 4).map((topic) => <Text key={topic.label} style={styles.analysisText}>• {topic.label} · {topic.evidenceCount} {t('paperReview.signals')}</Text>)}<Text style={styles.disclaimer}>{analysis.documentInsights.limitation}</Text></View> : null}
         <View style={styles.warningPanel}><Text style={styles.analysisHeading}>{t('paperReview.priorities')}</Text>{analysis.priorityAreas.length ? analysis.priorityAreas.map((item) => <Text key={item.label} style={styles.analysisText}>• {item.label}: {item.scorePercent}% — {item.reason}</Text>) : <Text style={styles.analysisText}>{t('paperReview.addSectionsHint')}</Text>}</View>
         <View style={styles.surfacePanel}><Text style={styles.analysisHeading}>{t('paperReview.nextActions')}</Text>{analysis.actionPlan.map((action) => <Text key={action} style={styles.analysisText}>• {action}</Text>)}</View>

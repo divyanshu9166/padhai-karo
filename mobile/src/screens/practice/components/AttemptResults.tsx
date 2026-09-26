@@ -81,7 +81,7 @@ export function AttemptResults({
             setFlagState((prev) => ({ ...prev, [questionId]: { state: 'flagged', category } }));
         } catch (err) {
             const message =
-                err instanceof ApiError ? err.message : 'Could not flag this question.';
+                err instanceof ApiError ? err.message : t('attemptResults.flagError');
             setFlagState((prev) => ({ ...prev, [questionId]: { state: 'error', message } }));
         }
     };

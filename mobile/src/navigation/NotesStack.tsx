@@ -6,15 +6,17 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AiNotesScreen, PaywallScreen } from '@/screens';
+import { useTranslation } from '@/localization';
 import type { NotesStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<NotesStackParamList>();
 
 export function NotesStack(): React.JSX.Element {
+    const t = useTranslation();
     return (
         <Stack.Navigator initialRouteName="AiNotes">
-            <Stack.Screen name="AiNotes" component={AiNotesScreen} options={{ title: 'AI notes', headerShown: false }} />
-            <Stack.Screen name="Paywall" component={PaywallScreen} options={{ title: 'Upgrade' }} />
+            <Stack.Screen name="AiNotes" component={AiNotesScreen} options={{ title: t('ai.title'), headerShown: false }} />
+            <Stack.Screen name="Paywall" component={PaywallScreen} options={{ title: t('nav.upgrade') }} />
         </Stack.Navigator>
     );
 }

@@ -27,7 +27,7 @@ export function ConceptCoachScreen(): React.JSX.Element {
         if (!result) return;
         setBusy(true);
         try {
-            await createRevisionCard({ title: `${result.concept} · concept correction`, prompt: result.content.quiz.question, answer: result.content.quiz.explanation, tags: ['concept-coach', 'correction'] });
+            await createRevisionCard({ title: `${result.concept} · ${t('conceptCoachScreen.correction')}`, prompt: result.content.quiz.question, answer: result.content.quiz.explanation, tags: ['concept-coach', 'correction'] });
             setMessage(t('conceptCoach.savedRevision'));
         } catch (error) { setMessage(error instanceof Error ? error.message : t('conceptCoach.saveError')); }
         finally { setBusy(false); }

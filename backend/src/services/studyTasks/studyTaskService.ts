@@ -177,12 +177,13 @@ export async function updateStudyTaskHandler(request: Request, auth: AuthContext
 export async function getTodayHandler(_request: Request, auth: AuthContext, now = new Date()): Promise<Response> {
     const today = startOfUtcDay(now);
     const tomorrow = startOfNextUtcDay(now);
-    const [profile, tasks, revisionDue, focus, backlog] = await Promise.all([
+    const [profile, tasks, revisionDue, focus, backlog, upcomingExam] = await Promise.all([
         prisma.profile.findUnique({ where: { userId: auth.user.id }, select: { examProgram: true, examStage: true, targetExamDate: true } }),
         prisma.studyTask.findMany({ where: { userId: auth.user.id, scheduledDate: { gte: today, lt: tomorrow } }, select: taskSelect, orderBy: [{ priority: 'desc' }, { createdAt: 'asc' }] }),
         prisma.revisionCard.count({ where: { userId: auth.user.id, suspended: false, dueAt: { lte: tomorrow } } }),
         prisma.focusSession.aggregate({ where: { userId: auth.user.id, startTime: { gte: today, lt: tomorrow } }, _sum: { focusedDurationMin: true } }),
         prisma.studyTask.count({ where: { userId: auth.user.id, status: { in: ['PENDING', 'IN_PROGRESS', 'MISSED'] }, scheduledDate: { lt: today } } }),
+        prisma.examDate.findFirst({ where: { userId: auth.user.id, examDate: { gte: today } }, orderBy: [{ examDate: 'asc' }, { priority: 'desc' }], select: { examDate: true } }),
     ]);
     const currentAffairs = await prisma.currentAffairsItem.findFirst({
         where: profile?.examProgram ? { OR: [{ examProgram: null }, { examProgram: profile.examProgram }] } : {},
@@ -190,7 +191,10 @@ export async function getTodayHandler(_request: Request, auth: AuthContext, now 
         select: { id: true, title: true, category: true, syllabusTags: true, prelimsRelevance: true, mainsRelevance: true },
     });
     const completed = tasks.filter((task) => task.status === 'COMPLETED').length;
-    const targetDate = profile?.targetExamDate;
+    // Planner lets learners add concrete stage/session dates separately from onboarding's
+    // target date. Prefer the nearest upcoming saved date so Today never says “set your date”
+    // after the learner already added one in Plan.
+    const targetDate = upcomingExam?.examDate ?? profile?.targetExamDate;
     const countdownDays = targetDate ? Math.max(0, Math.ceil((startOfUtcDay(targetDate).getTime() - today.getTime()) / 86_400_000)) : null;
     return Response.json({
         profile: profile ? { examProgram: profile.examProgram, examStage: profile.examStage } : null,

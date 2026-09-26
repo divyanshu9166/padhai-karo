@@ -2,7 +2,7 @@
  * Offline indicator banner (task 21.9; Req 21.2, 21.6).
  *
  * A small, reusable strip any screen can render to signal the device is offline. When the
- * connectivity monitor reports `offline` it shows a short "You're offline" message plus the
+ * connectivity monitor reports `offline` it shows a short t('offlineBanner.title') message plus the
  * number of queued Local_Sync_Records still waiting to sync (Req 21.3/21.4); an optional
  * `note` lets a screen append context (e.g. that a specific feature is unavailable offline,
  * Req 21.6). It renders nothing while online, so screens can mount it unconditionally.
@@ -13,6 +13,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { interpolate, useTranslation } from '@/localization';
+
 import { useOffline } from './OfflineContext';
 
 interface OfflineBannerProps {
@@ -22,6 +24,7 @@ interface OfflineBannerProps {
 
 export function OfflineBanner({ note }: OfflineBannerProps): React.JSX.Element | null {
     const { isOffline, outbox } = useOffline();
+    const t = useTranslation();
 
     if (!isOffline) {
         return null;
@@ -30,12 +33,12 @@ export function OfflineBanner({ note }: OfflineBannerProps): React.JSX.Element |
     const queued = outbox.length;
     const queuedLabel =
         queued === 0
-            ? 'All work is synced.'
-            : `${queued} item${queued === 1 ? '' : 's'} queued to sync when you reconnect.`;
+            ? t('offlineBanner.synced')
+            : interpolate(t('offlineBanner.queued'), { count: queued });
 
     return (
         <View style={styles.banner} accessibilityRole="alert">
-            <Text style={styles.title}>You're offline</Text>
+            <Text style={styles.title}>{t('offlineBanner.title')}</Text>
             <Text style={styles.detail}>{queuedLabel}</Text>
             {note ? <Text style={styles.detail}>{note}</Text> : null}
         </View>

@@ -18,6 +18,16 @@ export function loginUser(credentials: Credentials): Promise<AuthTokenResponse> 
     return request<AuthTokenResponse>('/auth/login', { method: 'POST', body: credentials });
 }
 
+/** `POST /auth/password-reset/request` → 200 generic message; emails a 6-digit code if the account exists. */
+export function requestPasswordReset(email: string): Promise<{ message: string }> {
+    return request<{ message: string }>('/auth/password-reset/request', { method: 'POST', body: { email } });
+}
+
+/** `POST /auth/password-reset/confirm` → `{ token, user }`; signs in with the new password. */
+export function confirmPasswordReset(input: { email: string; code: string; newPassword: string }): Promise<AuthTokenResponse> {
+    return request<AuthTokenResponse>('/auth/password-reset/confirm', { method: 'POST', body: input });
+}
+
 /** `POST /auth/logout` → 204 (Req 1). */
 export function logoutUser(): Promise<void> {
     return request<void>('/auth/logout', { method: 'POST' });

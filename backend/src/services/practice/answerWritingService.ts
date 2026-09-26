@@ -32,15 +32,21 @@ function feedbackFor(prompt: string, answerText: string, wordCount: number) {
     };
 }
 
+function countWords(value: string): number {
+    return value.match(/[\p{L}\p{M}\p{N}]+(?:['’\-][\p{L}\p{M}\p{N}]+)*/gu)?.length ?? 0;
+}
+
 export async function createAnswerWritingHandler(request: Request, auth: AuthContext): Promise<Response> {
     let body: unknown;
     try { body = await request.json(); } catch { body = null; }
-    if (!body || typeof body !== 'object') return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'Request body must be an object.');
+    if (!body || typeof body !== 'object' || Array.isArray(body)) return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'Request body must be an object.');
     const input = body as Record<string, unknown>;
     const prompt = typeof input.prompt === 'string' ? input.prompt.trim() : '';
     const answerText = typeof input.answerText === 'string' ? input.answerText.trim() : '';
-    const wordCount = typeof input.wordCount === 'number' && Number.isInteger(input.wordCount) ? input.wordCount : answerText.split(/\s+/).filter(Boolean).length;
-    if (!prompt || !answerText || wordCount < 1 || wordCount > 5000) return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'prompt and answerText are required.');
+    const wordCount = countWords(answerText);
+    if (!prompt || prompt.length > 2_000 || !answerText || answerText.length > 30_000 || wordCount < 1 || wordCount > 5_000) return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'Provide a question (up to 2,000 characters) and answer (up to 30,000 characters and 5,000 words).');
+    const timeTakenSec = input.timeTakenSec === undefined ? undefined : typeof input.timeTakenSec === 'number' && Number.isInteger(input.timeTakenSec) && input.timeTakenSec >= 0 && input.timeTakenSec <= 86_400 ? input.timeTakenSec : null;
+    if (timeTakenSec === null) return errorResponse(422, ErrorCode.VALIDATION_ERROR, 'timeTakenSec must be an integer from 0 to 86400.');
     let feedback: {
         score: number; criteria: Record<string, number>; strengths: string[]; nextSteps: string[];
         demandAnalysis: string; factualCautions: string[]; source: 'RUBRIC' | 'AI';
@@ -54,7 +60,7 @@ export async function createAnswerWritingHandler(request: Request, auth: AuthCon
             userId: auth.user.id,
             subjectId: typeof input.subjectId === 'string' ? input.subjectId : undefined,
             prompt, answerText, wordCount,
-            timeTakenSec: typeof input.timeTakenSec === 'number' ? input.timeTakenSec : undefined,
+            timeTakenSec,
             selfScore: feedback.score,
             feedback: feedback as unknown as Prisma.InputJsonValue,
             status: 'REVIEWED', submittedAt: new Date(),

@@ -81,8 +81,8 @@ export function TimetableScreen(): React.JSX.Element {
                 await cacheJson('timetable:' + week, studyBlocks);
             } catch (err) {
                 const cached = await readCachedJson<StudyBlock[]>('timetable:' + week);
-                if (cached) { setBlocks(cached.value); setError('Showing the last saved timetable.'); }
-                else { setError(err instanceof ApiError ? err.message : 'Could not load the timetable.'); setBlocks([]); }
+                if (cached) { setBlocks(cached.value); setError(t('timetableScreen.showingSaved')); }
+                else { setError(err instanceof ApiError ? err.message : t('timetableScreen.loadError')); setBlocks([]); }
             } finally {
                 setLoading(false);
             }
@@ -121,8 +121,8 @@ export function TimetableScreen(): React.JSX.Element {
             const res = await generateTimetable(weekStart);
             setBlocks([...res.studyBlocks, ...res.bufferSlots]);
         } catch (err) {
-            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_GENERATE', { weekStart }); setError('Timetable generation queued. Your saved timetable remains available offline.'); }
-            else setError(err instanceof ApiError ? err.message : 'Could not generate the timetable.');
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_GENERATE', { weekStart }); setError(t('timetableScreen.generateQueued')); }
+            else setError(err instanceof ApiError ? err.message : t('timetableScreen.generateError'));
         } finally {
             setBusy(false);
         }
@@ -139,12 +139,12 @@ export function TimetableScreen(): React.JSX.Element {
             setBlocks((prev) => prev.map((b) => (b.id === studyBlock.id ? studyBlock : b)));
             setEditing(null);
         } catch (err) {
-            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_UPDATE', { id: editing.id, patch: patch as unknown as Record<string, unknown>, ...(editing.updatedAt ? { baseUpdatedAt: editing.updatedAt } : {}) }); setBlocks((prev) => prev.map((b) => b.id === editing.id ? { ...b, ...patch } as StudyBlock : b)); setEditing(null); setEditError('Edit saved offline and will sync when you reconnect.'); return; }
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_UPDATE', { id: editing.id, patch: patch as unknown as Record<string, unknown>, ...(editing.updatedAt ? { baseUpdatedAt: editing.updatedAt } : {}) }); setBlocks((prev) => prev.map((b) => b.id === editing.id ? { ...b, ...patch } as StudyBlock : b)); setEditing(null); setEditError(t('timetableScreen.editQueued')); return; }
             // Surface a 409 overlap inline, leaving the original block unchanged (Req 3.5).
             if (err instanceof ApiError && err.code === 'TIMETABLE_OVERLAP') {
                 setEditError(t('timetable.overlapError'));
             } else {
-                setEditError(err instanceof ApiError ? err.message : 'Could not save the edit.');
+                setEditError(err instanceof ApiError ? err.message : t('timetableScreen.editError'));
             }
         } finally {
             setEditSubmitting(false);
@@ -157,8 +157,8 @@ export function TimetableScreen(): React.JSX.Element {
             await deleteBlock(block.id);
             setBlocks((prev) => prev.filter((b) => b.id !== block.id));
         } catch (err) {
-            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_DELETE', { id: block.id, ...(block.updatedAt ? { baseUpdatedAt: block.updatedAt } : {}) }); setBlocks((prev) => prev.filter((b) => b.id !== block.id)); setError('Block deletion queued for sync.'); }
-            else setError(err instanceof ApiError ? err.message : 'Could not delete the block.');
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_DELETE', { id: block.id, ...(block.updatedAt ? { baseUpdatedAt: block.updatedAt } : {}) }); setBlocks((prev) => prev.filter((b) => b.id !== block.id)); setError(t('timetableScreen.deleteQueued')); }
+            else setError(err instanceof ApiError ? err.message : t('timetableScreen.deleteError'));
         } finally {
             setBusy(false);
         }
@@ -170,8 +170,8 @@ export function TimetableScreen(): React.JSX.Element {
             await markBlockMissed(block.id);
             await load(weekStart);
         } catch (err) {
-            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_MISSED', { id: block.id, ...(block.updatedAt ? { baseUpdatedAt: block.updatedAt } : {}) }); setBlocks((prev) => prev.filter((item) => item.id !== block.id)); setError('Missed-block rebalance queued for sync.'); }
-            else setError(err instanceof ApiError ? err.message : 'Could not rebalance the block.');
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('TIMETABLE_BLOCK_MISSED', { id: block.id, ...(block.updatedAt ? { baseUpdatedAt: block.updatedAt } : {}) }); setBlocks((prev) => prev.filter((item) => item.id !== block.id)); setError(t('timetableScreen.rebalanceQueued')); }
+            else setError(err instanceof ApiError ? err.message : t('timetableScreen.rebalanceError'));
         } finally {
             setBusy(false);
         }
@@ -191,8 +191,8 @@ export function TimetableScreen(): React.JSX.Element {
                 /* leave the existing offer state unchanged */
             }
         } catch (err) {
-            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('CALENDAR_EVENT_CREATE', input as unknown as Record<string, unknown>); setEventModalOpen(false); setEventError('Event saved offline and will sync when you reconnect.'); }
-            else setEventError(err instanceof ApiError ? err.message : 'Could not save the event.');
+            if (isOffline || (err instanceof ApiError && err.status === 0)) { await queueMutation('CALENDAR_EVENT_CREATE', input as unknown as Record<string, unknown>); setEventModalOpen(false); setEventError(t('timetableScreen.eventQueued')); }
+            else setEventError(err instanceof ApiError ? err.message : t('timetableScreen.eventError'));
         } finally {
             setEventSubmitting(false);
         }

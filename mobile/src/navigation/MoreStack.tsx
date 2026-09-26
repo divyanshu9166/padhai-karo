@@ -17,12 +17,12 @@ export function MoreStack(): React.JSX.Element {
         <Stack.Navigator>
             <Stack.Screen name="More" component={MoreMenuScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Notes" component={NotesStack} options={{ headerShown: false }} />
-            <Stack.Screen name="Updates" component={CurrentAffairsScreen} />
-            <Stack.Screen name="Tools" component={StudyToolsScreen} />
-            <Stack.Screen name="Library" component={LibraryScreen} />
-            <Stack.Screen name="Community" component={CommunityScreen} />
-            <Stack.Screen name="Analytics" component={AnalyticsScreen} />
-            <Stack.Screen name="WeeklyReview" component={WeeklyReviewScreen} options={{ title: 'Weekly review' }} />
+            <Stack.Screen name="Updates" component={CurrentAffairsScreen} options={{ title: t('currentAffairs.title') }} />
+            <Stack.Screen name="Tools" component={StudyToolsScreen} options={{ title: t('tools.title') }} />
+            <Stack.Screen name="Library" component={LibraryScreen} options={{ title: t('library.title') }} />
+            <Stack.Screen name="Community" component={CommunityScreen} options={{ title: t('community.title') }} />
+            <Stack.Screen name="Analytics" component={AnalyticsScreen} options={{ title: t('analytics.title') }} />
+            <Stack.Screen name="WeeklyReview" component={WeeklyReviewScreen} options={{ title: t('nav.weeklyReview') }} />
             <Stack.Screen name="ConceptCoach" component={ConceptCoachScreen} options={{ title: t('conceptCoach.title') }} />
             <Stack.Screen name="DailyBriefing" component={DailyBriefingScreen} options={{ title: t('more.dailyBriefingTitle') }} />
             <Stack.Screen name="OfflineManager" component={OfflineManagerScreen} options={{ title: t('more.offlineTitle') }} />

@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { summarizeImageWithGemini, summarizeWithGemini, transcribeAudio } from './liveProvider';
+import { configuredProviderName, liveProviderConfigured, summarizeImageWithGemini, summarizeWithGemini, transcribeAudio } from './liveProvider';
 
 const original = {
     provider: process.env.AI_PROVIDER,
@@ -20,7 +20,7 @@ function useGroq(): void {
     process.env.AI_PROVIDER = 'GROQ';
     process.env.AI_PROVIDER_API_KEY = 'test-key';
     process.env.AI_PROVIDER_MODEL = 'openai/gpt-oss-20b';
-    process.env.AI_PROVIDER_VISION_MODEL = 'qwen/qwen3.6-27b';
+    process.env.AI_PROVIDER_VISION_MODEL = 'qwen/qwen3.8-27b';
 }
 
 describe('Groq live provider', () => {
@@ -45,7 +45,7 @@ describe('Groq live provider', () => {
 
         await summarizeImageWithGemini('data:image/png;base64,YQ==', 'image/png');
         const body = JSON.parse(String((fetchMock.mock.calls as unknown as Array<[string, RequestInit]>)[0][1].body));
-        expect(body.model).toBe('qwen/qwen3.6-27b');
+        expect(body.model).toBe('qwen/qwen3.8-27b');
         expect(body.messages[0].content[1].image_url.url).toBe('data:image/png;base64,YQ==');
     });
 
@@ -59,5 +59,39 @@ describe('Groq live provider', () => {
         expect(url).toBe('https://api.groq.com/openai/v1/audio/transcriptions');
         expect(init.headers).toEqual({ Authorization: 'Bearer test-key' });
         expect(init.body).toBeInstanceOf(FormData);
+    });
+
+    it('does not accept malformed image data or send a provider request', async () => {
+        useGroq();
+        const fetchMock = vi.fn();
+        vi.stubGlobal('fetch', fetchMock);
+        await expect(summarizeImageWithGemini('not-base64!', 'image/png')).rejects.toThrow('valid base64');
+        expect(fetchMock).not.toHaveBeenCalled();
+    });
+
+    it('rejects malformed model JSON instead of silently treating it as a summary', async () => {
+        useGroq();
+        vi.stubGlobal('fetch', vi.fn(async () => Response.json({ choices: [{ message: { content: 'not json' } }] })));
+        await expect(summarizeWithGemini('Federalism notes')).rejects.toThrow('invalid JSON');
+    });
+
+    it('uses the current Gemini default and keeps the API key out of request URLs', async () => {
+        process.env.AI_PROVIDER = 'GEMINI';
+        process.env.AI_PROVIDER_API_KEY = 'test-key';
+        delete process.env.AI_PROVIDER_MODEL;
+        const fetchMock = vi.fn(async () => Response.json({ candidates: [{ content: { parts: [{ text: JSON.stringify({ keyPoints: ['Federalism'] }) }] } }] }));
+        vi.stubGlobal('fetch', fetchMock);
+        await summarizeWithGemini('Federalism notes');
+        const [url, init] = (fetchMock.mock.calls as unknown as Array<[string, RequestInit]>)[0];
+        expect(url).toContain('/models/gemini-3.8-flash:generateContent');
+        expect(url).not.toContain('test-key');
+        expect(new Headers(init.headers).get('x-goog-api-key')).toBe('test-key');
+    });
+
+    it('reports invalid provider configuration as unavailable without throwing from health checks', () => {
+        process.env.AI_PROVIDER = 'NOT_A_PROVIDER';
+        process.env.AI_PROVIDER_API_KEY = 'test-key';
+        expect(configuredProviderName()).toBe('INVALID');
+        expect(liveProviderConfigured()).toBe(false);
     });
 });

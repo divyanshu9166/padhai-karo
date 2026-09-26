@@ -276,6 +276,43 @@ model User {
   communityMessagesReceived   CommunityMessage[]           @relation("CommunityMessageRecipient")
   dashboardSharesCreated      BuddyDashboardShare[]        @relation("DashboardShareOwner")
   dashboardSharesReceived     BuddyDashboardShare[]        @relation("DashboardShareRecipient")
+
+  // Launch readiness: account recovery + daily practice habit
+  passwordResetTokens PasswordResetToken[]
+  dailyQuizAttempts   DailyQuizAttempt[]
+}
+
+// Short-lived password-reset code. Only a hash of the emailed code is stored; a code is
+// single-use, expires quickly, and is invalidated after a bounded number of wrong guesses.
+model PasswordResetToken {
+  id         String    @id @default(uuid())
+  userId     String
+  codeHash   String
+  expiresAt  DateTime
+  attempts   Int       @default(0)
+  consumedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+// One completed daily quiz per user per India calendar day (YYYY-MM-DD, Asia/Kolkata).
+model DailyQuizAttempt {
+  id           String   @id @default(uuid())
+  userId       String
+  quizDate     String
+  questionIds  String[]
+  answers      Json // { [questionId]: selectedOption | null }
+  correctCount Int
+  totalCount   Int
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, quizDate])
+  @@index([userId, createdAt])
 }
 
 model Session {
@@ -311,6 +348,9 @@ model Profile {
   revisionBufferDays Int               @default(45) // Revision_Buffer
   bufferPolicy       BufferPolicy      @default(CATCH_UP)
   onboardingComplete Boolean           @default(false)
+  // One-time free premium trial. Null until started; premium access lasts until trialEndsAt.
+  trialStartedAt     DateTime?
+  trialEndsAt        DateTime?
   createdAt          DateTime          @default(now())
   updatedAt          DateTime          @updatedAt
 
@@ -517,6 +557,9 @@ model PYQPaper {
     answerKeyUrl       String?
     verificationMethod String?
   verifiedAt         DateTime?
+  // Questions the official final key dropped (not scored). A paper is complete for full-mock
+  // mode with questionCount - droppedQuestionCount questions, and marks are spread over those.
+  droppedQuestionCount Int        @default(0)
   createdAt          DateTime     @default(now())
   updatedAt          DateTime     @updatedAt
 
@@ -539,6 +582,7 @@ model AnswerKey {
 model PYQ {
   id               String       @id @default(uuid())
   paperId          String?
+  questionNumber   Int          @default(0)
   examTrack        ExamTrack // Req 7.4
   examProgram      ExamProgram?
   examStage        ExamStage?
@@ -555,6 +599,7 @@ model PYQ {
 
   @@index([examTrack, year, subjectId]) // filtering (Req 6.1)
   @@index([paperId])
+  @@index([paperId, questionNumber])
 }
 
 model PYQAttempt {

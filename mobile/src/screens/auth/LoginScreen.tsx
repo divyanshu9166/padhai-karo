@@ -34,6 +34,8 @@ export function LoginScreen({
                 onSubmit={handleSubmit}
                 switchLabel={t('auth.needAccount')}
                 onSwitch={() => navigation.navigate('Register')}
+                secondaryLabel={t('auth.forgotPassword')}
+                onSecondary={() => navigation.navigate('ForgotPassword')}
             />
         </Screen>
     );

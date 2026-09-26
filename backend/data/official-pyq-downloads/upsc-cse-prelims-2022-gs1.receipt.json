@@ -1,0 +1,21 @@
+{
+  "id": "upsc-cse-prelims-2022-gs1",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2022,
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers/archives",
+  "series": "A",
+  "requiresFinalKeyReview": true,
+  "paperKey": "UPSC-CSE-PRELIMS-GS1-2022",
+  "subjectId": "UPSC-CSE-GS1",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/GENERAL%20STUDIES%20PAPER%20I.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-2022-Paper-I-040723.pdf",
+  "bytes": 9674939,
+  "sha256": "04847f1cb38471042066a58333aa332c34b991ed08a23df1dc133d8a5c158d53",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2022-gs1-answer-key.pdf",
+  "answerKeyBytes": 95046,
+  "answerKeySha256": "40a4e7e2a76f617a0f77591a752f82794b96af62dc9e2334609f877a0d2ae272",
+  "downloadedAt": "2026-09-26T05:09:12.573Z",
+  "finalKeyReviewed": false
+}

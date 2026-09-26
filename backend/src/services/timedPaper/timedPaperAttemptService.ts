@@ -248,7 +248,7 @@ export async function getPaperHandler(
     const questions = await prisma.pYQ.findMany({
         where: { paperId: id, flaggedForReview: false },
         select: PAPER_QUESTION_CLIENT_SELECT,
-        orderBy: { id: 'asc' },
+        orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
     });
 
     return Response.json({
@@ -271,7 +271,7 @@ async function loadPaperAnswerSources(paperId: string): Promise<PaperAnswerSourc
     return prisma.pYQ.findMany({
         where: { paperId, flaggedForReview: false },
         select: { id: true, correctOption: true },
-        orderBy: { id: 'asc' },
+        orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
     });
 }
 

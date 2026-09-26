@@ -1,0 +1,21 @@
+{
+  "id": "upsc-cse-prelims-2021-gs1",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2021,
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers/archives",
+  "series": "A",
+  "requiresFinalKeyReview": true,
+  "paperKey": "UPSC-CSE-PRELIMS-GS1-2021",
+  "subjectId": "UPSC-CSE-GS1",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-21-GeneralStudiesPaper-I-121021.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/Anskey-CSP-21-GS-I-300522.pdf",
+  "bytes": 31328390,
+  "sha256": "261ba7116947a4a7317fda323229040bd364534b46de1e21625b91c0adf52ecc",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2021-gs1-answer-key.pdf",
+  "answerKeyBytes": 2473906,
+  "answerKeySha256": "c8e3fd96f5318c67b4d4547ab5bb013d00ff9b3b063458c6921e9a28aaeb57db",
+  "downloadedAt": "2026-09-26T05:09:21.235Z",
+  "finalKeyReviewed": false
+}

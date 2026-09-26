@@ -29,3 +29,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# PYQ extraction scratch space: rendered page images and OCR output (regenerable, large).
+/data/official-pyq-work/
+
+# Official PDFs are large and re-downloadable; receipts (with SHA-256) stay tracked to verify them.
+/data/official-pyq-downloads/*.pdf

@@ -76,7 +76,12 @@ vi.mock('@/lib/db', () => {
     };
 });
 
+import { MemoryRateLimitStore, setRateLimitStore, type RateLimitStore } from '@/lib/auth';
+
 import { POST as register } from './route';
+
+/** Never limits, so property runs that register many accounts from one address stay valid. */
+const unlimited: RateLimitStore = { peek: async () => ({ count: 0, ttlSec: 0 }), hit: async () => 1, reset: async () => undefined };
 
 function registerRequest(email: string, password: string): Request {
     return new Request('https://api.test/api/auth/register', {
@@ -100,6 +105,7 @@ const VALID_PASSWORD = 'Abcdef12';
 
 beforeEach(() => {
     store.users.clear();
+    setRateLimitStore(unlimited);
 });
 
 describe('POST /api/auth/register', () => {
@@ -132,5 +138,24 @@ describe('POST /api/auth/register', () => {
         // Email is normalized (trimmed + lowercased) before storage.
         expect(body.user.email).toBe('newuser@example.com');
         expect(body.user).not.toHaveProperty('passwordHash');
+    });
+
+    it('returns 429 after 10 sign-up attempts from one address within an hour', async () => {
+        setRateLimitStore(new MemoryRateLimitStore());
+        const fromIp = (email: string) => new Request('https://api.test/api/auth/register', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json', 'x-forwarded-for': '203.0.113.7' },
+            body: JSON.stringify({ email, password: VALID_PASSWORD }),
+        });
+        for (let i = 0; i < 10; i += 1) {
+            expect((await register(fromIp(`student${i}@example.in`))).status).toBe(201);
+        }
+        const limited = await register(fromIp('student10@example.in'));
+        expect(limited.status).toBe(429);
+        expect((await limited.json()).error.code).toBe('TOO_MANY_ATTEMPTS');
+        // Ten argon2 hashes can take over a second under load, so the window may have ticked down.
+        const retryAfter = Number(limited.headers.get('Retry-After'));
+        expect(retryAfter).toBeGreaterThan(3500);
+        expect(retryAfter).toBeLessThanOrEqual(3600);
     });
 });

@@ -203,7 +203,7 @@ export async function pyqsHandler(request: Request, ctx: AuthContext): Promise<R
     const rows = await prisma.pYQ.findMany({
         where,
         select: PYQ_CLIENT_SELECT,
-        orderBy: { id: 'asc' },
+        orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
     });
 
     return Response.json({ questions: rows.map(toClientPyq) });

@@ -16,7 +16,10 @@ export type { RequestOptions } from './client';
 export type { Credentials, PublicUser, AuthTokenResponse, AuthMeResponse } from './types';
 
 // Auth endpoint helpers.
-export { registerUser, loginUser, logoutUser, fetchMe, deleteAccount } from './auth';
+export { registerUser, loginUser, logoutUser, fetchMe, deleteAccount, requestPasswordReset, confirmPasswordReset } from './auth';
+
+// Daily quiz.
+export * from './dailyQuiz';
 
 // Profile endpoints + DTOs (language preference; Req 10.1).
 export {

@@ -31,6 +31,24 @@ function assertOfficialUrl(raw: string, label: string): URL {
     return url;
 }
 
+/**
+ * Fetch a PDF body, retrying dropped connections: the UPSC server regularly terminates large
+ * transfers mid-way. HTTP errors are not retried, and redirects stay forbidden.
+ */
+async function fetchPdf(url: URL, label: string, attempts = 4): Promise<Buffer> {
+    for (let attempt = 1; ; attempt += 1) {
+        try {
+            const response = await fetch(url, { redirect: 'error', headers: { Accept: 'application/pdf,application/octet-stream' }, signal: AbortSignal.timeout(180_000) });
+            if (!response.ok) throw Object.assign(new Error(`${label} returned HTTP ${response.status}.`), { final: true });
+            return Buffer.from(await response.arrayBuffer());
+        } catch (error) {
+            if ((error as { final?: boolean }).final || attempt >= attempts) throw error;
+            console.warn(`${label} interrupted (${error instanceof Error ? error.message : error}); retrying ${attempt}/${attempts - 1}…`);
+            await new Promise((done) => setTimeout(done, attempt * 3000));
+        }
+    }
+}
+
 async function download(source: Source): Promise<void> {
     assertOfficialUrl(source.sourcePageUrl, `${source.id}.sourcePageUrl`);
     if (!source.downloadUrl) {
@@ -38,9 +56,7 @@ async function download(source: Source): Promise<void> {
         return;
     }
     const url = assertOfficialUrl(source.downloadUrl, `${source.id}.downloadUrl`);
-    const response = await fetch(url, { redirect: 'error', headers: { Accept: 'application/pdf,application/octet-stream' } });
-    if (!response.ok) throw new Error(`${source.id}: official download returned HTTP ${response.status}.`);
-    const bytes = Buffer.from(await response.arrayBuffer());
+    const bytes = await fetchPdf(url, `${source.id}: official download`);
     if (bytes.length === 0 || bytes.length > maxBytes) throw new Error(`${source.id}: download size is outside the safe limit.`);
     const checksum = createHash('sha256').update(bytes).digest('hex');
     const base = source.id.replace(/[^a-zA-Z0-9._-]/g, '_');
@@ -50,9 +66,7 @@ async function download(source: Source): Promise<void> {
     let answerKeyBytes: number | undefined;
     if (source.answerKeyUrl) {
         const answerKeyUrl = assertOfficialUrl(source.answerKeyUrl, `${source.id}.answerKeyUrl`);
-        const answerKeyResponse = await fetch(answerKeyUrl, { redirect: 'error', headers: { Accept: 'application/pdf,application/octet-stream' } });
-        if (!answerKeyResponse.ok) throw new Error(`${source.id}: official answer-key download returned HTTP ${answerKeyResponse.status}.`);
-        const answerKey = Buffer.from(await answerKeyResponse.arrayBuffer());
+        const answerKey = await fetchPdf(answerKeyUrl, `${source.id}: official answer-key download`);
         if (answerKey.length === 0 || answerKey.length > maxBytes) throw new Error(`${source.id}: answer-key size is outside the safe limit.`);
         answerKeyChecksum = createHash('sha256').update(answerKey).digest('hex');
         answerKeyBytes = answerKey.length;
@@ -82,7 +96,17 @@ async function main(): Promise<void> {
     const sources = JSON.parse(await readFile(manifestPath, 'utf8')) as unknown;
     if (!Array.isArray(sources) || sources.length === 0) throw new Error('The official PYQ source manifest is empty.');
     await mkdir(outputDirectory, { recursive: true });
-    for (const source of sources as Source[]) await download(source);
+    // `npm run pyq:prepare -- <id> [<id> …]` limits the run; sources with a receipt are skipped.
+    const only = new Set(process.argv.slice(2));
+    for (const source of sources as Source[]) {
+        if (only.size > 0 && !only.has(source.id)) continue;
+        const base = source.id.replace(/[^a-zA-Z0-9._-]/g, '_');
+        if (await readFile(resolve(outputDirectory, `${base}.receipt.json`)).then(() => true, () => false)) {
+            console.log(JSON.stringify({ id: source.id, skipped: true, reason: 'Already downloaded (receipt present).' }));
+            continue;
+        }
+        await download(source);
+    }
     console.log(`Downloaded official source documents to ${outputDirectory}. No paper is import-eligible until its final answer key is reviewed.`);
 }
 

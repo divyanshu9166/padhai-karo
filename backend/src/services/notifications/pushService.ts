@@ -1,6 +1,9 @@
 import type { AuthContext } from '@/lib/auth';
 import { prisma } from '@/lib/db';
 import { ErrorCode, errorResponse } from '@/lib/errors';
+import { computeQuizStreak, indiaDateKey, shiftIndiaDate } from '@/services/dailyQuiz';
+
+import { buildMorningNudge, isNudgeTime, startOfIndiaDay } from './morningNudge';
 
 function text(value: unknown): string { return typeof value === 'string' ? value.trim() : ''; }
 
@@ -55,24 +58,41 @@ export async function sendRevisionRemindersHandler(_request: Request, auth: Auth
     return Response.json({ sent: devices.length, dueCount: cards.length });
 }
 
-/** Deployment-cron handler. It is deliberately secret-gated and idempotent for 18 hours. */
-export async function sendScheduledRevisionRemindersHandler(request: Request): Promise<Response> {
+/**
+ * Deployment-cron handler (every 15 minutes). Secret-gated; sends the morning nudge at most
+ * once per device per India day, inside 06:30–09:30 IST and outside the student's quiet hours.
+ * `requestedNow` pins the clock for tests.
+ */
+export async function sendScheduledRevisionRemindersHandler(request: Request, requestedNow?: Date): Promise<Response> {
     const secret = process.env.PUSH_CRON_SECRET?.trim() || process.env.CRON_SECRET?.trim();
     const supplied = text(request.headers.get('x-push-cron-secret')) || text(request.headers.get('authorization')).replace(/^Bearer\s+/i, '');
     if (!secret || supplied !== secret) return errorResponse(403, ErrorCode.FORBIDDEN, 'A valid push cron secret is required.');
-    const now = new Date();
-    const cursor = new Date(now.getTime() - 18 * 60 * 60 * 1000);
-    const devices = await prisma.pushDevice.findMany({ where: { active: true, OR: [{ lastRevisionReminderAt: null }, { lastRevisionReminderAt: { lt: cursor } }] }, select: { id: true, userId: true, expoPushToken: true } });
+    const now = requestedNow ?? new Date();
+    // Only the morning window (IST) sends, and each device gets one nudge per India day.
+    if (!isNudgeTime(now)) return Response.json({ usersNotified: 0, devicesNotified: 0, checkedDevices: 0, skipped: 'outside-morning-window', generatedAt: now.toISOString() });
+    const todayStart = startOfIndiaDay(now);
+    const quizDate = indiaDateKey(now);
+    const devices = await prisma.pushDevice.findMany({ where: { active: true, OR: [{ lastRevisionReminderAt: null }, { lastRevisionReminderAt: { lt: todayStart } }] }, select: { id: true, userId: true, expoPushToken: true } });
     const userIds = [...new Set(devices.map((device) => device.userId))];
     let usersNotified = 0;
     let devicesNotified = 0;
     for (const userId of userIds) {
-        const preferences = await prisma.notificationPreference.findUnique({ where: { userId }, select: { revisionReminders: true } });
+        const preferences = await prisma.notificationPreference.findUnique({ where: { userId }, select: { revisionReminders: true, quietStart: true, quietEnd: true } });
         if (preferences?.revisionReminders === false) continue;
-        const cards = await prisma.revisionCard.count({ where: { userId, suspended: false, dueAt: { lte: now } } });
-        if (cards === 0) continue;
+        if (!isNudgeTime(now, preferences?.quietStart, preferences?.quietEnd)) continue;
+        const [cards, profile, quizDates] = await Promise.all([
+            prisma.revisionCard.count({ where: { userId, suspended: false, dueAt: { lte: now } } }),
+            prisma.profile.findUnique({ where: { userId }, select: { language: true, examTrack: true, examProgram: true, examStage: true } }),
+            prisma.dailyQuizAttempt.findMany({ where: { userId, quizDate: { gte: shiftIndiaDate(quizDate, -366), lte: quizDate } }, select: { quizDate: true } }),
+        ]);
+        const streak = computeQuizStreak(new Set(quizDates.map((row) => row.quizDate)), quizDate);
+        const quizAvailable = profile
+            ? (await prisma.pYQ.count({ where: { examTrack: profile.examTrack, ...(profile.examProgram ? { examProgram: profile.examProgram } : {}), ...(profile.examStage ? { examStage: profile.examStage } : {}), flaggedForReview: false } })) > 0
+            : false;
+        const nudge = buildMorningNudge({ dueCards: cards, quizAvailable, quizDoneToday: streak.doneToday, streak: streak.current, language: profile?.language ?? 'EN' });
+        if (!nudge) continue;
         const userDevices = devices.filter((device) => device.userId === userId);
-        const sent = await sendExpoMessages(userDevices.map((device) => ({ to: device.expoPushToken, title: 'Revision time', body: cards === 1 ? 'One card is due for active recall.' : `${cards} revision cards are waiting.`, data: { route: 'Revision', dueCount: cards }, sound: 'default' })));
+        const sent = await sendExpoMessages(userDevices.map((device) => ({ to: device.expoPushToken, title: nudge.title, body: nudge.body, data: nudge.data, sound: 'default' })));
         if (!sent) continue;
         await prisma.pushDevice.updateMany({ where: { id: { in: userDevices.map((device) => device.id) } }, data: { lastRevisionReminderAt: now } });
         usersNotified += 1;

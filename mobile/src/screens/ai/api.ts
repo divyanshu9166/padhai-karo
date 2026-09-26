@@ -11,12 +11,13 @@
  * Contracts mirror the Backend_API (design "AI Notes Service (Req 8, 9)" and
  * "Monetization / Subscription Service"):
  *
- *   POST /ai/summaries     { inputType: TEXT|PHOTO, text?, imageUploadId? }
+ *   POST /ai/notes         { inputType: TEXT|PHOTO|VOICE, text?/imageData?/voiceNoteId? }
  *                          -> 201 { summary, remainingQuota }
  *   GET  /ai/summaries     -> 200 { summaries[] }
  *   POST /subscriptions/order   { plan }                                    -> 201 { razorpayOrderId, amount }
  *   POST /subscriptions/verify  { razorpayOrderId, razorpayPaymentId, signature } -> 200 { tier, aiQuota }
- *   GET  /subscriptions    -> 200 { tier, aiQuota, payments[] }
+ *   GET  /subscriptions    -> 200 { tier, aiQuota, aiAllowance, trialEndsAt, trialAvailable, payments[] }
+ *   POST /subscriptions/trial   -> 201 { trialEndsAt, aiAllowance }            (one-time 7-day trial)
  */
 
 import { request } from '@/api';
@@ -36,6 +37,7 @@ export interface AiSummaryContent {
   title?: string;
   revisionCapsule?: string[];
   flashcards?: Array<{ question: string; answer: string }>;
+  generationSource?: string;
   [key: string]: unknown;
 }
 
@@ -54,7 +56,7 @@ export interface CreateSummaryTextInput {
   text: string;
 }
 
-/** Body of `POST /ai/summaries` for a PHOTO request (references an already-uploaded image). */
+/** Body of `POST /ai/notes` for a PHOTO request. */
 export interface CreateSummaryPhotoInput {
   inputType: 'PHOTO';
   imageData: string;
@@ -63,16 +65,25 @@ export interface CreateSummaryPhotoInput {
 
 export interface CreateSummaryVoiceInput {
   inputType: 'VOICE';
-  audioData: string;
+  voiceNoteId?: string;
+  transcript?: string;
+  audioData?: string;
   mimeType?: string;
   audioUri?: string;
-  voiceNoteId?: string;
+  title?: string;
 }
 
 export type CreateSummaryInput = CreateSummaryTextInput | CreateSummaryPhotoInput | CreateSummaryVoiceInput;
 
 /** Response of `POST /ai/summaries` on success (201). */
+/** What the student may still generate with live AI (mirrors backend `serializeAllowance`). */
+export type AiAllowance =
+  | { plan: 'PAID'; remaining: number }
+  | { plan: 'TRIAL'; remaining: number; limit: number; trialEndsAt: string }
+  | { plan: 'FREE'; remaining: number; limit: number; resetsAt: string | null; trialAvailable: boolean };
+
 export interface CreateSummaryResponse {
+  aiAllowance?: AiAllowance | null;
   summary: NoteSummary;
   /** The user's remaining AI quota after this summary was produced (Req 8.6). */
   remainingQuota?: number;
@@ -132,6 +143,9 @@ export interface VerifyPaymentResponse {
 export interface GetSubscriptionResponse {
   tier: SubscriptionTier;
   aiQuota: number;
+  aiAllowance: AiAllowance;
+  trialEndsAt: string | null;
+  trialAvailable: boolean;
   payments: Payment[];
 }
 
@@ -157,7 +171,7 @@ export const SUBSCRIPTION_PLANS: readonly PlanDisplay[] = [
 
 // ── Calls ─────────────────────────────────────────────────────────────────────────────────
 
-/** `POST /ai/summaries` — summarize note text or a photo (Req 8.1/8.2). */
+/** `POST /ai/notes` (also available through the legacy `/ai/summaries` alias). */
 export function createSummary(input: CreateSummaryInput): Promise<CreateSummaryResponse> {
   return request<CreateSummaryResponse>('/ai/notes', { method: 'POST', body: input });
 }
@@ -182,19 +196,9 @@ export function getSubscription(): Promise<GetSubscriptionResponse> {
   return request<GetSubscriptionResponse>('/subscriptions');
 }
 
-// ── Placeholder integrations (documented assumptions) ───────────────────────────────────────
-
-/**
- * PLACEHOLDER image picker/uploader.
- *
- * The upload backend is not specified by this task, and `POST /ai/summaries` for a PHOTO request
- * only needs an `imageUploadId` referencing an already-uploaded image. A production build would
- * (1) pick an image with `expo-image-picker`, (2) upload it to the image store, and (3) use the
- * returned id here. Until that flow exists this returns a synthetic id so the PHOTO → summarize
- * path can be exercised end to end against the API.
- */
-export function pickAndUploadImagePlaceholder(): Promise<string> {
-  return Promise.resolve(`placeholder-upload-${Date.now()}`);
+/** `POST /subscriptions/trial` — start the one-time 7-day free trial (no payment). */
+export function startFreeTrial(): Promise<{ trialEndsAt: string; aiAllowance: AiAllowance }> {
+  return request<{ trialEndsAt: string; aiAllowance: AiAllowance }>('/subscriptions/trial', { method: 'POST' });
 }
 
 /** The fields a Razorpay checkout returns to the client on a completed payment. */

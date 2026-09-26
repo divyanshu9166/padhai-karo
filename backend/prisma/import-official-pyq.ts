@@ -25,6 +25,8 @@ type Input = {
     questionPaperSha256?: string;
     answerKeySha256?: string;
     answerKey: Record<string, number>;
+    /** Question refs the official final key dropped; they are not imported or scored. */
+    droppedQuestions: string[];
     questions: Array<{ questionRef?: string; questionText: string; options: string[]; subjectId: string; correctOption?: number }>;
 };
 
@@ -63,9 +65,18 @@ function parseInput(raw: unknown): Input {
         const answer = answerKey[ref];
         if (!question.questionText || question.options.length !== 4 || typeof answer !== 'number' || !Number.isInteger(answer) || answer < 0 || answer > 3 || (question.correctOption !== undefined && question.correctOption !== answer)) fail(`question ${ref} must have four options and a matching final answer key`);
     }
+    const droppedQuestions = input.droppedQuestions === undefined ? [] : (Array.isArray(input.droppedQuestions) && input.droppedQuestions.every((ref) => typeof ref === 'string' && ref.trim()) ? (input.droppedQuestions as string[]).map((ref) => ref.trim()) : fail('droppedQuestions must be an array of question refs'));
+    if (new Set(droppedQuestions).size !== droppedQuestions.length || droppedQuestions.some((ref) => questionRefs.includes(ref) || Object.prototype.hasOwnProperty.call(answerKey, ref))) fail('droppedQuestions must be unique and must not appear in questions or answerKey');
+    if (questions.length + droppedQuestions.length > paperDefinition.questionCount) fail(`the paper has ${paperDefinition.questionCount} questions; ${questions.length} imported + ${droppedQuestions.length} dropped exceeds that`);
     const reviewedAt = input.reviewedAt === undefined ? undefined : (typeof input.reviewedAt === 'string' && !Number.isNaN(new Date(input.reviewedAt).getTime()) ? input.reviewedAt : fail('reviewedAt must be a valid ISO date'));
     const sha256 = (value: unknown, field: string): string | undefined => value === undefined ? undefined : (typeof value === 'string' && /^[a-f0-9]{64}$/i.test(value) ? value.toLowerCase() : fail(`${field} must be a SHA-256 hex digest`));
-    return { program, stage, year, paperKey, durationMin: typeof input.durationMin === 'number' ? Math.max(1, Math.floor(input.durationMin)) : 120, sourceName: sourceName || 'Official final answer key', sourceUrl, answerKeyUrl, reviewedAt, questionPaperSha256: sha256(input.questionPaperSha256, 'questionPaperSha256'), answerKeySha256: sha256(input.answerKeySha256, 'answerKeySha256'), answerKey: answerKey as Record<string, number>, questions };
+    return { program, stage, year, paperKey, durationMin: typeof input.durationMin === 'number' ? Math.max(1, Math.floor(input.durationMin)) : 120, sourceName: sourceName || 'Official final answer key', sourceUrl, answerKeyUrl, reviewedAt, questionPaperSha256: sha256(input.questionPaperSha256, 'questionPaperSha256'), answerKeySha256: sha256(input.answerKeySha256, 'answerKeySha256'), answerKey: answerKey as Record<string, number>, droppedQuestions, questions };
+}
+
+/** Keep the printed question number (so a dropped Q52 leaves a gap); fall back to file order. */
+function officialNumber(ref: string | undefined, index: number): number {
+    const parsed = Number(ref);
+    return Number.isInteger(parsed) && parsed > 0 ? parsed : index + 1;
 }
 
 async function main(): Promise<void> {
@@ -79,14 +90,14 @@ async function main(): Promise<void> {
     const existing = await prisma.pYQPaper.findFirst({ where: { paperKey: input.paperKey, examProgram: input.program, year: input.year } });
     const paper = await prisma.$transaction(async (tx) => {
         const saved = existing
-            ? await tx.pYQPaper.update({ where: { id: existing.id }, data: { examTrack: track, examStage: input.stage, durationMin: input.durationMin, sourceName: input.sourceName, sourceUrl: input.sourceUrl, answerKeyUrl: input.answerKeyUrl, verificationMethod: 'OFFICIAL_FINAL_KEY_CROSS_CHECK', verifiedAt: input.reviewedAt ? new Date(input.reviewedAt) : new Date() } })
-            : await tx.pYQPaper.create({ data: { examTrack: track, examProgram: input.program, examStage: input.stage, paperKey: input.paperKey, year: input.year, durationMin: input.durationMin ?? 120, answerKeyId: randomUUID(), sourceName: input.sourceName, sourceUrl: input.sourceUrl, answerKeyUrl: input.answerKeyUrl, verificationMethod: 'OFFICIAL_FINAL_KEY_CROSS_CHECK', verifiedAt: input.reviewedAt ? new Date(input.reviewedAt) : new Date() } });
+            ? await tx.pYQPaper.update({ where: { id: existing.id }, data: { examTrack: track, examStage: input.stage, durationMin: input.durationMin, sourceName: input.sourceName, sourceUrl: input.sourceUrl, answerKeyUrl: input.answerKeyUrl, verificationMethod: 'OFFICIAL_FINAL_KEY_CROSS_CHECK', droppedQuestionCount: input.droppedQuestions.length, verifiedAt: input.reviewedAt ? new Date(input.reviewedAt) : new Date() } })
+            : await tx.pYQPaper.create({ data: { examTrack: track, examProgram: input.program, examStage: input.stage, paperKey: input.paperKey, year: input.year, durationMin: input.durationMin ?? 120, answerKeyId: randomUUID(), sourceName: input.sourceName, sourceUrl: input.sourceUrl, answerKeyUrl: input.answerKeyUrl, verificationMethod: 'OFFICIAL_FINAL_KEY_CROSS_CHECK', droppedQuestionCount: input.droppedQuestions.length, verifiedAt: input.reviewedAt ? new Date(input.reviewedAt) : new Date() } });
         await tx.pYQ.deleteMany({ where: { paperId: saved.id } });
         await tx.answerKey.upsert({ where: { paperId: saved.id }, create: { paperId: saved.id, entries: input.answerKey as Prisma.InputJsonValue }, update: { entries: input.answerKey as Prisma.InputJsonValue } });
-        await tx.pYQ.createMany({ data: input.questions.map((question, index) => ({ paperId: saved.id, examTrack: track, examProgram: input.program, examStage: input.stage, year: input.year, subjectId: question.subjectId, questionText: question.questionText, options: question.options, correctOption: input.answerKey[question.questionRef || String(index + 1)] })) });
+        await tx.pYQ.createMany({ data: input.questions.map((question, index) => ({ paperId: saved.id, questionNumber: officialNumber(question.questionRef, index), examTrack: track, examProgram: input.program, examStage: input.stage, year: input.year, subjectId: question.subjectId, questionText: question.questionText, options: question.options, correctOption: input.answerKey[question.questionRef || String(index + 1)] })) });
         return saved;
-    });
-    console.log(JSON.stringify({ imported: true, paperId: paper.id, paperKey: input.paperKey, questions: input.questions.length, verifiedAt: new Date().toISOString() }));
+    }, { timeout: 30_000 });
+    console.log(JSON.stringify({ imported: true, paperId: paper.id, paperKey: input.paperKey, questions: input.questions.length, dropped: input.droppedQuestions, verifiedAt: new Date().toISOString() }));
 }
 
 main().catch((error) => { console.error(error instanceof Error ? error.message : error); process.exitCode = 1; }).finally(() => void prisma.$disconnect());

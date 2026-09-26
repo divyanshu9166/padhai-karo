@@ -67,10 +67,8 @@ describe('localized rendering honors stored preference over device locale (Req 1
 
     it('falls back to the English string for a missing Hindi key under a HI preference (Req 10.3)', () => {
         const language = resolveStoredLanguage('HI');
-        const t = createResolver(language);
-        // `common.retry` ships without a Hindi value, so HI rendering falls back to English.
-        expect('hi' in stringCatalog['common.retry']).toBe(false);
-        expect(t('common.retry')).toBe(stringCatalog['common.retry'].en);
-        expect(t('common.retry')).toBe('Retry');
+        // A value with no Hindi translation renders its English text.
+        const t = createResolver(language, { 'x.retry': { en: 'Retry' } });
+        expect(t('x.retry')).toBe('Retry');
     });
 });

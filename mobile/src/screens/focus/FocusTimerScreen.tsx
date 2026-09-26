@@ -24,11 +24,13 @@ import {
 import { ApiError, type LocalSyncRecord } from '@/api';
 import { getAmbientModes, type AmbientMode } from '@/api/upscProduct';
 import { Screen } from '@/components';
-import { useTranslation } from '@/localization';
+import { interpolate, useTranslation } from '@/localization';
 import type { MainTabScreenProps } from '@/navigation/types';
 import { OfflineBanner, useOffline } from '@/offline';
+import { cacheJson, readCachedJson } from '@/offline/cache';
 import { queueMutation } from '@/offline/mutations';
 import { updateStudyTask } from '@/screens/dashboard/todayApi';
+import { useAuth } from '@/state';
 
 import {
     fetchFocusSetup,
@@ -50,8 +52,37 @@ import {
 } from './timing';
 import { scheduleFocusBreakReminder } from '@/notifications/reminders';
 
+type FocusRecord = Extract<LocalSyncRecord, { type: 'FOCUS_SESSION' }>;
+
+/** Preserve a stopped session across a connectivity drop or retryable API failure. */
+async function deliverFocusRecord(
+    record: FocusRecord,
+    isOffline: boolean,
+    enqueueRecord: (record: LocalSyncRecord) => Promise<void>,
+): Promise<boolean> {
+    if (isOffline) {
+        await enqueueRecord(record);
+        return true;
+    }
+    try {
+        await recordFocusSession({ ...record.payload, sessionType: record.payload.sessionType as SessionType, clientId: record.clientId });
+        return false;
+    } catch (error) {
+        if (error instanceof ApiError && error.status === 409 && error.code === 'CONFLICT' && /already recorded/i.test(error.message)) {
+            // A prior request may have reached the server even if its response was lost.
+            return false;
+        }
+        if (error instanceof ApiError && (error.status === 0 || error.status === 408 || error.status === 429 || error.status >= 500)) {
+            await enqueueRecord(record);
+            return true;
+        }
+        throw error;
+    }
+}
+
 export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.JSX.Element {
     const t = useTranslation();
+    const { user } = useAuth();
     // The timer runs locally; while offline the recorded session is queued for sync (Req 21.3).
     const { isOffline, enqueueRecord } = useOffline();
 
@@ -65,6 +96,7 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
     const [timer, setTimer] = useState<TimerState>(() => createTimer());
     const [, setTick] = useState(0); // force re-render once per second while running
     const [saving, setSaving] = useState(false);
+    const [pendingSession, setPendingSession] = useState<FocusRecord | null>(null);
     const [message, setMessage] = useState<string | null>(null);
     const [finishPrompt, setFinishPrompt] = useState<{ id: string; title: string; minutes: number } | null>(null);
     const [ambientModes, setAmbientModes] = useState<AmbientMode[]>([]);
@@ -75,6 +107,7 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
     const breakReminderId = useRef<string | null>(null);
     const breakReminderGeneration = useRef(0);
     const ambientSound = useRef<Audio.Sound | null>(null);
+    const focusSetupCacheKey = `focus-setup:${user?.id ?? 'unknown'}`;
 
     const stopAmbient = useCallback(async (): Promise<void> => {
         const sound = ambientSound.current;
@@ -115,22 +148,31 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
         }).catch(() => undefined);
     }, []);
 
+    const loadFocusSetup = useCallback(async (): Promise<void> => {
+        setSubjectsError(null);
+        try {
+            const setup = await fetchFocusSetup();
+            if (mounted.current) {
+                setSubjects(setup.subjects);
+                setExamSelection(setup.selection);
+            }
+            void cacheJson(focusSetupCacheKey, setup).catch(() => undefined);
+        } catch (err) {
+            const cached = await readCachedJson<{ subjects: SubjectOption[]; selection: typeof examSelection }>(focusSetupCacheKey);
+            if (mounted.current && cached?.value.subjects.length) {
+                setSubjects(cached.value.subjects);
+                setExamSelection(cached.value.selection);
+                setSubjectsError(t('focusScreen.savedSubjects'));
+            } else if (mounted.current) {
+                setSubjectsError(err instanceof ApiError ? err.message : t('focus.loadSubjectsError'));
+            }
+        }
+    }, [focusSetupCacheKey, t]);
+
     useEffect(() => {
         mounted.current = true;
+        void loadFocusSetup();
         (async () => {
-            try {
-                const setup = await fetchFocusSetup();
-                if (mounted.current) {
-                    setSubjects(setup.subjects);
-                    setExamSelection(setup.selection);
-                }
-            } catch (err) {
-                if (mounted.current) {
-                    setSubjectsError(
-                        err instanceof ApiError ? err.message : t('focus.loadSubjectsError'),
-                    );
-                }
-            }
             try {
                 const result = await getAmbientModes();
                 if (mounted.current) setAmbientModes(result.modes.filter((mode) => Boolean(mode.url)));
@@ -142,13 +184,13 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
             mounted.current = false;
             void stopAmbient();
         };
-    }, [stopAmbient]);
+    }, [loadFocusSetup, stopAmbient]);
 
     useEffect(() => {
         if (!activeTask || timer.status !== 'idle') return;
         setSubjectId(activeTask.subjectId ?? null);
         setSessionType(activeTask.sessionType);
-        setMessage(`Ready to focus: ${activeTask.title}`);
+        setMessage(interpolate(t('focusScreen.readyToFocus'), { title: activeTask.title }));
     }, [activeTask, timer.status]);
 
     // Tick the display each second while running.
@@ -185,49 +227,55 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
         }
         const abandoned = stopped.focusedMinutes <= 0;
         setSaving(true);
+        const record: FocusRecord = {
+            clientId: generateClientId(),
+            type: 'FOCUS_SESSION',
+            payload: {
+                subjectId,
+                startTime: new Date(stopped.startedAt).toISOString(),
+                endTime: new Date(stopped.endedAt).toISOString(),
+                focusedDurationMin: stopped.focusedMinutes,
+                abandoned,
+                sessionType,
+                taskId: activeTask?.id,
+            },
+        };
         try {
-            const clientId = generateClientId();
-            const startTime = new Date(stopped.startedAt).toISOString();
-            const endTime = new Date(stopped.endedAt).toISOString();
-            if (isOffline) {
-                // Offline: queue the session as a Local_Sync_Record; it syncs on reconnect.
-                const record: LocalSyncRecord = {
-                    clientId,
-                    type: 'FOCUS_SESSION',
-                    payload: {
-                        subjectId,
-                        startTime,
-                        endTime,
-                        focusedDurationMin: stopped.focusedMinutes,
-                        abandoned,
-                        sessionType,
-                        taskId: activeTask?.id,
-                    },
-                };
-                await enqueueRecord(record);
-                setMessage(`${stopped.focusedMinutes} min ${t('focus.savedOffline')}`);
-            } else {
-                await recordFocusSession({
-                    subjectId,
-                    startTime,
-                    endTime,
-                    focusedDurationMin: stopped.focusedMinutes,
-                    abandoned,
-                    sessionType,
-                    taskId: activeTask?.id,
-                    clientId,
-                });
-                setMessage(abandoned ? t('focus.sessionAbandoned') : `${t('focus.recorded')} ${stopped.focusedMinutes} min`);
-            }
+            const queued = await deliverFocusRecord(record, isOffline, enqueueRecord);
+            setPendingSession(null);
+            setMessage(queued
+                ? `${interpolate(t('today.minutes'), { m: stopped.focusedMinutes })} ${t('focus.savedOffline')}`
+                : abandoned ? t('focus.sessionAbandoned') : `${t('focus.recorded')} ${interpolate(t('today.minutes'), { m: stopped.focusedMinutes })}`);
             if (activeTask && !abandoned) setFinishPrompt({ id: activeTask.id, title: activeTask.title, minutes: stopped.focusedMinutes });
         } catch (err) {
+            // Stopping resets the live timer, so retain the exact payload and offer a retry;
+            // never make a learner recreate a completed focus session after a save error.
+            setPendingSession(record);
             setMessage(err instanceof ApiError ? err.message : t('focus.recordError'));
         } finally {
             if (mounted.current) {
                 setSaving(false);
             }
         }
-    }, [timer, subjectId, sessionType, activeTask, isOffline, enqueueRecord, cancelBreakReminder, stopAmbient]);
+    }, [timer, subjectId, sessionType, activeTask, isOffline, enqueueRecord, cancelBreakReminder, stopAmbient, t]);
+
+    const retryPendingSession = async (): Promise<void> => {
+        const record = pendingSession;
+        if (!record || saving) return;
+        setSaving(true);
+        try {
+            const queued = await deliverFocusRecord(record, isOffline, enqueueRecord);
+            setPendingSession(null);
+            setMessage(queued ? t('focus.savedOffline') : t('focus.recorded'));
+            if (activeTask && record.payload.taskId === activeTask.id && !record.payload.abandoned) {
+                setFinishPrompt({ id: activeTask.id, title: activeTask.title, minutes: record.payload.focusedDurationMin });
+            }
+        } catch (error) {
+            setMessage(error instanceof ApiError ? error.message : t('focus.recordError'));
+        } finally {
+            if (mounted.current) setSaving(false);
+        }
+    };
 
     const completeLinkedTask = async (): Promise<void> => {
         if (!finishPrompt) return;
@@ -235,9 +283,9 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
         try {
             if (isOffline) await queueMutation('STUDY_TASK_UPDATE', { id: finishPrompt.id, status: 'COMPLETED' });
             else await updateStudyTask(finishPrompt.id, { status: 'COMPLETED' });
-            setMessage(`${finishPrompt.title} marked complete.`);
+            setMessage(interpolate(t('focusScreen.markedComplete'), { title: finishPrompt.title }));
             setFinishPrompt(null);
-        } catch (error) { setMessage(error instanceof ApiError ? error.message : 'Could not update this task.'); }
+        } catch (error) { setMessage(error instanceof ApiError ? error.message : t('focusScreen.taskUpdateError')); }
         finally { if (mounted.current) setSaving(false); }
     };
 
@@ -270,7 +318,7 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
                 </View>
 
                 <Text style={styles.label}>{t('focus.selectSubject')}</Text>
-                {subjectsError ? <Text style={styles.error}>{subjectsError}</Text> : null}
+                {subjectsError ? <View><Text style={styles.error}>{subjectsError}</Text><Pressable accessibilityRole="button" onPress={() => void loadFocusSetup()}><Text style={styles.retry}>{t('focusScreen.retrySubjects')}</Text></Pressable></View> : null}
                 <View style={styles.chipRow}>
                     {subjects.map((s) => (
                         <Pressable
@@ -310,7 +358,7 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
                         </Pressable>
                     ))}
                 </View>
-                {activeTask ? <View style={styles.taskCard}><Text style={styles.taskEyebrow}>CURRENT TASK</Text><Text style={styles.taskTitle}>{activeTask.title}</Text><Text style={styles.taskMeta}>{activeTask.plannedMinutes} min planned</Text></View> : null}
+                {activeTask ? <View style={styles.taskCard}><Text style={styles.taskEyebrow}>{t('focusScreen.currentTask')}</Text><Text style={styles.taskTitle}>{activeTask.title}</Text><Text style={styles.taskMeta}>{interpolate(t('focusScreen.minutesPlanned'), { count: activeTask.plannedMinutes })}</Text></View> : null}
 
                 {ambientModes.length > 0 ? <>
                     <Text style={styles.label}>{t('focus.ambientLabel')}</Text>
@@ -331,11 +379,12 @@ export function FocusTimerScreen({ route }: MainTabScreenProps<'Focus'>): React.
                 </> : null}
 
                 {message ? <Text style={styles.message}>{message}</Text> : null}
-                {finishPrompt ? <View style={styles.finishCard}><Text style={styles.taskEyebrow}>SESSION COMPLETE</Text><Text style={styles.taskTitle}>{finishPrompt.minutes} min of focus logged for {finishPrompt.title}</Text><Text style={styles.taskMeta}>Did you finish the planned task?</Text><View style={styles.finishActions}><PrimaryButton label="Mark task complete" onPress={() => void completeLinkedTask()} busy={saving} /><Pressable style={styles.continueButton} onPress={() => setFinishPrompt(null)} disabled={saving}><Text style={styles.continueText}>Continue later</Text></Pressable></View></View> : null}
+                {pendingSession ? <View style={styles.pendingCard}><Text style={styles.taskEyebrow}>{t('focusScreen.notSaved')}</Text><Text style={styles.taskMeta}>{interpolate(t('focusScreen.pendingHeld'), { count: pendingSession.payload.focusedDurationMin })}</Text><PrimaryButton label={isOffline ? t('focusScreen.queueSession') : t('focusScreen.retrySession')} onPress={() => void retryPendingSession()} busy={saving} /></View> : null}
+                {finishPrompt ? <View style={styles.finishCard}><Text style={styles.taskEyebrow}>{t('focusScreen.sessionComplete')}</Text><Text style={styles.taskTitle}>{interpolate(t('focusScreen.loggedFor'), { count: finishPrompt.minutes, title: finishPrompt.title })}</Text><Text style={styles.taskMeta}>{t('focusScreen.didYouFinish')}</Text><View style={styles.finishActions}><PrimaryButton label={t('focusScreen.markComplete')} onPress={() => void completeLinkedTask()} busy={saving} /><Pressable style={styles.continueButton} onPress={() => setFinishPrompt(null)} disabled={saving}><Text style={styles.continueText}>{t('focusScreen.continueLater')}</Text></Pressable></View></View> : null}
 
                 <View style={styles.controls}>
                     {timer.status === 'idle' ? (
-                        <PrimaryButton label={t('focus.start')} onPress={onStart} />
+                        <PrimaryButton label={t('focus.start')} onPress={onStart} busy={saving} disabled={pendingSession !== null} />
                     ) : null}
                     {timer.status === 'running' ? (
                         <PrimaryButton label={t('focus.pause')} onPress={onPause} />
@@ -361,22 +410,25 @@ function PrimaryButton({
     label,
     onPress,
     busy = false,
+    disabled = false,
     variant = 'primary',
 }: {
     label: string;
     onPress: () => void;
     busy?: boolean;
+    disabled?: boolean;
     variant?: 'primary' | 'danger';
 }): React.JSX.Element {
     return (
         <Pressable
             onPress={onPress}
-            disabled={busy}
+            disabled={busy || disabled}
             accessibilityRole="button"
             style={[
                 styles.button,
                 variant === 'danger' ? styles.buttonDanger : styles.buttonPrimary,
                 busy && styles.disabled,
+                disabled && styles.disabled,
             ]}
         >
             {busy ? (
@@ -409,6 +461,7 @@ const styles = StyleSheet.create({
     taskTitle: { color: '#064e3b', fontWeight: '800', fontSize: 16, marginTop: 3 },
     taskMeta: { color: '#047857', marginTop: 3 },
     finishCard: { backgroundColor: '#f0fdf4', borderColor: '#86efac', borderWidth: 1, borderRadius: 12, padding: 13, marginTop: 12 },
+    pendingCard: { backgroundColor: '#fffbeb', borderColor: '#fcd34d', borderWidth: 1, borderRadius: 12, padding: 13, marginTop: 12 },
     finishActions: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 11 },
     continueButton: { padding: 9 },
     continueText: { color: '#1d4ed8', fontWeight: '800' },
@@ -429,6 +482,7 @@ const styles = StyleSheet.create({
     message: { marginTop: 12, fontSize: 14, color: '#374151' },
     ambientMessage: { marginTop: 2, fontSize: 12, color: '#475569', lineHeight: 18 },
     error: { color: '#dc2626', fontSize: 14, marginBottom: 8 },
+    retry: { color: '#1d4ed8', fontWeight: '700', marginBottom: 8 },
     controls: { marginTop: 20 },
     button: {
         borderRadius: 10,

@@ -1,0 +1,3104 @@
+{
+  "draftVersion": 1,
+  "sourceId": "upsc-cse-prelims-2023-gs1",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2023,
+  "paperKey": "UPSC-CSE-PRELIMS-GS1-2023",
+  "subjectId": "UPSC-CSE-GS1",
+  "series": "A",
+  "durationMin": 120,
+  "expectedQuestions": 100,
+  "sourceName": "UPSC official previous question papers",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/QP_CS_Pre_Exam_2023_280523.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-2023-Paper-I-090524.pdf",
+  "questionPaperSha256": "14281f205282431f668c23ba0f79952b500255d81f7d4a9ea2b27c84cf99e7e2",
+  "answerKeySha256": "c4515179a3d07e2acc1aae96b908f2f07ba781bc067156bc65e04ccc60cf1a86",
+  "extractedAt": "2026-09-26T06:01:18.488Z",
+  "pageImages": [
+    "pages/page-01.jpg",
+    "pages/page-02.jpg",
+    "pages/page-03.jpg",
+    "pages/page-04.jpg",
+    "pages/page-05.jpg",
+    "pages/page-06.jpg",
+    "pages/page-07.jpg",
+    "pages/page-08.jpg",
+    "pages/page-09.jpg",
+    "pages/page-10.jpg",
+    "pages/page-11.jpg",
+    "pages/page-12.jpg",
+    "pages/page-13.jpg",
+    "pages/page-14.jpg",
+    "pages/page-15.jpg",
+    "pages/page-16.jpg",
+    "pages/page-17.jpg",
+    "pages/page-18.jpg",
+    "pages/page-19.jpg",
+    "pages/page-20.jpg",
+    "pages/page-21.jpg",
+    "pages/page-22.jpg",
+    "pages/page-23.jpg",
+    "pages/page-24.jpg",
+    "pages/page-25.jpg",
+    "pages/page-26.jpg",
+    "pages/page-27.jpg",
+    "pages/page-28.jpg",
+    "pages/page-29.jpg",
+    "pages/page-30.jpg",
+    "pages/page-31.jpg",
+    "pages/page-32.jpg",
+    "pages/page-33.jpg",
+    "pages/page-34.jpg",
+    "pages/page-35.jpg",
+    "pages/page-36.jpg",
+    "pages/page-37.jpg",
+    "pages/page-38.jpg",
+    "pages/page-39.jpg",
+    "pages/page-40.jpg",
+    "pages/page-41.jpg",
+    "pages/page-42.jpg",
+    "pages/page-43.jpg",
+    "pages/page-44.jpg",
+    "pages/page-45.jpg",
+    "pages/page-46.jpg",
+    "pages/page-47.jpg",
+    "pages/page-48.jpg"
+  ],
+  "keyImage": "key/key-1.jpg",
+  "questions": [
+    {
+      "questionRef": "1",
+      "questionText": "Consider the following statements:\n1. Jhelum River passes through Wular Lake.\n2. Krishna River directly feeds Kolleru Lake.\n3. Meandering of Gandak River formed Kanwar Lake.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "A",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 121,
+          "y": 177,
+          "w": 688,
+          "h": 547
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 761,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "2",
+      "questionText": "Consider the following pairs. Port Well known as\n1. Kama.rAjar Port First major port in India registered as a company\n2. Mundra Port Largest privately owned port in India",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 121,
+          "y": 724,
+          "w": 688,
+          "h": 273
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 829,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "3",
+      "questionText": "Visakhapatnam Largest container port in Port India\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one pair",
+        "Only two pairs",
+        "All three pairs",
+        "None of the pairs"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 121,
+          "y": 997,
+          "w": 688,
+          "h": 372
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 898,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "4",
+      "questionText": "Consider the following trees:\n1. Jackfruit (Artocarpus heterophyllus)\n2. Mahua (Madhuca indica)\n3. Teak (Tectona grandis)\nHow many of the above are deciduous trees?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_OCR_CORRECTED"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 121,
+          "y": 1369,
+          "w": 688,
+          "h": 451
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 965,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "5",
+      "questionText": "Consider the following statements:\n1. India has more arable area than China.\n2. The proportion of irrigated area is more in India as compared to China.\n3. The average productivity per hectare in Indian agriculture is higher than that in China.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None Which one of the following is the best example of repeated falls in sea level, giving rise to present-day extensive marshland? (a) Bhitarkanika Mangroves (b) Marakkanam Salt Pans (c) Naupada Swamp (d) Rann of Kutch"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_OCR_CORRECTED"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 819,
+          "y": 183,
+          "w": 888,
+          "h": 944
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1029,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "6",
+      "questionText": "Ilmenite and rutile, abundantly available in certain coastal tracts of India, are rich sources of which one of the following?",
+      "options": [
+        "Aluminium",
+        "Copper",
+        "Iron",
+        "Titanium"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 819,
+          "y": 1127,
+          "w": 888,
+          "h": 337
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1092,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "7",
+      "questionText": "About three-fourths of world's cobalt, a metal required for the manufacture of batteries for electric motor vehicles, is produced by",
+      "options": [
+        "Argentina",
+        "Botswana",
+        "the Democratic Republic of the Congo",
+        "Kazakhstan"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 819,
+          "y": 1464,
+          "w": 888,
+          "h": 427
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1159,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "8",
+      "questionText": "8. Which one of the following is a part of the Congo Basin?",
+      "options": [
+        "Cameroon",
+        "Nigeria",
+        "South Sudan",
+        "Uganda"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_OCR_CORRECTED"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 819,
+          "y": 1891,
+          "w": 888,
+          "h": 46
+        },
+        {
+          "page": 4,
+          "x": 149,
+          "y": 227,
+          "w": 660,
+          "h": 277
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1226,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "9",
+      "questionText": "Consider the following statements:\n1. Amarkantak Hills are at the confluence of Vindhya and Sahyadri Ranges.\n2. Biligirirangan Hills constitute the easternmost part of Satpura Range.\n3. Seshachalam Hills constitute the southernmost part of Westem Ghats.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 4,
+          "x": 149,
+          "y": 504,
+          "w": 660,
+          "h": 625
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1295,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "10",
+      "questionText": "With reference to India's projects on connectivity, consider the following statements:\n1. East-West Corridor under Golden Quadrilateral Project connects Dibrugarh and Surat.\n2. Trilateral Highway connects Moreh in Manipur and Chiang Mai in Thailand via Myanmar.\n3. Bangladesh - China - India - Myanmar Economic Corridor connects Varanasi. in Uttar Pradesh with Kunming in China.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 4,
+          "x": 149,
+          "y": 1129,
+          "w": 660,
+          "h": 729
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1364,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "11",
+      "questionText": "Consider the following statements: Statement—I: India, despite having uranium deposits, depends on coal for most of its electricity production. Statement—II: Uranium, enriched to the extent of at least 60%, is required for the production of electricity.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanaüon for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 4,
+          "x": 819,
+          "y": 226,
+          "w": 890,
+          "h": 858
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1432,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "12",
+      "questionText": "Consider the following statements: Statement—I: Marsupials are not naturally found in India. Statement—II: Marsupials can thrive only in montane grasslands with no predators.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 4,
+          "x": 819,
+          "y": 1084,
+          "w": 890,
+          "h": 855
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1499,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "13",
+      "questionText": "13. qnvasive Species Specialist 'Group' (that develops Global Invasive Species Database) belongs to which one of the following organizations?",
+      "options": [
+        "The International Union for Conservation of Nature",
+        "The United Nations Environment Programme",
+        "The United Nations World Commission for Environment and Development",
+        "The World Wide Fund for Nature"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 4,
+          "x": 819,
+          "y": 1939,
+          "w": 890,
+          "h": 40
+        },
+        {
+          "page": 6,
+          "x": 140,
+          "y": 209,
+          "w": 669,
+          "h": 562
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1567,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "14",
+      "questionText": "Consider the following fauna:\n1. Lion-tailed Macaque\n2. Malabar Civet\n3. Sambar Deer\nHow many of the above are generally nocturnal or most active after sunset?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 140,
+          "y": 771,
+          "w": 669,
+          "h": 680
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1634,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "15",
+      "questionText": "Which of the following organisms perform waggle dance for others of their kin to indicate the direction and the distance to a source of their food?",
+      "options": [
+        "Butterflies",
+        "Dragonflies",
+        "Honeybees",
+        "Wasps"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 140,
+          "y": 1451,
+          "w": 669,
+          "h": 390
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1703,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "16",
+      "questionText": "Consider the following statements:\nI. Some mushrooms have medicinal properties.\n2. Some mushrooms have psycho- active properties.\n3. Some mushrooms have insecticidal properties.\n4. Some mushrooms have biolumi- nescent properties.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 819,
+          "y": 209,
+          "w": 862,
+          "h": 892
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1770,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "17",
+      "questionText": "Consider the following statements regarding the Indian squirrels:\n1. They build nests by making burrows in the ground.\n2. They store their food materials like nuts and seeds in the ground.\n3. They are omnivorous.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 819,
+          "y": 1101,
+          "w": 862,
+          "h": 809
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1839,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "18",
+      "questionText": "(\n18. Consider the following •statements:\n1. Some microorganisms can grow in environments with temperature above the boiling point of water.\n2. Some microorganisms can grow in environments with temperature below the freezing point of water.\n3. Some microorganisms can grow in highly acidic environment with a pH below 3.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 6,
+          "x": 819,
+          "y": 1910,
+          "w": 862,
+          "h": 46
+        },
+        {
+          "page": 8,
+          "x": 176,
+          "y": 184,
+          "w": 633,
+          "h": 718
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1907,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "19",
+      "questionText": "Which one of the following makes a tool with a stick to scrape insects from a hole in a tree or a log of wood?",
+      "options": [
+        "Fishing cat",
+        "Orangutan",
+        "Otter",
+        "Sloth bear"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 176,
+          "y": 902,
+          "w": 633,
+          "h": 346
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 1975,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "20",
+      "questionText": "Consider the following\n1. Aerosols\n2. Foam agents\n3. Fire retardants\n4. Lubricants In the making of how many of the above are hydrofluorocarbons used?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 176,
+          "y": 1248,
+          "w": 633,
+          "h": 566
+        }
+      ],
+      "keyCell": {
+        "x": 233,
+        "y": 2044,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "21",
+      "questionText": "Consider the following statements. Statement—I: Interest income from the deposits in Infrastructure Investment Trusts (InvITs) distributed to their investors is exempted from tax, but the dividend is taxable. Statement—II: InvITs are recognized as borrowers under the 'Securitization and Recon- struction of Financial Assets and Enforcement of Security Interest Act, 2002'.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 819,
+          "y": 183,
+          "w": 870,
+          "h": 859
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 757,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "22",
+      "questionText": "Consider the following statements: Statement—I: In the post-pandemic recent past, many Central Banks worldwide had carried out interest rate hikes. Statement—II: Central Banks generally assume that they have the ability to counteract the rising consumer prices via monetary policy means.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 819,
+          "y": 1042,
+          "w": 870,
+          "h": 894
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 825,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "23",
+      "questionText": "Consider the following statements: Statement—I: Carbon markets are likely to be one of the most widespread tools in the fight against climate change. Statement—II: Carbon markets transfer resources from the private sector to the State.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 150,
+          "y": 165,
+          "w": 659,
+          "h": 759
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 894,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "24",
+      "questionText": "Which one of the following activities of the Reserve Bank of India is considered to be part of 'sterilization'?",
+      "options": [
+        "Conducting 'Open Market Operations'",
+        "Oversight of settlement and payment systems",
+        "Debt and cash management for the Central and State Governments",
+        "Regulating the functions of Non- banking Financial Institutions"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 150,
+          "y": 924,
+          "w": 659,
+          "h": 405
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 961,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "25",
+      "questionText": "Consider the following markets:\n1. Government Bond Market\n2. Call Money Market\n3. Treasury Bill Market\n4. Stock Market\nHow many of the above are included in capital markets?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 150,
+          "y": 1329,
+          "w": 659,
+          "h": 538
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1025,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "26",
+      "questionText": "XDTG-F-GST/62A\n26. Which one of the following best describes the concept of 'Small Farrner Large Field'?",
+      "options": [
+        "Resettlement of a large number of people, uprooted from their countries due to war, by giving them a large cultivable land which they cultivate collectively and share the produce",
+        "Many marginal farmers in an area organize themselves into groups and synchronize and harmonize selected agricultural operations",
+        "Many marginal farmers in an area together make a contract with a corporate body and surrender their land to the corporate body for a fixed term for which the corporate body makes. a payment of agreed amount to the farmers",
+        "A company extends loans, technical knowledge and material inputs to a number of small farmers in an area so that they produce the agricultural commodity required by the company for its manufacturing process and commercial production"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 10,
+          "x": 150,
+          "y": 1867,
+          "w": 659,
+          "h": 42
+        },
+        {
+          "page": 10,
+          "x": 819,
+          "y": 165,
+          "w": 869,
+          "h": 991
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1088,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "27",
+      "questionText": "Consider the following statements:\n1. The Government of India provides Minimum Support Price for niger (Guizotia abyssinica) seeds.\n2. Niger is cultivated as a Kharif crop.\n3. Some tribal peop!e in India use niger seed oil for cooking.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 819,
+          "y": 1156,
+          "w": 869,
+          "h": 763
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1155,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "28",
+      "questionText": "Consider the investments in the following assets •\n1. Brand recognition\n2. Inventory\n3. Intellectual property\n4. Mailing list of clients\nHow many of the above are considered intangible investments?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 159,
+          "y": 176,
+          "w": 650,
+          "h": 501
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1222,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "29",
+      "questionText": "Consider the following\n1. Demographic performance\n2. Forest and ecology\n3. Governance reforms\n4. Stable government\n5. Tax and fiscal efforts For the horizontal tax devolution, the Fifteenth Finance Commission used how many of the above as criteria other than population area and income distance?",
+      "options": [
+        "Only two",
+        "Only three",
+        "Only four",
+        "All five"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 159,
+          "y": 677,
+          "w": 650,
+          "h": 592
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1291,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "30",
+      "questionText": "Consider the following infrastructure sectors:\n1. Affordable housing\n2. Mass rapid transport\n3. Health care\n4. Renewable enerv On how many of the above does UNOPS Sustainable Investments in Infrastructure and Innovation (S3i) initiative focus for its investments?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 159,
+          "y": 1269,
+          "w": 650,
+          "h": 538
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1359,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "31",
+      "questionText": "In essence, what does Due Process of Law' mean?",
+      "options": [
+        "The principle of natural justice",
+        "The procedure established by law",
+        "Fair application of law",
+        "Equality before law"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 819,
+          "y": 173,
+          "w": 862,
+          "h": 286
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1426,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "32",
+      "questionText": "Consider the following statements: Statement—I: In India, prisons are managed by State Governments with their own rules and regulations for the day-to-day administration of prisons. Statement—II In India, prisons are governed by the Prisons Act, 1894 which expressly kept the subject of prisons in the control of Provincial Governments.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 819,
+          "y": 459,
+          "w": 862,
+          "h": 921
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1496,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "33",
+      "questionText": "Which one of the following statements best reflects the Chief purpose of the Constitution' of a country?",
+      "options": [
+        "It determines the objective for the making of necessary laws.",
+        "It enables the creation of political offices and a government.",
+        "It defines and limits the powers of government.",
+        "It secures social justice, social equality and social security."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 819,
+          "y": 1380,
+          "w": 862,
+          "h": 547
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1563,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "34",
+      "questionText": "In India, which one of the following Constitutional Amendments was widely believed to be enacted to overcome the judicial interpretations of the Fundamental Rights?",
+      "options": [
+        "1st Amendment",
+        "42nd Amendment",
+        "44th Amendment",
+        "86th Amendment"
+      ],
+      "answer": null,
+      "answerStatus": "DROPPED",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 171,
+          "y": 181,
+          "w": 638,
+          "h": 312
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1628,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "35",
+      "questionText": "Consider the following organizations/ bodies in India:\n1. The National Commission for Backward Classes\n2. The National Human Rights Commission\n3. The National Law Commission\n4. The National Consumer Disputes Redressal Commission\nHow many of the above are constitutional bodies?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 171,
+          "y": 493,
+          "w": 638,
+          "h": 525
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1696,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "36",
+      "questionText": "Consider the following statements:\n1. If the election of the President of India is declared void by the Supreme Court of India, all acts done by him/her in the performance of duties of his/her office of President before the date of decision become invalid.\n2. Election for the post of the President of India can be postponed on the ground that some Legislative Assemblies have been dissolved and elections are yet to take place.\n3. When a Bill is presented to the President of India, the Constitution prescribes time limits within which he/she has to declare his/her assent.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 171,
+          "y": 1018,
+          "w": 638,
+          "h": 804
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1764,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "37",
+      "questionText": "With reference to Finance Bill and Money Bill in the Indian Parliament, consider the following statements:\n1. When the Lok Sabha transmits Finance Bill to the Rajya Sabha, it can amend or reject the Bill.\n2. When the Lok Sabha transmits Money Bill to the Rajya Sabha, it cannot amend or reject the Bill, it can only make recommendations.\n3. In the case of disagreement between the Lok Sabha and the Rajya Sabha, there is no joint sitting for Money Bill, but a joint sitting becomes necessary for Finance Bill.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 819,
+          "y": 184,
+          "w": 874,
+          "h": 881
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1832,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "38",
+      "questionText": "Consider the following statements • Once the Central Government notifies an area as a Community Reserve'\n1. the Chief Wildlife Warden of the State becomes the governing authority of such forest\n2. hunting is not allowed in such area\n3. people of such area are allowed to collect non-timber forest produce\n4. people of such area are allowed traditional agricultural practices\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 14,
+          "x": 819,
+          "y": 1065,
+          "w": 874,
+          "h": 876
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1901,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "39",
+      "questionText": "With reference to 'Scheduled Areas' in India, consider the following statements:\n1. Within a State, the notification of an area as Scheduled Area takes place through an Order of the President.\n2. The largest administrative unit forming the Scheduled Area is the District and the lowest is the cluster of villages in the Block.\n3. The Chief Ministers of the concerned States are required to submit annual reports to the Union Home Ministry on the administration of Scheduled Areas in the States.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 16,
+          "x": 151,
+          "y": 210,
+          "w": 658,
+          "h": 779
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 1969,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "40",
+      "questionText": "Consider the following statements: Statement—I: The Supreme Court of India has held in some judgements that the reservation policies made under Article 16(4) of the Constitution of India would be limited by Article 335 for maintenance of emciency of administration. Statement—II • Article 335 of the Constitution of India defines the term 'efficiency of administration'.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I.is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 16,
+          "x": 151,
+          "y": 989,
+          "w": 658,
+          "h": 923
+        }
+      ],
+      "keyCell": {
+        "x": 436,
+        "y": 2037,
+        "w": 83,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "41",
+      "questionText": "XDTG-F-GSTi62A\n41. In which one of the following regions was Dhanyakataka, which flourished as a prominent Buddhist centre under the Mahasanghikas, located?",
+      "options": [
+        "Andhra",
+        "Gandhara",
+        "Kalinga",
+        "Magadha"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 16,
+          "x": 151,
+          "y": 1912,
+          "w": 658,
+          "h": 52
+        },
+        {
+          "page": 16,
+          "x": 819,
+          "y": 210,
+          "w": 876,
+          "h": 453
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 753,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "42",
+      "questionText": "With reference to ancient India, consider the following statements:\n1. The concept of Stupa is Buddhist in origin.\n2. Stupa was generally a repository of relics.\n3. Stupa was a votive and commemorative structure in Buddhist tradition.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 16,
+          "x": 819,
+          "y": 663,
+          "w": 876,
+          "h": 815
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 822,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "43",
+      "questionText": "With reference to ancient South India, Korkai, Poompuhar and Muchiri were well known as",
+      "options": [
+        "capital cities",
+        "ports",
+        "centres of iron-and-steel making",
+        "shrines of Jain Tirthankaras"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 16,
+          "x": 819,
+          "y": 1478,
+          "w": 876,
+          "h": 492
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 891,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "44",
+      "questionText": "Which one of the following explains the practice of Vattakirutal' as mentioned in Sangam poems?",
+      "options": [
+        "Kings employing women bodyguards",
+        "Learned persons assembling in royal courts to discuss religious and philosophical matters",
+        "Young girls keeping watch over agricultural fields and driving away birds and animals",
+        "A king defeated in a battle committing ritual suicide by starving himself to death"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 165,
+          "y": 221,
+          "w": 644,
+          "h": 509
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 957,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "45",
+      "questionText": "Consider the following dynasties:\n1. Hoysala\n2. Gahadavala\n3. Kakatiya\n4. Yadava\nHow many of the above dynasties established their kingdoms in early eighth century AD?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "None"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 165,
+          "y": 730,
+          "w": 644,
+          "h": 521
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1022,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "46",
+      "questionText": "With reference to ancient Indian History, consider the following pairs Literary work Author\n1. • Devichandragupta Bilhana\n2. Hammira-Mahakavya Nayachandra Suri\n3. Milinda-panha Nagarjuna\n4. Nitivakyamrita Somadeva Suri\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "MAY_HAVE_TABLE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 165,
+          "y": 1251,
+          "w": 644,
+          "h": 606
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1085,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "47",
+      "questionText": "\"Souls are not only the property • of animal and plant life, but also of rocks, running water and many other natural objects not looked on as living by other religious sects.\" The above statement reflects one of the core beliefs of which one of the following religious sects of ancient India?",
+      "options": [
+        "Buddhism",
+        "Janusm",
+        "Shaivism",
+        "Vaishnavism"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 819,
+          "y": 221,
+          "w": 879,
+          "h": 548
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1151,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "48",
+      "questionText": "Who among the following rulers of Vijayanagara Empire constructed a large dam across Tungabhadra River and a canal-cum-aqueduct several •kilometres long from the river to the capital city?",
+      "options": [
+        "Devaraya I",
+        "Mallikarjuna",
+        "Vira Vijaya",
+        "Virupaksha"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 819,
+          "y": 769,
+          "w": 879,
+          "h": 421
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1218,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "49",
+      "questionText": "Who among the following rulers of medieval Gujarat surrendered Diu to Portuguese?",
+      "options": [
+        "Ahmad Shah",
+        "Mahmud Begarha",
+        "Bahadur Shah",
+        "Muhammad Shah"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 819,
+          "y": 1190,
+          "w": 879,
+          "h": 329
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1287,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "50",
+      "questionText": "By which one of the following Acts was the Governor General of Bengal designated as the Governor General of India?",
+      "options": [
+        "The Regulating Act",
+        "The Pitt's India Act",
+        "The Charter Act of 1793",
+        "The Charter Act of 1833"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 819,
+          "y": 1519,
+          "w": 879,
+          "h": 459
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1355,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "51",
+      "questionText": "Consider the following statements in relation to Janani Suraksha Yojana:\n1. It is a safe motherhood intervention of the State Health Departrnents.\n2. Its objective is to reduce maternal and neonatal mortality among poor pregnant women.\n3. It aims to promote institutional delivery among poor pregnant women.\n4. Its objective includes providing public health facilities to sick infants up to one year of age.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 168,
+          "y": 209,
+          "w": 641,
+          "h": 759
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1423,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "52",
+      "questionText": "Consider the following statements in the context of interventions being undertaken under Anaemia Mukt Bharat Stratege •\n1. It provides prophylactic calcium supplementation for pre-school children, adolescents and pregnant women.\n2. It runs a campaign for delayed cord clamping at the time of child- birth.\n3. It provides for periodic deworming to children and adolescents.\n4. It addresses non-nutritional causes of anaemia in endemic pockets with special focus on malaria, hemoglobinopathies and fluorosis.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 168,
+          "y": 968,
+          "w": 641,
+          "h": 872
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1491,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "53",
+      "questionText": "Consider the following statements:\n1. Carbon fibres are used in the manufacture of components used in automobiles and aircrafts.\n2. Carbon fibres once used cannot be recycled.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 819,
+          "y": 213,
+          "w": 871,
+          "h": 732
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1559,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "54",
+      "questionText": "Consider the following actions:\nI. Detection of car crash/collision which results in the deployment of airbags almost instantaneously\n2. Detection of accidental free fall of a laptop towards the ground which results in the immediate turning off of the hard drive\n3. Detection of the tilt of the smart- phone which results in the rotation of display between portrait and landscape mode In how many of the above actions is the function of accelerometer required?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 819,
+          "y": 945,
+          "w": 871,
+          "h": 1015
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1624,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "55",
+      "questionText": "With reference to the role of biofilters in Recirculating Aquaculture System, consider the following statements:\n1. Biofilters provide waste treatment by removing uneaten fish feed.\n2. Biofilters convert ammonia present in fish waste to nitrate.\n3. Biofilters increase phosphorus as nutrient for fish in water.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 22,
+          "x": 175,
+          "y": 207,
+          "w": 634,
+          "h": 854
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1692,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "56",
+      "questionText": "Consider the following pairs: Objects in Description space\nI. Cepheids Giant clouds of dust and gas in space\n2. Nebulae Stars which brighten and dim periodically\n3. Pulsars Neutron stars that are formed when massive stars run out of fuel and collapse\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 22,
+          "x": 175,
+          "y": 1061,
+          "w": 634,
+          "h": 774
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1760,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "57",
+      "questionText": "Which one of the following countries has its own Satellite Navigation System?",
+      "options": [
+        "Australia",
+        "Canada",
+        "Israel",
+        "Japan"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 22,
+          "x": 819,
+          "y": 206,
+          "w": 881,
+          "h": 570
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1828,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "58",
+      "questionText": "Consider the following statements:\n1. Ballistic missiles are jet-propelled at subsonic speeds throughout their flights, while cruise missiles are rocket-powered only in the initial phase of flight.\n2. Agni-V is a medium-range supersonic cruise missile, while BrahMos is a solid-fuelled intercontinental ballistic missile.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "I only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 22,
+          "x": 819,
+          "y": 776,
+          "w": 881,
+          "h": 1181
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1896,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "59",
+      "questionText": "Consider the following statements regarding mercury pollution:\n1. Gold mining activity is a source of mercury pollution in the world.\n2. Coal-based thermal power plants cause mercury pollution.\n3. There is no known safe level Of exposure to mercury.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 178,
+          "y": 199,
+          "w": 631,
+          "h": 828
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 1964,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "60",
+      "questionText": "With reference to green hydrogen, consider the following statements:\n1. It can be used directly as a fuel for internal combustion.\n2. It can be blended with natural gas and used as fuel for heat or power generation.\n3. It can be used in the hydrogen fuel cell to run vehicles.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 178,
+          "y": 1027,
+          "w": 631,
+          "h": 803
+        }
+      ],
+      "keyCell": {
+        "x": 642,
+        "y": 2032,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "61",
+      "questionText": "Consider the following countries •\nI. Bulgaria\n2. Czech Republic\n3. Hungary\n4. Latvia\n5. Lithuania\n6. Romania\nHow many of the above-mentioned countries share a land border with Ukraine?",
+      "options": [
+        "Only two",
+        "Only three",
+        "Only four",
+        "Only five"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 24,
+          "x": 819,
+          "y": 197,
+          "w": 881,
+          "h": 961
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 750,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "62",
+      "questionText": "With reference to the Earth's atmosphere, which one of the following statements is correct?",
+      "options": [
+        "The total amount of insolation received at the equator is roughly about • 10 times Of that received at the poles.",
+        "Infrared rays constitute roughly two-thirds of insolation.",
+        "Infrared waves are largely absorbed by water vapour that is concentrated in the lower atmosphere.",
+        "Infrared waves are a part of visible spectrum of electromagnetic waves of solar radiation."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 24,
+          "x": 819,
+          "y": 1158,
+          "w": 881,
+          "h": 793
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 819,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "63",
+      "questionText": "Consider the following statements: Statement—I: The soil in tropical rain forests is rich in nutrients. Statement—II: The high temperature and moisture of tropical rain forests cause dead organic matter in the soil to decompose quickly.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 178,
+          "y": 222,
+          "w": 631,
+          "h": 858
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 888,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "64",
+      "questionText": "Consider the following statements: Statement—I: The temperature contrast between continents and oceans is greater during summer than in winter. Statement—II. The specific heat of water is more than that of land surface.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 178,
+          "y": 1080,
+          "w": 631,
+          "h": 765
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 955,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "65",
+      "questionText": "Consider the following statements:\n1. In a seismograph, P waves are recorded earlier than S waves.\n2. In P waves, the individual particles vibrate to and fro in the direction of wave propagation whereas in S waves, the particles vibrate up and down at right angles to the direction of wave propagation.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both I and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 819,
+          "y": 223,
+          "w": 875,
+          "h": 635
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1019,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "66",
+      "questionText": "With reference to coal-based thermal power plants in India, consider the following statements:\n1. None of them uses seawater.\n2. None of them is set up in water-stressed district.\n3. None of them is privately owned.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 819,
+          "y": 858,
+          "w": 875,
+          "h": 595
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1082,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "67",
+      "questionText": "Wolbachia method' is sometimes talked about with reference to which one of the following?",
+      "options": [
+        "Controlling the viral diseases spread by mosquitoes",
+        "Converting crop residues into packing material",
+        "Producing biodegradable plastics",
+        "Producing biochar from thermo- chemical conversion of biomass"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 819,
+          "y": 1453,
+          "w": 875,
+          "h": 517
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1148,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "68",
+      "questionText": "Consider the following activities:\n1. Spreading finely ground basalt rock on farmlands extensively\n2. Increasing the alkalinity of oceans by adding Jime\n3. Capturing carbon dioxide released by various industries and pumping it into abandoned subterranean mines in the form of carbonated waters\nHow many of the above activities are often considered and discussed for carbon capture and sequestration?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 28,
+          "x": 172,
+          "y": 218,
+          "w": 637,
+          "h": 666
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1215,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "69",
+      "questionText": "'Aerial metagenomics' best refers to which one of the following situations?",
+      "options": [
+        "Collecting DNA samples from air in a habitat at one go",
+        "Understanding the genetic makeup of avian species of a habitat",
+        "Using air-borne devices to collect blood samples from moving animals",
+        "Sending drones to inaccessible areas to collect plant and animal samples from land surfaces and water bodies"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 28,
+          "x": 172,
+          "y": 884,
+          "w": 637,
+          "h": 487
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1284,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "70",
+      "questionText": "'Microsatellite DNR is used in the case of which one of the following?",
+      "options": [
+        "Studying the evolutionary relationships among various species of fauna",
+        "Stimulating 'stem cells' to transform into diverse functional tissues",
+        "Promoting clonal propagation of horticultural plants",
+        "Assessing the effcacy of drugs by conducting series of drug trials in a population"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 28,
+          "x": 172,
+          "y": 1371,
+          "w": 637,
+          "h": 479
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1352,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "71",
+      "questionText": "Consider the following statements with reference to India •\n1. According to the 'Micro, Small and Medium Enterprises Development (MSMED) Act, 2006', the 'medium enterprises' are those with investments in plant and machinery between e 15 crore and 25 crore.\n2. All bank loans to the Micro, Small and Medium Enterprises quali& under the priority sector.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 28,
+          "x": 819,
+          "y": 217,
+          "w": 879,
+          "h": 611
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1419,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "72",
+      "questionText": "With reference to Central Bank digital currencies, consider the following statements •\n1. It is possible to make payments in a digital currency without using US dollar or SWIrr system.\n2. A digital currency can be distributed with a condition programmed into it such as a time- frame for spending it.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 28,
+          "x": 819,
+          "y": 825,
+          "w": 879,
+          "h": 554
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1487,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "73",
+      "questionText": "In the context of finance, the term Cbeta' refers to",
+      "options": [
+        "the process of simultaneous buying and selling of an asset from different platforms",
+        "an investment strateg.' of a portfolio manager to balance risk versus reward",
+        "a type of systemic risk that arises where perfect hedging is not possible",
+        "a numeric value that measures the fluctuations of a stock to changes in the overall stock market"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 28,
+          "x": 819,
+          "y": 1375,
+          "w": 879,
+          "h": 591
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1555,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "74",
+      "questionText": "Consider the following statements:\n1. The Self-Help Group (SHG) programme was originally initiated by the State Bank of India by providing microcredit to the financially deprived.\n2. In an SHG, all members of a group take responsibility for a loan that an individual member takes.\n3. The Regional Rural Banks and Scheduled Commercial Banks support SHGs.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 167,
+          "y": 218,
+          "w": 642,
+          "h": 733
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1619,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "75",
+      "questionText": "Consider the following statements: Statement—I: India's public sector health care system largely focuses on curative care with limited preventive, promotive and rehabilitative care. Statement—II • Under India's decentralized approach to health care delivery, the States are primarily responsible for organizing health services.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—l• is incorrect but Statement—II is correct"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 167,
+          "y": 951,
+          "w": 642,
+          "h": 890
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1687,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "76",
+      "questionText": "Consider the following statements: Statement—I: According to the United Nations' World Water Development Report, 2022', India extracts more than a quarter of the world's groundwater withdrawal each year. Statement—II • India needs to extract more than a quarter of the world's groundwater each year to satis& the drinking water and sanitation needs of almost 18% of world's population living in its territory.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 819,
+          "y": 217,
+          "w": 875,
+          "h": 941
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1756,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "77",
+      "questionText": "Consider the following statements:\n1. According to the Constitution of India, the Central Govemment has a duty to protect States from internal disturbances.\n2. The Constitution of India exempts the States from providing legal counsel to a person being held for preventive detention.\n3. According to the Prevention of Terrorism Act, 2002, confession of the accused before the police cannot be used as evidence.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 819,
+          "y": 1158,
+          "w": 875,
+          "h": 809
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1823,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "78",
+      "questionText": "Which one of the following countries has been suffering from decades of civil strife and food shortages and was in news in the recent past for its very severe famine?",
+      "options": [
+        "Angola",
+        "Costa Rica",
+        "Ecuador",
+        "Somalia"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 175,
+          "y": 188,
+          "w": 634,
+          "h": 599
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1891,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "79",
+      "questionText": "Consider the following statements:\n1. In India, the Biodiversity Management Committees are key to the realization of the objectives of the Nagoya Protocol.\n2. The Biodiversity Management Committees have important functions in determining access and benefit sharing, including the power to levy collection fees on the access of biological resources within its jurisdiction.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither I nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 175,
+          "y": 787,
+          "w": 634,
+          "h": 1041
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 1959,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "80",
+      "questionText": "Consider the following statements in respect of election to the President of India •\n1. The members nominated to either House of the Parliament or the Legislative Assemblies of States are also eligible to be included in the Electoral College.\n2. Higher the number Of elective Assembly seats, higher is the value of vote of each MLA of that State.\n3. The value of vote of each MLA of Madhya Pradesh is greater than that of Kerala.\n4. The value of vote of each MLA of Puducherry is higher than that of Arunachal Pradesh because the ratio of total population to total number of elective seats in Puducherry is greater as compared to Arunachal Pradesh.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 32,
+          "x": 819,
+          "y": 192,
+          "w": 876,
+          "h": 1761
+        }
+      ],
+      "keyCell": {
+        "x": 845,
+        "y": 2027,
+        "w": 81,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "81",
+      "questionText": "With reference to the Indian History, Alexander Rea, A. H. Longhurst, Robert Sewell, James Burgess and Walter Elliot were associated with",
+      "options": [
+        "archaeological excavations",
+        "establishment of English Press in Colonial India",
+        "establishment of Churches in Princely States",
+        "construction of railways in Colonial India"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 177,
+          "y": 175,
+          "w": 632,
+          "h": 727
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 746,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "82",
+      "questionText": "Consider the following pairs Site Well known for\n1. Besnagar Shaivite cave shrine\n2. Bhaja Buddhist cave shrine\n3. Sittanavasal Jain cave shrine\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 177,
+          "y": 902,
+          "w": 632,
+          "h": 907
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 815,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "83",
+      "questionText": "Consider the following statements: Statement—I: 7th August is declared as the National Handloom Day. Statement—II: It was in 1905 that the Swadeshi Movement was launched on the same day.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 819,
+          "y": 176,
+          "w": 874,
+          "h": 778
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 884,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "84",
+      "questionText": "Consider the following statements in respect of the National Flag of India according to the Flag Code of India, 2002: Statement—I: One of the standard sizes of the National Flag of India is 600 mm 400 mm. Statement—II: The ratio of the length to the height (width) of the Flag shall be 3:2.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I Statement—I is correct but Statement—II is incorrect",
+        "",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 819,
+          "y": 954,
+          "w": 874,
+          "h": 934
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 951,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "85",
+      "questionText": "85. Consider the following statements in respect of the Constitution Day • Statement—I: The Constitution Day is celebrated on 26th November every year to promote constitutional values among citizens. Statement—II • On 26th November, 1949, the Constituent Assembly of India set up a Drafting Committee under the Chairmanship of Dr. B. R. Ambedkar to prepare a Draft Constitution of India.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_OCR_CORRECTED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 819,
+          "y": 1888,
+          "w": 874,
+          "h": 47
+        },
+        {
+          "page": 36,
+          "x": 157,
+          "y": 180,
+          "w": 652,
+          "h": 917
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1015,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "86",
+      "questionText": "Consider the following statements: Statement—I: Switzerland is one of the leading exporters of gold in terms of value. Statement—II: Switzerland has the second largest gold reserves in the world.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 36,
+          "x": 157,
+          "y": 1097,
+          "w": 652,
+          "h": 715
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1078,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "87",
+      "questionText": "Consider the following statements: Statement—I: Recently, the United States of America (USA) and the European Union (EU) have launched the Trade and Techn010ß' Council'. Statement—II: The USA and the EU claim that through this they are trying to bring technological progress and physical productivity under their control.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 36,
+          "x": 819,
+          "y": 181,
+          "w": 859,
+          "h": 854
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1144,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "88",
+      "questionText": "Consider the following statements: Statement—I: India accounts for of global export of goods. Statement—II: Many local companies and some foreign companies operating in India have taken advantage of India's 'Production-linked Incentive' scheme.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation. for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [],
+      "regions": [
+        {
+          "page": 36,
+          "x": 819,
+          "y": 1035,
+          "w": 859,
+          "h": 903
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1212,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "89",
+      "questionText": "Consider the following statements: The Stability and Growth Pact' of the European Union is a treaty that\n1. limits the levels of the budgetary deficit of the countries of the European Union\n2. makes the countries of the European Union to share their infrastructure facilities\n3. enables the countries of the European Union to share their technologies\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 38,
+          "x": 165,
+          "y": 183,
+          "w": 644,
+          "h": 846
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1280,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "90",
+      "questionText": "Consider the following statements:\nI. Recently, all the countries of the United Nations have adopted the first-ever compact for international migration, the Global Compact for Safe, Orderly and Regular Migration (GCM)'.\n2. The objectives and commitments stated in the GCM are binding on the UN member countries.\n3. The GCM addresses internal migration or internally displaced people also in its objectives and commitments.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [],
+      "regions": [
+        {
+          "page": 38,
+          "x": 165,
+          "y": 1029,
+          "w": 644,
+          "h": 792
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1348,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "91",
+      "questionText": "With reference to Home Guards, consider the following statements:\n1. Home Guards are raised under the Home Guards Act and Rules of the Central Government.\n2. The role of the Home Guards is to serve as an auxiliary force to the police in maintenance of internal security.\n3. To prevent infiltration on the international border/coastal areas, the Border Wing Home Guards Battalions have been raised in some States.\nHow many of the above statements are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 38,
+          "x": 819,
+          "y": 182,
+          "w": 863,
+          "h": 743
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1415,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "92",
+      "questionText": "With reference to India, consider the following pairs The Act under Action which it is covered\n1. Unau thorized wearing The Official Secrets of police or military Act, 1923 uniforms\n2. Knowingly misleading • The Indian Evi- or otherwise inter- dence Act, 1872 fering with a police officer or military officer when engaged in their duties\n3. Celebratory gunfire • The Arms (Amend- which can endanger ment) Act, 2019 the personal safety of others\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_TABLE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 819,
+          "y": 925,
+          "w": 863,
+          "h": 1022
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1483,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "93",
+      "questionText": "Consider the following pairs Regions often Reason for being mentioned in news in news\nI. North Kivu and Ituri • War between Armenia and Azerbaijan\n2. Nagorno-Karabakh Insurgency in Mozambique\n3. Kherson and Dispute between Zaporizhzhia Israel and Lebanon\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [
+        "MAY_HAVE_TABLE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 175,
+          "y": 223,
+          "w": 634,
+          "h": 801
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1550,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "94",
+      "questionText": "Consider the following statements: Statement—I: Israel has established diplomatic relations with some Arab States. Statement—II: The 'Arab Peace Initiative' mediated by Saudi Arabia was signed by Israel and Arab League.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        "Both Statement—I and Statement—II are correct and Statement—II is the correct explanation for Statement—I",
+        "Both Statement—I and Statement—II are correct and Statement—II is not the correct explanation for Statement—I",
+        "Statement—I is correct but Statement—II is incorrect",
+        "Statement—I is incorrect but Statement—II is correct"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "C",
+      "issues": [],
+      "regions": [
+        {
+          "page": 40,
+          "x": 175,
+          "y": 1024,
+          "w": 634,
+          "h": 834
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1615,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "95",
+      "questionText": "Consider the following pairs with regard to sports awards:\nI. Major Dhyan Chand: For the most }Q1el Ratna Award spectacular and outstanding per- formance by a sportsperson over period of last four years\n2. A$una Award • For the lifetime achievement by a sportsperson\n3. Dronacharya Award • To honour eminent coaches who have successfully trained sportspersons or teams\n4. Rashtriya }Q1el • To recogl.ize the Protsahan Puraskar contribution made by sportspersons even after their retirement\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_TABLE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 819,
+          "y": 227,
+          "w": 872,
+          "h": 968
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1683,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "96",
+      "questionText": "Consider the following statements in respect of the 44th Chess Olympiad, 2022 •\n1. It was the first time that Chess Olympiad was held in India.\n2. The official mascot was named Thambi'.\n3. The trophy for the winning team in the open section is the Vera Menchik Cup.\n4. The trophy for the winning team in the women's section is the Hamilton-Russell Cup.\nHow many of the statements given above are correct?",
+      "options": [
+        "Only one",
+        "Only two",
+        "Only three",
+        "All four"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 819,
+          "y": 1195,
+          "w": 872,
+          "h": 791
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1751,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "97",
+      "questionText": "Consider the following pairs: Area of conflict Country where mentioned in news it is located\n1. Donbas Syria\n2. Kachin Ethiopia\n3. Tigray North Yemen\nHow many of the above pairs are correctly matched?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 197,
+          "y": 223,
+          "w": 612,
+          "h": 971
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1818,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "98",
+      "questionText": "In the recent years Chad, Guinea, Mali and Sudan caught the international attention for which one of the following reasons common to all of them?",
+      "options": [
+        "Discovery of rich deposits of rare earth elements",
+        "Establishment of Chinese military bases",
+        "Southward expansion of Sahara Desert",
+        "Successful coups"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 197,
+          "y": 1194,
+          "w": 612,
+          "h": 663
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1886,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "99",
+      "questionText": "Consider the following heavy industries:\n1. Fertilizer plants\n2. Oil refineries\n3. Steel plants Green hydrogen is expected to play a significant role in decarbonizing how many of the above industries?",
+      "options": [
+        "Only one",
+        "Only two",
+        "All three",
+        "None"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "X",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 819,
+          "y": 222,
+          "w": 872,
+          "h": 773
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 1954,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "100",
+      "questionText": "Consider the following statements about G-20:\n1. The G-20 group was originally established as a platform for the Finance Ministers and Central Bank Governors to discuss the international economic and financial issues.\n2. Digital public infrastructure is one of India's G-20 priorities.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 819,
+          "y": 995,
+          "w": 872,
+          "h": 989
+        }
+      ],
+      "keyCell": {
+        "x": 1048,
+        "y": 2022,
+        "w": 82,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

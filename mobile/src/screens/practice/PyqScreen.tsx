@@ -72,7 +72,7 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
             setPhase({ kind: 'filtering' });
         } catch (err) {
             const message =
-                err instanceof ApiError ? err.message : 'Could not load subjects. Try again.';
+                err instanceof ApiError ? err.message : t('pyqScreen.subjectsError');
             setPhase({ kind: 'filtersError', message });
         }
     }, []);
@@ -93,7 +93,7 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
         setFormError(null);
         const year = Number(yearText.trim());
         if (!/^\d{4}$/.test(yearText.trim()) || !Number.isInteger(year)) {
-            setFormError('Enter a valid 4-digit year.');
+            setFormError(t('pyqScreen.yearError'));
             return;
         }
         if (!subjectId) {
@@ -107,7 +107,7 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
             setPhase({ kind: 'practicing', questions });
         } catch (err) {
             const message =
-                err instanceof ApiError ? err.message : 'Could not load questions. Try again.';
+                err instanceof ApiError ? err.message : t('pyqScreen.questionsError');
             setFormError(message);
             setPhase({ kind: 'filtering' });
         }
@@ -126,7 +126,7 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
             setPhase({ kind: 'results', questions, result });
         } catch (err) {
             const message =
-                err instanceof ApiError ? err.message : 'Could not submit answers. Try again.';
+                err instanceof ApiError ? err.message : t('pyqScreen.submitError');
             setFormError(message);
             setPhase({ kind: 'practicing', questions });
         }
@@ -158,7 +158,7 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
                                 questionsById={questionsById}
                                 sourceType="PYQ"
                             />
-                            <PrimaryButton label="Practice more" onPress={resetToFilters} />
+                            <PrimaryButton label={t('pyqScreen.practiceMore')} onPress={resetToFilters} />
                         </>
                     ) : phase.kind === 'practicing' || phase.kind === 'submitting' ? (
                         <>
@@ -189,8 +189,8 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
                         </>
                     ) : (
                         <>
-                            {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <View style={styles.stageCard}><Text style={styles.stageEyebrow}>UPSC MAINS MODE</Text><Text style={styles.stageTitle}>Lead with writing and mock analysis.</Text><Text style={styles.stageBody}>Use MCQs selectively; your core practice here is answer structure, depth and review.</Text><PrimaryButton label="Start answer writing" onPress={() => navigation.navigate('AnswerWriting')} /><SecondaryButton label="Analyse my test" onPress={() => navigation.navigate('ExternalPaperReview')} /></View> : null}
-                            {examProgram === 'SSC_CGL' ? <View style={styles.stageCard}><Text style={styles.stageEyebrow}>SSC MODE</Text><Text style={styles.stageTitle}>Build speed, accuracy and recall.</Text><SecondaryButton label="Open pacing trainer" onPress={() => navigation.navigate('PracticeLab')} /><SecondaryButton label="Open formula sprint" onPress={() => navigation.navigate('FormulaSprint')} /></View> : null}
+                            {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <View style={styles.stageCard}><Text style={styles.stageEyebrow}>{t('pyqScreen.mainsMode')}</Text><Text style={styles.stageTitle}>{t('pyqScreen.mainsTitle')}</Text><Text style={styles.stageBody}>{t('pyqScreen.mainsBody')}</Text><PrimaryButton label={t('pyqScreen.startWriting')} onPress={() => navigation.navigate('AnswerWriting')} /><SecondaryButton label={t('nav.analyseTest')} onPress={() => navigation.navigate('ExternalPaperReview')} /></View> : null}
+                            {examProgram === 'SSC_CGL' ? <View style={styles.stageCard}><Text style={styles.stageEyebrow}>{t('pyqScreen.sscMode')}</Text><Text style={styles.stageTitle}>{t('pyqScreen.sscTitle')}</Text><SecondaryButton label={t('pyqScreen.openPacing')} onPress={() => navigation.navigate('PracticeLab')} /><SecondaryButton label={t('pyqScreen.openSprint')} onPress={() => navigation.navigate('FormulaSprint')} /></View> : null}
                             <Text style={styles.label}>{t('pyq.filterByYear')}</Text>
                             <TextInput
                                 style={styles.input}
@@ -219,13 +219,14 @@ export function PyqScreen({ navigation }: PracticeStackScreenProps<'Pyq'>): Reac
                                 busy={phase.kind === 'loadingQuestions'}
                                 onPress={() => void onLoadQuestions()}
                             />
-                            <SecondaryButton label="Start full mock" onPress={() => navigation.navigate('Mock')} />
-                            <SecondaryButton label="Review external paper" onPress={() => navigation.navigate('ExternalPaperReview')} />
-                            <SecondaryButton label="Timed paper" onPress={() => navigation.navigate('TimedPaper')} />
-                            <SecondaryButton label="Pacing trainer" onPress={() => navigation.navigate('PracticeLab')} />
-                            {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <SecondaryButton label="Answer writing" onPress={() => navigation.navigate('AnswerWriting')} /> : null}
-                            {examProgram === 'SSC_CGL' ? <SecondaryButton label="Formula sprint" onPress={() => navigation.navigate('FormulaSprint')} /> : null}
-                            <SecondaryButton label="Mistake journal" onPress={() => navigation.navigate('MistakeJournal')} />
+                            <SecondaryButton label={t('quiz.cardTitle')} onPress={() => navigation.navigate('DailyQuiz')} />
+                            <SecondaryButton label={t('pyqScreen.startMock')} onPress={() => navigation.navigate('Mock')} />
+                            <SecondaryButton label={t('pyqScreen.reviewExternal')} onPress={() => navigation.navigate('ExternalPaperReview')} />
+                            <SecondaryButton label={t('nav.timedPaper')} onPress={() => navigation.navigate('TimedPaper')} />
+                            <SecondaryButton label={t('nav.pacingTrainer')} onPress={() => navigation.navigate('PracticeLab')} />
+                            {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <SecondaryButton label={t('more.answerWritingTitle')} onPress={() => navigation.navigate('AnswerWriting')} /> : null}
+                            {examProgram === 'SSC_CGL' ? <SecondaryButton label={t('more.formulaSprintTitle')} onPress={() => navigation.navigate('FormulaSprint')} /> : null}
+                            <SecondaryButton label={t('mistakes.title')} onPress={() => navigation.navigate('MistakeJournal')} />
                         </>
                     )}
                 </ScrollView>

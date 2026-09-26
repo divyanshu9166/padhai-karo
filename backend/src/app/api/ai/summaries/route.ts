@@ -15,7 +15,9 @@
  * concerns. The concrete AI provider is injected by the service (a mock is used in tests).
  */
 import { withAuth } from '@/lib/auth';
-import { createSummaryHandler, listSummariesHandler } from '@/services/ai';
+import { createOpenNoteHandler, listOpenNotesHandler } from '@/services/ai/openNotesService';
 
-export const POST = withAuth((request, auth) => createSummaryHandler(request, auth));
-export const GET = withAuth((request, auth) => listSummariesHandler(request, auth));
+// Keep the older URL as a compatibility alias, but route it through the same implementation
+// as /api/ai/notes so photo/voice inputs, quota safety and generation-source metadata stay in sync.
+export const POST = withAuth((request, auth) => createOpenNoteHandler(request, auth));
+export const GET = withAuth((request, auth) => listOpenNotesHandler(request, auth));

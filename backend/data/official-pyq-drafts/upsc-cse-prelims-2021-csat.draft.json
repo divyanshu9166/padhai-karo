@@ -1,0 +1,2537 @@
+{
+  "draftVersion": 1,
+  "sourceId": "upsc-cse-prelims-2021-csat",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2021,
+  "paperKey": "UPSC-CSE-PRELIMS-CSAT-2021",
+  "subjectId": "UPSC-CSE-CSAT",
+  "series": "A",
+  "durationMin": 120,
+  "expectedQuestions": 80,
+  "sourceName": "UPSC official previous question papers",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-21-GeneralStudiesPaper-II-121021.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/Anskey-CSP-21-GS-II-300522.pdf",
+  "questionPaperSha256": "a6994347123ec86243ef7786c220bfd9e21831a2a028bd49b400d8b1aeeaed53",
+  "answerKeySha256": "38aa04ba8c210a6a4ccf81fd4809ace1a6b812c8b7a365637bb7b912a08dfe28",
+  "extractedAt": "2026-09-26T05:54:46.517Z",
+  "pageImages": [
+    "pages/page-01.jpg",
+    "pages/page-02.jpg",
+    "pages/page-03.jpg",
+    "pages/page-04.jpg",
+    "pages/page-05.jpg",
+    "pages/page-06.jpg",
+    "pages/page-07.jpg",
+    "pages/page-08.jpg",
+    "pages/page-09.jpg",
+    "pages/page-10.jpg",
+    "pages/page-11.jpg",
+    "pages/page-12.jpg",
+    "pages/page-13.jpg",
+    "pages/page-14.jpg",
+    "pages/page-15.jpg",
+    "pages/page-16.jpg",
+    "pages/page-17.jpg",
+    "pages/page-18.jpg",
+    "pages/page-19.jpg",
+    "pages/page-20.jpg",
+    "pages/page-21.jpg",
+    "pages/page-22.jpg",
+    "pages/page-23.jpg",
+    "pages/page-24.jpg",
+    "pages/page-25.jpg",
+    "pages/page-26.jpg",
+    "pages/page-27.jpg",
+    "pages/page-28.jpg",
+    "pages/page-29.jpg",
+    "pages/page-30.jpg",
+    "pages/page-31.jpg",
+    "pages/page-32.jpg",
+    "pages/page-33.jpg",
+    "pages/page-34.jpg",
+    "pages/page-35.jpg",
+    "pages/page-36.jpg",
+    "pages/page-37.jpg",
+    "pages/page-38.jpg",
+    "pages/page-39.jpg",
+    "pages/page-40.jpg",
+    "pages/page-41.jpg",
+    "pages/page-42.jpg",
+    "pages/page-43.jpg",
+    "pages/page-44.jpg",
+    "pages/page-45.jpg",
+    "pages/page-46.jpg",
+    "pages/page-47.jpg",
+    "pages/page-48.jpg"
+  ],
+  "keyImage": "key/key-1.jpg",
+  "questions": [
+    {
+      "questionRef": "1",
+      "preamble": "Passage — 1 Researchers simulated street lighting on artificial grassland plots containing pea-aphids, sap-sucking insects, at night. These were exposed to two different types of light — a white light similar to newer commercial LED lights and an amber light similar to sodium street lamps. The low intensity amber light was shown to inhibit, rather than induce, flowering in a wild plant of the pea family which is a source of food for the pea-aphids in grasslands. The number of aphids was also significantly suppressed under the light treatment due to the limited amount of food available.",
+      "questionText": "Which one of the following statements best reflects the most critical inference that can be made from the passage given above?",
+      "options": [
+        "Low intensity light has more adverse effect on the plants as compared to high intensity light.",
+        "Light pollution can have a permanent adverse impact on an ecosystem.",
+        "White light is better for the flowering of plants as compared to the light of other colours.",
+        "Proper intensity of light in an ecosystem is important not only for plants but for animals too."
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 130,
+          "y": 1071,
+          "w": 664,
+          "h": 793
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 368,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "2",
+      "preamble": "Passage — 2 Approximately 80 percent of all flowering plant species are pollinated by animals, including birds and mammals, but the main pollinators are insects. Pollination is responsible for providing us with a wide variety of food, as well as many plant-derived medicines. At least one-third of the world's agricultural crops depend upon pollination. Bees are the most dominant taxa when it comes to pollination and they are crucial to more than four hundred crops. Pollination is an essential service that is the result of intricate relationships between plants and animals, and the reduction or loss of either affects the survival of both. Effective pollination requires resources, such as refuges of pristine natural vegetation.",
+      "questionText": "On the basis of the passage given above, the following assumptions have been made:\n1. Sustainable production of India's cereal food grains is impossible without the diversity of pollinating animals.\n2. Monoculture of horticultural crops hampers the survival of insects.\n3. Pollinators become scarce in cultivated areas devoid of natural vegetation.\n4. Diversity in insects induces diversity of plants.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2, 3 and 4 only",
+        "1 and 2 only",
+        "3 and 4 only"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 804,
+          "y": 982,
+          "w": 824,
+          "h": 909
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 441,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "3",
+      "preamble": "Passage — 3 A study conducted on the impacts of climate change over the Cauvery basin of Tamil Nadu using regional climate models showed an increasing trend for maximum and minimum temperatures, and a decrease in the number of rainy days. These climatic shifts will have an impact on the hydrological cycles in the region, lead to more run-off and less recharge, and affect the groundwater tables. Further, there has been an increase in the frequency of droughts in the State. This has driven farmers to increase dependency on groundwater resources to secure their crops.",
+      "questionText": "Which one of the following statements best reflects the crux of the passage given above?",
+      "options": [
+        "Development of regional climate models helps in choosing climate-smart agricultural practices.",
+        "Heavy dependence on groundwater resources can be reduced by adopting dry-land cropping systems.",
+        "Climate changes increase the criticality of water resources while simultaneously threatening it.",
+        "Climate changes cause the farmers to adopt unsustainable livelihoods and risky coping strategies."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 4,
+          "x": 125,
+          "y": 1018,
+          "w": 669,
+          "h": 837
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 515,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "4",
+      "preamble": "Passage — 4 Researchers were able to use stem cells to gauge the neurotoxic effects of the environmental pollutant Bisphenol A (BPA). They used a combination of biochemical and cell-based assays to examine the gene expression profile during the differentiation of mouse embryonic stem cells upon treatment with BPA, a compound known to cause heart diseases, diabetes, and developmental abnormalities in humans. They were able to detect and measure BPA toxicity towards the proper specification of primary germ layers, such as endoderm and ectoderm, and the establishment of neural progenitor cells.",
+      "questionText": "On the basis of the passage given above, the following assumptions have been made:\n1. BPA may alter embryonic development in vivo.\n2. Biochemical and cell-based assays are useful in finding out treatments for pollution-induced diseases.\n3. Embryonic stem cells could serve as a model to evaluate the physiological effects of environmental pollutants.\nWhich of the above assumptions are valid?",
+      "options": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 4,
+          "x": 804,
+          "y": 1005,
+          "w": 822,
+          "h": 850
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 590,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "5",
+      "questionText": "If 32019 is divided by 10, then what is the remainder?",
+      "options": [
+        "1",
+        "3",
+        "7",
+        "9"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 126,
+          "y": 169,
+          "w": 668,
+          "h": 534
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 666,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "6",
+      "questionText": "The number 3798125P369 is divisible What is the value of the digit P?",
+      "options": [
+        "1",
+        "6",
+        "7",
+        "9"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 126,
+          "y": 703,
+          "w": 668,
+          "h": 529
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 741,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "7",
+      "questionText": "From January 1, 2021, the price of petrol (in Rupees per litre) on m day of the year is 80 + O•lm, where m = 1, 2, 3,. 100 and thereafter remains constant. On the other hand, the price of diesel (in Rupees per litre) on nth day of 2021 is 69 + 0•15n for any n. On which date in the year 2021 are the prices of these two fuels equal?",
+      "options": [
+        "21 st May",
+        "20 May",
+        "19th May",
+        "18th May"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 6,
+          "x": 126,
+          "y": 1232,
+          "w": 668,
+          "h": 668
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 817,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "8",
+      "questionText": "A biology class at high school predicted that a local population of animals will double in size every 12 years. The population at the beginning of the year 2021 was estimated to be 50 animals. If P represents the population after n years, then which one of the following equations represents the model of the class for the population?",
+      "options": [
+        "P = 12 + 50n",
+        "P = 50 + 12n",
+        "P = 50 (2)12n",
+        "P = 50 (2)n/12"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 6,
+          "x": 804,
+          "y": 171,
+          "w": 821,
+          "h": 533
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 892,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "9",
+      "questionText": "9. In a class, 60% of students are from India and 50% of the students are girls. If 30% of the Indian students are girls, then what percentage of foreign students are boys?",
+      "options": [
+        "45%",
+        "",
+        "30%",
+        ""
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "NUMBER_OCR_CORRECTED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 6,
+          "x": 804,
+          "y": 704,
+          "w": 821,
+          "h": 366
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 969,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "10",
+      "questionText": "A Statement followed by Conclusion-I and Conclusion-II is given below. You have to take the Statement to be true even if it seems to be at variance from the commonly known facts. Read all Conclusions and then decide which of the given Conclusion(s) logically follows/follow from the Statement, disregarding the commonly known facts. Statement: Some radios are mobiles. All mobiles are computers. Some computers are watches. Conclusion-I: Certainly some radios are watches. Conclusion-II: Certainly some mobiles are watches.\nWhich one of the following is correct?",
+      "options": [
+        "Only Conclusion-I",
+        "Only Conclusion-II",
+        "Both Conclusion-I and Conclusion-II",
+        "Neither Conclusion-I nor Conclusion-II"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 804,
+          "y": 1070,
+          "w": 821,
+          "h": 819
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1046,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "11",
+      "preamble": "Passage — 1 Fig trees (genus Ficus) are considered sacred in India, East Asia and Africa and are common in agricultural and urban landscapes where other large trees are absent. In natural forests, fig trees provide food for wildlife when other resources are scarce and support a high density and diversity of frugivores (fruit-eating animals). If frugivorous birds and bats continue to visit fig trees located in sites with high human disturbance, sacred fig trees may promote frugivore abundance. Under favourable microclimate, plenty of seedlings of other tree species would grow around fig trees.",
+      "questionText": "On the basis of the passage given above, the following assumptions have been made:\n1. Fig trees can often be keystone species in natural forests.\n2. Fig trees can grow where other large woody species cannot grow.\n3. Sacred trees can have a role in biodiversity conservation.\n4. Fig trees have a role in the seed dispersal of other tree species.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "2 and 4 only",
+        "1, 3 and 4 only"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 112,
+          "y": 1049,
+          "w": 682,
+          "h": 839
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1123,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "12",
+      "preamble": "Passage — 2 At the heart of agroecology is the idea that agroecosystems should mimic the biodiversity levels and functioning of natural ecosystems. Such agricultural mimics, like their natural models, can be productive, pest-resistant, nutrient conserving, and resilient to shocks and stresses. In ecosystems there is no 'waste', nutrients are recycled indefinitely. Agroecology aims at closing nutrient loops, i.e., returning all nutrients that come out of the soil back to the soil such as through application of farmyard manure. It also harnesses natural processes to control pests and build soil fertility i.e., through intercropping. Agroecological practices include integrating trees with livestock and crops.",
+      "questionText": "Consider the following:\n1. Cover crops\n2. Fertigation\n3. Hydroponics\n4. Mixed farming\n5. Polyculture\n6. Vertical farming\nWhich of the above farming practices can be compatible with agroecology, as implied by the passage?",
+      "options": [
+        "1, 4 and 5 only",
+        "2, 3, 4 and 5 only",
+        "1, 2, 3 and 6 only",
+        "4 and 6 only"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 804,
+          "y": 1034,
+          "w": 816,
+          "h": 848
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1200,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "13",
+      "preamble": "Passage — 3 Computers increasingly deal not just with abstract data like credit card details and databases, but also with the real world of physical objects and vulnerable human bodies. A modern car is a computer on wheels; an aeroplane is a computer on wings. The arrival of the \"Internet of Things\" will see computers baked into everything from road signs and MRI scanners to prosthetics and insulin pumps. There is little evidence that these gadgets will be any more trustworthy than their desktop counterparts. Hackers have already proved that they can take remote control of internet connected cars and pacemakers.",
+      "questionText": "Which one of the following statements best reflects the most critical inference that can be made from the passage given above?",
+      "options": [
+        "Computers are not completely safe.",
+        "Companies producing the software do not take cyber security seriously.",
+        "Stringent data security laws are needed.",
+        "The present trend of communication technologies will affect our lives in future. (11"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 126,
+          "y": 1229,
+          "w": 668,
+          "h": 727
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1278,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "14",
+      "preamble": "Passage — 4 A social and physical environment riddled with poverty, inequities, unhygienic and insanitary conditions generates the risk of infectious diseases. Hygiene has different levels • personal, domestic and community hygiene. There is no doubt that personal cleanliness brings down the rate of infectious diseases. But the entry of the market into this domain has created a false sense of security that gets conditioned and reinforced by the onslaught of advertisements. Experience in Western Europe shows that along with personal hygiene, general improvements in environmental conditions and components like clean water, sanitation and food security have brought down infant/child death/infection rates considerably. The obsession with hand hygiene also brings in the persisting influence of the market on personal health, overriding or marginalising the negative impact on ecology and the emergence of resistant germs.",
+      "questionText": "On the basis of the passage given above, the following assumptions have been made:\n1. People who are obsessed with personal hygiene tend to ignore the community hygiene.\n2. Emergence of multi-drug resistant germs can be prevented by personal cleanliness.\n3. Entry of the market in the domain of hygiene increases the risk of infectious diseases.\n4. Scientific and micro-level interventions are not sufficient to bring down the burden of infectious diseases.\n5. It is community hygiene implemented through public health measures that is really effective in the battle against infectious diseases.\nWhich of the above assumptions are valid?",
+      "options": [
+        "1 and 2 only",
+        "3 and 4 only",
+        "4 and 5 only",
+        "1, 2 and 4 only"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 804,
+          "y": 1029,
+          "w": 810,
+          "h": 866
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1355,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "15",
+      "questionText": "A Statement followed by Conclusion-I and 18. Conclusion-II is given below. You have to take the Statement to be true even if it seems to be at variance from the commonly known facts. Read all Conclusions and then decide which of the given Conclusion(s) logically follows/follow from the Statement, disregarding the commonly known facts. Statement: Some cats are almirahs. Some almirahs are chairs. All chairs are tables. Conclusion-I: Certainly some almirahs are tables. Conclusion-II: Some cats may not be chairs.\nWhich one of the following is correct?",
+      "options": [
+        "Only Conclusion-I",
+        "Only Conclusion-II",
+        "Both Conclusion-I and Conclusion-II",
+        "Neither Conclusion-I nor Conclusion-II"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 137,
+          "y": 163,
+          "w": 657,
+          "h": 794
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1432,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "16",
+      "questionText": "A boy plays with a ball and he drops it from a height of m. Every time the ball hits the ground, it bounces back to attain a height 4/5th of the previous height. The ball does not bounce further if the previous height is less than 50 cm. What is the number of times the ball hits the ground before the ball stops bouncing?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 137,
+          "y": 957,
+          "w": 657,
+          "h": 574
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1510,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "17",
+      "questionText": "Images of consonants of the English alphabet (Capitals) are observed in a mirror. What is the number of images of these which do not look like their original shapes?",
+      "options": [
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 137,
+          "y": 1531,
+          "w": 657,
+          "h": 354
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1588,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "18",
+      "questionText": "A bank employee drives 10 km towards South from her house and turns to her left and drives another 20 km. She again turns left and drives 40 km, then she turns to her right and drives for another 5 km. She again turns to her right and drives another 30 km to reach her bank where she works. What is the shortest distance between her bank and her house?",
+      "options": [
+        "20 km",
+        "25 km",
+        "30 km",
+        "35 km"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 804,
+          "y": 169,
+          "w": 810,
+          "h": 779
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1665,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "19",
+      "questionText": "Integers are listed from 700 to 1000. In how many integers is the sum of the digits 10?",
+      "options": [
+        "6 7",
+        "",
+        "8",
+        "9"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 804,
+          "y": 948,
+          "w": 810,
+          "h": 462
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1743,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "20",
+      "questionText": "A woman runs 12 km towards her North, then 6 km towards her South and then 8 km towards her East. In which direction is she from her starting point?",
+      "options": [
+        "An angle less than 450 South of East",
+        "An angle less than 450 North of East",
+        "An angle more than 450 South of East",
+        "An angle more than 450 North of East"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 804,
+          "y": 1410,
+          "w": 810,
+          "h": 479
+        }
+      ],
+      "keyCell": {
+        "x": 364,
+        "y": 1822,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "21",
+      "preamble": "Passage — 1 India faces a challenging immediate future in energy and climate policy-making. The problems are multiple sputtering fossil fuel production capabilities; limited access to electricity and modern cooking fuel for the poorest; rising fuel imports in an unstable global energy context; continued electricity pricing and governance challenges leading to its costly deficits or surplus supply; and not least, growing environmental contestation around land, water and air. But all is not bleak: growing energy effciency programmes; integrated urbanisation and transport policy discussions; inroads to enhancing energy access and security; and bold renewable energy initiatives, even if not fully conceptualised, suggest the promise of transformation.",
+      "questionText": "Which one of the following statements best reflects the critical message conveyed by the passage given above?",
+      "options": [
+        "India's energy decision-making process is ever more complex and interconnected.",
+        "India's energy and climate policy is heavily tuned to sustainable development goals.",
+        "India's energy and climate actions are not compatible with its broader social, economic and environmental goals.",
+        "India's energy decision-making process is straightforward supply-oriented and ignores the demand side."
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "X",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 133,
+          "y": 1243,
+          "w": 661,
+          "h": 661
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 369,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "22",
+      "preamble": "Passage — 2 There are reports that some of the antibiotics sold in the market are fed to poultry and other livestock as growth promoters. Overusing these substances can create superbugs, pathogens that are resistant to multiple drugs and could be passed along humans. Mindful of that, some farming companies have stopped using the drugs to make chickens gain weight faster. Since Denmark banned antibiotic growth promoters in the 1990s, the major pork exporter says it is producing more pigs — and the animals get fewer diseases.",
+      "questionText": "Which one of the following statements best reflects the critical message conveyed by the passage given above?",
+      "options": [
+        "People should avoid consuming the products of animal farming.",
+        "Foods of animal origin should be replaced with foods of plant origin.",
+        "Using antibiotics on animals should be banned.",
+        "Antibiotics should only be used to treat diseases."
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 804,
+          "y": 1155,
+          "w": 809,
+          "h": 749
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 442,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "23",
+      "preamble": "Passage — 3 Policy makers and media have placed the blame for skyrocketing food prices on a variety of factors, including high fuel prices, bad weather in key food producing countries, and the diversion of land to non-food production. Increased emphasis, however, has been placed on a surge in demand for food from the most populous emerging economies. It seems highly probable that mass consumption in these countries. could be well poised to create a food crisis.",
+      "questionText": "With reference to the above passage, the following assumptions have been made:\n1. Oil producing countries are one of the reasons for high food prices.\n2. If there is a food crisis in the world in the near future, it will be in the emerging economies.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 16,
+          "x": 117,
+          "y": 842,
+          "w": 677,
+          "h": 977
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 516,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "24",
+      "preamble": "Passage — 4 A central message of modern development economics is the importance of income growth, by which is meant growth in Gross Domestic Product (GDP). In theory, rising GDP creates employment and investment opportunities. As incomes grow in a country where the level of GDP was once low, households, communities, and governments are increasingly able to set aside some funds for the production of things that make for a good life. Today GDP has assumed such a significant place in the development lexicon, that if someone mentions \"economic growth\", we know they mean growth in GDP.",
+      "questionText": "With reference to the above passage, the following assumptions have been made:\n1. Rising GDP is essential for a country to be a developed country.\n2. Rising GDP guarantees a reasonable distribution of income to all households.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 16,
+          "x": 804,
+          "y": 1049,
+          "w": 809,
+          "h": 831
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 591,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "25",
+      "questionText": "Seven books P, Q, R, S, T, U and V are placed 29. side by side. R, Q and T have blue covers and other books have red covers. Only S and U are new books and the rest are old. P, R and S are law reports; the rest are Gazetteers. Books of old Gazetteers with blue covers are",
+      "options": [
+        "Q and R",
+        "Q and U",
+        "Q and T",
+        "T and U"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 131,
+          "y": 165,
+          "w": 663,
+          "h": 419
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 667,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "26",
+      "questionText": "Replace the incorrect term by the correct term in the given sequence 3, 2, 7, 4, 13, 10, 21, 18, 31, 28, 43, 40 where odd terms and even terms follow the same pattern.",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 131,
+          "y": 584,
+          "w": 663,
+          "h": 350
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 742,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "27",
+      "questionText": "Following is a matrix of certain entries. The entries follow a certain trend row-wise. Choose the missing entry (?) accordingly. 7B IOA 9B IOA 13C",
+      "options": [
+        "9B",
+        "3A",
+        "3B",
+        ""
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 131,
+          "y": 934,
+          "w": 663,
+          "h": 462
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 818,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "28",
+      "questionText": "You are given two identical sequences in two rows: Sequence-I: 8 4 6 15 52•5 236•25 Sequence-II: 5 A What is the entry in the place of C for the Sequence-II?",
+      "options": [
+        "",
+        "5",
+        "9•375",
+        "32•8125"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "OCR_NOISE",
+        "MAY_HAVE_TABLE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 131,
+          "y": 1396,
+          "w": 663,
+          "h": 487
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 893,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "29",
+      "questionText": "A person X from a place A and another person Y from a place B set out at the same time to walk towards each other. The places are separated by a distance of 15 km. X walks with a uniform speed of km/hr and Y walks with a uniform speed of 1 km/hr in the first hour, with a uniform speed of 1•25 km/hr in the second hour and with a uniform speed of km/hr in the third hour and so on.\nWhich of the following is/are correct?\n1. They take 5 hours to meet.\n2. They meet midway between A and B.\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 804,
+          "y": 174,
+          "w": 810,
+          "h": 1145
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 970,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "30",
+      "questionText": "A student appeared in 6 papers. The maximum marks are the same for each paper. His marks in these papers are in the proportion of 5: 6: 7: 8: 9: 10. Overall he scored 60%. In how many number of papers did he score less than 60% of the maximum marks?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 804,
+          "y": 1319,
+          "w": 810,
+          "h": 570
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1047,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "31",
+      "preamble": "Passage — 1 With respect to what are called denominations of religion, if everyone is left to be a judge of his own religion, there is no such thing as religion that is wrong; but if they are to be a judge of each other's religion, there is no such thing as a religion that is right, and therefore all the world is right or all the world is wrong in the matter of religion.",
+      "questionText": "What is the most logical assumption that can be made from the passage given above?",
+      "options": [
+        "No man can live without adhering to some religious denomination.",
+        "It is the duty of everyone to propagate one's religious denomination.",
+        "Religious denominations tend to ignore the unity of man.",
+        "Men do not understand their own religious denomination."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 125,
+          "y": 1297,
+          "w": 669,
+          "h": 606
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1124,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "32",
+      "preamble": "Passage — 1 With respect to what are called denominations of religion, if everyone is left to be a judge of his own religion, there is no such thing as religion that is wrong; but if they are to be a judge of each other's religion, there is no such thing as a religion that is right, and therefore all the world is right or all the world is wrong in the matter of religion.",
+      "questionText": "(21- Passage — 2 It is certain, that seditions, wars, and contempt or breach of the laws are not so much to be imputed to the wickedness of the subjects, as to the bad state of a dominion. For men are not born fit for citizenship, but must be made so. Besides, men's natural passions are everywhere the same; and if wickedness more prevails, and more offences are committed in one commonwealth than in another, it is certain that the former has neither enough pursued the end of unity, nor framed its laws with sufficient forethought; and that, therefore, it has failed in making quite good its right as a commonwealth.\n32. Which among the following is the most logical and rational inference that can be made from the passage given above?",
+      "options": [
+        "Seditions, wars and breach of the laws are inevitable in every dominion.",
+        "It is not the people, but the sovereign who is responsible for all the problems of any dominion.",
+        "That dominion is the best which pursues the aim of unity and has laws for good citizenship.",
+        "It is impossible for men to establish a good dominion."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 125,
+          "y": 1903,
+          "w": 669,
+          "h": 47
+        },
+        {
+          "page": 20,
+          "x": 804,
+          "y": 153,
+          "w": 805,
+          "h": 1714
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1200,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "33",
+      "preamble": "Passage — 3 Inequality violates a basic democratic norm: the equal standing of citizens. Equality is a relation that obtains between persons in respect of some fundamental characteristic that they share in common. Equality is, morally speaking, a default principle. Therefore, persons should not be discriminated on grounds such as race, caste, gender, ethnicity, disability, or class. These features of human condition are morally irrelevant. The idea that one should treat persons with respect not only because some of these persons possess some special features or talent, for example skilled cricketers, gifted musicians, or literary giants, but because persons are human beings, is by now part of commonsense morality.",
+      "questionText": "With reference to the above passage, the following assumptions have been made:\n1. Equality is a prerequisite for people to participate in the multiple transactions of society from a position of confidence.\n2. Occurrence of inequality is detrimental to the survival of democracy.\n3. Equal standing of all citizens is an idea that cannot actually be realised even in a democracy.\n4. Right to equality should be incorporated into our values and day-to-day political vocabulary.\nWhich of the above assumptions are valid?",
+      "options": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 4 only",
+        "3 and 4 only"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 22,
+          "x": 121,
+          "y": 1004,
+          "w": 673,
+          "h": 860
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1278,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "34",
+      "preamble": "Passage — 4 Aristocratic government ruins itself by limiting too narrowly the circle within which power is confined; oligarchic government ruins itself by the incautious scramble for immediate wealth. But even democracy ruins itself by excess of democracy. Its basic principle is the equal right of all to hold office and determine public policy. This is, at first glance, a delightful arrangement; it becomes disastrous because the people are not properly equipped by education to select the best rulers and the wisest courses. The people have no understanding and only repeat what their rulers are pleased to tell them. Such a democracy is tyranny or autocracy. — Plato",
+      "questionText": "Which one of the following statements best reflects the crux of the passage given above?",
+      "options": [
+        "Human societies experiment with different forms of governments.",
+        "Any form of government tends to deteriorate by excess of its basic principle.",
+        "Education of all citizens ensures a perfect, functional and sustainable democracy.",
+        "Having a government is a necessary evil because tyranny is inherent in any form of government."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 22,
+          "x": 804,
+          "y": 998,
+          "w": 810,
+          "h": 855
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1356,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "35",
+      "questionText": "In a group of 120 persons, 80 are Indians and rest are foreigners. Further, 70 persons in the group can speak English. The number of Indians who can speak English is",
+      "options": [
+        "20",
+        "30",
+        "30 or less",
+        "30 or more"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 114,
+          "y": 159,
+          "w": 680,
+          "h": 370
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1433,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "36",
+      "questionText": "Consider all 3-digit numbers (without repetition of digits) obtained using three non-zero digits which are multiples of 3. Let S be their sum.\nWhich of the following is/are correct?\n1. S is always divisible by 74.\n2. S is always divisible by 9.\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 114,
+          "y": 529,
+          "w": 680,
+          "h": 607
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1511,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "37",
+      "questionText": "There are two Classes A and B having 25 and 30 students respectively. In Class-A the highest score is 21 and lowest score is 17. In Class-B the highest score is 30 and lowest score is 22. Four students are shifted from Class-A to Class-B.\nConsider the following statements:\n1. The average score of Class-B will definitely decrease.\n2. The average score of Class-A will definitely increase.\nWhich of the above statements is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 114,
+          "y": 1136,
+          "w": 680,
+          "h": 750
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1589,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "38",
+      "questionText": "Consider two Statements and a Question:\nStatement-I: Priya is 4 ranks below Seema and is 31st from the bottom. Statement-2: Ena is 2 ranks above Seema and is 37th from the bottom. Question: What is Seema's rank from the top in the class of 40 students?\nWhich one of the following is correct in respect of the Statements and the Question?",
+      "options": [
+        "Statement-I alone is not suffcient to answer the Question",
+        "Statement-2 alone is not sufficient to answer the Question",
+        "Either Statement-I alone or Statement-2 alone is sufficient to answer the Question",
+        "Both Statement-I and Statement-2 are required to answer the Question"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 804,
+          "y": 159,
+          "w": 817,
+          "h": 670
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1666,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "39",
+      "questionText": "Consider two Statements and a Question:\nStatement-I: Each of A and D is heavier than each of B, E and F, but none of them is the heaviest. Statement-2: A is heavier than D, but is lighter than C. Question: Who is the heaviest among A, B, C, D and E?\nWhich one of the following is correct in respect of the Statements and the Question?",
+      "options": [
+        "Statement-I alone is sufficient to answer the Question",
+        "Statement-2 alone is sufficient to answer the Question",
+        "Both Statement-I and Statement-2 are required to answer the Question",
+        "Neither Statement-I alone nor Statement-2 alone is suffcient to answer the Question"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "C",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 804,
+          "y": 828,
+          "w": 817,
+          "h": 689
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1744,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "40",
+      "questionText": "In the English alphabet, the first 4 letters are written in opposite order; and the next 4 letters are written in opposite order and so on; and at the end Y and Z are interchanged.\nWhich will be the fourth letter to the right of the 13th letter?",
+      "options": [
+        "",
+        "",
+        "",
+        "1"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 24,
+          "x": 804,
+          "y": 1512,
+          "w": 817,
+          "h": 374
+        }
+      ],
+      "keyCell": {
+        "x": 623,
+        "y": 1823,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "41",
+      "preamble": "Passage — 1 Nothing can exist in a natural state which can be called good or bad by common assent, since every man who is in a natural state consults only his own advantage, and determines what is good or bad according to his own fancy and insofar as he has regard for his own advantage alone, and holds himself responsible to no one save himself by any law; and therefore sin cannot be conceived in a natural state, but only in a civil state, which is decreed by common consent what is good or bad, and each one holds himself responsible to the state.",
+      "questionText": "Which one of the following statements best reflects the central idea of the passage given above?",
+      "options": [
+        "The conceptions of what is right or wrong exist due to the formation of a state.",
+        "Unless a ruling authority decides as to what is right or wrong, no man would be morally right.",
+        "Man is inherently immoral and selfish in a natural state.",
+        "The idea of what is right or wrong is necessary for the survival of human species."
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 110,
+          "y": 1180,
+          "w": 684,
+          "h": 693
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 370,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "42",
+      "preamble": "Passage — 2 In the immediate future, we will see the increasing commodification of many new technologies — artificial intelligence and robotics, 3D manufacturing, custom made biological and pharmaceutical products, lethal autonomous weapons and driverless cars. This will pose conundrums. The moral question of how a driverless car will decide between hitting a jaywalker and swerving and damaging the car has often been debated. The answer is both simple — save the human life — and complex. At which angle should the car swerve — just enough to save the jaywalker or more than enough? If the driverless car is in Dublin, who would take the decision? The Irish Government, or the car's original code writer in California, or a software programmer in Hyderabad to whom maintenance is outsourced? If different national jurisdictions have different fine print on prioritising a human life, how will it affect insurance and investment decisions, including transnational ones?",
+      "questionText": "Which of the following statements best reflect the rational, plausible and practical implications that can be derived from the passage given above?\n1. Too much globalization is not in the best interests of any country.\n2. Modern technologies are increasingly blurring the economic borders.\n3. Innovation and capital have impinged on the domain of the State.\n4. Public policy of every country should focus on developing its own supply chains.\n5. Geopolitics will have to reconcile to many ambiguities and uncertainties.\nSelect the correct answer using the code given below:",
+      "options": [
+        "1, 4 and 5 only",
+        "1, 2, 3 and 4 only",
+        "2, 3 and 5 only",
+        "1, 2, 3, 4 and 5"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 804,
+          "y": 1126,
+          "w": 806,
+          "h": 762
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 443,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "43",
+      "preamble": "Passage — 3 The resolution of bankruptcy cases of Indian banks under the Insolvency and Bankruptcy Code should help bring non-performing assets (NPA) situation under some control. Despite the slow pace of resolutions by the National Company Law Tribunal, the Code can be helpful in cleaning up bank books in future credit cycles. The recapitalisation of public sector banks too can help increase the capital cushion of banks and induce them to lend more and boost economic activity. But bad debt resolution and recapitalisation are only a part of the solution as they, by themselves, can do very little to rein in reckless lending that has pushed the Indian banking system to its current sorry state. Unless there are systemic reforms that address the problem of unsustainable lending, future credit cycles will continue to stress the banking system.",
+      "questionText": "Which one of the following statements best reflects the most logical, rational and practical suggestion implied by the passage given above?",
+      "options": [
+        "Lending by the banks should be closely monitored and regulated by the Central Government.",
+        "Interest rates should be kept low so as to induce banks to lend more, promote credit growth and thereby boost economic activity.",
+        "Merger of many banks into a few large banks alone is the long-term solution to make them viable and prevent their bad performance.",
+        "Indian banking system requires structural reforms as a long-term solution for bad loans problem."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 28,
+          "x": 114,
+          "y": 1083,
+          "w": 680,
+          "h": 809
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 517,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "44",
+      "preamble": "Passage — 4 In India, the objective of macroeconomic policy is to enhance the economic welfare of the people, and any one wing of such macro policy, monetary or fiscal, cannot independently work without active support of another.",
+      "questionText": "Which one of the following statements best reflects the corollary to the passage given above?",
+      "options": [
+        "The central bank cannot work independently of the Government.",
+        "Government should regulate financial markets and institutions closely.",
+        "Market economy is not compatible with the socialist policies of the Government.",
+        "Financial sector reforms are required for enhancing the economic welfare of the people."
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 28,
+          "x": 804,
+          "y": 868,
+          "w": 806,
+          "h": 981
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 592,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "45",
+      "questionText": "Consider the following Table: Runs Balls Runs Balls faced scored in faced in scored in in the layer the First the First e Secon Second Innin Innin Innin Innin 61 99 14 76 B 05 12 50 85 c 15 75 20 50 D 13 55 12 50 Who is the fastest run scorer in the Test Match?",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 119,
+          "y": 186,
+          "w": 675,
+          "h": 577
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 668,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "46",
+      "questionText": "Half of the villagers of a certain village have their own houses. One-fifth of the villagers cultivate paddy. One-third of the villagers are literate. Four-fifth of the villagers are under 25 years of age. Which one of the following statements is certainly correct?",
+      "options": [
+        "All the villagers who have their own houses are literate.",
+        "Some villagers under 25 years of age are literate.",
+        "Only half of the villagers who cultivate paddy are literate.",
+        "No villager under 25 years of age has his own house."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 119,
+          "y": 763,
+          "w": 675,
+          "h": 494
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 744,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "47",
+      "questionText": "Consider two Statements and a Question:\nStatement-I: The last day of the month is a Wednesday. Statement-2: The third Saturday of the month was the seventeenth day. Question: What day is the fourteenth of the given month?\nWhich one of the following is correct in respect of the Statements and the Question?",
+      "options": [
+        "Statement-I alone is sufficient to answer the Question",
+        "Statement-2 alone is suffcient to answer the Question",
+        "Both Statement-I and S!atement-2 are required to answer the Question",
+        "Neither Statement-I alone nor Statement-2 alone is suffcient to answer the Question (31 _"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 119,
+          "y": 1257,
+          "w": 675,
+          "h": 709
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 819,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "48",
+      "questionText": "Which day is 10 October, 2027?",
+      "options": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Saturday"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 804,
+          "y": 181,
+          "w": 819,
+          "h": 338
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 894,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "49",
+      "questionText": "Consider two Statements and four Conclusions given below. You have to take the Statements to be true even if they seem to be at' variance from the commonly known facts. Read all Conclusions and then decide which of the given Conclusion(s) logically follows/follow from the Statements, disregarding the commonly known facts.\nStatement-I: Some greens are blues. Statement-2: Some blues are blacks. Conclusion-I: Some greens are blacks. Conclusion-2: No green is black. Conclusion-3.e All greens are blacks. Conclusion-4: All blacks are greens.\nWhich one of the following is correct?",
+      "options": [
+        "Conclusion-I and Conclusion-2 only",
+        "Conclusion-2 and Conclusion-3 only",
+        "Conclusion-3 and Conclusion-4 only",
+        "Neither Conclusion 1 nor 2 nor 3 nor 4"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 804,
+          "y": 519,
+          "w": 819,
+          "h": 1047
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 970,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "50",
+      "questionText": "What is the value of 'X' in the sequence 2, 7, 22, 67, 202, x, 1822?",
+      "options": [
+        "603",
+        "605",
+        "607",
+        "608 A)"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 804,
+          "y": 1566,
+          "w": 819,
+          "h": 400
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1048,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "51",
+      "preamble": "Passage — 1 The best universities like Harvard and MIT, despite having the luxury of having some truly excellent teachers on their payroll, are increasingly embracing the \"flipped classroom\" format, where students listen to video lectures at home, and spend class time applying their knowledge, solving problems, discussing examples, etc. Professors guide that discussion and fill in wherever necessary, explaining those bits that seem to be eluding the students and throwing in advanced ideas that happen to be topical. These universities have made their video lectures available free for anyone in the world. They are also encouraging colleges and universities all over the world to integrate these online courses into their own pedagogy, picking the pieces that are appropriate for their needs and building a package around them.",
+      "questionText": "VVhich one of the following statements best reflects the central idea of the passage given above?",
+      "options": [
+        "Efficacy of universities would be better in online mode of conducting classroom tuition as compared to conventional method.",
+        "Availability of higher education can be made easier and cheaper without diluting the content.",
+        "We need not invest much in infrastructure related to higher education and yet develop better human and social capital.",
+        "Private sector institutions in higher education as well as coaching institutes can take advantage of this opportunity and thrive well."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 115,
+          "y": 1157,
+          "w": 679,
+          "h": 723
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1125,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "52",
+      "preamble": "Passage — 2 Our cities are extremely vulnerable to climate change because of large concentrations of populations and poor infrastructure. Moreover, population densities are increasing in them but we have not yet developed the systems to address climate change impacts. Our cities contribute to 65 per cent of the GDP, but there are not enough facilities to cater to the needs of the people. It is important to address the issues of air quality, transport, etc., that are vital to identifying sustainable solutions. We need to involve citizens in city planning and create an ecosystem that meets the needs of the people.",
+      "questionText": "Which among the following is the most logical and rational inference that can be made from the passage given above?",
+      "options": [
+        "Our cities need to have well-defined administrative set-up with suffcient autonomy.",
+        "Ever increasing population densities is a hindrance in our efforts to achieve sustainable development.",
+        "To maintain and develop our cities we need to adopt sustainability related interventions.",
+        "Public-Private Partnership mode of development is the viable long-term solution for the infrastructure and sustainability problems of India."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 804,
+          "y": 1031,
+          "w": 809,
+          "h": 838
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1201,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "53",
+      "questionText": "Jay and Vijay spent an equal amount of 57. money to buy some pens and special pencils of the same quality from the same store. If Jay bought 3 pens and 5 pencils, and Vijay bought 2 pens and 7 pencils, then which one of the following is correct?",
+      "options": [
+        "A pencil costs more than a pen",
+        "The price of a pencil is equal to that of a pen",
+        "The price of a pen is two times the price of a pencil",
+        "The price of a pen is three times the price of a pencil"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 101,
+          "y": 168,
+          "w": 693,
+          "h": 560
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1279,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "54",
+      "questionText": "P scored 40 marks more than Q in an examination. If Q scored 10% less marks than P, then how much did Q score?",
+      "options": [
+        "360",
+        "380",
+        "400",
+        "420"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 101,
+          "y": 728,
+          "w": 693,
+          "h": 344
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1357,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "55",
+      "questionText": "A person P asks one of his three friends X as to how much money he had. X replied, \"If Y gives me 40, then Y will have half of as much as Z, but if Z gives me 40, then three of us will have equal amount.\" What is the total amount of money that X, Y and Z have?",
+      "options": [
+        "420",
+        "360",
+        "300",
+        "270"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 101,
+          "y": 1072,
+          "w": 693,
+          "h": 463
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1434,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "56",
+      "questionText": "In a code language 'MATHEMATICS' is written as 'LBSIDNZUHDR'. How is 'CHEMISTRY' written in that code language?",
+      "options": [
+        "DIDLHRSSX",
+        "BIDNHTSSX",
+        "BIDLHTSSX",
+        "DGFLIRUQZ"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 101,
+          "y": 1535,
+          "w": 693,
+          "h": 358
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1512,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "57",
+      "questionText": "At which one of the following times, do the hour hand and the minute hand of the clock make an angle of 1800 with each other?",
+      "options": [
+        "At 7:00 hours",
+        "Between 7:00 hours and 7:05 hours",
+        "At 7:05 hours",
+        "Between 7:05 hours and 7:10 hours"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 804,
+          "y": 174,
+          "w": 824,
+          "h": 346
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1590,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "58",
+      "questionText": "In an objective type test of 90 questions, 5 marks are allotted for every correct answer and 2 marks are deducted for every wrong answer. After attempting all the 90 questions, a student got a total of 387 marks. What is the number of incorrect responses?",
+      "options": [
+        "",
+        "13",
+        "27",
+        "43"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 804,
+          "y": 520,
+          "w": 824,
+          "h": 461
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1667,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "59",
+      "questionText": "Consider the following addition problem: 3P + 4P + PP + PP = RQ2; where P, Q and R are different digits. What is the arithmetic mean of all such possible sums?",
+      "options": [
+        "102",
+        "120",
+        "202",
+        "220"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 804,
+          "y": 981,
+          "w": 824,
+          "h": 434
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1745,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "60",
+      "questionText": "Consider the following multiplication problem: (PQ) x 3=RQQ, where P, Q and R are different digits and R 0. What is the value of (P + R) + Q?",
+      "options": [
+        "1",
+        "2",
+        "5",
+        "Cannot be determined due to insuffcient data"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 804,
+          "y": 1415,
+          "w": 824,
+          "h": 477
+        }
+      ],
+      "keyCell": {
+        "x": 883,
+        "y": 1824,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "61",
+      "preamble": "Passage — 1 Can a democracy avoid being a welfare state for long? Why cannot mass welfare be left entirely to the markets? There is a built-in tension between markets and democracy. Markets do not work on a one-person-one-vote principle as democracies do. What one gets out of the market place depends on one's endowments, skills, purchasing power and the forces of demand and supply. Markets reward individual initiative and skill, and may also lift many from the bottom rungs of society, but some people never get the opportunity to develop skills that markets demand; they are simply too poor and too handicapped; or skill formation takes too long. By creating jobs, markets may be able to help even unskilled people, but capitalism has always witnessed bursts of unemployment.",
+      "questionText": "With reference to the above passage, the following assumptions have been made:\n1. Modern democracies rely on the market forces to enable them to be welfare states.\n2. Markets ensure sufficient economic growth necessary for democracies to be effective.\n3. Government programmes are needed for those left behind in economic growth.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        "1 and 3 only",
+        "3 only",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 36,
+          "x": 111,
+          "y": 1116,
+          "w": 683,
+          "h": 768
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 370,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "62",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "Which one of the following statements best reflects the central idea of the passage given above?",
+      "options": [
+        "School curriculum is not compatible with the expectations of children and parents.",
+        "Emphasis on academic achievements does give time for development of personality and skills.",
+        "Preparing the children to be better citizens should be the responsibility of the education system.",
+        "To be a better citizen, the present world order demands societal and life-coping skills in addition to academic content."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 36,
+          "x": 804,
+          "y": 1133,
+          "w": 815,
+          "h": 738
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 443,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "63",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "There are three points P, Q and R on a 68. straight line such that PQ: QR = 3: 5. Ifn is the number of possible values of PQ: PR, then what is n equal to?",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 125,
+          "y": 166,
+          "w": 669,
+          "h": 342
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 517,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "64",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "On a chess board, in how many different ways can 6 consecutive squares be chosen on the diagonals along a straight path? 12",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 125,
+          "y": 508,
+          "w": 669,
+          "h": 302
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 592,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "65",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "In the series _b_a_ba_b_abab_aab; fill in the six blanks (_) using one of the following given four choices such that the series follows a specific order.",
+      "options": [
+        "bababa",
+        "baa b ba",
+        "bbaabb",
+        "ababab"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 125,
+          "y": 810,
+          "w": 669,
+          "h": 343
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 668,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "66",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "Using 2, 2, 3, 3, 3 as digits, how many distinct numbers greater than 30000 can be formed?",
+      "options": [
+        "",
+        "",
+        "",
+        "12"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 125,
+          "y": 1153,
+          "w": 669,
+          "h": 263
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 744,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "67",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "Consider the following statements:\n1. The sum of 5 consecutive integers can be 100.\n2. The product of three consecutive natural numbers can be equal to their sum.\nWhich of the above statements is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 125,
+          "y": 1416,
+          "w": 669,
+          "h": 472
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 820,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "68",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "A cubical vessel of side 1 m is filled completely with water. How many millilitres of water is contained in it (neglect thickness of the vessel)?",
+      "options": [
+        "1000",
+        "10000",
+        "100000",
+        "1000000"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 804,
+          "y": 168,
+          "w": 823,
+          "h": 472
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 895,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "69",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "There are 6 persons arranged in a row. Another person has to shake hands with 3 of them so that he should not shake hands with two consecutive persons. In how many distinct possible combinations can the handshakes take place?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 804,
+          "y": 640,
+          "w": 823,
+          "h": 577
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 971,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "70",
+      "preamble": "Passage — 2 In our schools; we teach our children all that is there to know about physics, maths and history and what-have-you. But do we teach them about the bitter caste divide that plagues the country, about the spectre of famine that stalks large parts of our land, about gender sensitivity, about the possibility of atheism as a choice, etc.? Equally important, do we teach them to ask questions, or do we teach them only to passively receive our wisdom? From the cocooned world of school, suddenly, the adolescent finds himself/herself in the unfettered world of university. Here he/she is swept up in a turmoil of ideas, influences and ideologies. For someone who has been discouraged from asking questions and forming an opinion, this transition can be painful.",
+      "questionText": "An amount of money was distributed among A, B and C in the ratio p: q: r.\nConsider the following statements:\n1. A gets the maximum share if p is greater than (q + r).\n2. C gets the minimum share if r is less than (p + q).\nWhich of the above statements is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 804,
+          "y": 1217,
+          "w": 823,
+          "h": 665
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1048,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "71",
+      "preamble": "Passage — 1 Medieval merchants risked the hazards of the Silk Road to reach the markets of China; Portuguese caravels in the 15th century sailed beyond the bounds of the known world, searching less for knowledge than for gold and spices. Historically, the driver for opening frontiers has always been the search for resources. Science and curiosity are weaker drivers. The only way to open up space, whether the space of solar system or interstellar space is to create an economic engine and that engine is resource extraction.",
+      "questionText": "Which one of the following statements best sums up the passage given above?",
+      "options": [
+        "Wealth generation is the primary motive for any human endeavour.",
+        "Space, whether space in solar system or 73. interstellar space, will govern our future economy.",
+        "Human beings are motivated to explore new frontiers principally by economic considerations.",
+        "Wealth generation is based on the risk-taking behaviour of some men."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 40,
+          "x": 114,
+          "y": 1175,
+          "w": 680,
+          "h": 736
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1125,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "72",
+      "preamble": "Passage — 1 Medieval merchants risked the hazards of the Silk Road to reach the markets of China; Portuguese caravels in the 15th century sailed beyond the bounds of the known world, searching less for knowledge than for gold and spices. Historically, the driver for opening frontiers has always been the search for resources. Science and curiosity are weaker drivers. The only way to open up space, whether the space of solar system or interstellar space is to create an economic engine and that engine is resource extraction.",
+      "questionText": "(41 —A) Passage — 2 most people would agree that telling deliberate lies is wrong, except perhaps in certain special situations where more harm will be done by telling the truth. Even the most truthful people probably tell a good many more lies that might be regarded as semantic lies; their use of words contains some measure of falsehood, more or less deliberate.\"\n72. The idea which the first part of the passage mentions is",
+      "options": [
+        "agreement about telling lies.",
+        "disagreement about telling lies.",
+        "disagreement about telling the truth.",
+        "disagreement about the harm in telling the truth."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 114,
+          "y": 1911,
+          "w": 680,
+          "h": 44
+        },
+        {
+          "page": 40,
+          "x": 804,
+          "y": 176,
+          "w": 820,
+          "h": 1253
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1202,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "73",
+      "preamble": "Passage — 1 Medieval merchants risked the hazards of the Silk Road to reach the markets of China; Portuguese caravels in the 15th century sailed beyond the bounds of the known world, searching less for knowledge than for gold and spices. Historically, the driver for opening frontiers has always been the search for resources. Science and curiosity are weaker drivers. The only way to open up space, whether the space of solar system or interstellar space is to create an economic engine and that engine is resource extraction.",
+      "questionText": "Which one of the following habits is found more often in good people?",
+      "options": [
+        "Mixing up the true and false",
+        "Intentional mixing up of truth with the false",
+        "Falsification of facts",
+        "Complete concealment of truth"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 804,
+          "y": 1429,
+          "w": 820,
+          "h": 430
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1280,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "74",
+      "questionText": "A pie diagram shows the percentage distribution of proteins, water and other dry elements in the human body. Given that proteins correspond to 16% and water corresponds to 70%. If both proteins and the other dry elements correspond to p%, then what is the central angle of the sector representing p on the pie diagram?",
+      "options": [
+        "540",
+        "960",
+        "1080",
+        "1200"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_FIGURE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 111,
+          "y": 156,
+          "w": 683,
+          "h": 596
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1357,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "75",
+      "questionText": "Joseph visits the club on every 5th day, Harsh visits on every 24 day, while Sumit visits on every 9th day. If all three of them met at the club on a Sunday, then on which day will all three of them meet again?",
+      "options": [
+        "Monday",
+        "Wednesday",
+        "Thursday",
+        "Sunday"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 111,
+          "y": 752,
+          "w": 683,
+          "h": 472
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1435,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "76",
+      "questionText": "The difference between a 2-digit number and the number obtained by interchanging the positions of the digits is 54.\nConsider the following statements:\n1. The sum of the two digits of the number can be determined only if the product of the two digits is known.\n2. The difference between the two digits of the number can be determined.\nWhich of the above statements is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2 (43 — A)"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 111,
+          "y": 1224,
+          "w": 683,
+          "h": 720
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1513,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "77",
+      "questionText": "X said to Y, \"At the time of your birth I was twice as old as you are at present.\" If the present age of X is 42 years, then consider the following statements:\n1. 8 years ago, the age of X was five times the age of Y.\n2. After 14 years, the age of X would be two times the age of Y.\nWhich of the above statements is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 804,
+          "y": 157,
+          "w": 816,
+          "h": 642
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1591,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "78",
+      "questionText": "If the price of an article is decreased by 20% and then the new price is increased by 25%, then what is the net change in the price?",
+      "options": [
+        "0%",
+        "5% increase",
+        "5% decrease",
+        "Cannot be determined due to insufficient data"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 804,
+          "y": 799,
+          "w": 816,
+          "h": 384
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1668,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "79",
+      "questionText": "When a certain number is multiplied by 7, the What is the smallest such number?",
+      "options": [
+        "15713",
+        "15723",
+        "15783",
+        "15873"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 804,
+          "y": 1183,
+          "w": 816,
+          "h": 349
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1746,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "80",
+      "questionText": "A man completes 7/8 of a job in 21 days. How many more days will it take him to finish the job if quantum of work is further increased by",
+      "options": [
+        "24",
+        "21",
+        "18",
+        "15"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 804,
+          "y": 1532,
+          "w": 816,
+          "h": 343
+        }
+      ],
+      "keyCell": {
+        "x": 1145,
+        "y": 1826,
+        "w": 105,
+        "h": 96
+      },
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

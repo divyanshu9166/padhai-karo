@@ -13,13 +13,18 @@
  *     valid JSON with string fields.
  *   - `409 EMAIL_ALREADY_EXISTS` when the email is already registered (Req 1.2),
  *     including the race where a concurrent request inserts the same email first.
+ *   - `429 TOO_MANY_ATTEMPTS` after 10 sign-up attempts from one client address in an hour.
  */
 import {
+    REGISTER_PER_IP,
+    clientAddress,
+    consumeAttempt,
     createSession,
     hashPassword,
     isValidEmail,
     normalizeEmail,
     toPublicUser,
+    tooManyAttemptsResponse,
     validatePassword,
 } from '@/lib/auth';
 import { prisma } from '@/lib/db';
@@ -74,6 +79,9 @@ export async function POST(request: Request): Promise<Response> {
             unmet: policy.unmet,
         });
     }
+
+    const wait = await consumeAttempt(REGISTER_PER_IP, clientAddress(request));
+    if (wait > 0) return tooManyAttemptsResponse(wait);
 
     // Pre-check for a duplicate email to return a clean 409 in the common case (Req 1.2).
     const existing = await prisma.user.findUnique({ where: { email } });

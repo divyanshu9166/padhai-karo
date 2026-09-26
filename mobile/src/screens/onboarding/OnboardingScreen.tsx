@@ -54,11 +54,12 @@ const PROGRAM_STAGES: Record<ExamProgramKey, readonly { value: ExamStage; labelK
     ],
 };
 
+// `value` is stored on the profile (and read by planning), so it stays stable English; only the label is localized.
 const PREPARATION_PROFILES = [
-    { value: 'Full-time aspirant', label: 'Full-time aspirant' },
-    { value: 'Working professional', label: 'Working professional' },
-    { value: 'College student', label: 'College student' },
-    { value: 'Restarting preparation', label: 'Restarting preparation' },
+    { value: 'Full-time aspirant', label: 'onboarding.profileFullTime' },
+    { value: 'Working professional', label: 'onboarding.profileWorking' },
+    { value: 'College student', label: 'onboarding.profileCollege' },
+    { value: 'Restarting preparation', label: 'onboarding.profileRestarting' },
 ] as const;
 
 export function OnboardingScreen(): React.JSX.Element {
@@ -185,22 +186,22 @@ export function OnboardingScreen(): React.JSX.Element {
 
                 <Section title={t('onboarding.studyStatus')}>
                     <ChipRow>
-                        {PREPARATION_PROFILES.map((profile) => <Chip key={profile.value} label={profile.label} selected={currentClass === profile.value} onPress={() => setCurrentClass(profile.value)} disabled={submitting} />)}
+                        {PREPARATION_PROFILES.map((profile) => <Chip key={profile.value} label={t(profile.label)} selected={currentClass === profile.value} onPress={() => setCurrentClass(profile.value)} disabled={submitting} />)}
                     </ChipRow>
                 </Section>
 
-                <Section title="Available study time" caption="Use realistic hours. Your timetable will adapt when real life changes.">
-                    <TextInput style={styles.input} value={weekdayStudyHours} onChangeText={setWeekdayStudyHours} placeholder="Weekdays (hours)" keyboardType="decimal-pad" editable={!submitting} />
-                    <TextInput style={styles.input} value={weekendStudyHours} onChangeText={setWeekendStudyHours} placeholder="Weekends (hours)" keyboardType="decimal-pad" editable={!submitting} />
+                <Section title={t('onboarding.studyTime')} caption={t('onboarding.studyTimeCaption')}>
+                    <TextInput style={styles.input} value={weekdayStudyHours} onChangeText={setWeekdayStudyHours} placeholder={t('onboarding.weekdayHours')} keyboardType="decimal-pad" editable={!submitting} />
+                    <TextInput style={styles.input} value={weekendStudyHours} onChangeText={setWeekendStudyHours} placeholder={t('onboarding.weekendHours')} keyboardType="decimal-pad" editable={!submitting} />
                 </Section>
 
-                {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <Section title="UPSC Mains optional subject"><TextInput style={styles.input} value={optionalSubject} onChangeText={setOptionalSubject} placeholder="e.g. Sociology" editable={!submitting} /></Section> : null}
+                {examProgram === 'UPSC_CSE' && examStage === 'MAINS' ? <Section title={t('onboarding.optionalSubject')}><TextInput style={styles.input} value={optionalSubject} onChangeText={setOptionalSubject} placeholder={t('onboarding.optionalPlaceholder')} editable={!submitting} /></Section> : null}
 
                 <Section title={t('onboarding.exactExamDate')} caption={t('onboarding.exactExamDateCaption')}>
                     <TextInput style={styles.input} value={examDate} onChangeText={setExamDate} placeholder={t('onboarding.examDatePlaceholder')} editable={!submitting} autoCapitalize="none" />
                 </Section>
 
-                <Pressable style={styles.optionalToggle} onPress={() => setShowOptionalSetup((value) => !value)} disabled={submitting}><Text style={styles.optionalText}>{showOptionalSetup ? 'Hide optional setup' : 'Add sleep, commitments & peak-focus setup (optional)'}</Text></Pressable>
+                <Pressable style={styles.optionalToggle} onPress={() => setShowOptionalSetup((value) => !value)} disabled={submitting}><Text style={styles.optionalText}>{showOptionalSetup ? t('onboarding.hideOptional') : t('onboarding.showOptional')}</Text></Pressable>
                 {showOptionalSetup ? <>
                     <FixedCommitmentsEditor commitments={commitments} onAdd={addCommitment} onRemove={removeCommitment} disabled={submitting} />
                     <Section title={t('onboarding.sleepSchedule')} caption={t('onboarding.sleepScheduleCaption')}>

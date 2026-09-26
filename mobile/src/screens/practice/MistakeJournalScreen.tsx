@@ -14,7 +14,7 @@ import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from
 
 import { ApiError } from '@/api';
 import { Screen } from '@/components';
-import { useTranslation } from '@/localization';
+import { interpolate, useTranslation } from '@/localization';
 
 import {
     MISTAKE_CATEGORY_OPTIONS,
@@ -58,7 +58,7 @@ export function MistakeJournalScreen(): React.JSX.Element {
             setState({ kind: 'ready', entries });
         } catch (err) {
             const message =
-                err instanceof ApiError ? err.message : 'Could not load the journal. Try again.';
+                err instanceof ApiError ? err.message : t('mistakeScreen.loadError');
             setState({ kind: 'error', message });
         }
     }, [subjectFilter, categoryFilter]);
@@ -109,7 +109,7 @@ export function MistakeJournalScreen(): React.JSX.Element {
                         <Text style={styles.filterLabel}>{t('pyq.filterBySubject')}</Text>
                         <View style={styles.chipRow}>
                             <Chip
-                                label="All"
+                                label={t('library.all')}
                                 selected={subjectFilter === null}
                                 onPress={() => setSubjectFilter(null)}
                             />
@@ -127,10 +127,10 @@ export function MistakeJournalScreen(): React.JSX.Element {
                     </>
                 ) : null}
 
-                <Text style={styles.filterLabel}>Category</Text>
+                <Text style={styles.filterLabel}>{t('mistakeScreen.category')}</Text>
                 <View style={styles.chipRow}>
                     <Chip
-                        label="All"
+                        label={t('library.all')}
                         selected={categoryFilter === null}
                         onPress={() => setCategoryFilter(null)}
                     />
@@ -188,13 +188,13 @@ export function MistakeJournalScreen(): React.JSX.Element {
                                 Your answer:{' '}
                                 {entry.submittedAnswer === null
                                     ? '—'
-                                    : `Option ${entry.submittedAnswer + 1}`}
+                                    : interpolate(t('mistakeScreen.option'), { n: entry.submittedAnswer + 1 })}
                                 {'   '}Correct: Option {entry.correctAnswer + 1}
                             </Text>
                             {entry.note ? (
                                 <Text style={styles.entryNote}>{entry.note}</Text>
                             ) : null}
-                            <Pressable style={styles.revisionButton} onPress={() => void saveForRevision(entry)} disabled={savingRevision === entry.id}><Text style={styles.revisionText}>{savingRevision === entry.id ? 'Saving…' : 'Add to revision queue'}</Text></Pressable>
+                            <Pressable style={styles.revisionButton} onPress={() => void saveForRevision(entry)} disabled={savingRevision === entry.id}><Text style={styles.revisionText}>{savingRevision === entry.id ? t('today.saving') : t('mistakeScreen.addRevision')}</Text></Pressable>
                         </View>
                     ))}
                 </ScrollView>

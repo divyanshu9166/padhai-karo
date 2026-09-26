@@ -222,7 +222,7 @@ describe('pyqsHandler', () => {
                 flaggedForReview: false,
             },
             select: PYQ_CLIENT_SELECT,
-            orderBy: { id: 'asc' },
+            orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
         });
 
         const body = (await res.json()) as { questions: Array<Record<string, unknown>> };
@@ -256,7 +256,7 @@ describe('pyqsHandler', () => {
                 flaggedForReview: false,
             },
             select: PYQ_CLIENT_SELECT,
-            orderBy: { id: 'asc' },
+            orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
         });
     });
 });

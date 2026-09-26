@@ -14,4 +14,12 @@ describe('answer-writing rubric', () => {
         expect(payload.attempt.feedback.criteria).toHaveProperty('relevance');
         expect(payload.attempt.feedback.factualCautions[0]).toMatch(/verify factual accuracy/i);
     });
+
+    it('calculates the submitted answer word count server-side rather than trusting the client', async () => {
+        const request = new Request('http://local', { method: 'POST', body: JSON.stringify({ prompt: 'Explain federalism.', answerText: 'भारत एक संघीय राज्य है।', wordCount: 999 }) });
+        const response = await createAnswerWritingHandler(request, { user: { id: 'u1' } } as never);
+        const payload = await response.json() as { attempt: { wordCount: number } };
+        expect(response.status).toBe(201);
+        expect(payload.attempt.wordCount).toBe(5);
+    });
 });

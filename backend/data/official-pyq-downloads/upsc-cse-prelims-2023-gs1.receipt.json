@@ -1,0 +1,21 @@
+{
+  "id": "upsc-cse-prelims-2023-gs1",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2023,
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers/archives",
+  "series": "A",
+  "requiresFinalKeyReview": true,
+  "paperKey": "UPSC-CSE-PRELIMS-GS1-2023",
+  "subjectId": "UPSC-CSE-GS1",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/QP_CS_Pre_Exam_2023_280523.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-2023-Paper-I-090524.pdf",
+  "bytes": 6947922,
+  "sha256": "14281f205282431f668c23ba0f79952b500255d81f7d4a9ea2b27c84cf99e7e2",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2023-gs1-answer-key.pdf",
+  "answerKeyBytes": 15056456,
+  "answerKeySha256": "c4515179a3d07e2acc1aae96b908f2f07ba781bc067156bc65e04ccc60cf1a86",
+  "downloadedAt": "2026-09-26T05:09:01.586Z",
+  "finalKeyReviewed": false
+}

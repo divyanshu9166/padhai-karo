@@ -32,6 +32,9 @@ interface AuthFormProps {
     switchLabel: string;
     /** Navigate to the other auth screen. */
     onSwitch: () => void;
+    /** Optional extra link below the form (e.g. "Forgot password?" on the login screen). */
+    secondaryLabel?: string;
+    onSecondary?: () => void;
 }
 
 export function AuthForm({
@@ -39,6 +42,8 @@ export function AuthForm({
     onSubmit,
     switchLabel,
     onSwitch,
+    secondaryLabel,
+    onSecondary,
 }: AuthFormProps): React.JSX.Element {
     const t = useTranslation();
     const [email, setEmail] = useState('');
@@ -65,7 +70,7 @@ export function AuthForm({
             // ApiError carries a server-authored, precise message (weak password 422 with the
             // unmet requirement, duplicate email 409, invalid credentials 401); anything else
             // is a transport failure that never reached a verdict (Req 1.1, 1.4).
-            setError(err instanceof ApiError ? authErrorMessage(err) : t('auth.genericError'));
+            setError(err instanceof ApiError && err.code === 'TOO_MANY_ATTEMPTS' ? t('auth.tooManyAttempts') : err instanceof ApiError ? authErrorMessage(err) : t('auth.genericError'));
         } finally {
             setSubmitting(false);
         }
@@ -130,6 +135,17 @@ export function AuthForm({
             >
                 <Text style={styles.switchText}>{switchLabel}</Text>
             </Pressable>
+
+            {secondaryLabel && onSecondary ? (
+                <Pressable
+                    style={styles.switch}
+                    onPress={onSecondary}
+                    disabled={submitting}
+                    accessibilityRole="button"
+                >
+                    <Text style={styles.switchText}>{secondaryLabel}</Text>
+                </Pressable>
+            ) : null}
         </View>
     );
 }

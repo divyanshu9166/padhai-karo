@@ -1,0 +1,21 @@
+{
+  "id": "upsc-cse-prelims-2018-csat",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2018,
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers/archives",
+  "series": "C",
+  "requiresFinalKeyReview": true,
+  "paperKey": "UPSC-CSE-PRELIMS-CSAT-2018",
+  "subjectId": "UPSC-CSE-CSAT",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-18-GS-II-C.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-18-Paper-II.pdf",
+  "bytes": 7236448,
+  "sha256": "538d51e886e3244b6c12f70821d8e1f584cac3bbc266cf9cc369c018628e92cb",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2018-csat-answer-key.pdf",
+  "answerKeyBytes": 1470146,
+  "answerKeySha256": "42a0d77c632fb2eb7d35f66b740a44e49b9383a08c9e9a6927b5b198c8373751",
+  "downloadedAt": "2026-09-26T05:16:01.831Z",
+  "finalKeyReviewed": false
+}

@@ -10,6 +10,7 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { StudyBlock } from '@/api';
+import { interpolate, useTranslation } from '@/localization';
 import { formatTimeRange } from './dateUtils';
 
 interface BlockRowProps {
@@ -39,6 +40,7 @@ export function BlockRow({
     onMarkMissed,
     labels,
 }: BlockRowProps): React.JSX.Element {
+    const t = useTranslation();
     const energyLabel = block.energyLevel === 'HIGH' ? labels.highEnergy : labels.lowEnergy;
 
     return (
@@ -59,7 +61,7 @@ export function BlockRow({
                     </Text>
                     <Text style={block.sessionType === 'REVISION' ? styles.revisionLabel : styles.sessionLabel}>
                         {block.sessionType === 'REVISION'
-                            ? `${block.revisionLabel ?? `Revision ${block.revisionNumber ?? 1}`} · active recall`
+                            ? `${block.revisionLabel ?? interpolate(t('blockRow.revisionN'), { n: block.revisionNumber ?? 1 })} · ${t('blockRow.activeRecall')}`
                             : block.sessionType.replaceAll('_', ' ')}
                     </Text>
                 </>

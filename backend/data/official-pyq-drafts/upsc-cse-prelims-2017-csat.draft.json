@@ -1,0 +1,2657 @@
+{
+  "draftVersion": 1,
+  "sourceId": "upsc-cse-prelims-2017-csat",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2017,
+  "paperKey": "UPSC-CSE-PRELIMS-CSAT-2017",
+  "subjectId": "UPSC-CSE-CSAT",
+  "series": "A",
+  "durationMin": 120,
+  "expectedQuestions": 80,
+  "sourceName": "UPSC official previous question papers",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/CSP-17-GS_PAPER-II-C.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/ANskey-CSP-17-GS-II.pdf",
+  "questionPaperSha256": "f0554f93539f5b697d17d2f2561b481a16376872b26cb25c5f04c99e59700749",
+  "answerKeySha256": "6cc1901ea2496e6d81c0be42063ef353559171d55390a19558ff90e40e0a4399",
+  "extractedAt": "2026-09-26T05:57:59.104Z",
+  "pageImages": [
+    "pages/page-01.jpg",
+    "pages/page-02.jpg",
+    "pages/page-03.jpg",
+    "pages/page-04.jpg",
+    "pages/page-05.jpg",
+    "pages/page-06.jpg",
+    "pages/page-07.jpg",
+    "pages/page-08.jpg",
+    "pages/page-09.jpg",
+    "pages/page-10.jpg",
+    "pages/page-11.jpg",
+    "pages/page-12.jpg",
+    "pages/page-13.jpg",
+    "pages/page-14.jpg",
+    "pages/page-15.jpg",
+    "pages/page-16.jpg",
+    "pages/page-17.jpg",
+    "pages/page-18.jpg",
+    "pages/page-19.jpg",
+    "pages/page-20.jpg",
+    "pages/page-21.jpg",
+    "pages/page-22.jpg",
+    "pages/page-23.jpg",
+    "pages/page-24.jpg",
+    "pages/page-25.jpg",
+    "pages/page-26.jpg",
+    "pages/page-27.jpg",
+    "pages/page-28.jpg",
+    "pages/page-29.jpg",
+    "pages/page-30.jpg",
+    "pages/page-31.jpg",
+    "pages/page-32.jpg",
+    "pages/page-33.jpg",
+    "pages/page-34.jpg",
+    "pages/page-35.jpg",
+    "pages/page-36.jpg",
+    "pages/page-37.jpg",
+    "pages/page-38.jpg",
+    "pages/page-39.jpg",
+    "pages/page-40.jpg",
+    "pages/page-41.jpg",
+    "pages/page-42.jpg",
+    "pages/page-43.jpg",
+    "pages/page-44.jpg",
+    "pages/page-45.jpg",
+    "pages/page-46.jpg",
+    "pages/page-47.jpg",
+    "pages/page-48.jpg"
+  ],
+  "keyImage": "key/key-1.jpg",
+  "questions": [
+    {
+      "questionRef": "1",
+      "preamble": "Passage—I What climate change will undeniably do is cause or amplify events that hasten the reduction of resources. Competition over these diminishing resources would ensue in the form of political or even violent conflict. Resource- based conflicts have rarely been overt and are thus difficult to isolate. Instead they take on veneers that appear more politically palatable. Conflicts over resources like water are often cloaked in the guise of identity or ide010U.",
+      "questionText": "What does the above passage imply?",
+      "options": [
+        "Resource-based conflicts are always politically motivated.",
+        "There are no political solutions to resolve environmental and resource- based conflicts.",
+        "Environmental issues contribute to resource stresses and political conflict.",
+        "Political conflict based on identity or ide010ß.' cannot be resolved."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 96,
+          "y": 898,
+          "w": 705,
+          "h": 1004
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 435,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "2",
+      "preamble": "Passage—2 The man who is perpetually hesitating which of the two things he will do first, will do neither. The man who resolves, but suffers his resolution to be changed by the first counter- suggestion of a friend—who fluctuates from opinion to opinion and veers from plan to plan—can never accomplish anything. He will at best be stationary and probablv retrograde in all. It is only the man who first consults wisely, then resolves firmly and then executes his purpose with inflexible perseverance, undismayed by those petty difficulties which daunt a weaker spirit—that can advance to eminence in any line.",
+      "questionText": "The keynote that seems to be emerging from the passage is that",
+      "options": [
+        "",
+        "we • should reject suggestions of",
+        "we should always remain broad-",
+        "we should first consult wisely and thcn resolve firmly friends and remain unchanged minded (d) we should be resolute and achievement-oriented"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 811,
+          "y": 360,
+          "w": 869,
+          "h": 941
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 481,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "3",
+      "preamble": "Passage—3 During the summer in the Arctic Ocean, sea ice has been melting earlier and faster, and the winter freeze has been coming later. In the last three decades, the extent of summer ice has declined by about 30 per cent. The lengthening period of summer melt threatens to undermine the whole Arctic food web, atop which stand polar bears.",
+      "questionText": "Which among the following is the most cruciat message conveyed by the above passage?",
+      "options": [
+        "Climate change has caused Arctic summer to be short but temperature to be high.",
+        "Polar bears can be shifted to South Pole to ensure their survival.",
+        "Without the presence of polar bears, the food chains in Arctic region will disappear.",
+        "Climate change poses a threat to the survival of polar bears."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 811,
+          "y": 1301,
+          "w": 869,
+          "h": 682
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 528,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "4",
+      "preamble": "Passage—3 During the summer in the Arctic Ocean, sea ice has been melting earlier and faster, and the winter freeze has been coming later. In the last three decades, the extent of summer ice has declined by about 30 per cent. The lengthening period of summer melt threatens to undermine the whole Arctic food web, atop which stand polar bears.",
+      "questionText": "Passage—4 Why do people prefer open defecation and not want toilets or, if they have them, only use them sometimes? Recent research has shown two critical elements: ideas of purity and pollution, and not wanting pits or septic tanks to fill because they have to be emptied. These are t.he issues that nobody wants to talk about, but if we want to eradicate the practice of open defecation, they have to be confronted and dealt properly.\n4. Which among the following is the most crucial message conveyed by the above passage?",
+      "options": [
+        "The ideas of purity and pollution are so deep-rooted that they cannot be removed from the minds of the people.",
+        "People have to perceive toilet use and pit-emptying as clean and not polluting.",
+        "People cannot change their old habits.",
+        "People have neither civic sense nor sense of privacy."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_OCR_CORRECTED"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 811,
+          "y": 1983,
+          "w": 869,
+          "h": 50
+        },
+        {
+          "page": 4,
+          "x": 99,
+          "y": 189,
+          "w": 702,
+          "h": 1687
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 575,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "5",
+      "preamble": "Passage—5 In the last two decades, the world's gross domestic product (GDP) has increased by 50 per cent, whereas inclusive wealth has incrcascd by a mcrc 6 pcr cent. In recent decades, GDP-driven economic performance has only harmed inclusive wealth like human capital; and natural capital like forests, land and water. While the world's human capital which stands at 57 per cent of total inclusive wealth grew by only 8 per cent, the natural capital which is 23 per cent of total inclusive wealth declined by 30 per cent worldwide in the last two decades.",
+      "questionText": "Which of the following is the most cruciat inference from the above passage?",
+      "options": [
+        "More emphasis should be laid on the development of natural capital.",
+        "The growth driven by GDP only is neither desirable nor sustainable.",
+        "The economic performance Of the countries of the world is not satisfactory.",
+        "Thc world nccdo morc human capital under the present circumstances."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 4,
+          "x": 811,
+          "y": 446,
+          "w": 869,
+          "h": 1559
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 623,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "6",
+      "preamble": "Passage—6 By 2020, when the global economy is expected to run short of 56 million young people, India, with its youth surplus of 47 million, could fill the gap. It is in this context that labour reforms are often cited as the way to unlock double-digit growth in India. In 2014, India's labour force was estimated to be about 40 per cent of the population, but 93 per cent of thio force wao in unorganized eector, Ovcr the last decade, the compound annual growth rate (CAGR) of employment has slowed to 05 per cent, with about 14 million jobs created during last year when the labour force increased by about 15 million.",
+      "questionText": "Which of the following is the most rational imrerence from the above passage? India must control its population growth so as to reduce its unemployment rate.",
+      "options": [
+        "",
+        "Labour reforms are required in India to make optimum use of its vast labour force productively.",
+        "India is poised to achieve the double-digit growth very soon.",
+        "India is capable of supplying the skilled young people to other countries."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 6,
+          "x": 98,
+          "y": 303,
+          "w": 703,
+          "h": 1153
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 668,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "7",
+      "preamble": "Passage—7 The very first lesson that should be taught to us when we are old enough to understand it, is that complete freedom from the obligation to work is unnatural, and ought to be illegal, as we can escape our share of the burden of work only by throwing it on someone else's shoulders. Nature ordains that the human race shall perish of famine if it stops working. We cannot escape from this tyranny. The question we have to settle is how much leisure we can afford to allow ourselves.",
+      "questionText": "The main Idea of the passage is that",
+      "options": [
+        "it is essential for human beings to work",
+        "there should be a balance between work and leisure",
+        "working is a tyranny which we have to face",
+        "human's understanding of the nature of work is essential"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 98,
+          "y": 1456,
+          "w": 703,
+          "h": 412
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 714,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "8",
+      "preamble": "Passage-—8 There is no harm in cultivating habits so long as they are not injurious. Indeed, most of us are little more than bundle of habits. Take away our habits and the residuum would hardly be worth bothering about. We could not get on without them. They simplify the niechanism of life. They enable us to do a multitude of things automatically, which, if we had to give fresh and original thought to them each time, would make existence an impossible confusion.",
+      "questionText": "The author suggests that habits",
+      "options": [
+        "tend to make our lives difficult",
+        "add precision to our lives",
+        "make it easier for us to live",
+        "tend to mechanize our lives"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 811,
+          "y": 646,
+          "w": 869,
+          "h": 649
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 761,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "9",
+      "preamble": "Consider the given information and answer the two items that follow. No supporters of 'party X', who knew Z and supported his campaign strateß', agreed for the alliance with 'party Y'; but some of them had friends in 'party Y'.",
+      "questionText": "With reference to the above information, which one among the following statements must be true?",
+      "options": [
+        "Some supporters of Varty Y' did not agree for the alliance with the X'.",
+        "There is at least one supporter of 'party Y' who knew some supporters of 'party X' as a friend.",
+        "No supporters Of 'party X' supported Z's campaign stratew.",
+        "No supporters of 'party X' knew Z."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 811,
+          "y": 1295,
+          "w": 869,
+          "h": 707
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 807,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "10",
+      "preamble": "Consider the given information and answer the two items that follow. No supporters of 'party X', who knew Z and supported his campaign strateß', agreed for the alliance with 'party Y'; but some of them had friends in 'party Y'.",
+      "questionText": "With reference to the above information, consider the following statements\n1. Some supporters of 'party X' knew Z.\n2. Some supporters of 'party X', who opposed Z's campaign strategt, knew Z.\n3. No supporters of 'party X' supported Z's campaign strate&'.\nWhich of the statements given above is/are not correct?",
+      "options": [
+        "1 only",
+        "2 and 3 only",
+        "3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 129,
+          "y": 190,
+          "w": 672,
+          "h": 767
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 854,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "11",
+      "questionText": "If second and fourth Saturdays and all the Sundays are taken as only holidays for an office, what would be the minimum number of possible working days of any month of any year?",
+      "options": [
+        "23",
+        "22",
+        "21",
+        "20"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 129,
+          "y": 957,
+          "w": 672,
+          "h": 523
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 900,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "12",
+      "questionText": "If there is a policy that 1/3rd Of a population of a community has migrated every year from one place to some other place, what is. the leftover population of that community after the sixth year, if there is no further growth in thc population during this period?",
+      "options": [
+        "16/243rd part of the population",
+        "32/ 243rd part of the population AMC„D-CLYS/71A",
+        "32/729th part of the population'",
+        "64/729th part of the population"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 8,
+          "x": 129,
+          "y": 1480,
+          "w": 672,
+          "h": 529
+        },
+        {
+          "page": 8,
+          "x": 811,
+          "y": 189,
+          "w": 869,
+          "h": 224
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 948,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "13",
+      "questionText": "Four tests—Physics, Chemistry, Mathe- matics and arc to be conducted on four consecutive days, not necessarily in the same order. The Physics test is held before the test which is conducted after Biolou. Chemistry is conducted exactly after two tests are held. Which is the last test held?",
+      "options": [
+        "Physics",
+        "Bi010ß'",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 811,
+          "y": 413,
+          "w": 869,
+          "h": 746
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 995,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "14",
+      "questionText": "The sum Of ineutne Of A and B is inure than that of C and D taken together. The sum of income of A and C is the same as that of B and D taken together. Moreover, A earns half as much as the sum of the income of B and D. Whose income is the highest?",
+      "options": [
+        "",
+        "",
+        "c",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 8,
+          "x": 811,
+          "y": 1159,
+          "w": 869,
+          "h": 851
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 1042,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "15",
+      "questionText": "Consider the following. Statement • Good voice is a natural gift but one has to keep practising to improve and excel well in the field of music. Conclusions.\nI. Natural gifts need nurturing and care.\nII. Even though one's voice is not good, one can keep practising.\nWhich one of the following is correct in respect of the above statement and conclusions?",
+      "options": [
+        "Only conclusion I follows from the statement.",
+        "Only conclusion II follows from the statement.",
+        "Either conclusion I or conclusion II follows from the statement.",
+        "Neither conclusion 1 nor conclusion II follows from the statement."
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 10,
+          "x": 136,
+          "y": 191,
+          "w": 665,
+          "h": 923
+        }
+      ],
+      "keyCell": {
+        "x": 297,
+        "y": 1088,
+        "w": 115,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "16",
+      "questionText": "There are three pillars X, Y and Z of different heights. Three spideas A, D and C start to climb on these pillars simultaneously. In one chance, A climbs on X by 6 cm but slips down 1 cm. B climbs on Y by 7 cm but slips down 3 cm. C climbs on Z • by 6-5 cm but slips down 2 cm. If each of them requires 40 chances to reach the top of the pillars, what is the height of the shortest pillar?",
+      "options": [
+        "161 cm",
+        "163 cm",
+        "182 cm",
+        "210 cm"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 10,
+          "x": 136,
+          "y": 1114,
+          "w": 665,
+          "h": 611
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 434,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "17",
+      "questionText": "\"Rights are certain advantageous conditions of oocial well-being indispensable to the true development of the citizen.\"\nIn the light of this statement, which one of the following is the correct understanding of rights?",
+      "options": [
+        "Rights aim at individual good only.",
+        "Rights aim at social good only.",
+        "Rights aim at both individual and social good.",
+        "Rights aim at individual good devoid of social well-being."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 136,
+          "y": 1725,
+          "w": 665,
+          "h": 156
+        },
+        {
+          "page": 10,
+          "x": 811,
+          "y": 189,
+          "w": 869,
+          "h": 423
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 480,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "18",
+      "questionText": "15 students failed in a class of 52. After removing the names of failed students, a merit order list has been prepared in which the position of Ramesh is 22nd from the top. What is his position from the bottom?",
+      "options": [
+        "18th",
+        "17th",
+        "16th",
+        "15th"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 811,
+          "y": 612,
+          "w": 869,
+          "h": 461
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 526,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "19",
+      "questionText": "Consider the following A + B means A is the son of B. A — B means A is the wife of B. What does the expression P + R — Q mean?",
+      "options": [
+        "• Q is the son of P.",
+        "Q is the wife of P.",
+        "Q is the father of P.",
+        "None of the above"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 10,
+          "x": 811,
+          "y": 1073,
+          "w": 869,
+          "h": 454
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 573,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "20",
+      "questionText": "Gopal bought a cell phone and sold it to Ram at 10% profit. Then Ram wanted to sell it back to Gopal at 10% loss. What will be Gopal's position if he agreed?",
+      "options": [
+        "Neither loss nor gain",
+        "Loss 1%",
+        "Gain 1%",
+        "Gain 0-5%"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 10,
+          "x": 811,
+          "y": 1527,
+          "w": 869,
+          "h": 435
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 620,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "21",
+      "questionText": "(P.TO. Directions for the following 7 (seven) items: Read the following seven passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. We have hard work ahead. There is no resting for any of us till we redeem our pledge in full, till we make all the people of India what destiny intends them to be. We are citizens of a great country, on the verge of bold advance, and we have to live up to that high standard. All of us, to whatever religion we may belong, are equally the children of India with equal rights, privileges and obligations. We cannot encourage communalism or narrow- mindedness, for no nation can be great whose people are narrow in thought or action.\n21. The challenge the author of the above passage throws to the public is to achieve",
+      "options": [
+        "a high standard of living, progress and privileges",
+        "equal privileges, fulfilment of destiny and political tolerance",
+        "spirit of adventure and economic parity",
+        "hard work, brotherhood and national unity"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_OCR_CORRECTED"
+      ],
+      "regions": [
+        {
+          "page": 10,
+          "x": 811,
+          "y": 1962,
+          "w": 869,
+          "h": 46
+        },
+        {
+          "page": 12,
+          "x": 103,
+          "y": 188,
+          "w": 698,
+          "h": 1696
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 666,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "22",
+      "preamble": "Passage—2 \"The individual, according to Rousseau, puts his person and all his power in common under the supreme direction of the General Will and in our corporate capacity we receive each member as an indivisible part of the whole.\"",
+      "questionText": "In the light of the above passage, the nature of General Will is best described as",
+      "options": [
+        "the sum total of the private wills of the individuals",
+        "what is articulated by the elected representatives of the individuals",
+        "the collective good as distinct from private wills of the individuals",
+        "the material interests of the community"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 811,
+          "y": 329,
+          "w": 869,
+          "h": 871
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 712,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "23",
+      "preamble": "Passage—3 In a democratic State, where a high degree of political maturity of the people obtains, the conflict between the will of the sovereign law- making body and the organized will of the people seldom occurs.",
+      "questionText": "What does the above passage imply?",
+      "options": [
+        "In a democracy, force is the main phenomenon in the actual exercise of sovereignty.",
+        "In a mature democracy, force to a great extent is the main phenomenon in the actual exercise of sovereignty.",
+        "In a mature democracy, use of force is irrelevant in the actual exercise of sovereignty.",
+        "In a mature democracy, force is narrowed down to a marginal phenomenon in the actual exercise of sovereignty."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 811,
+          "y": 1200,
+          "w": 869,
+          "h": 809
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 759,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "24",
+      "preamble": "Passage.—4 A successful democracy depends upon widespread interest and participation in politics, in which voting is an essential part. To deliberately refrain from taking such an interest, and from voting, is a kind of implied anal elay•, it is to rcfusc onc'g political responsibility while enjoying the benefits of a free political society.",
+      "questionText": "This passage relates to",
+      "options": [
+        "duty to vote",
+        "right to vote",
+        "freedom to vote",
+        "right to participate in politics"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 14,
+          "x": 93,
+          "y": 607,
+          "w": 708,
+          "h": 718
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 806,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "25",
+      "preamble": "Passage—S In a free country, the man who reaches the position of leader is usually one of outstanding character and ability. Moreover, it is usually possible to foresee that he will reach such a position, since early in life one can see his qualities of character. But this is not always true in the case of a dictator; often he reaches his position of power through chance, very often through the unhappy state of his country.",
+      "questionText": "The passage seems to suggest that",
+      "options": [
+        "a leader foresees his future position",
+        "a leader is chosen only by a free country",
+        "a leader must see that his country is free from despair",
+        "despair in a country sometimes leads to dictatorship"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 14,
+          "x": 93,
+          "y": 1325,
+          "w": 708,
+          "h": 569
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 852,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "26",
+      "preamble": "Passage—6 The greatest blessing that technological progress has in store for mankind is not, of course, an accumulation of material possessions. The amount of these that can be effectively enjoyed by one individual in one lifetime is not great. But there is not the same narrow limit to the possibilities of the enjoyment of leisure. The gift of leisure may be abused by people who have had no experience of making use of it. Yet the creative use of leisure by a minority in societies has been the mainspring of all human progress beyond the primitive level.",
+      "questionText": "With reference to the above passage, the following assumptions have peen made:\n1. People always see the leisure time as a gift and use it for acquiring more material possessions.\n2. Use of leisure by some people to produce new and original things has been the chief source of human progress.\nWhich of these assumptions is/are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 14,
+          "x": 811,
+          "y": 643,
+          "w": 869,
+          "h": 1379
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 899,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "27",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "With reference to the above passage, the following assumptions have been made •\n1. A study of the famous battles of history would help us understand the modern warfare.\n2. Studying the history is essential for anyone who aspires to be a leader.\nWhich of these assumptions is/ are valid?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 16,
+          "x": 88,
+          "y": 374,
+          "w": 713,
+          "h": 908
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 947,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "28",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "Suppose the average weight of 9 persons is 50 kg. The average weight of the first 5 persons is 45 kg, whereas the average weight of the last 5 persons is 55 kg. Then the weight of the 5th person will be",
+      "options": [
+        "45 kg",
+        "475 kg",
+        "50 kg",
+        "52•5 kg"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 16,
+          "x": 88,
+          "y": 1282,
+          "w": 713,
+          "h": 612
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 994,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "29",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "In a group of six women, there are four tennis players, four postgraduates in Soci010ß', one postgraduate in Commerce and three bank employees. Vimala and Kamla are the bank employees while Amala and Komala are unemployed. Komala and Nirmala are among the tennis players. Amala, Kamia, Komala and Nirmala are postgraduates in Soci010ß' of whom two are bank employees. If Shyamala is a postgraduate in Commerce, who among the following is both a tennis player and a bank employee?",
+      "options": [
+        "Amala",
+        "Komala",
+        "Nirmala",
+        "Shyamala"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 16,
+          "x": 811,
+          "y": 197,
+          "w": 869,
+          "h": 1028
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 1041,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "30",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "P = (40% of A) + (65% of B) and Q = (50% of A) + (50% of B), where A is greater than B. In this context, which of the following statements is correct?",
+      "options": [
+        "P is greater than Q.",
+        "Q is greater than P.",
+        "P ia equal to Q.",
+        "None of the above can be concluded with certainty."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 16,
+          "x": 811,
+          "y": 1225,
+          "w": 869,
+          "h": 792
+        }
+      ],
+      "keyCell": {
+        "x": 525,
+        "y": 1087,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "31",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "A watch loses 2 minutes in every 24 hours while another watch gains 2 minutes in every 24 hours. At a particular instant, the two watches showed an identical time. Which of the following statements is correct if 24-hour clock is followed?",
+      "options": [
+        "The two watches show the identical time again on completion of 30 days.",
+        "The two watches show the identical time again on completion of 90 days.",
+        "The two watches show the identical time again on completion of 120 days.",
+        "None of the above statements is correct."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 111,
+          "y": 197,
+          "w": 690,
+          "h": 978
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 431,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "32",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "In a city, 12% of households earn less than e 30,000 per year, 6% households earn more than per year, 22% households earn more than e per year and 990 house- holds earn between e 30,000 and per year. How many households earn bebveen e 1 and e per year?",
+      "options": [
+        "250",
+        "240",
+        "230",
+        "225"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 111,
+          "y": 1175,
+          "w": 690,
+          "h": 798
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 477,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "33",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "AMC-D-CLYS/7iA\n33. A clock strikes once at 1 0'clock, twice At 2 0'clock and thrice at 3 0'clock, and so on. If it takes 12 seconds to strike at 5 0'clock, what is the time taken by it to strike at IO o'clock?",
+      "options": [
+        "20 seconds",
+        "24 seconds",
+        "28 seconds",
+        "30 seconds"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 111,
+          "y": 1973,
+          "w": 690,
+          "h": 44
+        },
+        {
+          "page": 18,
+          "x": 811,
+          "y": 197,
+          "w": 869,
+          "h": 755
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 524,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "34",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "Consider the given statement and the two conclusions that follow: Statement • Morning walk is good for health. Conclusions.\n1. All healthy people go for morning walk.\n2. Morning walk is essential for maintaining good health. What is/are the valid conclusion/ conclusions?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 811,
+          "y": 952,
+          "w": 869,
+          "h": 1065
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 570,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "35",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "There are thirteen 2-digit consecutive odd numbers. If 39 is the mean of the first five such numbers, then what is the mean of all the thirteen numbers?",
+      "options": [
+        "47",
+        "49",
+        "51",
+        "45"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 133,
+          "y": 194,
+          "w": 668,
+          "h": 540
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 618,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "36",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "Six boys A, B, C, D, E and F play a game of cards. Each has a pack of IO cards. F borrows 2 cards from A and gives away 5 to C who in turn gives 3 to B while B gives 6 to D who passes on 1 to E. Then the number of cards possessed by D and E is equal to the number of cards possessed by",
+      "options": [
+        "A, B and C",
+        "B, C and F",
+        "A, B and F",
+        "A, C and F"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 133,
+          "y": 734,
+          "w": 668,
+          "h": 696
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 664,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "37",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "There is a milk sample with 50% water in it. If I / 3rd of this milk is added to equal amount of pure milk, then water in the new mixture will fall down to",
+      "options": [
+        "25%",
+        "",
+        "35%",
+        ""
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 133,
+          "y": 1430,
+          "w": 668,
+          "h": 385
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 710,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "38",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "There are 4 horizontal and 4 vertical lines, parallel and equidistant to one another on a board. What is the maximum number of rectangles and squares that can be formed?",
+      "options": [
+        "16",
+        "24",
+        "36",
+        "42"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 811,
+          "y": 198,
+          "w": 869,
+          "h": 521
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 756,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "39",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "A freight train left Delhi for Mumbai at an average speed of 40 km/hr. Two hours later, an express train left Delhi for Mumbai, following the freight train on a parallel track at an average speed of 60 km/hr. How far from Delhi would the express train meet the freight train?",
+      "options": [
+        "480 km",
+        "260 km",
+        "240 km",
+        "120"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 811,
+          "y": 719,
+          "w": 869,
+          "h": 599
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 803,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "40",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "In a test, Randhir obtained more marks than the total marks obtained by Kunal and Debu. The total marks obtained by Kunal and Shankar are more than those of Randhir. Sonal obtained more marks than Shankar. Neha obtained more marks than Randhir. Who amongst them obtained highest marks?",
+      "options": [
+        "Randhlr",
+        "Ncha",
+        "Sonal",
+        "Data are inadequate"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 811,
+          "y": 1318,
+          "w": 869,
+          "h": 654
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 849,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "41",
+      "preamble": "Passage—7 There is more than a modicum of truth in the assertion that \"a working knowledge of ancient history is necessary to the intelligent interpretation of current events\". But the sage who uttered these words of wisdom might well have added something on the benefits of studying particularly the famous battles of history for the lessons they contain for those of us who lead or aspire to leadership. Such a study will reveal certain qualities and attributes which enabled the winners to win—and certain deficiencies which caused the losers to lose. And the student will see that the same pattern recurs consistently, again and again, throughout the centuries.",
+      "questionText": "Directions for the following 8 (eight) items: Read the following seven passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage—I Disruption of traditional institutions, identifica- tions and loyalties is likely to lead to ambivalent situations. It is possible that some people may renew their identification with traditional groups whereas others align themselves with new groups and symbols emergent from processes of political development. In addition, political development tends to foster group awareness of a variety of class, tribe, region, clan, language, religion, occupation and others.\n41. Which one of the following is the best explanation of the above passage?",
+      "options": [
+        "Political development is not a unilinear process for it involves both growth and decay.",
+        "Traditional societies succeed in resisting positive aspects of political development.",
+        "It is impossible for traditional societies to break away from lingering loyalties.",
+        "Sustenance of traditional loyalties is conducive to political development."
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "NUMBER_OCR_CORRECTED"
+      ],
+      "regions": [
+        {
+          "page": 20,
+          "x": 811,
+          "y": 1972,
+          "w": 869,
+          "h": 50
+        },
+        {
+          "page": 22,
+          "x": 132,
+          "y": 195,
+          "w": 669,
+          "h": 1687
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 897,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "42",
+      "preamble": "Passage—2 There has been a significant trend worldwide towards regionalism in government, resulting in a widespread transfer of powers downwards towards regions and communities since 1990s. This process, which involves the creation of new political entities and bodies at a sub-national level and an increase in their content •and powers, is known as devolution. Devolution has been characterized as being made up of three factors—political legitimacy, decentralization of authority and decentralization of resources. Political legitimacy here means a mass demand from below for the decentralization process, which is able to create a political force for it to take place. In many cases, decentralization is initiated by the upper tier of government without sufficient political mobilization for it at the grassroots level, and in such cases the decentralization process often does not fulfil its objectives.",
+      "questionText": "Which among the following is the most logical, rational and critical tnference that can be made from the above passage?",
+      "options": [
+        "Emergence of powerful mass leaders is essential to create sub-national political entities and thus ensure successful devolution and decentralization.",
+        "The upper tier of government should impose devolution and decentralization on the regional communities by law or otherwise.",
+        "Devolution, to be successful, requires a democracy in which there is free expression of the will of the people at lower level and their active participation at the grassroots level.",
+        "For devolution to take place, a strong feeling of regionalism in the masses is essential."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 22,
+          "x": 811,
+          "y": 729,
+          "w": 869,
+          "h": 1286
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 944,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "43",
+      "preamble": "Passage—3 We 'live in digital times. The digital is not just something we use strategically and specifically to do a few tasks. Our very perception of who we are, how we connect to the world around us, and the ways in which we define our domains of 23 I life, labour and language are hugely structured by the digital technologies. The digital is everywhere and, like air, invisible. We live within digital systems, we live with intimate gadgets, we interact through digital media, and the very presence and imagination of the digital has dramatically restructured our lives. The digital, far from being a tool, is a condition and context that defines the shapes and boundaries of our understanding of the self, the society, and the structure of governance.",
+      "questionText": "Which among the following is the most toglcat and essential message conveyed by the above passage?",
+      "options": [
+        "All problems of governance can be solved by using digital technologies.",
+        "Speaking of digital technologies is speaking of our life and living.",
+        "Our creativity and imagination cannot be expressed without digital media.",
+        "Use of digital systems is imperative for the existence of mankind in future."
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 24,
+          "x": 87,
+          "y": 636,
+          "w": 714,
+          "h": 1251
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 991,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "44",
+      "preamble": "Passage—4 The IMF has pointed out that the fast growing economies of Asia face the risk of falling into 'middle-income trap'. It means that average incomes in these countries, which till now have been growing rapidly, will stop growing beyond a point—a point that is well short of incomes in the developed West. The IMF identifies a number of causes of middle-income trap—none of which is surprising—from infrastructure to weak institutions, to less than favourable macroeconomic conditions. But the broad, overall cause, says IMF, is a collapse in the growth of 'productivity.",
+      "questionText": "Which among the following is the most Zogicat, rational and critical inference that can be made from the above passage?",
+      "options": [
+        "Once a country reaches middle- income stage, it runs the risk of falling productivity which leads to stagnant incomes.",
+        "Falling into middle-income trap is a general characteristic of fast growing economies.",
+        "There is no hope at all for emerging Asiän economies to sustain the growth momentum.",
+        "As rcgardo growth of productivity, the performance of Asian economies is not satisfactory."
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 24,
+          "x": 811,
+          "y": 369,
+          "w": 869,
+          "h": 1643
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 1039,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "45",
+      "preamble": "Passage--—5 An innovative India will be inclusive as well as technologically advanced, improving the lives of all Indians. Innovation and R&D can mitigate increases in social inequality and relieve the pressures created by rapid urbanization. The growing divergence in productivity between agriculture and knowledge-intensive manufacturing and services threatens to Increase income inequality. By encouraging India's R&D labs and universities to focus on the needs of poor people and by improving the ability of informal firms to absorb , knowledge, an innovation and research agenda can counter this effect. Inclusive innovation can lower the costs of goods and services and create income-earning opportunities for the poor people.",
+      "questionText": "Which among the following is the most logicat and rational assumption that can be made from the above passage?",
+      "options": [
+        "Innovation and R&D is the only way to reduce rural to urban migration.",
+        "Every rapidly growing country needs to minimize the divergence between productivity in agriculture and other sectors.",
+        "Inclusive innovation and R&D can help create an egalitarian society.",
+        "Rapid urbanization takes place unly when a country's cconomic growth is rapid."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 26,
+          "x": 103,
+          "y": 404,
+          "w": 698,
+          "h": 1481
+        }
+      ],
+      "keyCell": {
+        "x": 720,
+        "y": 1084,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "46",
+      "preamble": "Passage—6 Climate change is likely to expose a large number of people to increasing environmental risks forcing them to migrate. The international community is yet to recognize this new category of migrants. There is no consensus on the definition and status of climate refugees owing to the distinct meaning the term refugees carry under international laws. There are still gaps in understanding how climate change will work as the roof cause of migration. Even if there is recognition of climate refugees, who is going to provide protection? More emphasis has been given to international migration due to climate change. But there is a need to recognize the migration of such people within the countries also so that their problems can be addressed properly.",
+      "questionText": "Which of the following is the most rationat inference from the above passage?",
+      "options": [
+        "The world will not be able to cope with large-scale migration of climate refugees.",
+        "We must find the ways and means to stop further climate change.",
+        "Climate change will be the most important reason for the migration of people in the future.",
+        "Relation between climate change and migration is not yet properly understood."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 26,
+          "x": 811,
+          "y": 366,
+          "w": 869,
+          "h": 1646
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 429,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "47",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "On the basis of the above passage, the following assumptions have been made:\n1. Synthetic pesticides should never be used in modern agriculture.\n2. One of the aims of sustainable agriculture is to ensure minimal ecological imbalance.\n3. Botanical pesticides are more effective as compared to synthetic pesticides.\nWhich of the assumptions given above is/are correct? and 2 only",
+      "options": [
+        "",
+        "2 only and 3 only 2 and 3",
+        "",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 28,
+          "x": 108,
+          "y": 521,
+          "w": 693,
+          "h": 767
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 475,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "48",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "Which of the following statements is/ are correct regarding biopesticides?\n1. They are not hazardous to human health.\n2. They are persistent in environment.\n3. They are essential to maintain the biodiversity of any ecosystem.\nSelect the correct answer using the code given below.",
+      "options": [
+        "1 only",
+        "1 and 2 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 28,
+          "x": 108,
+          "y": 1288,
+          "w": 693,
+          "h": 613
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 522,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "49",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "Certain 3-digit numbers have the following characteristics:\n1. All the three digits are different.\n2. The number is divisible by 7.\n3. The number reversing the digits is also divisible by 7.\nHow many such 3-digit numbers are there?",
+      "options": [
+        "",
+        "4",
+        "6",
+        "8"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 28,
+          "x": 811,
+          "y": 209,
+          "w": 869,
+          "h": 902
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 569,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "50",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "Examine the following statements\n1. All colours are pleasant.\n2. Some colours are pleasant.\n3. No colour is pleasant.\n4. Some colours are not pleasant. Given that statement 4 is true, what can be definitely concluded?",
+      "options": [
+        "1 and 2 are true.",
+        "3 is true.",
+        "2 is false.",
+        "1 is false."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 28,
+          "x": 811,
+          "y": 1111,
+          "w": 869,
+          "h": 912
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 616,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "51",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "How many numbers are there between 99 and 1000 such that the digit 8 occupies the units place?",
+      "options": [
+        "64",
+        "80",
+        "90",
+        "104"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 147,
+          "y": 204,
+          "w": 654,
+          "h": 529
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 662,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "52",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "If for a sample data Mean < Median < Mode then the distribution is",
+      "options": [
+        "symmetric",
+        "skewed to the right",
+        "neither symmetric nor skewed",
+        "skewed to the left"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 147,
+          "y": 733,
+          "w": 654,
+          "h": 601
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 708,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "53",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "The age of Mr. X last year was the square of a number and it would be the cube of a number next year. What is the least number of years he must wait for his age to become the cube of a number again?",
+      "options": [
+        "42",
+        "38",
+        "25",
+        "16"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 147,
+          "y": 1334,
+          "w": 654,
+          "h": 560
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 754,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "54",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "P works thrice as fast as Q, whereas P and Q together can work four times as fast as R. If P, Q and R together work on a job, in what ratio should they share the earnings?",
+      "options": [
+        "",
+        "3:",
+        "4: 4",
+        "3:"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 811,
+          "y": 204,
+          "w": 869,
+          "h": 653
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 801,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "55",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "Consider the following relationships among members of a family of six persons A, B, C, D, E and F:\n1. The number of males equals that of females.\n2. A and E are sons of F.\n3. D is the mother of two, one boy and one girl.\n4. B is the son of A.\n5. There is only one married couple in the family at present.\nWhich one of the following inferences can be drawn from the above?",
+      "options": [
+        "A, B and C are all females.",
+        "A is the husband of D.",
+        "E and F are children of D.",
+        "D is the daughter of F."
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 811,
+          "y": 857,
+          "w": 869,
+          "h": 1161
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 849,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "56",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "A bag contains 20 balls. 8 balls are green, 7 are white and 5 are red. What is the minimum number of balls that must be picked up from the bag blindfolded (without replacing any of it) to be assured of picking at least one ball of each colour?",
+      "options": [
+        "17",
+        "16",
+        "13",
+        "11"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 32,
+          "x": 144,
+          "y": 207,
+          "w": 657,
+          "h": 636
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 895,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "57",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "If 2 boys and 2 girls are to be arranged in a row so that the girls are not next to each other, how many possible arrangements are there?",
+      "options": [
+        "3",
+        "",
+        "12",
+        "24"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 32,
+          "x": 144,
+          "y": 843,
+          "w": 657,
+          "h": 524
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 943,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "58",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "The outer surface of a 4 cm x 4 cm x 4 cm cube is painted completely in red. It is sliced parallel to the faces to yield sixty four 1 cm x 1 cm x 1 cm small cubes. How many small cubes do not have painted faces? (h) 16",
+      "options": [
+        "",
+        "",
+        "24",
+        "36"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 32,
+          "x": 144,
+          "y": 1367,
+          "w": 657,
+          "h": 527
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 989,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "59",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "Consider the following. A, B, C, D, E, F, G and H are standing in a row facing North. B is not neighbour of G. F is to the immediate right of G and neighbour of E. G is not at the extreme end. A is sixth to the left of E. H is sixth to the right of C.\nWhich one of the following is correct in respect of the above?",
+      "options": [
+        "C is to the immediate left of A.",
+        "D is immediate neighbour of B and F.",
+        "G is to the immediate right of D.",
+        "A and E are at the extreme ends."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 32,
+          "x": 811,
+          "y": 207,
+          "w": 869,
+          "h": 1121
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 1036,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "60",
+      "preamble": "Passage—-7 Many farmers use synthetic pesticides to kill infesting insects. The consumption of pesticides in some of the developed countries is touching 3UUU grams/ hectare. Unfortunately, there are reports that these compounds possess inherent toxicities that endanger the health of the farm operators, consumers and the environment. Synthetic pesticides are generally persistent in environment. Entering in food chain they destroy the microbial diversity and cause ecological imbalance. Their indiscriminate use has resulted in development of resistance among insects to insecticides, upsetting of balance in nature and resurgence of treated populations. Natural pest control using the botanical pesticides is safer to the user and the environment because they break down into harmless compounds within hours or days in the presence of sunlight. Plants with pesticidal properties have been in nature for millions of years without any ill or adverse effects on the ecosystem. They are easily decomposed by many microbes common in most soils. They help in the maintenance of biological diversity of predators and the reduction of environmental contamination and human health hazards. Botanical pesticides formulated from plants are biodegradable and their use in crop protection is a practical sustainable alternative.",
+      "questionText": "In a certain code, '256' means 'red colour chalk', '589' means 'green colour flower' and 254' means Svhite colour chalk'. The digit in the code that indicates White' is",
+      "options": [
+        "Our governments are not",
+        "There is absolutely no need for air",
+        "5 33 (Directions for the following 7 (seven) items: Read the following seven passages and answer the items that follow the passages. Your answers to these items should be based on the passages only. Passage—I An air quality index (AQI) is a way to combine measurements of multiple air pollutants into a single number or rating. This index is ideally kept constantly updated and available in different places. The AQI is most useful when lots of pollution data are being gathered and when pollution levels are normally, but not always, low. In such cases, if pollution levels spike for a few days, the public can quickly take preventive action (like staying indoors) in response to an air quality warning. Unfortunately, that is not urban India. Pollution levels in many large Indian cities are so high that they remain well above any health or regulatory standard for large part of the year. If our index stays in the 'Red/ Dangerous' region day after day, there is not much any one can do, other than getting used to ignoring it, 61. Which among the following is the most logical and ratlonat Inference that can be made from the above passage? responsible enough to keep our cities pollution free. quality indices in our country. (c) Air quality index is not helpful to the residents of many of our large cities.",
+        "In every city, public awareness about pollution problems should increase."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 32,
+          "x": 811,
+          "y": 1328,
+          "w": 869,
+          "h": 688
+        },
+        {
+          "page": 34,
+          "x": 109,
+          "y": 201,
+          "w": 692,
+          "h": 1681
+        }
+      ],
+      "keyCell": {
+        "x": 914,
+        "y": 1082,
+        "w": 89,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "61",
+      "questionText": "",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NOT_FOUND_IN_SCAN"
+      ],
+      "regions": [],
+      "keyCell": {
+        "x": 1109,
+        "y": 427,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "62",
+      "preamble": "Passage—2 Productive jobs are vital for growth and a good job is the best form of inclusion. More than half of our population depends on agriculture, but the experience of other countries suggests that the number of people dependent on agriculture will have to shrink if pcr capita incomcg in agriculture are to go up substantially. While industry is creating jobs, too many such jobs are low-productivity non-contractual jobs in the unorganized sector, offering low incomes, little protection, and no benefits. Service jobs are relatively of high productivity, but employment growth in services has been slow in recent years.",
+      "questionText": "Which among the following is the most togicaZ and rational Inference that can be made from the above passage?",
+      "options": [
+        "We must create conditions for the faster growth of highly productive service jobs to ensure employment growth and inclusion.",
+        "We must shift the farm workers to the highly producåve manufacturing and service sectors to ensure the economic growth and inclusion.",
+        "We must create conditions for the faster growth of productive jobs outside of agriculture even while improving the productivity of agriculture.",
+        "We must emphasize the cultivation of high-yielding hybrid varieties and genetically modified crops to increase the per capita income in agriculture."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "NUMBER_SKIPPED_BEFORE"
+      ],
+      "regions": [
+        {
+          "page": 34,
+          "x": 811,
+          "y": 895,
+          "w": 869,
+          "h": 1112
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 474,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "63",
+      "preamble": "Passage—3 A landscape-scale approach to land use can encourage greater biodiversity outside protected areas. During hurricane 'Mitch' in 1998, farms using ecoagricultural practices suffered 58 per cent, 70 per cent and 99 per cent less damagc in Honduras, Nicaragua and Guatemala, respectively, than farms using conventional techniques. In Costa Rica, vegetative windbreaks and fencerows boosted farmers' income from pasture and coffee while also increasing bird diversity. Bee pollination is more effective when agricultural fields are closer to natural or seminatural habitat, a finding that matters because 87 per cent of the world's 107 leading crops depend on animal pollinators. In Costa Rica, Nicaragua and Colombia silvopastoral systems that integrate trees with pastureland are improving the sustainability of cattle production, and diversifring and increasing farmers' income.",
+      "questionText": "Which among the following is the most logical and rationat inference that can be made from the above passage?",
+      "options": [
+        "Agricultural practices that enhance biodiversity can often increase farm output and reduce the n.flnerability to disasters.",
+        "All the countries of the world should be encouraged to replace ecoagriculture with conventional agriculture.",
+        "Ecoagriculture should be permitted in protected areas without destroying the biodiversity there.",
+        "The yield of food crops will be very high if ecoagricultural practices are adopted to cultivate them."
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 36,
+          "x": 112,
+          "y": 1130,
+          "w": 689,
+          "h": 761
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 520,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "64",
+      "preamble": "Passage—4 The medium term challenge for Indian manufacturing is to move from lower to higher tech sectors, from lower to higher value- added sectors, and from lower to higher productivity sectors. Medium tech industries are primarily capital intensive and resource processing; and high tech industries are mainly capital and techn010ß' intensive. In order to push the share of manufacturing in overall GDP to the projected 25 per cent, Indian manufacturing needs to capture the global market in sectors showing a rising trend in demand. These sectors are largely high techn010ß' and capital intensive.",
+      "questionText": "Which among the following is the most ZogIcaZ and rational Inference that can be made from the above passage?",
+      "options": [
+        "India's GDP displays high value- added and high productivity levels in medium tech and resource processing industries.",
+        "Promotion of capital and technoloor intensive manufacturing is not possible in India.",
+        "India should push up the public investments and encourage the private investments in research and development, technologr upgradation and skill development.",
+        "India has already gained a great share in global markets in sectors showing a rising trend in demand."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 36,
+          "x": 811,
+          "y": 907,
+          "w": 869,
+          "h": 1113
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 567,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "65",
+      "preamble": "Passage—5 Over the last decade, Indian agriculture has become more robust with record production of • food grains and oilseeds. Increased procurement, consequently, has added huge stocks of food grains in the granaries. India is one of the world's top producers of rice, wheat, milk, fruits and vegetables. India is still home to a quarter of all undernourished people in the world. On an average, almost half of the total expenditure of nearly half of the households is on food.",
+      "questionText": "Which among the following is the most Zogicat corollary to the above passage?",
+      "options": [
+        "Increasing the efficiency of farm- to-fork value chain is necessary to reduce the poverty and malnutri- tion.",
+        "Increasing the agricultural productivity will automatically eliminate the poverty and malnutrition in India.",
+        "India's agricultural productivity is already great and it is not necessary to increase it further.",
+        "Allocation of more funds for social welfare and poverty alleviation programmes will ultimately eliminate the poverty and malnutrition in India."
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 96,
+          "y": 827,
+          "w": 705,
+          "h": 1060
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 614,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "66",
+      "preamble": "Passage-Æ The States are like pearls and the Centre is the thread which turns them into a necklace; if the thread snaps, the pearls are scattered.",
+      "questionText": "Which one of the following views corroborates the above statement?",
+      "options": [
+        "A strong Centre and strong States make the federation strong.",
+        "A strong Centre is a binding force for national integrity.",
+        "A strong Centre is a hindrance to State autonomy.",
+        "State autonomy is a prerequisite for a federation."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 811,
+          "y": 412,
+          "w": 869,
+          "h": 1046
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 661,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "67",
+      "preamble": "Passage—7 Really I think that the poorest he that is in England has a life to live, as the greatest he, and therefore truly, I think it is clear that every man that IS to Uhder a government ought first by his own consent to put himself under the government, and I do think that the poorest man in England is not at all bound in a strict sense to that government that he has not had a voice to put himself under.",
+      "questionText": "The above statement argues for",
+      "options": [
+        "distribution of wealth equally to all",
+        "rule according to the consent of the governed",
+        "rule of the poor",
+        "expropriation of the rich"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "PASSAGE_ATTACHMENT_UNVERIFIED"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 811,
+          "y": 1458,
+          "w": 869,
+          "h": 552
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 707,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "68",
+      "preamble": "Passage—7 Really I think that the poorest he that is in England has a life to live, as the greatest he, and therefore truly, I think it is clear that every man that IS to Uhder a government ought first by his own consent to put himself under the government, and I do think that the poorest man in England is not at all bound in a strict sense to that government that he has not had a voice to put himself under.",
+      "questionText": "The average rainfall in •a city for the first four days was recorded to be 040 inch. The rainfall on the last two days was in the ratio of 4: 3. The average of six days was 0•50 inch. What was the rainfall on the fifth day?",
+      "options": [
+        "060 inch",
+        "0•70 inch",
+        "0•80 inch",
+        "0•90 inch"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OCR_NOISE",
+        "PASSAGE_ATTACHMENT_UNVERIFIED",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 109,
+          "y": 185,
+          "w": 692,
+          "h": 1684
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 753,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "69",
+      "preamble": "Consider the given information and answer the three items that follow. A, B, C, D, E, F and G are Lecturers from different cities—Hyderabad, Delhi, Shillong, Kanpur, Chennai, Mumbai and Srinagar (not necessarily in the same order) who participated in a conference. Each • one of them is specialized in a different subject, viz., Economics, Commerce, History, Geography, Mathematics and Statistics (not necessarily in the same order). Further\n1. Lecturer from Kanpur is specialized in Geography\n2. Lecturer D is from Shillong\n3. Lecturer C from Delhi is specialized in Soci010U\n4. Lecturer B is specialized in neither History nor Mathematics\n5. Lecturer A who is specialized in Economics does not belong to Hyderabad\n6. Lecturer F who is specialized in Commerce belongs to Srinagar\n7. Lecturer G who is specialized in Statistics belongs to Chennai",
+      "questionText": "Who is specialized in Geography?",
+      "options": [
+        "",
+        "",
+        "",
+        "Cannot be determined as data are inadequate"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 811,
+          "y": 182,
+          "w": 869,
+          "h": 572
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 799,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "70",
+      "preamble": "Consider the given information and answer the three items that follow. A, B, C, D, E, F and G are Lecturers from different cities—Hyderabad, Delhi, Shillong, Kanpur, Chennai, Mumbai and Srinagar (not necessarily in the same order) who participated in a conference. Each • one of them is specialized in a different subject, viz., Economics, Commerce, History, Geography, Mathematics and Statistics (not necessarily in the same order). Further\n1. Lecturer from Kanpur is specialized in Geography\n2. Lecturer D is from Shillong\n3. Lecturer C from Delhi is specialized in Soci010U\n4. Lecturer B is specialized in neither History nor Mathematics\n5. Lecturer A who is specialized in Economics does not belong to Hyderabad\n6. Lecturer F who is specialized in Commerce belongs to Srinagar\n7. Lecturer G who is specialized in Statistics belongs to Chennai",
+      "questionText": "To which city does the Lecturer specialized in Economics belong?",
+      "options": [
+        "Hyderabad",
+        "Mumbai",
+        "Neither Hyderabad nor Mumbai",
+        "Cannot be determined as data are inadequate"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 40,
+          "x": 811,
+          "y": 754,
+          "w": 869,
+          "h": 612
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 846,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "71",
+      "preamble": "Consider the given information and answer the three items that follow. A, B, C, D, E, F and G are Lecturers from different cities—Hyderabad, Delhi, Shillong, Kanpur, Chennai, Mumbai and Srinagar (not necessarily in the same order) who participated in a conference. Each • one of them is specialized in a different subject, viz., Economics, Commerce, History, Geography, Mathematics and Statistics (not necessarily in the same order). Further\n1. Lecturer from Kanpur is specialized in Geography\n2. Lecturer D is from Shillong\n3. Lecturer C from Delhi is specialized in Soci010U\n4. Lecturer B is specialized in neither History nor Mathematics\n5. Lecturer A who is specialized in Economics does not belong to Hyderabad\n6. Lecturer F who is specialized in Commerce belongs to Srinagar\n7. Lecturer G who is specialized in Statistics belongs to Chennai",
+      "questionText": "Who of the following belongs to Hyderabad?",
+      "options": [
+        "",
+        "",
+        "Neither B nor E",
+        "Cannot be determined as data are inadequate"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 811,
+          "y": 1366,
+          "w": 869,
+          "h": 620
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 893,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "72",
+      "questionText": "In a school, there are five teachers A, B, C, D and E. A and B teach Hindi and English. C and B teach English and Geography. D and A teach Mathematics and Hindi. E and B teach History and French. Who teaches maximum number of subjects?",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 126,
+          "y": 188,
+          "w": 675,
+          "h": 646
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 940,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "73",
+      "questionText": "A 2-digit number is reversed. The larger of the two numbers is divided by the smaller one. What is the largest possible remainder?",
+      "options": [
+        "",
+        "27",
+        "36",
+        "45"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 126,
+          "y": 834,
+          "w": 675,
+          "h": 534
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 988,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "74",
+      "questionText": "The monthly incomes of X and Y are in the ratio of 4: 3 and their monthly expenses are in the ratio of 3: 2. However, each saves e 6,000 per month. What is their total monthly income?",
+      "options": [
+        "e 28,000",
+        "e 42,000",
+        "e 56,000",
+        "e 84,000"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "B",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 126,
+          "y": 1368,
+          "w": 675,
+          "h": 498
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 1035,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "75",
+      "questionText": "IWo walls and a ceiling of a room meet at right angles at a point P. A fly is in the air 1 m from one wall, 8 m from the other wall and 9 m from the point P.\nHow many meters is the fly from the ceiling?",
+      "options": [
+        "",
+        "",
+        "12",
+        "15"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 811,
+          "y": 186,
+          "w": 869,
+          "h": 1123
+        }
+      ],
+      "keyCell": {
+        "x": 1109,
+        "y": 1080,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "76",
+      "preamble": "Consider the given information and answer the three items that follow. Eight railway stations A, B, C, D, E, F, G and H are connected either by two-way passages or one-way passages. One-way passages are from c to A, Eto G, B to F, D to H, G to C, Eto C and H to G. Two-way passages are between A and E, G and B, F and D, and E and D.",
+      "questionText": "While travelling from C to H, which one of the following stations must be passed through?",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 42,
+          "x": 811,
+          "y": 1309,
+          "w": 869,
+          "h": 684
+        }
+      ],
+      "keyCell": {
+        "x": 1299,
+        "y": 428,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "77",
+      "preamble": "Consider the given information and answer the three items that follow. Eight railway stations A, B, C, D, E, F, G and H are connected either by two-way passages or one-way passages. One-way passages are from c to A, Eto G, B to F, D to H, G to C, Eto C and H to G. Two-way passages are between A and E, G and B, F and D, and E and D.",
+      "questionText": "In how many different ways can a train travel from F to A without passing through any station more than once?",
+      "options": [
+        "1",
+        "2",
+        "",
+        ""
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 44,
+          "x": 127,
+          "y": 222,
+          "w": 674,
+          "h": 931
+        }
+      ],
+      "keyCell": {
+        "x": 1299,
+        "y": 474,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "78",
+      "preamble": "Consider the given information and answer the three items that follow. Eight railway stations A, B, C, D, E, F, G and H are connected either by two-way passages or one-way passages. One-way passages are from c to A, Eto G, B to F, D to H, G to C, Eto C and H to G. Two-way passages are between A and E, G and B, F and D, and E and D.",
+      "questionText": "If the route between G and C is closed, which one of the following stations need not be passed through while travelling from H to C?",
+      "options": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 44,
+          "x": 127,
+          "y": 1153,
+          "w": 674,
+          "h": 598
+        }
+      ],
+      "keyCell": {
+        "x": 1299,
+        "y": 520,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "79",
+      "questionText": "There are certain 2-digit numbers. The difference between the number and the one obtained on reversing it is always 27. How many such maximum 2-digit numbers are there?",
+      "options": [
+        "",
+        "",
+        "5",
+        "None of the above"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 44,
+          "x": 811,
+          "y": 217,
+          "w": 869,
+          "h": 985
+        }
+      ],
+      "keyCell": {
+        "x": 1299,
+        "y": 566,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "80",
+      "questionText": "What is the total number of digits printed, if a book containing 150 pages is to be numbered from 1 to 150?",
+      "options": [
+        "262",
+        "342",
+        "360",
+        "450"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 44,
+          "x": 811,
+          "y": 1202,
+          "w": 869,
+          "h": 807
+        }
+      ],
+      "keyCell": {
+        "x": 1299,
+        "y": 613,
+        "w": 88,
+        "h": 70
+      },
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

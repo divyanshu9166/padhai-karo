@@ -60,7 +60,7 @@ const PAPER_BUNDLE_SELECT = {
             correctOption: true,
             flaggedForReview: true,
         },
-        orderBy: { id: 'asc' },
+        orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
     },
     answerKey: {
         select: { id: true, paperId: true, entries: true },

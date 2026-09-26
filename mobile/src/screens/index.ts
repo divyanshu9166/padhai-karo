@@ -1,6 +1,7 @@
 // Auth (task 21.2)
 export { LoginScreen } from './auth/LoginScreen';
 export { RegisterScreen } from './auth/RegisterScreen';
+export { ForgotPasswordScreen } from './auth/ForgotPasswordScreen';
 
 // Onboarding (task 21.2)
 export { OnboardingScreen } from './onboarding/OnboardingScreen';
@@ -29,6 +30,7 @@ export { RecallStudioScreen, FormulaSprintScreen, ConceptMapBuilderScreen, Pract
 
 // Practice stack (task 21.6)
 export { PyqScreen } from './practice/PyqScreen';
+export { DailyQuizScreen } from './practice/DailyQuizScreen';
 export { TimedPaperScreen } from './practice/TimedPaperScreen';
 export { MistakeJournalScreen } from './practice/MistakeJournalScreen';
 export { MockExamScreen } from './practice/MockExamScreen';

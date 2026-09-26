@@ -12,6 +12,7 @@ import type { CompositeScreenProps } from '@react-navigation/native';
 export type AuthStackParamList = {
     Login: undefined;
     Register: undefined;
+    ForgotPassword: undefined;
 };
 
 /** Onboarding flow (authenticated, not-yet-onboarded users — Req 2.6). */
@@ -28,6 +29,7 @@ export type PlanStackParamList = {
 /** Practice tab stack — PYQ practice, Timed Paper mode, Mistake journal (task 21.6). */
 export type PracticeStackParamList = {
     Pyq: undefined;
+    DailyQuiz: undefined;
     Mock: undefined;
     /** A paper id may be passed in to auto-start Timed Paper Mode. */
     TimedPaper: { paperId?: string } | undefined;

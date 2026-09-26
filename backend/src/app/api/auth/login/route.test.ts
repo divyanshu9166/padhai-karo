@@ -51,7 +51,7 @@ vi.mock('@/lib/db', () => {
     };
 });
 
-import { hashPassword } from '@/lib/auth';
+import { MemoryRateLimitStore, hashPassword, setRateLimitStore } from '@/lib/auth';
 
 import { POST as login } from './route';
 
@@ -95,6 +95,7 @@ const validPasswordArb: fc.Arbitrary<string> = fc
 
 beforeEach(() => {
     store.users.clear();
+    setRateLimitStore(new MemoryRateLimitStore());
 });
 
 describe('POST /api/auth/login', () => {
@@ -165,5 +166,41 @@ describe('POST /api/auth/login', () => {
         expect(response.status).toBe(401);
         const body = await response.json();
         expect(body.error.code).toBe('AUTHENTICATION_FAILED');
+    });
+
+    describe('brute-force protection', () => {
+        it('locks an email for 15 minutes after 5 wrong passwords, even for the right password', async () => {
+            await seedUser('aspirant@example.in', 'Correct123');
+            for (let i = 0; i < 5; i += 1) {
+                expect((await login(loginRequest('aspirant@example.in', 'Wrong1234'))).status).toBe(401);
+            }
+            const locked = await login(loginRequest('aspirant@example.in', 'Correct123'));
+            expect(locked.status).toBe(429);
+            const body = await locked.json();
+            expect(body.error.code).toBe('TOO_MANY_ATTEMPTS');
+            expect(body.error.details.retryAfterSec).toBeGreaterThan(14 * 60);
+        });
+
+        it('applies the same lockout to unknown emails so it cannot reveal which emails exist', async () => {
+            for (let i = 0; i < 5; i += 1) {
+                expect((await login(loginRequest('nobody@example.in', 'Wrong1234'))).status).toBe(401);
+            }
+            expect((await login(loginRequest('nobody@example.in', 'Wrong1234'))).status).toBe(429);
+        });
+
+        it('clears the failure count after a successful login', async () => {
+            await seedUser('aspirant@example.in', 'Correct123');
+            for (let i = 0; i < 4; i += 1) await login(loginRequest('aspirant@example.in', 'Wrong1234'));
+            expect((await login(loginRequest('aspirant@example.in', 'Correct123'))).status).toBe(200);
+            for (let i = 0; i < 4; i += 1) {
+                expect((await login(loginRequest('aspirant@example.in', 'Wrong1234'))).status).toBe(401);
+            }
+        });
+
+        it('does not let a locked email block other students', async () => {
+            await seedUser('other@example.in', 'Correct123');
+            for (let i = 0; i < 5; i += 1) await login(loginRequest('aspirant@example.in', 'Wrong1234'));
+            expect((await login(loginRequest('other@example.in', 'Correct123'))).status).toBe(200);
+        });
     });
 });

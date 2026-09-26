@@ -211,7 +211,7 @@ describe('getPaperHandler', () => {
         expect(findManyPyq).toHaveBeenCalledWith({
             where: { paperId: 'paper-1', flaggedForReview: false },
             select: { id: true, questionText: true, options: true },
-            orderBy: { id: 'asc' },
+            orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
         });
     });
 
@@ -335,7 +335,7 @@ describe('createTimedAttemptHandler', () => {
         expect(findManyPyq).toHaveBeenCalledWith({
             where: { paperId: 'paper-1', flaggedForReview: false },
             select: { id: true, correctOption: true },
-            orderBy: { id: 'asc' },
+            orderBy: [{ questionNumber: 'asc' }, { id: 'asc' }],
         });
 
         // Persisted scoped to the authenticated user with computed score and time taken.

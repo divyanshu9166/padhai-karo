@@ -15,5 +15,10 @@ module.exports = {
             files: ['*.test.ts', '*.test.tsx'],
             env: { jest: true },
         },
+        {
+            // Expo config plugins are loaded by Node as CommonJS.
+            files: ['plugins/*.js'],
+            rules: { '@typescript-eslint/no-require-imports': 'off' },
+        },
     ],
 };

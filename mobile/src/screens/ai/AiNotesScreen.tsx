@@ -2,7 +2,7 @@
  * AI notes summarizer screen (task 21.7; Req 8.1, 8.2, 9.1, 9.5).
  *
  * Summarizes note text (Req 8.1) or a photo (Req 8.2, via the documented upload placeholder)
- * through `POST /ai/summaries`, showing the remaining quota and prior summaries. On a free-tier
+ * through `POST /ai/notes`, showing the remaining quota and prior summaries. On a free-tier
  * `402 UPGRADE_REQUIRED` it routes to the Paywall (Req 9.1/9.5); on `429 QUOTA_EXCEEDED` it
  * surfaces the quota message. All gating/quota accounting is authoritative on the server.
  *
@@ -26,7 +26,7 @@ import {
 
 import { ApiError } from '@/api';
 import { Screen } from '@/components';
-import { useTranslation } from '@/localization';
+import { interpolate, useTranslation, type StringKey } from '@/localization';
 import type { NotesStackScreenProps } from '@/navigation/types';
 import { OfflineBanner, generateClientId, useOffline } from '@/offline';
 import { cacheJson, readCachedJson } from '@/offline/cache';
@@ -36,9 +36,20 @@ import { uploadVoiceNote } from '@/api/upscProduct';
 
 import {
   createSummary,
+  getSubscription,
   listSummaries,
+  type AiAllowance,
   type NoteSummary,
 } from './api';
+
+/** A denied device permission, shown to the student as-is rather than as a generic failure. */
+class PermissionDeniedError extends Error {
+  constructor(readonly messageKey: StringKey) {
+    super(messageKey);
+  }
+}
+
+const INPUT_LABELS: Record<string, StringKey> = { TEXT: 'ai.inputText', PHOTO: 'ai.inputPhoto', VOICE: 'ai.inputVoice' };
 
 export function AiNotesScreen({
   navigation,
@@ -50,8 +61,10 @@ export function AiNotesScreen({
 
   const [text, setText] = useState('');
   const [summaries, setSummaries] = useState<NoteSummary[]>([]);
+  const [allowance, setAllowance] = useState<AiAllowance | null>(null);
   const [busy, setBusy] = useState(false);
   const [recording, setRecording] = useState<Audio.Recording | null>(null);
+  const [pendingVoice, setPendingVoice] = useState<{ id: string; title: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const refresh = useCallback(async (): Promise<void> => {
@@ -66,6 +79,10 @@ export function AiNotesScreen({
   }, []);
 
   useEffect(() => {
+    void getSubscription().then((subscription) => setAllowance(subscription.aiAllowance ?? null)).catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
     void refresh();
   }, [refresh]);
 
@@ -76,6 +93,10 @@ export function AiNotesScreen({
    * any other failure shows the server message or a generic fallback.
    */
   const handleSummaryError = (err: unknown, fallback: string): void => {
+    if (err instanceof PermissionDeniedError) {
+      setError(t(err.messageKey));
+      return;
+    }
     if (err instanceof ApiError) {
       switch (err.code) {
         case 'UPGRADE_REQUIRED':
@@ -106,18 +127,19 @@ export function AiNotesScreen({
       if (isOffline) {
         const sentences = text.replace(/\s+/g, ' ').split(/(?<=[.!?।])\s+/).map((item) => item.trim()).filter(Boolean).slice(0, 7);
         const keyPoints = (sentences.length > 0 ? sentences : [text.trim()]).map((item) => item.length > 220 ? `${item.slice(0, 217)}…` : item);
-        const summary: NoteSummary = { id: 'offline-' + Date.now(), userId: 'offline', inputType: 'TEXT', summary: { title: 'Offline quick note', keyPoints, revisionCapsule: keyPoints.slice(0, 5), flashcards: keyPoints.slice(0, 5).map((point, index) => ({ question: `Recall point ${index + 1}`, answer: point })) }, createdAt: new Date().toISOString() };
+        const summary: NoteSummary = { id: 'offline-' + Date.now(), userId: 'offline', inputType: 'TEXT', summary: { title: t('ai.offlineQuickNote'), keyPoints, revisionCapsule: keyPoints.slice(0, 5), flashcards: keyPoints.slice(0, 5).map((point, index) => ({ question: interpolate(t('ai.recallPoint'), { n: index + 1 }), answer: point })), generationSource: 'LOCAL_OFFLINE' }, createdAt: new Date().toISOString() };
         await enqueueRecord({ clientId: generateClientId(), type: 'NOTE_SUMMARY', payload: { inputType: 'TEXT', summary: summary.summary } });
         setSummaries((previous) => [summary, ...previous]);
         setText('');
         setError(null);
         return;
       }
-      await createSummary({ inputType: 'TEXT', text });
+      const result = await createSummary({ inputType: 'TEXT', text });
+      if (result.aiAllowance) setAllowance(result.aiAllowance);
       setText('');
       await refresh();
     } catch (err) {
-      handleSummaryError(err, 'Could not summarize.');
+      handleSummaryError(err, t('ai.summarizeError'));
     } finally {
       setBusy(false);
     }
@@ -128,20 +150,21 @@ export function AiNotesScreen({
     setError(null);
     try {
       const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!permission.granted) throw new Error('Photo permission is required.');
+      if (!permission.granted) throw new PermissionDeniedError('ai.photoPermission');
       const picked = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, quality: 0.8, base64: false });
       if (picked.canceled || !picked.assets[0]) return;
       const asset = picked.assets[0];
       if (isOffline) {
         await queuePhotoNote(asset.uri, asset.mimeType || 'image/jpeg', asset.fileName || 'Photo note.jpg');
-        setError('Photo note saved on this device. It will be processed when you reconnect.');
+        setError(t('ai.photoQueued'));
         return;
       }
       const base64 = await FileSystem.readAsStringAsync(asset.uri, { encoding: FileSystem.EncodingType.Base64 });
-      await createSummary({ inputType: 'PHOTO', imageData: 'data:' + (asset.mimeType || 'image/jpeg') + ';base64,' + base64, mimeType: asset.mimeType || 'image/jpeg' });
+      const result = await createSummary({ inputType: 'PHOTO', imageData: 'data:' + (asset.mimeType || 'image/jpeg') + ';base64,' + base64, mimeType: asset.mimeType || 'image/jpeg' });
+      if (result.aiAllowance) setAllowance(result.aiAllowance);
       await refresh();
     } catch (err) {
-      handleSummaryError(err, 'Could not summarize the photo.');
+      handleSummaryError(err, t('ai.photoError'));
     } finally {
       setBusy(false);
     }
@@ -152,20 +175,21 @@ export function AiNotesScreen({
     setError(null);
     try {
       const permission = await ImagePicker.requestCameraPermissionsAsync();
-      if (!permission.granted) throw new Error('Camera permission is required.');
+      if (!permission.granted) throw new PermissionDeniedError('ai.cameraPermission');
       const captured = await ImagePicker.launchCameraAsync({ quality: 0.8, base64: false });
       if (captured.canceled || !captured.assets[0]) return;
       const asset = captured.assets[0];
       if (isOffline) {
         await queuePhotoNote(asset.uri, asset.mimeType || 'image/jpeg', asset.fileName || 'Camera note.jpg');
-        setError('Photo note saved on this device. It will be processed when you reconnect.');
+        setError(t('ai.photoQueued'));
         return;
       }
       const base64 = await FileSystem.readAsStringAsync(asset.uri, { encoding: FileSystem.EncodingType.Base64 });
-      await createSummary({ inputType: 'PHOTO', imageData: 'data:' + (asset.mimeType || 'image/jpeg') + ';base64,' + base64, mimeType: asset.mimeType || 'image/jpeg' });
+      const result = await createSummary({ inputType: 'PHOTO', imageData: 'data:' + (asset.mimeType || 'image/jpeg') + ';base64,' + base64, mimeType: asset.mimeType || 'image/jpeg' });
+      if (result.aiAllowance) setAllowance(result.aiAllowance);
       await refresh();
     } catch (err) {
-      handleSummaryError(err, 'Could not process the captured photo.');
+      handleSummaryError(err, t('ai.cameraError'));
     } finally {
       setBusy(false);
     }
@@ -179,18 +203,20 @@ export function AiNotesScreen({
         await recording.stopAndUnloadAsync();
         const uri = recording.getURI();
         setRecording(null);
-        if (!uri) throw new Error('Recording file was not created.');
+        if (!uri) throw new PermissionDeniedError('ai.recordingMissing');
         if (isOffline) {
           await queueVoiceNote(uri);
-          setError('Voice note saved on this device. It will be transcribed when you reconnect.');
+          setError(t('ai.voiceQueued'));
           return;
         }
         const uploaded = await uploadVoiceNote(uri, 'Voice note.m4a', undefined, ['voice-note']);
-        const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
-        await createSummary({ inputType: 'VOICE', audioData: 'data:audio/mp4;base64,' + base64, mimeType: 'audio/mp4', audioUri: uploaded.note.audioUri ?? uri, voiceNoteId: uploaded.note.id });
+        setPendingVoice({ id: uploaded.note.id, title: uploaded.note.title || t('ai.voiceNoteTitle') });
+        const result = await createSummary({ inputType: 'VOICE', voiceNoteId: uploaded.note.id });
+        if (result.aiAllowance) setAllowance(result.aiAllowance);
+        setPendingVoice(null);
         await refresh();
       } catch (err) {
-        handleSummaryError(err, 'Could not transcribe the voice note.');
+        handleSummaryError(err, t('ai.voiceError'));
       } finally {
         setBusy(false);
       }
@@ -198,30 +224,59 @@ export function AiNotesScreen({
     }
     try {
       const permission = await Audio.requestPermissionsAsync();
-      if (!permission.granted) throw new Error('Microphone permission is required.');
+      if (!permission.granted) throw new PermissionDeniedError('ai.micPermission');
       await Audio.setAudioModeAsync({ allowsRecordingIOS: true, playsInSilentModeIOS: true });
       const created = await Audio.Recording.createAsync(Audio.RecordingOptionsPresets.HIGH_QUALITY);
       setRecording(created.recording);
     } catch (err) {
-      handleSummaryError(err, 'Could not start recording.');
+      handleSummaryError(err, t('ai.recordStartError'));
+    }
+  };
+
+  const retryVoiceSummary = async (): Promise<void> => {
+    if (!pendingVoice || busy || isOffline) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const result = await createSummary({ inputType: 'VOICE', voiceNoteId: pendingVoice.id, title: pendingVoice.title });
+      if (result.aiAllowance) setAllowance(result.aiAllowance);
+      setPendingVoice(null);
+      await refresh();
+    } catch (err) {
+      handleSummaryError(err, t('ai.savedVoiceError'));
+    } finally {
+      setBusy(false);
     }
   };
 
   return (
     <Screen title={t('ai.title')}>
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
-        <OfflineBanner note="Offline text notes use a quick local summary. Photo and voice processing need internet." />
+        <OfflineBanner note={t('ai.offlineNote')} />
+        {allowance ? (
+          <Pressable onPress={() => navigation.navigate('Paywall')} accessibilityRole="button">
+            <Text style={styles.quota}>
+              {allowance.plan === 'PAID'
+                ? interpolate(t('paywall.paidRemaining'), { remaining: allowance.remaining })
+                : allowance.plan === 'TRIAL'
+                  ? interpolate(t('paywall.trialActive'), { remaining: allowance.remaining, date: new Date(allowance.trialEndsAt).toLocaleDateString() })
+                  : interpolate(t('paywall.freeRemaining'), { remaining: allowance.remaining, limit: allowance.limit })}
+            </Text>
+            {allowance.plan !== 'PAID' ? <Text style={styles.plansLink}>{t('ai.seePlans')}</Text> : null}
+          </Pressable>
+        ) : null}
 
         <TextInput
           style={styles.input}
           value={text}
           onChangeText={setText}
-          placeholder="Paste notes to summarize…"
+          placeholder={t('ai.inputPlaceholder')}
           multiline
           editable={!busy}
         />
 
         {error ? <Text style={styles.error}>{error}</Text> : null}
+        {pendingVoice ? <Pressable style={[styles.secondary, busy && styles.disabled]} onPress={() => void retryVoiceSummary()} disabled={busy || isOffline}><Text style={styles.secondaryText}>{busy ? t('ai.processingVoice') : t('ai.retryVoice')}</Text></Pressable> : null}
 
         <Pressable
           style={[styles.primary, (busy || aiUnavailable) && styles.disabled]}
@@ -248,7 +303,7 @@ export function AiNotesScreen({
           onPress={() => void onCapturePhoto()}
           disabled={busy}
         >
-          <Text style={styles.secondaryText}>Capture note with camera</Text>
+          <Text style={styles.secondaryText}>{t('ai.captureCamera')}</Text>
         </Pressable>
 
         <Pressable
@@ -256,23 +311,23 @@ export function AiNotesScreen({
           onPress={() => void onVoiceNote()}
           disabled={busy || (!recording && isOffline === false && aiUnavailable)}
         >
-          <Text style={styles.secondaryText}>{recording ? 'Stop and transcribe recording' : 'Record voice note'}</Text>
+          <Text style={styles.secondaryText}>{recording ? t('ai.stopAndTranscribe') : t('ai.recordVoice')}</Text>
         </Pressable>
 
         {summaries.map((summary) => (
           <View key={summary.id} style={styles.summaryCard}>
-            <View style={styles.summaryTop}><Text style={styles.summaryMeta}>{summary.inputType} • GENERATED • EDITABLE SOURCE</Text><Pressable onPress={() => void Share.share({ title: summary.summary.title ?? 'Study note', message: `${summary.summary.title ?? 'Study note'}\n\n${summary.summary.keyPoints.map((point) => `• ${point}`).join('\n')}` })}><Text style={styles.export}>Export</Text></Pressable></View>
+            <View style={styles.summaryTop}><Text style={styles.summaryMeta}>{t(INPUT_LABELS[summary.inputType] ?? 'ai.inputText')} • {summary.summary.generationSource?.includes('LOCAL') ? t('ai.localSummary') : summary.summary.generationSource ? t('ai.aiGenerated') : t('ai.summaryLabel')} • {t('ai.saved')}</Text><Pressable onPress={() => void Share.share({ title: summary.summary.title ?? t('ai.studyNote'), message: `${summary.summary.title ?? t('ai.studyNote')}\n\n${summary.summary.keyPoints.map((point) => `• ${point}`).join('\n')}` })}><Text style={styles.export}>{t('ai.export')}</Text></Pressable></View>
             {summary.summary.title ? (
               <Text style={styles.summaryTitle}>{summary.summary.title}</Text>
             ) : null}
-            <Text style={styles.capsuleLabel}>30-second summary</Text>
+            <Text style={styles.capsuleLabel}>{t('ai.thirtySecondSummary')}</Text>
             {summary.summary.keyPoints.map((point, i) => (
               <Text key={i} style={styles.point}>
                 • {point}
               </Text>
             ))}
-            {summary.summary.revisionCapsule?.length ? <View style={styles.capsule}><Text style={styles.capsuleLabel}>Quick revision capsule</Text>{summary.summary.revisionCapsule.slice(0, 5).map((point, index) => <Text key={`${index}-${point}`} style={styles.point}>{index + 1}. {point}</Text>)}</View> : null}
-            {summary.summary.flashcards?.length ? <View style={styles.recallReady}><Text style={styles.summaryTitle}>{summary.summary.flashcards.length} recall cards ready</Text><Text style={styles.point}>First review is placed in your active-recall queue.</Text></View> : null}
+            {summary.summary.revisionCapsule?.length ? <View style={styles.capsule}><Text style={styles.capsuleLabel}>{t('ai.revisionCapsule')}</Text>{summary.summary.revisionCapsule.slice(0, 5).map((point, index) => <Text key={`${index}-${point}`} style={styles.point}>{index + 1}. {point}</Text>)}</View> : null}
+            {summary.summary.flashcards?.length ? <View style={styles.recallReady}><Text style={styles.summaryTitle}>{interpolate(t('ai.recallCardsReady'), { count: summary.summary.flashcards.length })}</Text><Text style={styles.point}>{t('ai.recallQueued')}</Text></View> : null}
           </View>
         ))}
       </ScrollView>
@@ -282,6 +337,7 @@ export function AiNotesScreen({
 
 const styles = StyleSheet.create({
   scroll: { paddingBottom: 32 },
+  plansLink: { color: '#2563eb', fontWeight: '700', marginTop: -6, marginBottom: 12 },
   quota: { fontSize: 14, fontWeight: '600', color: '#15803d', marginBottom: 12 },
   input: {
     borderWidth: 1,

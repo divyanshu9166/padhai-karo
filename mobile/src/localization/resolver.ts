@@ -60,3 +60,11 @@ export function createResolver(
 ): (key: string) => string {
     return (key: string) => resolveString(language, key, catalog);
 }
+
+/**
+ * Fill `{name}` placeholders in a resolved string, e.g.
+ * `interpolate(t('quiz.streak'), { count: 3 })` → "3-day streak". Unknown placeholders are left as-is.
+ */
+export function interpolate(template: string, values: Record<string, string | number>): string {
+    return template.replace(/\{(\w+)\}/g, (match, name: string) => (name in values ? String(values[name]) : match));
+}

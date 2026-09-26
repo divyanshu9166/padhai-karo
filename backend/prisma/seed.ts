@@ -291,7 +291,7 @@ async function seedReviewedOfficialStarter(): Promise<number> {
             : await tx.pYQPaper.create({ data: { examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS', paperKey: input.paperKey, year: input.year, durationMin: input.durationMin ?? 120, answerKeyId: randomUUID(), sourceName: input.sourceName, sourceUrl: input.sourceUrl, answerKeyUrl: input.answerKeyUrl, verificationMethod: 'OFFICIAL_FINAL_KEY_CROSS_CHECK', verifiedAt: input.reviewedAt ? new Date(input.reviewedAt) : new Date() } });
         await tx.answerKey.upsert({ where: { paperId: paper.id }, create: { id: paper.answerKeyId, paperId: paper.id, entries: input.answerKey as Prisma.InputJsonValue }, update: { entries: input.answerKey as Prisma.InputJsonValue } });
         await tx.pYQ.deleteMany({ where: { paperId: paper.id } });
-        await tx.pYQ.createMany({ data: input.questions.map((question, index) => ({ paperId: paper.id, examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS', year: input.year, subjectId: question.subjectId, questionText: question.questionText, options: question.options, correctOption: input.answerKey[question.questionRef || String(index + 1)] })) });
+        await tx.pYQ.createMany({ data: input.questions.map((question, index) => ({ paperId: paper.id, questionNumber: index + 1, examTrack: 'UPSC', examProgram: 'UPSC_CSE', examStage: 'PRELIMS', year: input.year, subjectId: question.subjectId, questionText: question.questionText, options: question.options, correctOption: input.answerKey[question.questionRef || String(index + 1)] })) });
         return paper;
     });
     return saved.id ? input.questions.length : 0;

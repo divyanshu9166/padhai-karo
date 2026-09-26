@@ -63,7 +63,7 @@ export async function importOfficialPyqHandler(request: Request, auth: AuthConte
         const paper = existing ? await tx.pYQPaper.update({ where: { id: existing.id }, data }) : await tx.pYQPaper.create({ data: { id: randomUUID(), ...data } });
         await tx.answerKey.upsert({ where: { paperId: paper.id }, create: { id: answerKeyId, paperId: paper.id, entries: answerEntries as Prisma.InputJsonValue }, update: { entries: answerEntries as Prisma.InputJsonValue } });
         await tx.pYQ.deleteMany({ where: { paperId: paper.id } });
-        await tx.pYQ.createMany({ data: normalized.map((question) => ({ paperId: paper.id, examTrack: paper.examTrack, examProgram: program, examStage: stage as never, year, subjectId: question.subjectId, questionText: question.questionText, options: question.options, correctOption: question.correctOption })) });
+        await tx.pYQ.createMany({ data: normalized.map((question, index) => ({ paperId: paper.id, questionNumber: index + 1, examTrack: paper.examTrack, examProgram: program, examStage: stage as never, year, subjectId: question.subjectId, questionText: question.questionText, options: question.options, correctOption: question.correctOption })) });
         return paper;
     });
     return Response.json({ paper: result, importedQuestions: normalized.length, verified: true, importedBy: auth.user.id }, { status: 201 });

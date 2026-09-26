@@ -1,0 +1,21 @@
+{
+  "id": "upsc-cse-prelims-2022-csat",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2022,
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers/archives",
+  "series": "A",
+  "requiresFinalKeyReview": true,
+  "paperKey": "UPSC-CSE-PRELIMS-CSAT-2022",
+  "subjectId": "UPSC-CSE-CSAT",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/GENERAL%20STUDIES%20PAPER%20II.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-2022-Paper-II-040723.pdf",
+  "bytes": 9245828,
+  "sha256": "b0797b3bfe4f9b89a388fa0a8e51a5c03ffb71aadaa34be9cdedb63c071c9d8d",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2022-csat-answer-key.pdf",
+  "answerKeyBytes": 82376,
+  "answerKeySha256": "03da5efa94d47c83540e9ee5114af48221d5bc6990723c0e05dd25b066860f85",
+  "downloadedAt": "2026-09-26T05:09:14.435Z",
+  "finalKeyReviewed": false
+}

@@ -1,3 +1,4 @@
+import { emailDeliveryConfigured } from '@/lib/mail';
 import { configuredProviderName, liveProviderConfigured, transcriptionProviderConfigured } from '@/services/ai/liveProvider';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -32,12 +33,14 @@ export async function GET(): Promise<Response> {
             coachingProvider: Boolean(process.env.COACHING_PROVIDER_URL?.trim() && process.env.COACHING_PROVIDER_API_KEY?.trim()),
             communityModeration: Boolean(process.env.MODERATION_KEY?.trim()),
             pdfVisualRendering: pdfRenderer,
+            passwordResetEmail: emailDeliveryConfigured(),
         },
         setup: {
             pdfRenderer: pdfRenderer ? 'ready' : 'Install Poppler or set PDF_RENDERER_BIN.',
             scheduler: 'Run npm run worker:scheduler on a long-lived worker, or configure the documented platform cron endpoints.',
-            ai: liveProviderConfigured() ? `${aiProvider} configured` : 'Set AI_PROVIDER and AI_PROVIDER_API_KEY for live vision/text.',
+            ai: aiProvider === 'INVALID' ? 'AI_PROVIDER must be GEMINI, GROQ or CLAUDE.' : liveProviderConfigured() ? `${aiProvider} configured` : 'Set AI_PROVIDER and AI_PROVIDER_API_KEY for live vision/text.',
             transcription: transcriptionProviderConfigured() ? 'configured' : 'Set TRANSCRIPTION_API_URL/KEY or configure Groq/Gemini audio credentials.',
+            passwordResetEmail: emailDeliveryConfigured() ? 'configured' : 'Set EMAIL_PROVIDER=RESEND, EMAIL_API_KEY and EMAIL_FROM so students can reset forgotten passwords.',
             googleCalendar: process.env.GOOGLE_CLIENT_ID?.trim() && process.env.GOOGLE_CLIENT_SECRET?.trim() && process.env.GOOGLE_REDIRECT_URI?.trim() ? 'configured' : 'Set Google OAuth credentials.',
         },
     });

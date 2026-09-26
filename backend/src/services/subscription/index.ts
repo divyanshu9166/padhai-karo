@@ -6,6 +6,18 @@
  * pure signature helpers (shared with the webhook endpoint, task 16.3).
  */
 export {
+    FREE_WEEKLY_AI_LIMIT,
+    TRIAL_AI_LIMIT,
+    TRIAL_DAYS,
+    allowanceExhaustedResponse,
+    claimAiAllowance,
+    resolveAiAllowance,
+    serializeAllowance,
+    startTrialHandler,
+    type AiAllowance,
+} from './entitlements';
+
+export {
     createOrderHandler,
     verifyPaymentHandler,
     getSubscriptionHandler,

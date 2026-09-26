@@ -58,8 +58,87 @@ export interface OfflineDownloadProgress {
 }
 
 interface DownloadMediaOptions {
-    isCancelled: () => boolean;
+    signal: AbortSignal;
+    isCurrent: () => boolean;
     onProgress: (progress: OfflineDownloadProgress) => void;
+    resumeStates: Record<string, { urlFingerprint: string; fileUri: string; resumeData: string }>;
+    saveResumeStates: () => Promise<void>;
+}
+
+function fingerprintMediaUrl(value: string): string {
+    let first = 0x811c9dc5;
+    let second = 0x9e3779b9;
+    for (let index = 0; index < value.length; index += 1) {
+        const code = value.charCodeAt(index);
+        first = Math.imul(first ^ code, 0x01000193);
+        second = Math.imul(second ^ code, 0x85ebca6b);
+    }
+    return `${value.length}-${(first >>> 0).toString(16)}-${(second >>> 0).toString(16)}`;
+}
+
+async function downloadResumableMedia(
+    key: string,
+    url: string,
+    fileUri: string,
+    headers: Record<string, string>,
+    options: DownloadMediaOptions,
+): Promise<Awaited<ReturnType<typeof FileSystem.downloadAsync>> | null> {
+    const previous = options.resumeStates[key];
+    const urlFingerprint = fingerprintMediaUrl(url);
+    const canResume = Boolean(previous && previous.urlFingerprint === urlFingerprint && previous.fileUri === fileUri);
+    if (!canResume) {
+        if (previous) {
+            delete options.resumeStates[key];
+            await options.saveResumeStates();
+        }
+        await FileSystem.deleteAsync(fileUri, { idempotent: true });
+    }
+    const task = FileSystem.createDownloadResumable(url, fileUri, { headers, md5: true }, undefined, canResume ? previous?.resumeData : undefined);
+    let pausePromise: Promise<void> | null = null;
+    const pauseForResume = (): void => {
+        if (pausePromise) return;
+        pausePromise = task.pauseAsync().then(async (state) => {
+            if (state.resumeData) options.resumeStates[key] = { urlFingerprint, fileUri, resumeData: state.resumeData };
+            else delete options.resumeStates[key];
+            await options.saveResumeStates();
+        }).catch(async () => {
+            await task.cancelAsync().catch(() => undefined);
+            delete options.resumeStates[key];
+            await options.saveResumeStates();
+        });
+    };
+    const onAbort = (): void => pauseForResume();
+    if (options.signal.aborted) onAbort();
+    else options.signal.addEventListener('abort', onAbort, { once: true });
+    try {
+        let result: Awaited<ReturnType<typeof FileSystem.downloadAsync>> | undefined;
+        try { result = await task.downloadAsync(); }
+        catch (error) {
+            if (options.signal.aborted) { await pausePromise; return null; }
+            if (canResume) {
+                delete options.resumeStates[key];
+                await FileSystem.deleteAsync(fileUri, { idempotent: true }).catch(() => undefined);
+                await options.saveResumeStates();
+            }
+            throw error;
+        }
+        if (!result && options.signal.aborted) { await pausePromise; return null; }
+        if (!result) throw new Error('The media download ended without a result.');
+        if (!(await fileExists(result.uri))) {
+            if (options.signal.aborted) return null;
+            throw new Error('The downloaded media file is missing or empty.');
+        }
+        if (options.resumeStates[key]) {
+            delete options.resumeStates[key];
+            await options.saveResumeStates();
+        }
+        return result;
+    } catch (error) {
+        if (options.signal.aborted) { await pausePromise; return null; }
+        throw error;
+    } finally {
+        options.signal.removeEventListener('abort', onAbort);
+    }
 }
 
 async function fileExists(uri: string): Promise<boolean> {
@@ -88,14 +167,17 @@ async function downloadWorkspaceMedia(bundle: OfflineWorkspaceBundle, options: D
     ]);
     const cachedMedia = (await readCachedJson<Record<string, string>>('workspace-media'))?.value ?? {};
     const cachedChecksums = (await readCachedJson<Record<string, string>>('workspace-media-checksums'))?.value ?? {};
+    const savedResumeStates = (await readCachedJson<Record<string, { urlFingerprint: string; fileUri: string; resumeData: string }>>('workspace-media-resume'))?.value ?? {};
+    Object.assign(options.resumeStates, savedResumeStates);
     const media: Record<string, string> = { ...cachedMedia };
     const checksums: Record<string, string> = { ...cachedChecksums };
     const total = bundle.pdfs.reduce((sum, item) => sum + 1 + (typeof item.pageCount === 'number' ? Math.max(0, Math.floor(item.pageCount)) : 0), 0) + (bundle.voiceNotes ?? []).length;
     let current = 0;
     let errors = 0;
     const report = (phase: OfflineDownloadProgress['phase']): void => options.onProgress({ phase, current, total, errors });
-    const pdfs: Array<Record<string, unknown>> = [];
-    for (const raw of bundle.pdfs) {
+    const pdfs: Array<Record<string, unknown>> = bundle.pdfs.slice();
+    for (const [pdfIndex, raw] of bundle.pdfs.entries()) {
+        if (options.signal.aborted) break;
         const item = raw as Record<string, unknown>;
         const id = typeof item.id === 'string' ? item.id : '';
         const fileUrl = typeof item.fileUrl === 'string' ? item.fileUrl : '';
@@ -119,8 +201,10 @@ async function downloadWorkspaceMedia(bundle: OfflineWorkspaceBundle, options: D
                 }
                 if (await fileExists(target) && !checksumChanged) localUri = target;
                 else {
-                    await FileSystem.deleteAsync(target + '.part', { idempotent: true });
-                    const result = await FileSystem.downloadAsync(absoluteApiUrl(fileUrl), target + '.part', { headers: headersForUrl(fileUrl), md5: true });
+                    if (options.signal.aborted) break;
+                    const result = await downloadResumableMedia(key, absoluteApiUrl(fileUrl), target + '.part', headersForUrl(fileUrl), options);
+                    if (!result && options.signal.aborted) break;
+                    if (!result) throw new Error('PDF download returned no result.');
                     if (result.status >= 400) throw new Error(`PDF download returned ${result.status}`);
                     if (checksumChanged) await FileSystem.deleteAsync(target, { idempotent: true });
                     await FileSystem.moveAsync({ from: result.uri, to: target });
@@ -135,53 +219,59 @@ async function downloadWorkspaceMedia(bundle: OfflineWorkspaceBundle, options: D
         const pageImageUris: Record<string, string> = {};
         if (id && pageCount > 0) {
             for (let page = 1; page <= pageCount; page += 1) {
-                if (options.isCancelled()) break;
+                if (options.signal.aborted) break;
                 try {
                     const target = pageDirectory + `${id}-${page}.png`;
                     const key = `pdf-page:${id}:${page}`;
                     if (await fileExists(target)) pageImageUris[String(page)] = target;
                     else {
-                        await FileSystem.deleteAsync(target + '.part', { idempotent: true });
-                        const result = await FileSystem.downloadAsync(absoluteApiUrl(`/api/pdf-documents/${encodeURIComponent(id)}/pages/${page}?scale=1.5`), target + '.part', { headers: authHeaders(), md5: true });
+                        const result = await downloadResumableMedia(key, absoluteApiUrl(`/api/pdf-documents/${encodeURIComponent(id)}/pages/${page}?scale=1.5`), target + '.part', authHeaders(), options);
+                        if (!result && options.signal.aborted) break;
+                        if (!result) throw new Error('PDF page download returned no result.');
                         if (result.status >= 400) throw new Error(`PDF page returned ${result.status}`);
                         await FileSystem.moveAsync({ from: result.uri, to: target });
                         pageImageUris[String(page)] = target;
                     }
                     media[key] = pageImageUris[String(page)];
-                } catch { errors += 1; }
+                } catch { if (!options.signal.aborted) errors += 1; }
                 current += 1;
                 report('media');
             }
         }
-        pdfs.push({ ...item, ...(localUri ? { localUri } : {}), ...(Object.keys(pageImageUris).length > 0 ? { pageImageUris } : {}) });
+        pdfs[pdfIndex] = { ...item, ...(localUri ? { localUri } : {}), ...(Object.keys(pageImageUris).length > 0 ? { pageImageUris } : {}) };
     }
-    const voiceNotes: Array<Record<string, unknown>> = [];
-    for (const raw of bundle.voiceNotes ?? []) {
+    const voiceNotes: Array<Record<string, unknown>> = (bundle.voiceNotes ?? []).slice();
+    for (const [voiceIndex, raw] of (bundle.voiceNotes ?? []).entries()) {
+        if (options.signal.aborted) break;
         const item = raw as Record<string, unknown>;
         const id = typeof item.id === 'string' ? item.id : '';
         const audioUri = typeof item.audioUri === 'string' ? item.audioUri : '';
         let localUri: string | undefined;
-        if (id && audioUri && !options.isCancelled()) {
+        if (id && audioUri && !options.signal.aborted) {
             try {
                 const fileName = safeFileName(typeof item.audioFileName === 'string' ? item.audioFileName : `${id}.m4a`);
                 const target = voiceDirectory + `${id}-${fileName}`;
                 if (await fileExists(target)) localUri = target;
                 else {
-                    await FileSystem.deleteAsync(target + '.part', { idempotent: true });
-                    const result = await FileSystem.downloadAsync(absoluteApiUrl(audioUri), target + '.part', { headers: headersForUrl(audioUri), md5: true });
+                    const key = `voice:${id}`;
+                    const result = await downloadResumableMedia(key, absoluteApiUrl(audioUri), target + '.part', headersForUrl(audioUri), options);
+                    if (!result && options.signal.aborted) break;
+                    if (!result) throw new Error('Voice note download returned no result.');
                     if (result.status >= 400) throw new Error(`Voice note returned ${result.status}`);
                     await FileSystem.moveAsync({ from: result.uri, to: target });
                     localUri = target;
                 }
                 media[`voice:${id}`] = localUri;
-            } catch { errors += 1; }
+            } catch { if (!options.signal.aborted) errors += 1; }
         }
         current += 1;
         report('media');
-        voiceNotes.push({ ...item, ...(localUri ? { localUri } : {}) });
+        voiceNotes[voiceIndex] = { ...item, ...(localUri ? { localUri } : {}) };
     }
-    await cacheJson('workspace-media', media);
-    await cacheJson('workspace-media-checksums', checksums);
+    if (options.isCurrent()) {
+        await cacheJson('workspace-media', media);
+        if (options.isCurrent()) await cacheJson('workspace-media-checksums', checksums);
+    }
     return { ...bundle, pdfs, voiceNotes };
 }
 
@@ -248,7 +338,7 @@ export function OfflineProvider({ children, monitor }: OfflineProviderProps): Re
     // Guard against overlapping sync passes (e.g. a reconnect during a manual sync).
     const syncing = useRef(false);
     const workspaceDownload = useRef<AbortController | null>(null);
-    const downloadCancelled = useRef(false);
+    const workspaceDownloadRun = useRef<Promise<OfflineWorkspaceBundle> | null>(null);
 
     // Load the persisted store once on mount.
     const refreshLocalState = useCallback(async () => {
@@ -354,31 +444,34 @@ export function OfflineProvider({ children, monitor }: OfflineProviderProps): Re
     }, []);
 
     const cancelDownload = useCallback((): void => {
-        downloadCancelled.current = true;
         workspaceDownload.current?.abort();
         setDownloadProgress((previous) => previous ? { ...previous, phase: 'cancelled' } : previous);
     }, []);
 
-    const downloadWorkspace = useCallback(async (): Promise<OfflineWorkspaceBundle> => {
-        workspaceDownload.current?.abort();
-        const controller = new AbortController();
-        workspaceDownload.current = controller;
-        downloadCancelled.current = false;
-        if (mounted.current) setBusy(true);
-        try {
+    const downloadWorkspace = useCallback((): Promise<OfflineWorkspaceBundle> => {
+        if (workspaceDownloadRun.current) return workspaceDownloadRun.current;
+        const operation = (async (): Promise<OfflineWorkspaceBundle> => {
+            const controller = new AbortController();
+            workspaceDownload.current = controller;
+            if (mounted.current) setBusy(true);
+            try {
             const checkpoint = await readCachedJson<{ bundle: OfflineWorkspaceBundle; cursors: OfflineWorkspaceCursors }>('workspace-download-checkpoint');
             let bundle: OfflineWorkspaceBundle = checkpoint?.value.bundle ?? { generatedAt: new Date().toISOString(), range: { from: new Date().toISOString(), to: new Date().toISOString() }, blocks: [], resources: [], pdfs: [], annotations: [], voiceNotes: [], events: [], sleepSchedule: null };
             let cursors: OfflineWorkspaceCursors = checkpoint?.value.cursors ?? {};
+            const visitedCursorStates = new Set<string>();
             const addUnique = (existing: Array<Record<string, unknown>>, incoming: Array<Record<string, unknown>>): Array<Record<string, unknown>> => {
                 const seen = new Set(existing.map((item) => typeof item.id === 'string' ? item.id : JSON.stringify(item)));
                 return [...existing, ...incoming.filter((item) => { const key = typeof item.id === 'string' ? item.id : JSON.stringify(item); if (seen.has(key)) return false; seen.add(key); return true; })];
             };
             let metadataDone = false;
-            while (!metadataDone && !downloadCancelled.current) {
-                setDownloadProgress({ phase: 'metadata', current: 0, total: 0, errors: 0 });
+            while (!metadataDone && !controller.signal.aborted) {
+                const cursorState = JSON.stringify(cursors);
+                if (visitedCursorStates.has(cursorState)) throw new Error('Offline sync stopped because the server repeated a pagination cursor. Retry after reconnecting.');
+                visitedCursorStates.add(cursorState);
+                if (workspaceDownload.current === controller) setDownloadProgress({ phase: 'metadata', current: 0, total: 0, errors: 0 });
                 let page: OfflineWorkspacePage;
                 try { page = await fetchOfflineWorkspace({ cursors, limit: 100, signal: controller.signal }); }
-                catch (error) { if (downloadCancelled.current || controller.signal.aborted) break; throw error; }
+                catch (error) { if (controller.signal.aborted) break; throw error; }
                 bundle = {
                     ...bundle,
                     generatedAt: page.generatedAt,
@@ -391,33 +484,50 @@ export function OfflineProvider({ children, monitor }: OfflineProviderProps): Re
                     events: addUnique(bundle.events, page.events),
                     sleepSchedule: page.sleepSchedule,
                 };
-                cursors = Object.fromEntries(Object.entries(page.nextCursors ?? {}).filter(([, value]) => value)) as OfflineWorkspaceCursors;
-                metadataDone = Object.keys(cursors).length === 0;
+                const nextCursors = Object.fromEntries(Object.entries(page.nextCursors ?? {}).filter(([, value]) => value)) as OfflineWorkspaceCursors;
+                metadataDone = Object.keys(nextCursors).length === 0;
+                if (!metadataDone && JSON.stringify(nextCursors) === cursorState) throw new Error('Offline sync stopped because the server did not advance its pagination cursor. Retry after reconnecting.');
+                cursors = nextCursors;
                 await cacheJson('workspace-download-checkpoint', { bundle, cursors });
             }
-            if (downloadCancelled.current) {
+            if (controller.signal.aborted && workspaceDownload.current !== controller) return bundle;
+            if (controller.signal.aborted) {
                 await cacheJson('workspace-bundle', bundle);
                 if (mounted.current) setWorkspace(bundle);
                 return bundle;
             }
+            const mediaResumeStates: DownloadMediaOptions['resumeStates'] = {};
             const hydrated = await downloadWorkspaceMedia(bundle, {
-                isCancelled: () => downloadCancelled.current || controller.signal.aborted,
-                onProgress: setDownloadProgress,
+                signal: controller.signal,
+                isCurrent: () => workspaceDownload.current === controller,
+                onProgress: (progress) => { if (workspaceDownload.current === controller) setDownloadProgress(progress); },
+                resumeStates: mediaResumeStates,
+                saveResumeStates: () => cacheJson('workspace-media-resume', mediaResumeStates),
             });
+            if (controller.signal.aborted && workspaceDownload.current !== controller) return bundle;
             await cacheJson('workspace-bundle', hydrated);
-            if (downloadCancelled.current || controller.signal.aborted) {
-                setDownloadProgress((previous) => previous ? { ...previous, phase: 'cancelled' } : { phase: 'cancelled', current: 0, total: 0, errors: 0 });
+            if (controller.signal.aborted) {
+                if (workspaceDownload.current === controller) setDownloadProgress((previous) => previous ? { ...previous, phase: 'cancelled' } : { phase: 'cancelled', current: 0, total: 0, errors: 0 });
                 if (mounted.current) setWorkspace(hydrated);
                 return hydrated;
             }
             await clearCachedJson('workspace-download-checkpoint');
             if (mounted.current) setWorkspace(hydrated);
-            setDownloadProgress((previous) => previous ? { ...previous, phase: 'complete' } : { phase: 'complete', current: 0, total: 0, errors: 0 });
+            if (workspaceDownload.current === controller) setDownloadProgress((previous) => previous ? { ...previous, phase: 'complete' } : { phase: 'complete', current: 0, total: 0, errors: 0 });
             return hydrated;
-        } finally {
-            if (workspaceDownload.current === controller) workspaceDownload.current = null;
-            if (mounted.current) setBusy(false);
-        }
+            } finally {
+                if (workspaceDownload.current === controller) {
+                    workspaceDownload.current = null;
+                    if (mounted.current) setBusy(false);
+                }
+            }
+        })();
+        workspaceDownloadRun.current = operation;
+        void operation.then(
+            () => { if (workspaceDownloadRun.current === operation) workspaceDownloadRun.current = null; },
+            () => { if (workspaceDownloadRun.current === operation) workspaceDownloadRun.current = null; },
+        );
+        return operation;
     }, []);
 
     const resolveConflict = useCallback(async (clientId: string, resolution: 'SERVER' | 'LOCAL'): Promise<void> => {

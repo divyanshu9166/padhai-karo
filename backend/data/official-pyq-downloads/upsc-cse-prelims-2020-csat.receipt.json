@@ -1,0 +1,21 @@
+{
+  "id": "upsc-cse-prelims-2020-csat",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2020,
+  "sourceName": "UPSC official previous question papers",
+  "sourcePageUrl": "https://www.upsc.gov.in/examinations/previous-question-papers/archives",
+  "series": "A",
+  "requiresFinalKeyReview": true,
+  "paperKey": "UPSC-CSE-PRELIMS-CSAT-2020",
+  "subjectId": "UPSC-CSE-CSAT",
+  "downloadUrl": "https://www.upsc.gov.in/sites/default/files/CSP_2020_GS_Paper-2.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-20-Paper-II-091121_0.pdf",
+  "bytes": 13439266,
+  "sha256": "81fd97b06e01dae24c6f376bb9ca5593fd4347c0c5ddafedaef1aae91a572840",
+  "answerKeyPath": "C:\\Users\\divya\\Desktop\\padhaikaro\\backend\\data\\official-pyq-downloads\\upsc-cse-prelims-2020-csat-answer-key.pdf",
+  "answerKeyBytes": 2792266,
+  "answerKeySha256": "c3caeb68315b9cf52ab72f69af300d72b9403dc133e5528764ef291da4161967",
+  "downloadedAt": "2026-09-26T05:15:58.066Z",
+  "finalKeyReviewed": false
+}

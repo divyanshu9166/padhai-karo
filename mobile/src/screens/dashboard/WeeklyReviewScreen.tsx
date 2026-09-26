@@ -5,17 +5,19 @@ import ViewShot from 'react-native-view-shot';
 
 import { ApiError } from '@/api';
 import { Screen } from '@/components';
+import { interpolate, useTranslation, type Translate } from '@/localization';
 import type { MoreStackScreenProps } from '@/navigation/types';
 
 import { getWeeklyReview } from './todayApi';
 import { generateTimetable } from '@/api/timetable';
 
-function hours(minutes: number): string {
-    return minutes >= 60 ? `${(minutes / 60).toFixed(minutes % 60 === 0 ? 0 : 1)}h` : `${minutes} min`;
+function hours(t: Translate, minutes: number): string {
+    return minutes >= 60 ? interpolate(t('weekly.hours'), { h: (minutes / 60).toFixed(minutes % 60 === 0 ? 0 : 1) }) : interpolate(t('today.minutes'), { m: minutes });
 }
 
 /** A calm weekly reflection that turns logged work into the next practical adjustment. */
 export function WeeklyReviewScreen({ navigation }: MoreStackScreenProps<'WeeklyReview'>): React.JSX.Element {
+    const t = useTranslation();
     const [review, setReview] = useState<Awaited<ReturnType<typeof getWeeklyReview>> | null>(null);
     const [loading, setLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
@@ -25,42 +27,42 @@ export function WeeklyReviewScreen({ navigation }: MoreStackScreenProps<'WeeklyR
 
     const load = useCallback(async (): Promise<void> => {
         try { setError(null); setReview(await getWeeklyReview()); }
-        catch (caught) { setError(caught instanceof ApiError ? caught.message : 'Your weekly review could not load.'); }
+        catch (caught) { setError(caught instanceof ApiError ? caught.message : t('weekly.loadError')); }
         finally { setLoading(false); }
-    }, []);
+    }, [t]);
     useEffect(() => { void load(); }, [load]);
 
-    if (loading && !review) return <Screen title="Weekly review"><View style={styles.center}><ActivityIndicator color="#2563eb" size="large" /></View></Screen>;
-    if (!review) return <Screen title="Weekly review"><View style={styles.center}><Text style={styles.error}>{error}</Text><Pressable style={styles.primary} onPress={() => void load()}><Text style={styles.primaryText}>Try again</Text></Pressable></View></Screen>;
+    if (loading && !review) return <Screen title={t('nav.weeklyReview')}><View style={styles.center}><ActivityIndicator color="#2563eb" size="large" /></View></Screen>;
+    if (!review) return <Screen title={t('nav.weeklyReview')}><View style={styles.center}><Text style={styles.error}>{error}</Text><Pressable style={styles.primary} onPress={() => void load()}><Text style={styles.primaryText}>{t('common.retry')}</Text></Pressable></View></Screen>;
 
     const planMessage = review.plan.total === 0
-        ? 'Build a realistic week so the app can adapt it with you.'
+        ? t('weekly.planEmpty')
         : review.plan.completionPercent >= 80
-            ? 'Your plan matched your real week well. Keep the same workload, then make one focused improvement.'
+            ? t('weekly.planGood')
             : review.plan.completionPercent >= 50
-                ? 'The workload was a little ambitious. Protect your highest-value sessions and use buffers for the rest.'
-                : 'This week needs a lighter reset. Move non-essential tasks to Inbox, then plan fewer, clearer sessions.';
+                ? t('weekly.planAmbitious')
+                : t('weekly.planReset');
     const practiceMessage = review.practice.questions === 0
-        ? 'Add one short PYQ or timed-practice session next week to keep feedback connected to your plan.'
+        ? t('weekly.practiceNone')
         : review.practice.accuracyPercent === null
-            ? `${review.practice.questions} practice questions logged. Review mistakes before adding more volume.`
-            : `${review.practice.questions} questions practised at ${Math.round(review.practice.accuracyPercent)}% accuracy.`;
+            ? interpolate(t('weekly.practiceLogged'), { count: review.practice.questions })
+            : interpolate(t('weekly.practiceAccuracy'), { count: review.practice.questions, accuracy: Math.round(review.practice.accuracyPercent) });
     const buildNextWeek = async (): Promise<void> => {
         const now = new Date(); const day = (now.getUTCDay() + 6) % 7;
         const nextMonday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - day + 7));
         setBuilding(true);
         try { await generateTimetable(nextMonday.toISOString()); navigation.getParent()?.navigate('Plan'); }
-        catch (caught) { setError(caught instanceof ApiError ? caught.message : 'Next week could not be built.'); }
+        catch (caught) { setError(caught instanceof ApiError ? caught.message : t('weekly.buildError')); }
         finally { setBuilding(false); }
     };
     const shareProgress = async (): Promise<void> => {
         const fallback = async (): Promise<void> => {
-            await Share.share({ title: 'My Padhai Karo week', message: `My study week\n${hours(review.focusedMinutes)} focused · ${review.plan.completionPercent}% plan completed · ${review.practice.questions} practice questions · ${review.consistencyDays}/7 consistent days${review.practice.accuracyPercent === null ? '' : ` · ${Math.round(review.practice.accuracyPercent)}% accuracy`}.` });
+            await Share.share({ title: t('weekly.shareTitle'), message: `${t('weekly.shareHeading')}\n${interpolate(t('weekly.shareText'), { focused: hours(t, review.focusedMinutes), plan: review.plan.completionPercent, questions: review.practice.questions, days: review.consistencyDays })}${review.practice.accuracyPercent === null ? '' : ` · ${interpolate(t('weekly.accuracy'), { accuracy: Math.round(review.practice.accuracyPercent) })}`}.` });
         };
         try {
             const uri = await shareCardRef.current?.capture?.();
             if (uri && await Sharing.isAvailableAsync()) {
-                await Sharing.shareAsync(uri, { mimeType: 'image/png', dialogTitle: 'Share your study week' });
+                await Sharing.shareAsync(uri, { mimeType: 'image/png', dialogTitle: t('weekly.shareDialog') });
                 return;
             }
         } catch {
@@ -69,18 +71,18 @@ export function WeeklyReviewScreen({ navigation }: MoreStackScreenProps<'WeeklyR
         await fallback();
     };
 
-    return <Screen title="Weekly review"><ScrollView contentContainerStyle={styles.scroll} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); void load().finally(() => setRefreshing(false)); }} />}>
-        <View style={styles.hero}><Text style={styles.eyebrow}>PLAN → FOCUS → PRACTICE → REVIEW</Text><Text style={styles.title}>Your week, honestly reviewed.</Text><Text style={styles.heroText}>Use this to make next week more achievable—not to judge yourself.</Text></View>
+    return <Screen title={t('nav.weeklyReview')}><ScrollView contentContainerStyle={styles.scroll} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); void load().finally(() => setRefreshing(false)); }} />}>
+        <View style={styles.hero}><Text style={styles.eyebrow}>{t('weekly.eyebrow')}</Text><Text style={styles.title}>{t('weekly.heroTitle')}</Text><Text style={styles.heroText}>{t('weekly.heroText')}</Text></View>
         <ViewShot ref={shareCardRef} options={{ format: 'png', quality: 0.95, result: 'tmpfile' }} style={styles.shareCard}>
-            <Text style={styles.shareEyebrow}>PADHAI KARO · WEEKLY PROGRESS</Text>
-            <Text style={styles.shareTitle}>One honest week at a time.</Text>
-            <View style={styles.shareMetricRow}><ShareMetric value={hours(review.focusedMinutes)} label="Focused" /><ShareMetric value={`${review.plan.completionPercent}%`} label="Plan done" /><ShareMetric value={`${review.consistencyDays}/7`} label="Days" /></View>
-            <Text style={styles.shareFooter}>{review.practice.questions} questions practised{review.practice.accuracyPercent === null ? '' : ` · ${Math.round(review.practice.accuracyPercent)}% accuracy`}</Text>
+            <Text style={styles.shareEyebrow}>{t('weekly.shareEyebrow')}</Text>
+            <Text style={styles.shareTitle}>{t('weekly.shareCardTitle')}</Text>
+            <View style={styles.shareMetricRow}><ShareMetric value={hours(t, review.focusedMinutes)} label={t('weekly.focused')} /><ShareMetric value={`${review.plan.completionPercent}%`} label={t('weekly.planDone')} /><ShareMetric value={`${review.consistencyDays}/7`} label={t('weekly.days')} /></View>
+            <Text style={styles.shareFooter}>{interpolate(t('weekly.questionsPractised'), { count: review.practice.questions })}{review.practice.accuracyPercent === null ? '' : ` · ${interpolate(t('weekly.accuracy'), { accuracy: Math.round(review.practice.accuracyPercent) })}`}</Text>
         </ViewShot>
-        <View style={styles.metricRow}><Metric label="Focused" value={hours(review.focusedMinutes)} /><Metric label="Consistent days" value={`${review.consistencyDays}/7`} /><Metric label="Plan done" value={`${review.plan.completionPercent}%`} /></View>
-        <View style={styles.card}><Text style={styles.heading}>What happened</Text><Text style={styles.body}>{review.plan.completed} of {review.plan.total} planned tasks were completed{review.plan.missed ? `; ${review.plan.missed} were missed.` : '.'}</Text><Text style={styles.body}>{review.revisionCompleted} revision cards completed.</Text><Text style={styles.body}>{practiceMessage}</Text></View>
-        <View style={styles.nextCard}><Text style={styles.heading}>One adjustment for next week</Text><Text style={styles.body}>{planMessage}</Text>{review.biggestWeakness ? <Text style={styles.weakness}>Prioritise: {review.biggestWeakness}</Text> : <Text style={styles.muted}>Keep logging practice to reveal the area that needs the most attention.</Text>}</View>
-        {error ? <Text style={styles.error}>{error}</Text> : null}<Pressable style={styles.primary} disabled={building} onPress={() => void buildNextWeek()}><Text style={styles.primaryText}>{building ? 'Building next week…' : 'Build my next week'}</Text></Pressable><Pressable style={styles.share} onPress={() => void shareProgress()}><Text style={styles.shareText}>Share weekly progress</Text></Pressable>
+        <View style={styles.metricRow}><Metric label={t('weekly.focused')} value={hours(t, review.focusedMinutes)} /><Metric label={t('weekly.consistentDays')} value={`${review.consistencyDays}/7`} /><Metric label={t('weekly.planDone')} value={`${review.plan.completionPercent}%`} /></View>
+        <View style={styles.card}><Text style={styles.heading}>{t('weekly.whatHappened')}</Text><Text style={styles.body}>{interpolate(t('weekly.tasksCompleted'), { completed: review.plan.completed, total: review.plan.total })}{review.plan.missed ? ` ${interpolate(t('weekly.tasksMissed'), { count: review.plan.missed })}` : ''}</Text><Text style={styles.body}>{interpolate(t('weekly.revisionCompleted'), { count: review.revisionCompleted })}</Text><Text style={styles.body}>{practiceMessage}</Text></View>
+        <View style={styles.nextCard}><Text style={styles.heading}>{t('weekly.adjustment')}</Text><Text style={styles.body}>{planMessage}</Text>{review.biggestWeakness ? <Text style={styles.weakness}>{t('weekly.prioritise')}: {review.biggestWeakness}</Text> : <Text style={styles.muted}>{t('weekly.keepLogging')}</Text>}</View>
+        {error ? <Text style={styles.error}>{error}</Text> : null}<Pressable style={styles.primary} disabled={building} onPress={() => void buildNextWeek()}><Text style={styles.primaryText}>{building ? t('weekly.building') : t('weekly.buildNext')}</Text></Pressable><Pressable style={styles.share} onPress={() => void shareProgress()}><Text style={styles.shareText}>{t('weekly.shareProgress')}</Text></Pressable>
     </ScrollView></Screen>;
 }
 

@@ -1,0 +1,3053 @@
+{
+  "draftVersion": 1,
+  "sourceId": "upsc-cse-prelims-2018-gs1",
+  "program": "UPSC_CSE",
+  "stage": "PRELIMS",
+  "year": 2018,
+  "paperKey": "UPSC-CSE-PRELIMS-GS1-2018",
+  "subjectId": "UPSC-CSE-GS1",
+  "series": "A",
+  "durationMin": 120,
+  "expectedQuestions": 100,
+  "sourceName": "UPSC official previous question papers",
+  "sourceUrl": "https://www.upsc.gov.in/sites/default/files/QP-CSP-18-GS-I-C.pdf",
+  "answerKeyUrl": "https://www.upsc.gov.in/sites/default/files/AnsKey-CSP-18-Paper-I.pdf",
+  "questionPaperSha256": "12e00bec99fb1af6ae821be931413d296931f615d391aa62fbfbc7cf0abfdb30",
+  "answerKeySha256": "1d92f9b37dc3d17e605bd281e40bc1ee122b012f7177c6dc6be173dbf4f81738",
+  "extractedAt": "2026-09-26T05:56:52.950Z",
+  "pageImages": [
+    "pages/page-01.jpg",
+    "pages/page-02.jpg",
+    "pages/page-03.jpg",
+    "pages/page-04.jpg",
+    "pages/page-05.jpg",
+    "pages/page-06.jpg",
+    "pages/page-07.jpg",
+    "pages/page-08.jpg",
+    "pages/page-09.jpg",
+    "pages/page-10.jpg",
+    "pages/page-11.jpg",
+    "pages/page-12.jpg",
+    "pages/page-13.jpg",
+    "pages/page-14.jpg",
+    "pages/page-15.jpg",
+    "pages/page-16.jpg",
+    "pages/page-17.jpg",
+    "pages/page-18.jpg",
+    "pages/page-19.jpg",
+    "pages/page-20.jpg",
+    "pages/page-21.jpg",
+    "pages/page-22.jpg",
+    "pages/page-23.jpg",
+    "pages/page-24.jpg",
+    "pages/page-25.jpg",
+    "pages/page-26.jpg",
+    "pages/page-27.jpg",
+    "pages/page-28.jpg",
+    "pages/page-29.jpg",
+    "pages/page-30.jpg",
+    "pages/page-31.jpg",
+    "pages/page-32.jpg",
+    "pages/page-33.jpg",
+    "pages/page-34.jpg",
+    "pages/page-35.jpg",
+    "pages/page-36.jpg",
+    "pages/page-37.jpg",
+    "pages/page-38.jpg",
+    "pages/page-39.jpg",
+    "pages/page-40.jpg",
+    "pages/page-41.jpg",
+    "pages/page-42.jpg",
+    "pages/page-43.jpg",
+    "pages/page-44.jpg",
+    "pages/page-45.jpg",
+    "pages/page-46.jpg",
+    "pages/page-47.jpg",
+    "pages/page-48.jpg"
+  ],
+  "keyImage": "key/key-1.jpg",
+  "questions": [
+    {
+      "questionRef": "1",
+      "questionText": "Consider the following statements:\n1. In the first Lok Sabha, the single largest party in the opposition was the Swatantra Party.\n2. In the Lok Sabha, a \"Leader of the Opposition\" was recognised for the first time in 1969.\n3. In the Lok Sabha, if a party does not have a minimum of 75 members, Its leader cannot be recognised as the Leader of the Opposition.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 3 only",
+        "2 only",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 40,
+          "y": 127,
+          "w": 772,
+          "h": 1139
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 531,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "2",
+      "questionText": "Which of the following leaf modifications occur(s) in the desert areas to inhibit water\nI. Hard and waxy leaves\n2. Tiny leaves\n3. Thorns instead of leaves\nSelect the correct answer using the code given below:",
+      "options": [
+        "2 and 3 only",
+        "2 only",
+        "3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 40,
+          "y": 1266,
+          "w": 772,
+          "h": 756
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 572,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "3",
+      "questionText": "As per the NSSO 70th Round \"Situation Assessment Survey of Agricultural Households\", consider the following statements:\nI. Rajasthan has the highest percentage share of agricultural households among its rural households.\n2. Out of the total agricultural households in the country, a little over 60 percent belong to OBCs.\n3. In Kerala, a little over 60 percent of agricultural households reported to have received maximum income from sources other than agricultural activities.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "2 and 3 only",
+        "2 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 2,
+          "x": 822,
+          "y": 114,
+          "w": 811,
+          "h": 967
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 613,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "4",
+      "questionText": "How is the National Green Tribunal (NGT) different from the Central Pollution Control Board (CPCB)?\n1. The NGT has been established by an Act whereas the CPCB has been created by an executive order of the Government.\n2. The NGT provides environmental justice and helps reduce the burden of litigation in the higher courts whereas the CPCB promotes cleanliness of streams and wells, and aims to improve the quality of air in the country.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "I only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 2,
+          "x": 822,
+          "y": 1081,
+          "w": 811,
+          "h": 962
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 655,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "5",
+      "questionText": "Consider the following statements:\nI. The Parliament of India can place a particular law in the Ninth Schedule of the Constitution of India.\n2. The validity of a law placed in the Ninth Schedule cannot be examined by any court and no judgement can be made on it.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 4,
+          "x": 33,
+          "y": 121,
+          "w": 779,
+          "h": 919
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 696,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "6",
+      "questionText": "Which one of the following best describes the term \"Merchant Discount Rate\" sometimes seen in news?",
+      "options": [
+        "The incentive given by a bank to a merchant for accepting payments through debit cards pertaining to that bank.",
+        "The amount paid back by banks to their customers when they use debit cards for financial transactions for purchasing goods or services.",
+        "The charge to a merchant by a bank for accepting payments from his customers through the bank's debit cards.",
+        "The incentive given by the Government to merchants for promoting digital payments by their customers through Point of Sale (POS) machines and debit cards."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 4,
+          "x": 33,
+          "y": 1040,
+          "w": 779,
+          "h": 986
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 737,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "7",
+      "questionText": "What is/are the consequence/consequences of a country becoming the member of the 'Nuclear Suppliers Group'?\n1. It will have access to the latest and most efficient nuclear technologies.\n2. It automatically becomes a member of \"The Treaty on the Non-Proliferation of Nuclear Weapons (NPT)\".\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 4,
+          "x": 822,
+          "y": 113,
+          "w": 811,
+          "h": 938
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 778,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "8",
+      "questionText": "With reference to India's decision to levy an equalization tax of 6% on online advertisement services offered by non-resident entities, which of the following statements is/are correct?\n1. It is introduced as a part of the Income Tax Act.\n2. Non-resident entities that offer advertisement services in India can claim a tax credit in their home country under the \"Double Taxation Avoidance Agreements\".\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 4,
+          "x": 822,
+          "y": 1051,
+          "w": 811,
+          "h": 986
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 820,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "9",
+      "questionText": "Consider the following statements:\n1. The Fiscal Responsibility and Budget Management (FRBM) Review Committee Report has recommended a debt to GDP ratio of 60% for the general (combined) government by 2023, comprising 40% for the Central Government and 20% for the State Governments.\n2. The Central Government has domestic liabilities of 21% of GDP as compared to that of 49% of GDP of the State Governments.\n3. As per the Constitution of India, it is mandatory for a State to take the Central Government's consent for raising any loan if the former owes any outstanding liabilities to the latter.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 6,
+          "x": 46,
+          "y": 123,
+          "w": 766,
+          "h": 1263
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 862,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "10",
+      "questionText": "Consider the following statements:\n1. The quantity of imported edible oils is more than the domestic production of edible oils in the last five years.\n2. The Government does not impose any customs duty on all the imported edible oils as a special case.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 46,
+          "y": 1386,
+          "w": 766,
+          "h": 636
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 903,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "11",
+      "questionText": "He wrote biographies of Mazzini, Garibaldi, Shivaji and Shrikrishna; stayed in America for some time; and was also elected to the Central Assembly. He was",
+      "options": [
+        "Aurobindo Ghosh",
+        "Bipin Chandra Pal",
+        "Lala Lajpat Rai",
+        "Motilal Nehru"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 6,
+          "x": 822,
+          "y": 139,
+          "w": 811,
+          "h": 849
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 944,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "12",
+      "questionText": "Consider the following statements:\nI. Aadhaar card can be used as a proof of citizenship or domicile.\n2. Once issued, Aadhaar number cannot be deactivated or omitted by the Issuing Authority. of the statements given above is/are correct?",
+      "options": [
+        "I only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 6,
+          "x": 822,
+          "y": 988,
+          "w": 811,
+          "h": 1029
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 985,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "13",
+      "questionText": "Which of the following has/have shrunk immensely/dried up in the recent past due to human activities?\n1. Aral Sea\n2. Black Sea\n3. Lake Baikal\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 only",
+        "2 and 3",
+        "2 only",
+        "1 and 3"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 31,
+          "y": 117,
+          "w": 781,
+          "h": 908
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 1026,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "14",
+      "questionText": "\"Rule of Law Index\" is released by which of the following?",
+      "options": [
+        "Amnesty International",
+        "International Court of Justice",
+        "The Office of UN Commissioner for Human Rights",
+        "World Justice Project"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 31,
+          "y": 1025,
+          "w": 781,
+          "h": 594
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 1068,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "15",
+      "questionText": "Which one of the following links all the ATMs in India?",
+      "options": [
+        "Indian Banks' Association",
+        "National Securities Depository Limited",
+        "National Payments Corporation of India",
+        "Reserve Bank of India"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 31,
+          "y": 1619,
+          "w": 781,
+          "h": 394
+        }
+      ],
+      "keyCell": {
+        "x": 430,
+        "y": 1108,
+        "w": 104,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "16",
+      "questionText": "Consider the following statements:\n1. Capital Adequacy Ratio (CAR) is the amount that banks have to maintain in the form of their own funds to offset any loss that banks incur if the account-holders fail to repay dues.\n2. CAR is decided by each individual bank.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 8,
+          "x": 822,
+          "y": 112,
+          "w": 811,
+          "h": 1004
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 532,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "17",
+      "questionText": "The identity platform 'Aadhaar' provides open \"Application Programming Interfaces (APIs)\". What does it imply?\n1. It can be integrated into any electronic device.\n2. Online authentication using iris is possible.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 8,
+          "x": 822,
+          "y": 1116,
+          "w": 811,
+          "h": 886
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 573,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "18",
+      "questionText": "Very recently, in which of the following countries have lakhs of people either suffered from severe famine/acute malnutrition or died due to starvation caused by war/ethnic conflicts?",
+      "options": [
+        "Angola and Zambia",
+        "Morocco and Tunisia",
+        "Venezuela and Colombia",
+        "Yemen and South Sudan"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 34,
+          "y": 137,
+          "w": 778,
+          "h": 537
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 614,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "19",
+      "questionText": "Regarding Wood's Dispatch, which of the following statements are true?\n1. Grants-in-Aid system was introduced.\n2. Establishment of universities was recommended.\n3. English as a medium of instruction at all levels of education was recommended.\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "I, 2 and 3"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 34,
+          "y": 674,
+          "w": 778,
+          "h": 739
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 655,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "20",
+      "questionText": "With reference to the Parliament of India, which of the following Parliamentary Committees scrutinizes and reports to the House whether the powers to make regulations, rules, sub-rules, by-laws, etc. conferred by the Constitution or delegated by the Parliament are being properly exercised by the Executive within the scope of such delegation?",
+      "options": [
+        "Committee on Government Assurances",
+        "Committee on Subordinate Legislation",
+        "Rules Committee",
+        "Business Advisory Committee (11"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 34,
+          "y": 1413,
+          "w": 778,
+          "h": 731
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 697,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "21",
+      "questionText": "Consider the following statements:\n1. As per the Right to Education (RTE) Act, to be eligible for appointment as a teacher in a State, a person would be required to possess the minimum qualification laid down by the concerned State Council of Teacher Education.\n2. As per the RTE Act, for teaching primary classes, a candidate is required to pass a Teacher Eligibility Test conducted in accordance with the National Council of Teacher Education guidelines.\n3. In India, more than 90% of teacher education institutions are directly under the State Governments.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 2",
+        "2 only",
+        "I and 3 3 only",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 10,
+          "x": 822,
+          "y": 134,
+          "w": 811,
+          "h": 1331
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 738,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "22",
+      "questionText": "Consider the following pairs: Tradition State\n1. Chapchar Kut festival — Mizoram\n2. Khongjom Parba ballad — Manipur\n3. Thang-Ta dance — Sikkim\nWhich of the pairs given above is/are correct?",
+      "options": [
+        "1 only",
+        "1 and 2",
+        "3 only",
+        "2 and 3"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 10,
+          "x": 822,
+          "y": 1465,
+          "w": 811,
+          "h": 594
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 779,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "23",
+      "questionText": "Consider the following statements:\n1. The Food Safety and Standards Act, 2006 replaced the Prevention of Food Adulteration Act, 1954.\n2. The Food Safety and Standards Authority of India (FSSAI) is under the charge of Director General of Health Services in the Union Ministry of Health and Family Welfare.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 39,
+          "y": 136,
+          "w": 773,
+          "h": 1361
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 821,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "24",
+      "questionText": "The term \"two-state solution\" is sometimes mentioned in the news in the context of the affairs of",
+      "options": [
+        "China Israel",
+        "",
+        "Iraq",
+        "Yemen (13-A)"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 39,
+          "y": 1497,
+          "w": 773,
+          "h": 638
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 863,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "25",
+      "questionText": "With reference to the provisions made under the National Food Security Act, 2013, consider the following statements:\nI. The families coming under the category of 'below poverty line (BPL)' only are eligible to receive subsidised food grains.\n2. The eldest woman in a household, of age 18 years or above, shall be the head of the household for the purpose of issuance of a ration card.\n3. Pregnant.women and lactating mothers are entitled to a 'take-home ration' of 1600 calories per day during pregnancy and for six months thereafter.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "I and 2",
+        "2 only",
+        "1 and 3",
+        "3 only"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 12,
+          "x": 822,
+          "y": 122,
+          "w": 811,
+          "h": 943
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 904,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "26",
+      "questionText": "India enacted The Geographical Indications of Goods (Registration and Protection) Act, 1999 in order to comply with the obligations to",
+      "options": [
+        "ILO",
+        "IMF",
+        "UNCTAD",
+        "wro"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 822,
+          "y": 1065,
+          "w": 811,
+          "h": 374
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 945,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "27",
+      "questionText": "Consider the following statements:\n1. In India, State Governments do not have the power to auction non-coal mines.\n2. Andhra Pradesh and Jharkhand do not have gold mines.\n3. Rajasthan has iron ore mines.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 2",
+        "2 only",
+        "1 and 3",
+        "3 only"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 12,
+          "x": 822,
+          "y": 1439,
+          "w": 811,
+          "h": 602
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 986,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "28",
+      "questionText": "With reference to digital payments, consider 31. the following statements:\nI. BHIM app allows the user to transfer money to anyone with a UPI-enabled bank account.\n2. While a chip-pin debit card has four factors of authentication, BHIM app has only two factors of authentication.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 14,
+          "x": 33,
+          "y": 163,
+          "w": 779,
+          "h": 976
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 1027,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "29",
+      "questionText": "Among the following cities, which one lies on a longitude closest to that of Delhi?",
+      "options": [
+        "Bengaluru",
+        "Hyderabad",
+        "Nagpur",
+        "Pune"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 33,
+          "y": 1139,
+          "w": 779,
+          "h": 451
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 1069,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "30",
+      "questionText": "International Labour Organization's Conventions 138 and 182 are related to",
+      "options": [
+        "Child labour",
+        "Adaptation of agricultural practices to global climate change",
+        "Regulation of food prices and food security",
+        "Gender parity at the workplace (15-A)"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 33,
+          "y": 1590,
+          "w": 779,
+          "h": 572
+        }
+      ],
+      "keyCell": {
+        "x": 634,
+        "y": 1109,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "31",
+      "questionText": "Regarding Money Bill, which of the following statements is not correct?",
+      "options": [
+        "A bill shall be deemed to be a Money Bill if it contains only provisions relating to imposition, abolition, remission, alteration or regulation of any tax.",
+        "A Money Bill has provisions for the custody of the Consolidated Fund of India or the Contingency Fund of India.",
+        "A Money Bill is concerned with the appropriation of moneys out of the Contingency Fund of India.",
+        "A Money Bill deals with the regulation of borrowing of money or giving of any guarantee by the Government of India."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 14,
+          "x": 822,
+          "y": 162,
+          "w": 811,
+          "h": 1062
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 533,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "32",
+      "questionText": "With reference to the election of the President of India, consider the following statements:\n1. The value of the vote of each MLA varies from State to State.\n2. The value of the vote of MPs of the Lok Sabha is more than the value of the vote of MPs of the Rajya Sabha.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 14,
+          "x": 822,
+          "y": 1224,
+          "w": 811,
+          "h": 849
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 574,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "33",
+      "questionText": "In the Indian context, what is the implication of ratifying the 'Additional Protocol' with the 'International Atomic Energy Agency",
+      "options": [
+        "The civilian nuclear reactors come under IAEA safeguards.",
+        "The military nuclear installations come under the inspection of IAEA.",
+        "The Country will have the privilege to buy uranium from the Nuclear Suppliers Group (NSG).",
+        "The country automatically becomes a member of the NSG."
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 16,
+          "x": 36,
+          "y": 167,
+          "w": 776,
+          "h": 922
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 615,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "34",
+      "questionText": "Consider the following countries:\n1. Australia\n2. Canada\n3. China\n4. India\n5. Japan\n6. USA\nWhich of the above are among the 'free-trade partners' of ASEAN?",
+      "options": [
+        "1, 2, 4 and 5",
+        "3, 4, 5 and 6",
+        "1, 3, 4 and 5",
+        "2, 3, 4 and 6 (17 -A)"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 16,
+          "x": 36,
+          "y": 1089,
+          "w": 776,
+          "h": 1069
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 657,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "35",
+      "questionText": "With reference to the 'Global Alliance for Climate-Smart Agriculture (GACSA)', which of the following statements is/are correct?\nI. GACSA is an outcome of the Climate Summit held in Paris in 2015.\n2. Membership of GACSA does not create any binding obligations.\n3. India was instrumental in the creation of GACSA.\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 and 3 only",
+        "2 only",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 16,
+          "x": 822,
+          "y": 154,
+          "w": 811,
+          "h": 972
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 698,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "36",
+      "questionText": "Which of the following is/are the aim/aims of \"Digital India\" Plan of the Government of India?\nI. Formation of India's own Internet companies like China did.\n2. Establish a policy framework to encourage overseas multinational corporations that collect Big Data to build their large data centres within our national geographical boundaries.\n3. Connect many of our villages to the Internet and bring Wi-Fi to many of our schools, public places and major tourist centres.\nSelect the correct answer using the code given below:",
+      "options": [
+        "I and 2 only",
+        "3 only",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 16,
+          "x": 822,
+          "y": 1126,
+          "w": 811,
+          "h": 957
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 739,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "37",
+      "questionText": "Consider the following pairs: Towns sometimes Country mentioned in news\n1. Aleppo Syria\n2. Kirkuk Yemen\n3. Mosul Palestine\n4. Mazar-i-sharif Afghanistan\nWhich of the pairs given above are correctly matched?",
+      "options": [
+        "1 and 2",
+        "1 and 4",
+        "2 and 3",
+        "3 and 4"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 28,
+          "y": 144,
+          "w": 784,
+          "h": 751
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 780,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "38",
+      "questionText": "In the Federation established by The Government of India Act of 1935, residuary powers were given to the",
+      "options": [
+        "Federal Legislature",
+        "Governor General",
+        "Provincial Legislature",
+        "Provincial Governors"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 28,
+          "y": 895,
+          "w": 784,
+          "h": 420
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 822,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "39",
+      "questionText": "Consider the following statements:\nI. The Speaker of the Legislative Assembly shall vacate his/her office if he/she ceases to be a member of the Assembly.\n2. Whenever the Legislative Assembly is dissolved, the Speaker shall vacate his/her offce immediately.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2 CYRF_F-TXLI (19-A)"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 18,
+          "x": 28,
+          "y": 1315,
+          "w": 784,
+          "h": 834
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 864,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "40",
+      "questionText": "Which one of the following reflects the most appropriate relationship between law and liberty?",
+      "options": [
+        "If there are more laws, there is less liberty.",
+        "If there are no laws, there is no liberty.",
+        "If there is liberty, laws have to be made by the people.",
+        "If laws are changed too often, liberty is in danger."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 822,
+          "y": 137,
+          "w": 811,
+          "h": 518
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 905,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "41",
+      "questionText": "Consider the following statements:\n1. No criminal proceedings shall be instituted against the Governor of a State in any court during his term of office.\n2. The emoluments and allowances of the Governor of a State shall not be diminished during his term of office.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 822,
+          "y": 655,
+          "w": 811,
+          "h": 657
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 946,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "42",
+      "questionText": "The well-known painting \"Bani Thani\" belongs to the",
+      "options": [
+        "Bundi school",
+        "Jaipur school",
+        "Kangra school",
+        "Kishangarh school"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "D",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 822,
+          "y": 1312,
+          "w": 811,
+          "h": 332
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 987,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "43",
+      "questionText": "What is \"Terminal High Altitude Area Defense (THAAD)\", sometimes seen in the news?",
+      "options": [
+        "An Israeli radar system",
+        "India's indigenous anti-missile programme",
+        "An American anti-missile system",
+        "A defence collaboration between Japan and South Korea"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 18,
+          "x": 822,
+          "y": 1644,
+          "w": 811,
+          "h": 406
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 1029,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "44",
+      "questionText": "With reference to cultural history of India, consider the following statements:\n1. Most of the. Tyagaraja Kritis are devotional songs in praise of Lord Krishna.\n2. Tyagaraja created several new ragas.\n3. Annamacharya and Tyagaraja are contemporaries.\n4. Annamacharya kirtanas are devotional songs in praise of Lord Venkateshwara.\nWhich of the statements given above are correct?",
+      "options": [
+        "1 and 3 only",
+        "2 and 4 only",
+        "1, 2 and 3",
+        "2, 3 and 4"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 36,
+          "y": 144,
+          "w": 776,
+          "h": 1084
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 1071,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "45",
+      "questionText": "Which of the following are regarded as the main features of the \"Rule of Law\"?\n1. Limitation of powers\n2. Equality before law\n3. People's responsibility to the Government\n4. Liberty and civil rights\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 and 3 only",
+        "2 and 4 only",
+        "1, 2 and 4 only",
+        "1, 2, 3 and 4 (21-"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 36,
+          "y": 1228,
+          "w": 776,
+          "h": 925
+        }
+      ],
+      "keyCell": {
+        "x": 805,
+        "y": 1111,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "46",
+      "questionText": "Which one of the following statements correctly describes the meaning of legal tender money?",
+      "options": [
+        "The money which is tendered in courts of law to defray the fee of legal cases",
+        "The money which a creditor is under compulsion to accept in settlement of his claims",
+        "The bank money in the form of cheques, drafts, bills of exchange, etc.",
+        "The metallic money in circulation in a country"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 822,
+          "y": 149,
+          "w": 811,
+          "h": 744
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 534,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "47",
+      "questionText": "If a commodity is provided free to the public by the Government, then",
+      "options": [
+        "the opportunity cost is zero.",
+        "the opportunity cost is ignored.",
+        "the opportunity cost is transferred from the consumers of the product to the tax-paying public.",
+        "the opportunity cost is transferred from the consumers of the product to the Government."
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "C",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 822,
+          "y": 893,
+          "w": 811,
+          "h": 648
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 575,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "48",
+      "questionText": "Increase in absolute and per capita real GNP do not connote h higher level of economic development, if",
+      "options": [
+        "industrial output fails to keep pace with agricultural output.",
+        "agricultural output fails to keep pace with industrial output.",
+        "poverty and unemployment increase.",
+        "imports grow faster than exports."
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 20,
+          "x": 822,
+          "y": 1541,
+          "w": 811,
+          "h": 505
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 616,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "49",
+      "questionText": "Consider the following statements: Human capital formation as a concept is better explained in terms of a process which enables\n1. individuals of a country to accumulate more capital.\n2. increasing the knowledge, skill levels and capacities of the people of the country.\n3. accumulation of tangible wealth.\n4. accumulation of intangible wealth.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 2",
+        "2 only",
+        "2 and 4",
+        "1, 3 and 4"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 22,
+          "x": 37,
+          "y": 131,
+          "w": 775,
+          "h": 878
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 658,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "50",
+      "questionText": "Despite being a high saving economy, capital formation may not result in significant increase in output due to",
+      "options": [
+        "weak administrative machinery",
+        "illiteracy",
+        "high population density",
+        "high capital-output ratio"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 22,
+          "x": 37,
+          "y": 1009,
+          "w": 775,
+          "h": 405
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 699,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "51",
+      "questionText": "After the Santhal Uprising subsided, what was/were the measure/measures taken by the colonial government?\n1. The territories called 'Santhal Paraganas' were created.\n2. It became illegal for a Santhal to transfer land to a non-Santhal.\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2 (23-A)"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 22,
+          "x": 37,
+          "y": 1414,
+          "w": 775,
+          "h": 708
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 740,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "52",
+      "questionText": "Economically, one of the results of the British rule in India in the 19 century was the",
+      "options": [
+        "increase in the export of Indian handicrafts",
+        "growth in the number of Indian owned factories",
+        "commercialization of Indian agriculture",
+        "rapid increase in the urban population"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 22,
+          "x": 822,
+          "y": 120,
+          "w": 811,
+          "h": 553
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 781,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "53",
+      "questionText": "If the President of India exercises his power as provided under Article 356 of the Constitution in respect of a particular State, then",
+      "options": [
+        "the Assembly of the State is automatically dissolved.",
+        "the powers of the Legislature of that State shall be exercisable by or under the authority of the Parliament.",
+        "Article 19 is suspended in that State.",
+        "the President can make laws relating to that State."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 22,
+          "x": 822,
+          "y": 673,
+          "w": 811,
+          "h": 734
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 823,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "54",
+      "questionText": "Consider the following pairs: Craft Heritage of\n1. Puthukkuli shawls — Tamil Nadu\n2. Sujni embroidery — Maharashtra\n3. Uppada Jamdani saris — Karnataka\nWhich of the pairs given above is/are correct?",
+      "options": [
+        "1 only",
+        "1 and 2 (e) 3 only",
+        "",
+        "2 and 3"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 22,
+          "x": 822,
+          "y": 1407,
+          "w": 811,
+          "h": 634
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 865,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "55",
+      "questionText": "In which of the following areas can GPS technology be used?\n1. Mobile phone operations\n2. Banking operations\n3. Controlling the power grids\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 20,
+          "y": 134,
+          "w": 792,
+          "h": 532
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 906,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "56",
+      "questionText": "Consider the following statements:\n1. The Reserve Bank of India manages and services Government of India Securities but not any State Government Securities.\n2. Treasury • bills are issued by the Government of India and there are no treasury bills issued by the State Governments.\n3. Treasury bills offer are issued at a discount from the par value.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 24,
+          "x": 20,
+          "y": 666,
+          "w": 792,
+          "h": 747
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 947,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "57",
+      "questionText": "Consider the following statements:\n1. The Earth's magnetic field has reversed every few hundred thousand years.\n2. When the Earth was created more than 4000 million years ago, there was 54% oxygen and no carbon dioxide.\n3. When living organisms originated, they modified the early atmosphere of the Earth.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "1,' 2 and 3 (25"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_MATH"
+      ],
+      "regions": [
+        {
+          "page": 24,
+          "x": 20,
+          "y": 1413,
+          "w": 792,
+          "h": 721
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 988,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "58",
+      "questionText": "The terms 'WannaCry, Petya and EternalBlue' sometimes mentioned in the news recently are related to",
+      "options": [
+        "Exoplanets",
+        "Cryptocurrency",
+        "Cyber attacks",
+        "Mini satellites"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 24,
+          "x": 822,
+          "y": 142,
+          "w": 811,
+          "h": 635
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 1030,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "59",
+      "questionText": "With reference to the circumstances in Indian agriculture, the concept of \"Conservation Agriculture\" assumes significance. Which of the following fall under the Conservation Agriculture?\nI. Avoiding the monoculture practices\n2. Adopting minimum tillage\n3. Avoiding the cultivation of plantation crops\n4. Using crop residues to cover soil surface\n5. Adopting spatial and temporal crop sequencing/crop rotations\nSelect the correct answer using the code given below:",
+      "options": [
+        "I, 3 and 4",
+        "2, 3, 4 and 5",
+        "2, 4 and 5 1, 2, 3 and 5",
+        ""
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE",
+        "LIST_ITEM_MISSING"
+      ],
+      "regions": [
+        {
+          "page": 24,
+          "x": 822,
+          "y": 777,
+          "w": 811,
+          "h": 1247
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 1071,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "60",
+      "questionText": "The term \"sixth mass extinction/sixth extinction\" is often mentioned in the news in the context of the discussion of",
+      "options": [
+        "Widespread monoculture practices in agriculture and large-scale commercial farming with indiscriminate use of chemicals in many parts of the world that may result in the loss of good native ecosystems.",
+        "Fears. of a possible collision of a meteorite with the Earth in the near future in the manner it happened 65 million years ago that caused the mass extinction of many species including those of dinosaurs.",
+        "Large scale cultivation of genetically modified crops in many parts of the world and promoting their cultivation in other parts of the world which may cause the disappearance of good native crop plants and the loss of food biodiversity.",
+        "Mankind's over-exploitation/misuse of natural resources, fragmentation/loss of natural habitats, destruction of ecosystems, pollution and global climate change."
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 15,
+          "y": 183,
+          "w": 797,
+          "h": 1932
+        }
+      ],
+      "keyCell": {
+        "x": 977,
+        "y": 1111,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "61",
+      "questionText": "(27\n61. With reference to the Indian Regional Navigation Satellite System (IRNSS), consider the following statements:\n1. IRNSS has three satellites in geostationary and four satellites in geosynchronous orbits.\n2. IRNSS covers entire India and about 5500 sq. km beyond its borders.\n3. India will have its own satellite navigation system with full global coverage by the middle of 2019.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "1 and 2 only",
+        "2 and 3 only",
+        "None"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 26,
+          "x": 15,
+          "y": 2115,
+          "w": 797,
+          "h": 46
+        },
+        {
+          "page": 26,
+          "x": 822,
+          "y": 159,
+          "w": 811,
+          "h": 1087
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 535,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "62",
+      "questionText": "Consider the following phenomena:\n1. Light is affected by gravity.\n2. The Universe is constantly expanding.\n3. Matter warps its surrounding space-time.\nWhich of the above is/are the prediction/predictions of Albert Einstein's General Theory of Relativity, often discussed in media?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "I and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 26,
+          "x": 822,
+          "y": 1246,
+          "w": 811,
+          "h": 800
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 576,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "63",
+      "questionText": "With reference to the Genetically Modified mustard (GM mustard) developed in India, consider the following statements:\n1. GM mustard has the genes of a soil bacterium that give the plant the property of pest-resistance to a wide variety of pests.\n2. GM mustard has the genes that allow the plant cross-pollination and hybridization.\n3. GM mustard has been developed jointly by the IARI and Punjab Agricultural University.\nWhich of the statements given above is/are corréct?",
+      "options": [
+        "1 and 3 only 2 only",
+        "",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 28,
+          "x": 29,
+          "y": 167,
+          "w": 783,
+          "h": 1032
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 617,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "64",
+      "questionText": "Consider the following pairs: Terms sometimes Context / Topic seen in news\n1. Belle 11 Artificial experiment Intelligence\n2. Blockchain Digital/ technology Cryptocurrency\n3. CRISPR - Cas9 Particle Physics\nWhich of the pairs given above is/are correctly matched?",
+      "options": [
+        "1 and 3 only",
+        "2 only",
+        "2 and 3 only",
+        "1, 2 and 3 (29 -A)"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 28,
+          "x": 29,
+          "y": 1199,
+          "w": 783,
+          "h": 966
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 658,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "65",
+      "questionText": "Which of the following statements best describes \"carbon fertilization\"?",
+      "options": [
+        "Increased plant growth due to increased concentration of carbon dioxide in the atmosphere",
+        "Increased temperature of Earth due to increased concentration of carbon dioxide in the atmosphere",
+        "Increased acidity of oceans as a result of increased concentration of carbon dioxide in the atmosphere",
+        "Adaptation of all living beings on Earth to the climate change brought about by the increased concentration of carbon dioxide in the atmosphere"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 28,
+          "x": 822,
+          "y": 170,
+          "w": 811,
+          "h": 713
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 700,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "66",
+      "questionText": "When the alarm of your smartphone rings in the morning, you wake up and tap it to stop the alarm which causes your geyser to be switched on automatically. The smart mirror in your bathroom shows the day's weather and also indicates the level of water in your overhead tank. After you take some groceries from your refrigerator for making breakfast, it recognises the shortage of stock in it and places an order for the supply of fresh grocery items. When you step out of your house and lock the door, all lights, fans, geysers and AC machines get switched off automatically. On your way to office, your car warns you about traffic congestion ahead and suggests an alternative route, and if you are late for a meeting, it sends a message to your office accordingly. In the context of emerging communication technologies, which one of the following terms best applies to the above scenario?",
+      "options": [
+        "Border Gateway Protocol",
+        "Internet of Things",
+        "Internet Protocol",
+        "Virtual Private Network"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 28,
+          "x": 822,
+          "y": 883,
+          "w": 811,
+          "h": 1197
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 741,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "67",
+      "questionText": "With reference to solar power production in India, consider the following statements:\n1. India is the third largest in the world in the manufacture of silicon wafers used in photovoltaic units.\n2. The solar power tariffs are determined by the Solar Energy Corporation of India.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only 2 only",
+        "",
+        "Both 1 and 2",
+        "Neither I nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 5,
+          "y": 160,
+          "w": 807,
+          "h": 828
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 782,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "68",
+      "questionText": "The staple commodities of export by the English East India Company from Bengal in the middle of the 18th century were",
+      "options": [
+        "Raw cotton, oil-seeds and opium",
+        "Sugar, salt, zinc and lead",
+        "Copper, silver, gold, spices and tea",
+        "Cotton, silk, saltpetre and opium"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 5,
+          "y": 988,
+          "w": 807,
+          "h": 467
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 824,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "69",
+      "questionText": "Which one of the following is a very significant aspect of the Champaran Satyagraha?",
+      "options": [
+        "Active all-India participation of lawyers, students and women in the National Movement",
+        "Active involvement of Dalit and Tribal communities of India in the National Movement",
+        "Joining of peasant unrest to India's National Movement Drastic decrease in the cultivation of plantation crops and commercial crops (31 -A)",
+        ""
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 30,
+          "x": 5,
+          "y": 1455,
+          "w": 807,
+          "h": 709
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 866,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "70",
+      "questionText": "Who among the following were the founders of the \"Hind Mazdoor Sabha\" established in",
+      "options": [
+        "B. Krishna Pillai, E.M.S. Namboodiripad and K.C. George",
+        "Jayaprakash Narayan, Deen Dayal Upadhyay and M.N. Roy",
+        "C.P. Ramaswamy Iyer, K. Kamaraj and Veeresalingam Pantulu",
+        "Ashok Mehta, T.S. Ramanujam and G.G. Mehta"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 822,
+          "y": 169,
+          "w": 811,
+          "h": 683
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 907,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "71",
+      "questionText": "With reference to the religious practices in India, the \"Sthanakvasi\" sect belongs to",
+      "options": [
+        "Buddhism",
+        "Jainism",
+        "Vaishnavism",
+        "Shaivism"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 822,
+          "y": 852,
+          "w": 811,
+          "h": 460
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 947,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "72",
+      "questionText": "With reference to the cultural history of India, consider the following statements:\n1. White marble was used in making Buland Darwaza and Khankah at Fatehpur Sikri.\n2. Red sandstone and marble were used in making Bara Imambara and Rumi Darwaza at Lucknow.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 30,
+          "x": 822,
+          "y": 1312,
+          "w": 811,
+          "h": 761
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 989,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "73",
+      "questionText": "Which one of the following foreign travellers elaborately discussed about diamonds and diamond mines of India?",
+      "options": [
+        "Francois Bernier Jean-Baptiste Tavernier",
+        "",
+        "Jean de Thevenot",
+        "Abbe Barthelemy Carre"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 32,
+          "x": 12,
+          "y": 170,
+          "w": 800,
+          "h": 600
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 1030,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "74",
+      "questionText": "With reference to Indian history, who among the following is a future Buddha, yet to come to save the world?",
+      "options": [
+        "Avalokiteshvara",
+        "Lokesvara",
+        "Maitreya",
+        "Padmapani"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "C",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 12,
+          "y": 770,
+          "w": 800,
+          "h": 616
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 1072,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "75",
+      "questionText": "Which one of the following statements does not apply to the system of Subsidiary Alliance introduced by Lord Wellesley?",
+      "options": [
+        "To maintain a large standing army at otheßs expense",
+        "To keep India safe from Napoleonic danger",
+        "To secure a fixed income for the Company",
+        "To establish British paramountcy over the Indian States (33 -A)"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 12,
+          "y": 1386,
+          "w": 800,
+          "h": 794
+        }
+      ],
+      "keyCell": {
+        "x": 1150,
+        "y": 1112,
+        "w": 79,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "76",
+      "questionText": "Which of the following led to the introduction of English Education in India?\n1. Charter Act of 1813\n2. General Committee of Public Instruction, 1823\n3. Orientalist and Anglicist Controversy\nSelect the correct answer using the code given below:",
+      "options": [
+        "1 and 2 only",
+        "2 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 822,
+          "y": 178,
+          "w": 811,
+          "h": 655
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 536,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "77",
+      "questionText": "Which one of the following is an artificial lake?",
+      "options": [
+        "Kodaikanal (Tamil Nadu)",
+        "Kolleru (Andhra Pradesh)",
+        "Nainital (Uttarakhand)",
+        "Renuka (Himachal Pradesh)"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 822,
+          "y": 833,
+          "w": 811,
+          "h": 360
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 578,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "78",
+      "questionText": "With reference to Pradhan Mantri Kaushal Vikas Yojana, consider the following statements:\n1. It is the flagship scheme of the Ministry of Labour and Employment.\n2. It, among other things, will also impart training in soft skills, entrepreneurship, financial and digital literacy.\n3. It aims to align the competencies of the unregulated workforce of the country to the National Skill Qualification Framework.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 3 only",
+        "2 only",
+        "2 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 32,
+          "x": 822,
+          "y": 1193,
+          "w": 811,
+          "h": 917
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 618,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "79",
+      "questionText": "In 1920, which of the following changed its name to \"Swarajya Sabha\"?",
+      "options": [
+        "All India Home Rule League",
+        "Hindu Mahasabha",
+        "South Indian Liberal Federation",
+        "The Servants of India Society"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 11,
+          "y": 158,
+          "w": 801,
+          "h": 497
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 660,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "80",
+      "questionText": "Which among the following events happened earliest?",
+      "options": [
+        "Swami Dayanand established Arya Samaj.",
+        "Dinabandhu Mitra wrote Neeldarpan.",
+        "Bankim Chandra Chattopadhyay wrote Anandmath.",
+        "Satyendranath Tagore became the first Indian to succeed in the Indian Civil Services Examination."
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 11,
+          "y": 655,
+          "w": 801,
+          "h": 681
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 700,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "81",
+      "questionText": "Which of the following is/are the possible consequence/s of heavy sand mining in riverbeds?\n1. Decreased salinity in the river\n2. Pollution of groundwater\n3. Lowering of the water-table\nSelect the correct answer using the code given below:",
+      "options": [
+        "I only",
+        "2 and 3 only",
+        "1 and 3 only",
+        "1, 2 and 3 (35"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 11,
+          "y": 1336,
+          "w": 801,
+          "h": 813
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 741,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "82",
+      "questionText": "With reference to agricultural soils, consider the following statements:\n1. A high content of organic matter in soil drastically reduces its water holding capacity.\n2. Soil does not play any role in the sulphur cycle.\n3. Irrigation over a period of time can contribute to the salinization of some agricultural lands.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 822,
+          "y": 172,
+          "w": 811,
+          "h": 1092
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 782,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "83",
+      "questionText": "The Partnership for Action on Green Economy (PAGE), a UN mechanism to assist countries transition towards greener and more inclusive economies, emerged at",
+      "options": [
+        "The Earth Summit on Sustainable Development 2002, Johannesburg",
+        "The United Nations Conference on Sustainable Development 2012, Rio de Janeiro",
+        "The United Nations Framework Convention on Climate Change 2015, Paris",
+        "The World Sustainable Development Summit 2016, New Delhi"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 34,
+          "x": 822,
+          "y": 1264,
+          "w": 811,
+          "h": 807
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 825,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "84",
+      "questionText": "\"3D printing\" has applications in which of the following?\n1. Preparation of confectionery items\n2. Manufacture of bionic ears\n3. Automotive industry\n4. Reconstructive surgeries\n5. Data processing technologies\nSelect the correct answer using the code given below:",
+      "options": [
+        "1, 3 and 4 only",
+        "2, 3 and 5 only",
+        "1 and 4 only",
+        "l, 2, 3, 4 and 5"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 36,
+          "x": 23,
+          "y": 164,
+          "w": 789,
+          "h": 970
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 867,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "85",
+      "questionText": "Consider the following statements:\n1. The Barren Island volcano is an active volcano located in the Indian territory.\n2. Barren Island lies about 140 km east of Great Nicobar.\n3. The last time the Barren Island volcano erupted was in 1991 and it has remained inactive since then.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 and 3",
+        "3 only",
+        "1 and 3 (37 -A)"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 36,
+          "x": 23,
+          "y": 1134,
+          "w": 789,
+          "h": 1019
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 907,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "86",
+      "questionText": "Why is a plant called Prosopis juliflora often mentioned in news?",
+      "options": [
+        "Its extract is widely used in cosmetics.",
+        "It tends to reduce the biodiversity in the area in which it grows.",
+        "Its extract is used in the synthesis of pesticides.",
+        "None of the above"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 36,
+          "x": 822,
+          "y": 169,
+          "w": 811,
+          "h": 786
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 949,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "87",
+      "questionText": "Consider the following statements:\n1. Most of the world's coral reefs are in tropical waters.\n2. More than one-third of the world's coral reefs are located in the territories of Australia, Indonesia and Philippines.\n3. Coral reefs host far more number of animal phyla than those hosted by tropical rainforests.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 2 only",
+        "3 only",
+        "1 and 3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 36,
+          "x": 822,
+          "y": 955,
+          "w": 811,
+          "h": 1101
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 990,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "88",
+      "questionText": "\"Momentum for Change: Climate Neutral Now\" is an initiative launched by",
+      "options": [
+        "The Intergovernmental Panel on Climate Change",
+        "The UNEP Secretariat",
+        "The UNFCCC Secretariat The World Meteorological Organization",
+        ""
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 24,
+          "y": 129,
+          "w": 788,
+          "h": 431
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 1031,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "89",
+      "questionText": "With reference to educational institutions during colonial rule in India, consider the following pairs: Institution Founder\n1. Sanskrit College William at Benaras Jones\n2. Calcutta Madarsa Warren Hastings\n3. Fort William Arthur College Wellesley\nWhich of the pairs given above is/are correct?",
+      "options": [
+        "1 and 2",
+        "2 only",
+        "I and 3",
+        "3 only"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 38,
+          "x": 24,
+          "y": 560,
+          "w": 788,
+          "h": 829
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 1073,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "90",
+      "questionText": "Consider the following pairs: Regions sometimes Country mentioned in news\n1. Catalonia Spain\n2. Crimea Hungary\n3. Mindanao Philippines\n4. Oromia Nigeria\nWhich of the pairs given above are correctly matched?",
+      "options": [
+        "1, 2 and 3",
+        "3 and 4 only",
+        "1 and 3 only",
+        "2 and 4 only (39-A)"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [
+        "MAY_HAVE_TABLE"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 24,
+          "y": 1389,
+          "w": 788,
+          "h": 734
+        }
+      ],
+      "keyCell": {
+        "x": 1322,
+        "y": 1113,
+        "w": 77,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "91",
+      "questionText": "Consider the following events:\n1. The first democratically elected communist party government formed in a State in India.\n2. India's then largest bank, 'Imperial Bank of India', was renamed 'State Bank of India'.\n3. Air India was nationalised and became the national carrier.\n4. Goa became a part of independent India.\nWhich of the following is the correct chronological sequence of the above events?",
+      "options": [
+        "4-1-2-3",
+        "",
+        "4—2—1—3",
+        ""
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [
+        "OPTIONS_INCOMPLETE"
+      ],
+      "regions": [
+        {
+          "page": 38,
+          "x": 822,
+          "y": 123,
+          "w": 811,
+          "h": 1173
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 537,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "92",
+      "questionText": "Right to Privacy is protected as an intrinsic part of Right to Life and Personal Liberty.\nWhich of the following in the Constitution of India correctly and appropriately imply the above statement?",
+      "options": [
+        "Article 14 and the provisions under the 42nd Amendment to the Constitution",
+        "Article 17 and the Directive Principles of State Policy in Part IV",
+        "Article 21 and the freedoms guaranteed in Part 111",
+        "Article 24 and the provisions under the 44th Amendment to the Constitution"
+      ],
+      "answer": 2,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 38,
+          "x": 822,
+          "y": 1296,
+          "w": 811,
+          "h": 741
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 578,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "93",
+      "questionText": "Consider the following:\n1. Areca nut\n2. Barley\n3. Coffee\n4. Finger millet\n5. Groundnut\n6. Sesamum\n7. Turmeric The Cabinet Committee on Economic Affairs has announced the Minimum Support Price for which of the above?",
+      "options": [
+        "1, 2, 3 and 7 only",
+        "2, 4, 5 and 6 only",
+        "1, 3, 4, 5 and 6 only",
+        "1, 2, 3, 4, 5, 6 and 7"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 40,
+          "x": 18,
+          "y": 125,
+          "w": 794,
+          "h": 1420
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 619,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "94",
+      "questionText": "In which one of the following States is Pakhui Wildlife Sanctuary located?",
+      "options": [
+        "Arunachal Pradesh",
+        "Manipur",
+        "Meghalaya",
+        "Nagaland"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 40,
+          "x": 18,
+          "y": 1545,
+          "w": 794,
+          "h": 528
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 660,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "95",
+      "questionText": "(41 —\n95. With reference to India's satellite launch vehicles, consider the following statements:\n1. PSLVs launch the satellites useful for Earth resources monitoring whereas GSLVs are 'designed mainly to launch communication satellites.\n2. Satellites launched by PSLV appear to remain permanently fixed in the same position in the sky, as viewed from a particular location on Earth.\n3. GSLV Mk III is a four-staged launch vehicle with the first and third stages using solid rocket motors; and the second and fourth stages using liquid rocket engines.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 and 3",
+        "I and 2",
+        "3 only"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [
+        "NUMBER_NOT_READ"
+      ],
+      "regions": [
+        {
+          "page": 40,
+          "x": 18,
+          "y": 2073,
+          "w": 794,
+          "h": 49
+        },
+        {
+          "page": 40,
+          "x": 822,
+          "y": 129,
+          "w": 811,
+          "h": 1119
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 702,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "96",
+      "questionText": "With reference to the governance of public sector banking in India, consider the following statements:\n1. Capital infusion into public sector banks by the Government of India has steadily increased in the last decade.\n2. To put the public sector banks in order, the merger of associate banks with the parent State Bank of India has been affected.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 only",
+        "2 only",
+        "Both 1 and 2",
+        "Neither 1 nor 2"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 40,
+          "x": 822,
+          "y": 1248,
+          "w": 811,
+          "h": 798
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 743,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "97",
+      "questionText": "Consider the following items:\n1. Cereal grains hulled\n2. Chicken eggs cooked\n3. Fish processed and canned\n4. Newspapers containing advertising material WYch of the above items is/are exempted under GST (Goods and Services Tax)?",
+      "options": [
+        "1 only",
+        "2 and 3 only",
+        "1, 2 and 4 only",
+        "1, 2, 3 and 4"
+      ],
+      "answer": null,
+      "answerStatus": "NEEDS_REVIEW",
+      "answerGuess": "C",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 28,
+          "y": 136,
+          "w": 784,
+          "h": 959
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 784,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "98",
+      "questionText": "Consider the following statements:\n1. The definition of \"Critical Wildlife Habitat\" is incorporated in the Forest Rights Act, 2006.\n2. For the first time in India, Baigas have been given Habitat Rights.\n3. Union Ministry of Environment, Forest and Climate Change officially decides and declares Habitat Rights for Primitive and Vulnerable Tribal Groups in any part of India.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "3 only",
+        "1, 2 and 3 (43"
+      ],
+      "answer": 0,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 28,
+          "y": 1095,
+          "w": 784,
+          "h": 1034
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 826,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "99",
+      "questionText": "Consider the following:\n1. Birds\n2. Dust blowing\n3. Rain\n4. Wind blowing\nWhich of the above spread plant diseases?",
+      "options": [
+        "1 and 3 only",
+        "3 and 4 only",
+        "1, 2 and 4 only",
+        "1, 2, 3 and 4"
+      ],
+      "answer": 3,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 822,
+          "y": 140,
+          "w": 811,
+          "h": 802
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 868,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    },
+    {
+      "questionRef": "100",
+      "questionText": "With reference to organic farming in India, consider the following statements:\n1. 'The National Programme for Organic Production' (NPOP) is operated under the guidelines and directions of the Union Ministry of Rural Development.\n2. 'The Agricultural and Processed Food Products Export Development Authority' (APEDA) functions as the Secretariat for the implementation of NPOP.\n3. Sikkim has become India's first fully organic State.\nWhich of the statements given above is/are correct?",
+      "options": [
+        "1 and 2 only",
+        "2 and 3 only",
+        "3 only",
+        "1, 2 and 3"
+      ],
+      "answer": 1,
+      "answerStatus": "AUTO",
+      "issues": [],
+      "regions": [
+        {
+          "page": 42,
+          "x": 822,
+          "y": 942,
+          "w": 811,
+          "h": 1099
+        }
+      ],
+      "keyCell": {
+        "x": 1503,
+        "y": 909,
+        "w": 80,
+        "h": 62
+      },
+      "reviewStatus": "PENDING"
+    }
+  ]
+}
